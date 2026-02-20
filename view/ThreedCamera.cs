@@ -248,11 +248,6 @@ namespace View3D.view
             FitBoundingBox(ObjectsBoundingBox());
         }
 
-        public void FitObjects(int thumbnailWidth, int thumbnailHeigth)
-        {
-            FitBoundingBox(ObjectsBoundingBox(), thumbnailWidth, thumbnailHeigth);
-        }
-
         public void FitBoundingBox(RHBoundingBox box)
         {
             float bedRadius = (float)(1.5 * Math.Sqrt((ps.PrintAreaDepth * ps.PrintAreaDepth + ps.PrintAreaHeight * ps.PrintAreaHeight + ps.PrintAreaWidth * ps.PrintAreaWidth) * 0.25));

@@ -33,11 +33,6 @@ namespace View3D
 
     public partial class Main : Form
     {
-        public static uint checkJobNum = 5;             // freq. for prompting user to clean floater
-        public static byte[] DisplayByte;
-
-        private static bool check_loadfile = false;
-        private bool have3dObject = false;
         public ObjectInformation objectInformation = new ObjectInformation();
         public string offlinefilename;
         public event languageChangedEvent languageChanged;
@@ -46,12 +41,7 @@ namespace View3D
         public static PrinterModel printerModel;
         public static ThreeDSettings threeDSettings;
         private string basicTitle = "";
-        private string machinemodel = "";
-        private string file_version_number = "";
-        private static string tempfile = "";
         public static bool IsMono = Type.GetType("Mono.Runtime") != null;
-        private static int thumbnailWidth = 432;
-        private static int thumbnailHeigth = 432;
 
         public ThreeDControl threedview = null;
         public ThreeDView jobPreview = null;
@@ -64,7 +54,6 @@ namespace View3D
         public volatile Thread previewThread = null;
         public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);
         public int refreshCounter = 0;
-        bool recalcJobPreview = false;
         List<GCodeShort> previewArray0, previewArray1, previewArray2;
         public Trans trans = null;
         public double gcodePrintingTime = 0;
@@ -271,16 +260,11 @@ namespace View3D
             FileInfo f = new FileInfo(file);
             Main.threeDSettings.filament.BackColor = System.Drawing.Color.Chocolate;
 
-            tempfile = file;
             offlinefilename = f.Name;
             string fileLow = file.ToLower();
 
             if (fileLow.EndsWith(".stl"))
-            {
-                have3dObject = true;
-
                 objectPlacement.openAndAddObject(file);
-            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)

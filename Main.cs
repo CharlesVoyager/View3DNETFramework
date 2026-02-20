@@ -46,17 +46,17 @@ namespace View3D
         public ThreeDControl threedview = null;
         public ThreeDView jobPreview = null;
         public ThreeDView printPreview = null;
+        public STLComposer objectPlacement = null;
+        public ObjectInformation gObjectInformation = new ObjectInformation();
+       
         public GCodeVisual jobVisual = new GCodeVisual();
         public GCodeVisual printVisual = null;
-        public STLComposer objectPlacement = null;
         public volatile GCodeVisual newVisual = null;
+
+
         public volatile Thread previewThread = null;
         public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);
-        public int refreshCounter = 0;
         public Trans trans = null;
-        public double gcodePrintingTime = 0;
-        public DateTime Fw_updata;
-        public ObjectInformation gObjectInformation = new ObjectInformation();
 
         public float dpiX, dpiY;
 

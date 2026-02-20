@@ -48,7 +48,7 @@ namespace View3D
         public STLComposer objectPlacement = null;
         public ObjectInformation gObjectInformation = new ObjectInformation();
        
-        public GCodeVisual jobVisual = new GCodeVisual();
+        public GCodeVisual jobVisual = null;
         public GCodeVisual printVisual = null;
         public volatile GCodeVisual newVisual = null;
 
@@ -112,14 +112,17 @@ namespace View3D
             printPreview = new ThreeDView();
             printPreview.SetEditor(false);
             printPreview.autoupdateable = true;
+
             printVisual = new GCodeVisual();
             printVisual.liveView = true;
             printPreview.models.AddLast(printVisual);
-            basicTitle = Text;
+
+            jobVisual = new GCodeVisual();
             jobPreview = new ThreeDView();
             jobPreview.SetEditor(false);
             jobPreview.models.AddLast(jobVisual);
-
+       
+            basicTitle = Text;
             // Modify UI font size
             Main.main.threedview.ui.modifyUITextSize();
             Main.main.threedview.ui.UI_view.modifyViewTextSize();

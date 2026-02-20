@@ -60,8 +60,6 @@ namespace View3D.model
             xOffset = yOffset = zOffset = 0;
             lastX = 0; lastY = 0; lastZ = 0;
             hasXHome = hasYHome = hasZHome = false;
-            if (!privateAnalyzer)
-                Main.main.jobVisual.ResetQuality();
         }
 
         public void Analyze(GCode code)

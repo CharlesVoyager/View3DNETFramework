@@ -43,13 +43,9 @@ namespace View3D
         private string basicTitle = "";
 
         public ThreeDControl threedview = null;
-        public ThreeDView jobPreview = null;
-        public ThreeDView printPreview = null;
         public STLComposer objectPlacement = null;
         public ObjectInformation gObjectInformation = new ObjectInformation();
-       
-        public GCodeVisual jobVisual = null;
-        public GCodeVisual printVisual = null;
+
         public volatile GCodeVisual newVisual = null;
 
         public volatile Thread previewThread = null;
@@ -109,19 +105,6 @@ namespace View3D
             threedview.SetComp(objectPlacement);
             splitLog.Panel1.Controls.Add(threedview);   
 
-            printPreview = new ThreeDView();
-            printPreview.SetEditor(false);
-            printPreview.autoupdateable = true;
-
-            printVisual = new GCodeVisual();
-            printVisual.liveView = true;
-            printPreview.models.AddLast(printVisual);
-
-            jobVisual = new GCodeVisual();
-            jobPreview = new ThreeDView();
-            jobPreview.SetEditor(false);
-            jobPreview.models.AddLast(jobVisual);
-       
             basicTitle = Text;
             // Modify UI font size
             Main.main.threedview.ui.modifyUITextSize();

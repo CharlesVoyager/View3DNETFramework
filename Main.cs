@@ -46,9 +46,6 @@ namespace View3D
         public STLComposer objectPlacement = null;
         public ObjectInformation gObjectInformation = new ObjectInformation();
 
-        public volatile GCodeVisual newVisual = null;
-
-        public volatile Thread previewThread = null;
         public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);
         public Trans trans = null;
 
@@ -240,9 +237,6 @@ namespace View3D
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             RegMemory.StoreWindowPos("mainWindow", this, true, true);
-
-            if (previewThread != null)
-                previewThread.Join();
 
             Environment.Exit(Environment.ExitCode);
         }

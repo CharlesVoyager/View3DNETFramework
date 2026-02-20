@@ -46,9 +46,6 @@ namespace View3D.view
             InitializeComponent();
             tdSettings.DataSource = this;
             RegMemory.RestoreWindowPos("threeDSettingsWindow", this);
-            if (Main.IsMono)
-                buttonOK.Location = new Point(buttonOK.Location.X,buttonOK.Location.Y-10);
-
             comboDrawMethod.SelectedIndex = 0;
             RegistryToForm();
             translate();

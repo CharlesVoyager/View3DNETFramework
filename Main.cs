@@ -33,16 +33,16 @@ namespace View3D
 
     public partial class Main : Form
     {
-        public ObjectInformation objectInformation = new ObjectInformation();
-        public string offlinefilename;
         public event languageChangedEvent languageChanged;
+
         public static Main main;
         public static FormPrinterSettings printerSettings;
         public static PrinterModel printerModel;
         public static ThreeDSettings threeDSettings;
-        private string basicTitle = "";
-        public static bool IsMono = Type.GetType("Mono.Runtime") != null;
 
+        private string basicTitle = "";
+
+        public ObjectInformation objectInformation = new ObjectInformation();
         public ThreeDControl threedview = null;
         public ThreeDView jobPreview = null;
         public ThreeDView printPreview = null;
@@ -50,25 +50,13 @@ namespace View3D
         public GCodeVisual printVisual = null;
         public STLComposer objectPlacement = null;
         public volatile GCodeVisual newVisual = null;
-        private volatile bool jobPreviewThreadFinished = true;
         public volatile Thread previewThread = null;
         public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);
         public int refreshCounter = 0;
-        List<GCodeShort> previewArray0, previewArray1, previewArray2;
         public Trans trans = null;
         public double gcodePrintingTime = 0;
-        private int offleinconnect = 0;
         public DateTime Fw_updata;
-        private int fw_upgrade = 0;
         public ObjectInformation gObjectInformation = new ObjectInformation();
-        public DateTime gStartTime;
-
-        public string PP120xPHWID = "";
-        public string MACAddress_LAN = "";
-        public string MACAddress_WIFI = "";
-        public static bool IsDirectPrint = false;
-        public static bool FormattingTimeOut = false;
-        public static bool IsPerformanceMode = false;
 
         public float dpiX, dpiY;
 
@@ -83,7 +71,6 @@ namespace View3D
 
                 //everything done.  Now look at command line
                 ProcessCommandLine();
-                gStartTime = DateTime.Now;
             }
             catch (Exception ex)
             {
@@ -260,7 +247,6 @@ namespace View3D
             FileInfo f = new FileInfo(file);
             Main.threeDSettings.filament.BackColor = System.Drawing.Color.Chocolate;
 
-            offlinefilename = f.Name;
             string fileLow = file.ToLower();
 
             if (fileLow.EndsWith(".stl"))

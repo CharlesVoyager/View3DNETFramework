@@ -42,7 +42,6 @@ namespace View3D
 
         private string basicTitle = "";
 
-        public ObjectInformation objectInformation = new ObjectInformation();
         public ThreeDControl threedview = null;
         public ThreeDView jobPreview = null;
         public ThreeDView printPreview = null;
@@ -52,7 +51,6 @@ namespace View3D
         public GCodeVisual jobVisual = new GCodeVisual();
         public GCodeVisual printVisual = null;
         public volatile GCodeVisual newVisual = null;
-
 
         public volatile Thread previewThread = null;
         public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);

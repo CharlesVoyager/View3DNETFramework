@@ -61,11 +61,6 @@ namespace View3D.view
             Main.main.Focus();
         }
 
-        private void ObjectInformation_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Main.main.objectInformation = null;
-        }
-
         private void ObjectInformation_Load(object sender, EventArgs e)
         {
             translate();

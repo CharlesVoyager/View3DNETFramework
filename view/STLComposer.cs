@@ -1543,10 +1543,7 @@ namespace View3D.view
 
         public void showObjectInfo(object sender, EventArgs e)
         {
-            ObjectInformation objectInformation = new ObjectInformation();
-            objectInformation.TopMost = true;
-            objectInformation.Focus();
-            objectInformation.ShowDialog();
+            Main.main.gObjectInformation.Show();
         }
 
         public void DoInchScale(PrintModel stl)

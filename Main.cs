@@ -69,7 +69,7 @@ namespace View3D
             }
         }
 
-        public Main(string args)
+        public Main()
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US", false);
 

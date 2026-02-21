@@ -25,18 +25,7 @@ namespace View3D
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    if (args.Length < 1)
-                    {
-                        Application.Run(new Main("Normal"));
-                    }
-                    else if (args[0] == "Scanner_Call")
-                    {
-                        Application.Run(new Main("Open"));
-                    }
-                    else
-                    {
-                        Application.Run(new Main("Normal"));
-                    }
+                    Application.Run(new Main());
                 }
                 else
                 {

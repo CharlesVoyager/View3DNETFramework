@@ -112,7 +112,6 @@
     <Compile Include="ModelLib\Raycasting\RaycastType.cs" />
     <Compile Include="ModelLib\SWSetting.cs" />
     <Compile Include="ModelLib\Utils\RamTools.cs" />
-    <Compile Include="model\GCodeShort.cs" />
     <Compile Include="view\FormPrinterSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,7 +195,6 @@
   <ItemGroup>
     <Compile Include="model\Commands.cs" />
     <Compile Include="model\GCode.cs" />
-    <Compile Include="model\GCodeAnalyzer.cs" />
     <Compile Include="model\Geom3D.cs" />
     <Compile Include="model\ModelData.cs" />
     <Compile Include="model\ModelGLDraw.cs" />

@@ -1,19 +1,4 @@
-﻿/*
-   Copyright 2011 repetier repetierdev@gmail.com
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
-using OpenTK;
+﻿using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -27,7 +12,6 @@ using View3D.model;
 using View3D.model.geom;
 using View3D.view.utils;
 using View3D.ModelObjectTool;
-
 
 namespace View3D.view
 {
@@ -66,7 +50,7 @@ namespace View3D.view
         public STLComposer stlComp = null;
         public bool isShowWPF = true, isPreShowWPF = false;
 
-        //Added by RCGREY for STL Slice Previewer
+        //STL Slice Previewer
         public double clippingLayerCur = 999.0;
         public double clippingLayerMax = 999.0;
         public double clippingLayerMin = -1.0;
@@ -77,10 +61,8 @@ namespace View3D.view
         public bool enableStencilbufClear = true;
         public int disableStencilMask = 0;
 
-        //Added by RC Grey for tree and cone support generation
+        //Tree and cone support generation
         private static bool symbolDetected = false;
-        public bool selectTrunkForBranchAdd = false;
-        private List<RHVector3> branchPointDirRef = new List<RHVector3>();
         public View3D.view.wpf.UI ui = null;
 
         public ThreeDControl()

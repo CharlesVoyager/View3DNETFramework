@@ -1122,8 +1122,6 @@ namespace View3D.view
                 if (zoom < 0.002) zoom = 0.002f;
                 if (zoom > 5.9) zoom = 5.9f;
                 //userPosition.Y += e.Delta;
-
-      
                 gl.Invalidate();
             }
         }
@@ -1141,8 +1139,8 @@ namespace View3D.view
             int emode = mode;
             if (k == Keys.Shift || Control.MouseButtons == MouseButtons.Middle) emode = 2;
             if (k == Keys.Control) emode = 0;
-            //if (k == Keys.Alt || Control.MouseButtons == MouseButtons.Right) emode = 4;
             if (k == Keys.Alt) emode = 4;
+
             if (emode == 0) // Rotate
             {
                 if (!symbolDetected)
@@ -1215,7 +1213,6 @@ namespace View3D.view
         public void SetMode(int _mode)
         {
             mode = _mode;
-            // toolMove.Checked = mode == 1;
             toolMoveViewpoint.Checked = mode == 2;
         }
 
@@ -1272,12 +1269,6 @@ namespace View3D.view
         {
             SetCameraDefaults();
             cam.OrientIsometric();
-            gl.Invalidate();
-        }
-
-        public void FitPrinter()
-        {
-            cam.FitPrinter();
             gl.Invalidate();
         }
 

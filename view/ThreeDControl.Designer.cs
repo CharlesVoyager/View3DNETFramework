@@ -64,7 +64,7 @@
             this.toolStripClear});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(77, 624);
+            this.toolStrip1.Size = new System.Drawing.Size(51, 624);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.Visible = false;
@@ -143,7 +143,7 @@
             this.toolStripSeparator3,
             this.objectInfomationToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(234, 206);
+            this.contextMenu.Size = new System.Drawing.Size(234, 178);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
             // 
             // landObjectToolStripMenuItem
@@ -205,10 +205,10 @@
             this.gl.BackColor = System.Drawing.Color.Transparent;
             this.gl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gl.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gl.Location = new System.Drawing.Point(0, 0);
+            this.gl.Location = new System.Drawing.Point(51, 0);
             this.gl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gl.Name = "gl";
-            this.gl.Size = new System.Drawing.Size(830, 624);
+            this.gl.Size = new System.Drawing.Size(779, 624);
             this.gl.TabIndex = 2;
             this.gl.VSync = false;
             this.gl.Paint += new System.Windows.Forms.PaintEventHandler(this.gl_Paint);

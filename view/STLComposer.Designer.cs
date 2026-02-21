@@ -35,9 +35,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelCutPosition = new System.Windows.Forms.Label();
-            this.cutAzimuthSlider = new MB.Controls.ColorSlider();
-            this.cutInclinationSlider = new MB.Controls.ColorSlider();
-            this.cutPositionSlider = new MB.Controls.ColorSlider();
             this.checkCutFaces = new System.Windows.Forms.CheckBox();
             this.panelAnalysis = new System.Windows.Forms.Panel();
             this.groupBoxObjectAnalysis = new System.Windows.Forms.GroupBox();
@@ -79,6 +76,9 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileSTL = new System.Windows.Forms.OpenFileDialog();
             this.saveSTL = new System.Windows.Forms.SaveFileDialog();
+            this.cutAzimuthSlider = new MB.Controls.ColorSlider();
+            this.cutInclinationSlider = new MB.Controls.ColorSlider();
+            this.cutPositionSlider = new MB.Controls.ColorSlider();
             this.panelControls.SuspendLayout();
             this.panelCut.SuspendLayout();
             this.panelAnalysis.SuspendLayout();
@@ -121,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 107);
+            this.label5.Location = new System.Drawing.Point(16, 106);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 32);
@@ -131,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 72);
+            this.label1.Location = new System.Drawing.Point(16, 70);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 32);
@@ -141,84 +141,12 @@
             // labelCutPosition
             // 
             this.labelCutPosition.AutoSize = true;
-            this.labelCutPosition.Location = new System.Drawing.Point(16, 39);
+            this.labelCutPosition.Location = new System.Drawing.Point(16, 32);
             this.labelCutPosition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCutPosition.Name = "labelCutPosition";
             this.labelCutPosition.Size = new System.Drawing.Size(60, 32);
             this.labelCutPosition.TabIndex = 2;
             this.labelCutPosition.Text = "Position\r\n(0 - 1000)";
-            // 
-            // cutAzimuthSlider
-            // 
-            this.cutAzimuthSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutAzimuthSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutAzimuthSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutAzimuthSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutAzimuthSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutAzimuthSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutAzimuthSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutAzimuthSlider.LargeChange = ((uint)(5u));
-            this.cutAzimuthSlider.Location = new System.Drawing.Point(111, 104);
-            this.cutAzimuthSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutAzimuthSlider.Maximum = 3600;
-            this.cutAzimuthSlider.Name = "cutAzimuthSlider";
-            this.cutAzimuthSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutAzimuthSlider.SmallChange = ((uint)(1u));
-            this.cutAzimuthSlider.TabIndex = 1;
-            this.cutAzimuthSlider.Text = "colorSlider1";
-            this.cutAzimuthSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutAzimuthSlider.ThumbSize = 10;
-            this.cutAzimuthSlider.Value = 0;
-            this.cutAzimuthSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
-            // 
-            // cutInclinationSlider
-            // 
-            this.cutInclinationSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutInclinationSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutInclinationSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutInclinationSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutInclinationSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutInclinationSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutInclinationSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutInclinationSlider.LargeChange = ((uint)(5u));
-            this.cutInclinationSlider.Location = new System.Drawing.Point(111, 71);
-            this.cutInclinationSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutInclinationSlider.Maximum = 1800;
-            this.cutInclinationSlider.Name = "cutInclinationSlider";
-            this.cutInclinationSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutInclinationSlider.SmallChange = ((uint)(1u));
-            this.cutInclinationSlider.TabIndex = 1;
-            this.cutInclinationSlider.Text = "colorSlider1";
-            this.cutInclinationSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutInclinationSlider.ThumbSize = 10;
-            this.cutInclinationSlider.Value = 0;
-            this.cutInclinationSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
-            // 
-            // cutPositionSlider
-            // 
-            this.cutPositionSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutPositionSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutPositionSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutPositionSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutPositionSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutPositionSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutPositionSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutPositionSlider.LargeChange = ((uint)(5u));
-            this.cutPositionSlider.Location = new System.Drawing.Point(111, 36);
-            this.cutPositionSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutPositionSlider.Maximum = 1000;
-            this.cutPositionSlider.Name = "cutPositionSlider";
-            this.cutPositionSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutPositionSlider.SmallChange = ((uint)(1u));
-            this.cutPositionSlider.TabIndex = 1;
-            this.cutPositionSlider.Text = "colorSlider1";
-            this.cutPositionSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutPositionSlider.ThumbSize = 10;
-            this.cutPositionSlider.Value = 500;
-            this.cutPositionSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
             // 
             // checkCutFaces
             // 
@@ -672,6 +600,78 @@
             this.saveSTL.DefaultExt = "stl";
             this.saveSTL.Filter = "STL-Files|*.stl;*.STL|3ws-Files|*.3ws;*.3WS";
             this.saveSTL.Title = "Save composition";
+            // 
+            // cutAzimuthSlider
+            // 
+            this.cutAzimuthSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutAzimuthSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutAzimuthSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutAzimuthSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutAzimuthSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutAzimuthSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutAzimuthSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutAzimuthSlider.LargeChange = ((uint)(5u));
+            this.cutAzimuthSlider.Location = new System.Drawing.Point(111, 109);
+            this.cutAzimuthSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutAzimuthSlider.Maximum = 3600;
+            this.cutAzimuthSlider.Name = "cutAzimuthSlider";
+            this.cutAzimuthSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutAzimuthSlider.SmallChange = ((uint)(1u));
+            this.cutAzimuthSlider.TabIndex = 1;
+            this.cutAzimuthSlider.Text = "colorSlider1";
+            this.cutAzimuthSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutAzimuthSlider.ThumbSize = 10;
+            this.cutAzimuthSlider.Value = 0;
+            this.cutAzimuthSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
+            // 
+            // cutInclinationSlider
+            // 
+            this.cutInclinationSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutInclinationSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutInclinationSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutInclinationSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutInclinationSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutInclinationSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutInclinationSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutInclinationSlider.LargeChange = ((uint)(5u));
+            this.cutInclinationSlider.Location = new System.Drawing.Point(111, 71);
+            this.cutInclinationSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutInclinationSlider.Maximum = 1800;
+            this.cutInclinationSlider.Name = "cutInclinationSlider";
+            this.cutInclinationSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutInclinationSlider.SmallChange = ((uint)(1u));
+            this.cutInclinationSlider.TabIndex = 1;
+            this.cutInclinationSlider.Text = "colorSlider1";
+            this.cutInclinationSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutInclinationSlider.ThumbSize = 10;
+            this.cutInclinationSlider.Value = 0;
+            this.cutInclinationSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
+            // 
+            // cutPositionSlider
+            // 
+            this.cutPositionSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutPositionSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutPositionSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutPositionSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutPositionSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutPositionSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutPositionSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutPositionSlider.LargeChange = ((uint)(5u));
+            this.cutPositionSlider.Location = new System.Drawing.Point(111, 34);
+            this.cutPositionSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutPositionSlider.Maximum = 1000;
+            this.cutPositionSlider.Name = "cutPositionSlider";
+            this.cutPositionSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutPositionSlider.SmallChange = ((uint)(1u));
+            this.cutPositionSlider.TabIndex = 1;
+            this.cutPositionSlider.Text = "colorSlider1";
+            this.cutPositionSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutPositionSlider.ThumbSize = 10;
+            this.cutPositionSlider.Value = 500;
+            this.cutPositionSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
             // 
             // STLComposer
             // 

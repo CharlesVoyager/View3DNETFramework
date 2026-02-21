@@ -92,17 +92,6 @@ namespace View3D.view
 
         public void translate()
         {
-            saveSTL.Title = Trans.T("W_SAVE_FILE_STL"); //Save STL
-            textModied.Text = Trans.T("L_ANA_MODIFIED");
-            textManifold.Text = Trans.T("L_ANA_MANIFOLD");
-            textIntersectingTriangles.Text = Trans.T("L_ANA_INTERSECTING_TRIANGLES");
-            textNormals.Text = Trans.T("L_ANA_NORMALS");
-            textLoopEdges.Text = Trans.T("L_ANA_LOOP_EDGES");
-            textHighlyConnected.Text = Trans.T("L_ANA_HIGHLY_CONNECTED");
-            textVertices.Text = Trans.T("L_ANA_VERTICES");
-            textEdges.Text = Trans.T("L_ANA_EDGES");
-            textFaces.Text = Trans.T("L_ANA_FACES");
-            textShells.Text = Trans.T("L_ANA_SHELLS");
         }
 
         private void AddObject(PrintModel model)

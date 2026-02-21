@@ -268,17 +268,14 @@ namespace View3D.model.geom
             }
         }
 
-        public List<TopoModel> SplitIntoSurfaces()
-        {
-            return null;
-        }
 
         public void CutMesh(Submesh mesh, RHVector3 normal, RHVector3 point,int defaultFaceColor)
         {
             TopoPlane plane = new TopoPlane(normal, point);
-            //bool drawEdges = Main.threeDSettings.ShowEdges;
+
             foreach (TopoEdge e in edges)
                 e.algHelper = 0; // Mark drawn edges, so we insert them only once
+
             foreach (TopoTriangle t in triangles)
             {
                 int side = plane.testTriangleSideFast(t);
@@ -301,7 +298,6 @@ namespace View3D.model.geom
             tInWorld = new TopoTriangle(v1, v2, v3);
         }
 
-        // milton
         public void FillMeshCheckRAM(Matrix4 modelMx, Submesh mesh, int defaultColor)
         {
             int cnt = 0;

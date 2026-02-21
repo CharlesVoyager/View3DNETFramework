@@ -45,7 +45,6 @@
             this.cloneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.objectInfomationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newWorkspacetoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gl = new View3D.view.utils.RHOpenGL();
             this.toolStrip1.SuspendLayout();
             this.contextMenu.SuspendLayout();
@@ -142,10 +141,9 @@
             this.removeObjectToolStripMenuItem,
             this.cloneToolStripMenuItem,
             this.toolStripSeparator3,
-            this.objectInfomationToolStripMenuItem,
-            this.newWorkspacetoolStripMenuItem});
+            this.objectInfomationToolStripMenuItem});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(234, 202);
+            this.contextMenu.Size = new System.Drawing.Size(234, 206);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
             // 
             // landObjectToolStripMenuItem
@@ -202,13 +200,6 @@
             this.objectInfomationToolStripMenuItem.Text = "Object infomation";
             this.objectInfomationToolStripMenuItem.Click += new System.EventHandler(this.objectInfomationToolStripMenuItem_Click);
             // 
-            // newWorkspacetoolStripMenuItem
-            // 
-            this.newWorkspacetoolStripMenuItem.Name = "newWorkspacetoolStripMenuItem";
-            this.newWorkspacetoolStripMenuItem.Size = new System.Drawing.Size(233, 24);
-            this.newWorkspacetoolStripMenuItem.Text = "New Workspace";
-            this.newWorkspacetoolStripMenuItem.Click += new System.EventHandler(this.newWorkspacetoolStripMenuItem_Click);
-            // 
             // gl
             // 
             this.gl.BackColor = System.Drawing.Color.Transparent;
@@ -264,7 +255,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem objectInfomationToolStripMenuItem;
         public utils.RHOpenGL gl;
-        private System.Windows.Forms.ToolStripMenuItem newWorkspacetoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mminchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inchmmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cloneToolStripMenuItem;

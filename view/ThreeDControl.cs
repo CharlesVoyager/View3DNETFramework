@@ -112,7 +112,6 @@ namespace View3D.view
             resetObjectToolStripMenuItem.Text = Trans.T("B_RESET");
             removeObjectToolStripMenuItem.Text = Trans.T("B_REMOVE");
             objectInfomationToolStripMenuItem.Text = Trans.T("B_INFO");
-            newWorkspacetoolStripMenuItem.Text = Trans.T("B_NEW_WORKSPACE");
             mminchToolStripMenuItem.Text = Trans.T("B_SCALE_UP") + " (" + Trans.T("L_MM") + ">" + Trans.T("L_INCH") + ")";
             inchmmToolStripMenuItem.Text = Trans.T("B_SCALE_DOWN") + " (" + Trans.T("L_INCH") + ">" + Trans.T("L_MM") + ")";
             cloneToolStripMenuItem.Text = Trans.T("B_CLONE_OBJECT");

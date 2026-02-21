@@ -884,15 +884,9 @@ namespace View3D.view
                     {
                         Main.threeDSettings.openGLVersion = 1.1f;
                     }
-                    string extensions = GL.GetString(StringName.Extensions);
-                    Main.threeDSettings.useVBOs = false;
-                    foreach (string s in extensions.Split(' '))
-                    {
-                        if (s.Equals("GL_ARB_vertex_buffer_object")/* && Main.threeDSettings.openGLVersion>1.49*/)
-                        {
-                            Main.threeDSettings.useVBOs = true;
-                        }
-                    }
+
+                    Main.threeDSettings.useVBOs = GL.GetString(StringName.Extensions).Contains("GL_ARB_vertex_buffer_object");
+                
                 }
                 catch { }
                 configureSettings = false;

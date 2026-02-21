@@ -9,8 +9,8 @@ namespace View3D.Utils
         {
             bool valid = true;
             //ulong totalRam = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
-            ulong availRam = new Microsoft.VisualBasic.Devices.ComputerInfo().AvailablePhysicalMemory / 1024 / 1024;
-            //if (availRam < SWSetting.Memory.RemainMin || getCurMemoryUsed() >= (OSTools.Is64BitOperatingSystem() ? SWSetting.Memory.UsedLimit_64bit : SWSetting.Memory.UsedLimit_32bit))
+            ulong availRam = new Microsoft.VisualBasic.Devices.ComputerInfo().AvailablePhysicalMemory / 1024 / 1024;    // Unit: MB
+
             if (availRam < SWSetting.Memory.RemainMin || getCurMemoryUsed() >= SWSetting.Memory.UsedLimit_64bit)
             {
                 valid = false;
@@ -24,6 +24,5 @@ namespace View3D.Utils
             uint totalBytesOfMemoryUsed = Convert.ToUInt16(currentProcess.WorkingSet64 / 1024 / 1024);
             return totalBytesOfMemoryUsed;
         }
-
     }
 }

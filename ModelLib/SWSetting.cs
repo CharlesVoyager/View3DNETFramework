@@ -16,9 +16,9 @@ namespace View3D
         
         public Memory()
         {
-            UsedLimit_64bit = 5120;
-            UsedLimit_32bit = 1536;
-            RemainMin = 100;
+            UsedLimit_64bit = 5120;     // 5GB
+            UsedLimit_32bit = 1536;     // 1.5GB
+            RemainMin = 100;            // 100MB
             LimitPercent = 30;
         }
     }

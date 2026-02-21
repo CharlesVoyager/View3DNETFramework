@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolMoveViewpoint = new System.Windows.Forms.ToolStripButton();
-            this.toolStripClear = new System.Windows.Forms.ToolStripButton();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.landObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,84 +40,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.objectInfomationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gl = new View3D.view.utils.RHOpenGL();
-            this.toolStrip1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(72, 69);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton4,
-            this.toolStripButton6,
-            this.toolStripButton7,
-            this.toolMoveViewpoint,
-            this.toolStripClear});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(51, 624);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.Visible = false;
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripButton4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(48, 4);
-            this.toolStripButton4.Text = "[－]";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripButton6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(48, 4);
-            this.toolStripButton6.Text = "Turn";
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.toolStripButton7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(48, 4);
-            this.toolStripButton7.Text = "Scale";
-            // 
-            // toolMoveViewpoint
-            // 
-            this.toolMoveViewpoint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolMoveViewpoint.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolMoveViewpoint.Name = "toolMoveViewpoint";
-            this.toolMoveViewpoint.Size = new System.Drawing.Size(48, 24);
-            this.toolMoveViewpoint.Text = "Move";
-            this.toolMoveViewpoint.Visible = false;
-            this.toolMoveViewpoint.Click += new System.EventHandler(this.toolMoveViewpoint_Click);
-            // 
-            // toolStripClear
-            // 
-            this.toolStripClear.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripClear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripClear.Name = "toolStripClear";
-            this.toolStripClear.Size = new System.Drawing.Size(48, 4);
-            this.toolStripClear.Text = "Clear";
-            this.toolStripClear.Visible = false;
-            this.toolStripClear.Click += new System.EventHandler(this.toolStripClear_Click);
             // 
             // timer
             // 
@@ -205,10 +123,10 @@
             this.gl.BackColor = System.Drawing.Color.Transparent;
             this.gl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gl.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gl.Location = new System.Drawing.Point(51, 0);
+            this.gl.Location = new System.Drawing.Point(0, 0);
             this.gl.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.gl.Name = "gl";
-            this.gl.Size = new System.Drawing.Size(779, 624);
+            this.gl.Size = new System.Drawing.Size(830, 624);
             this.gl.TabIndex = 2;
             this.gl.VSync = false;
             this.gl.Paint += new System.Windows.Forms.PaintEventHandler(this.gl_Paint);
@@ -224,30 +142,19 @@
             // ThreeDControl
             // 
             this.Controls.Add(this.gl);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "ThreeDControl";
             this.Size = new System.Drawing.Size(830, 624);
             this.Load += new System.EventHandler(this.ThreeDControl_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ThreeDControl_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ThreeDControl_KeyPress);
             this.MouseEnter += new System.EventHandler(this.ThreeDControl_MouseEnter);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolMoveViewpoint;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
-        private System.Windows.Forms.ToolStripButton toolStripButton7;
-        private System.Windows.Forms.ToolStripButton toolStripClear;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem landObjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetObjectToolStripMenuItem;

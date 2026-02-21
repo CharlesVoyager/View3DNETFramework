@@ -106,8 +106,6 @@ namespace View3D.view
         }
         private void translate()
         {
-            toolMoveViewpoint.ToolTipText = Trans.T("L_MOVE_VIEWPOINT");
-            toolStripClear.ToolTipText = Trans.T("T_CLEAR_OBJECTS");
             landObjectToolStripMenuItem.Text = Trans.T("B_LAND");
             resetObjectToolStripMenuItem.Text = Trans.T("B_RESET");
             removeObjectToolStripMenuItem.Text = Trans.T("B_REMOVE");
@@ -125,8 +123,6 @@ namespace View3D.view
         public void SetView(ThreeDView view)
         {
             this.view = view;
-            toolStripClear.Visible = view.autoupdateable;
-            toolStripClear.Enabled = view.objectsSelected;
             UpdateChanges();
         }
 
@@ -155,7 +151,6 @@ namespace View3D.view
             {
                 ui.setbuttonVisable(false);
             }
-            toolStripClear.Enabled = sel;
             view.objectsSelected = sel;
         }
 
@@ -1212,7 +1207,6 @@ namespace View3D.view
         public void SetMode(int _mode)
         {
             mode = _mode;
-            toolMoveViewpoint.Checked = mode == 2;
         }
 
         private void SetCameraDefaults()

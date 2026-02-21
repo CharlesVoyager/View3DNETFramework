@@ -231,7 +231,7 @@ namespace View3D.model
         #region Cut Face
         public bool IsCutFaceEnabled()
         {
-            return Main.main.objectPlacement.checkCutFaces.Checked;
+            return false;
         }
 
         public bool IsEdgeShowEnabled()

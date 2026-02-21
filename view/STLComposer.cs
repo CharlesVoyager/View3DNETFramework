@@ -1508,27 +1508,6 @@ namespace View3D.view
                 columnName.Width = nameWith;
         }
 
-        private void checkCutFaces_CheckedChanged(object sender, EventArgs e)
-        {
-            Main.main.threedview.UpdateChanges();
-        }
-
-        private void cutPositionSlider_ValueChanged(object sender, EventArgs e)
-        {
-            if (checkCutFaces.Checked)
-                Main.main.threedview.UpdateChanges();
-        }
-
-        private void labelModified_Click(object sender, EventArgs e)
-        {
-            PrintModel act = SingleSelectedModel;
-            if (act == null) return;
-            act.ShowRepaired(act.activeModel == 0 && act.repairedModel != null);
-            // Refresh() moved outside from ShowRepaird().
-            Main.main.threedview.Refresh();
-            UpdateAnalyserData();
-        }
-
         public void showObjectInfo(object sender, EventArgs e)
         {
             Main.main.gObjectInformation.Show();

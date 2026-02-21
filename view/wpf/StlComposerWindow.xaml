@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View3D.view"
         mc:Ignorable="d"
-        Title="StlComposer Window" Height="716" Width="360">
+        Title="StlComposer Window" Height="540" Width="360">
     <Grid>
         <WindowsFormsHost>
             <local:STLComposer x:Name="stlComposerWindow" />

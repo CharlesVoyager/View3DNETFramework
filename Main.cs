@@ -30,7 +30,6 @@ namespace View3D
         public STLComposer objectPlacement = null;
         public ObjectInformation gObjectInformation = new ObjectInformation();
 
-        public RegMemory.FilesHistory fileHistory = new RegMemory.FilesHistory("fileHistory", 2);
         public Trans trans = null;
 
         public float dpiX, dpiY;

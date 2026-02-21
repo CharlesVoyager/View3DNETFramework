@@ -190,26 +190,6 @@ namespace View3D.view
             GC.Collect();
         }
 
-        private void ListViewRemoveSupport(PrintModel model)
-        {
-            ListViewItem item = null;
-
-            try
-            {
-                foreach (ListViewItem obj in listObjects.Items)
-                {
-                    if (obj.Tag == model)
-                    {
-                        item = obj;
-                        if (item != null)
-                            listObjects.Items.Remove(item);
-                        //break;
-                    }
-                }
-            }
-            catch { };
-        }
-
         public LinkedList<PrintModel> ListObjects(bool selected)
         {
             LinkedList<PrintModel> list = new LinkedList<PrintModel>();
@@ -312,13 +292,6 @@ namespace View3D.view
             }
         }
 
-        //private DispatcherTimer timer;
-        public Stopwatch stopWatch;
-
-        public void getTotalTime()
-        {
-        }
-
         public void liftModel(PrintModel model)
         {
             double liftHeight = 6.0;
@@ -362,9 +335,6 @@ namespace View3D.view
 
         public void openAndAddObject(string file)
         {
-            stopWatch = new Stopwatch();
-            stopWatch.Reset();
-
             listObjects.SelectedItems.Clear();
             modelDatas.Add(new ModelData(file));
             models.Add(new PrintModel(modelDrawer, modelDatas[modelDatas.Count - 1].originalModel));
@@ -422,8 +392,6 @@ namespace View3D.view
                 models[models.Count - 1].Position.z = (float)models[models.Count - 1].originalModel.boundingBox.Center.z;
                 models[models.Count - 1].UpdateBoundingBox();
             }
-
-            stopWatch.Start();
 
             if (models[models.Count - 1].ActiveModel.triangles.Count > 0)
             {
@@ -586,8 +554,6 @@ namespace View3D.view
             {
                 return;
             }
-            stopWatch.Stop();
-            getTotalTime();
         }
 
         public void check_stl_size_too_small()
@@ -724,7 +690,6 @@ namespace View3D.view
                     !ps.PointInside(xMin, stl.yMax, stl.zMax) ||
                     !ps.PointInside(xMax, stl.yMax, stl.zMax))
                 {
-
                     showButton = showButton & !stl.outside;
                 }
             }

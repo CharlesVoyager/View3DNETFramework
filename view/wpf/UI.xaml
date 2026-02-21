@@ -21,6 +21,7 @@
     <Grid x:Name="ui_grid">
         <local:OutofBound x:Name="OutofBound" />
         <local:UI_view x:Name="UI_view" Margin="101,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <local:UI_rotate x:Name="UI_rotate" Margin="84,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <local:UI_move x:Name="UI_move" Margin="103,268,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <local:UI_resize_advance x:Name="UI_resize_advance" Margin="102,411,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  />
         
@@ -368,7 +369,6 @@
                 </ToggleButton.Background>
             </ToggleButton>
         </StackPanel>
-        <local:UI_rotate x:Name="UI_rotate" Margin="84,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
        
         <StackPanel Margin="0,0,50,50" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
             <StackPanel.Resources>

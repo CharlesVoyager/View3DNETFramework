@@ -17,14 +17,6 @@ namespace View3D.view
 {
     public partial class ThreeDControl : UserControl
     {
-        // Threshold for layer height that can selected for user
-        private static double MAX_PRINT = 100000000;
-        private static double SCALE_25MICRON = 10 * 0.025;
-        private static double SCALE_50MICRON = 10 * 0.05;
-        private RHVector3 MouseDownPosition = new RHVector3(-1, -1, -1);
-        bool isTouchTrunk = false;
-        PrintModel TouchModel = null;
-
         public ThreeDCamera cam;
         float bedRadius;
         FormPrinterSettings ps = Main.printerSettings;
@@ -32,13 +24,11 @@ namespace View3D.view
         float xDown, yDown;
         float xPos, yPos;
         float speedX, speedY;
-        double normX = 0, normY = 0;
         float lastX, lastY;
         Stopwatch sw = new Stopwatch();
         Stopwatch fpsTimer = new Stopwatch();
         int mode = 0;
         int slowCounter = 0; // Indicates slow framerates
-        uint timeCall = 0;
         public float zoom = 1.0f;
         public Matrix4 lookAt, persp, modelView;
         public float nearDist, farDist, aspectRatio, nearHeight, midHeight;
@@ -1027,9 +1017,7 @@ namespace View3D.view
                 return;
 
             double window_y = (gl.Height - e.Y) - gl.Height / 2;
-            normY = window_y * 2.0 / (double)(gl.Height);
             double window_x = e.X - gl.Width / 2;
-            normX = window_x * 2.0 / (double)(gl.Width);
 
             if (e.Button == MouseButtons.None)
             {

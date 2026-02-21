@@ -465,7 +465,6 @@
 
         <local:BusyWindow x:Name="BusyWindow" />
         
-        <Label x:Name="WarnOverlapArea" Content="請勿在此區域列印需要細節的物件或部品" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="60" Width="400" Background="Red" Margin="0,0,0,30" FontWeight="Bold" FontFamily="Microsoft JhengHei" FontSize="20" Visibility="Hidden" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Gold" />
         <Grid>
             <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-60,0,0">
                 <Border BorderBrush="#FF8F8F8F" BorderThickness="3" Height="60" Width="300" Background="#CC217DBE" CornerRadius="10">

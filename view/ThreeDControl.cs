@@ -588,7 +588,6 @@ namespace View3D.view
                     DrawPrintbedBase();
                     GL.Enable(EnableCap.DepthTest);
                     DrawPrintbedFrame();
-                    Main.main.threedview.ui.WarnOverlapArea.Visibility = System.Windows.Visibility.Hidden;
 
                 try
                 {

@@ -1298,20 +1298,6 @@ namespace View3D.view
         private void timer_Tick(object sender, EventArgs e)
         {
             Application_Idle(sender, e);
-            timeCall++;
-            foreach (ThreeDModel m in view.models)
-            {
-                if (m.Changed || m.hasAnimations)
-                {
-                    if ((Main.threeDSettings.drawMethod == 0 && (timeCall % 9) != 0))
-                        return;
-                    if (m.hasAnimations && Main.threeDSettings.drawMethod != 0)
-                        gl.Invalidate();
-                    else if ((timeCall % 3) == 0)
-                        gl.Invalidate();
-                    return;
-                }
-            }
         }
 
         private void toolStripClear_Click(object sender, EventArgs e)

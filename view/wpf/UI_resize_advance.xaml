@@ -142,11 +142,7 @@
                                                         </Track.IncreaseRepeatButton>
                                                     </Track>
                                                 </Grid>
-                                                <Path
-                        Data="{StaticResource Triangle}"
-                        Stretch="Fill"
-                        Stroke="White"
-                        StrokeThickness="3"/>
+                                                <Path Data="{StaticResource Triangle}" Stretch="Fill" Stroke="White" StrokeThickness="3"/>               
                                             </Grid>
                                         </ControlTemplate>
                                     </Setter.Value>

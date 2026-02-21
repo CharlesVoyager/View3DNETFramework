@@ -54,7 +54,6 @@ namespace View3D.view
         public ThreeDView cont;
         private bool autosizeFailed = false;
         private Dictionary<ListViewItem, Button> delButtonList = new Dictionary<ListViewItem, Button>();
-        private RepairToolDelegate repairToolDeleagte = null;
         public event ObjectModelRemovedEvent objectModelRemovedEvent = null;
         public List<PrintModel> models = new List<PrintModel>();
         public List<ModelData> modelDatas = new List<ModelData>();
@@ -305,27 +304,6 @@ namespace View3D.view
             model.UpdateBoundingBox();
         }
 
-        public bool isModelLiftEnoughForSupportGenerate(PrintModel model)
-        {
-            double minLiftHeight = 0;
-            if (typeof(PrintModel) != model.GetType()) return true;
-            if (null == model.originalModel) return true;
-            return (model.BoundingBoxWOSupport.zMin + 0.001 < minLiftHeight) ? false : true;
-        }
-
-        public bool AskUserToLandObject(PrintModel model)
-        {
-            if (typeof(PrintModel) != model.GetType()) return true;
-            if (null == model.originalModel) return true;
-            //MessageBox.Show(Trans.T("M_NOT_ENOUGH_HEIGHT_TO_LIFT_OBJ"));
-            StringBuilder strBuild = new StringBuilder(Trans.T("M_SUPPORT_LAND_MODEL"));
-            strBuild.Append(model.name).AppendLine();
-            strBuild.Append(Trans.T("M_SUPPORT_NOT_ENOUGH_HEIGHT")).AppendLine();
-            strBuild.Append(Trans.T("M_SUPPORT_ASK_TO_LAND"));
-            var result = MessageBox.Show(strBuild.ToString(), Trans.T("M_SUPPORT_LAND_TITLE"), MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            return (result == DialogResult.Yes) ? true : false;
-        }
-
         public void landModel(PrintModel model)
         {
             if (typeof(PrintModel) != model.GetType()) return;
@@ -544,16 +522,6 @@ namespace View3D.view
                 models[i].Position.iniz = models[i].Position.z;
             }
             #endregion
-
-            // set event handler of support model
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-                return;
-            }
         }
 
         public void check_stl_size_too_small()
@@ -636,7 +604,6 @@ namespace View3D.view
                        !ps.PointInside(xMin, stl.yMax, stl.zMax) ||
                        !ps.PointInside(xMax, stl.yMax, stl.zMax))
                     {
-
                         stl.outside = true;
                         showButton = showButton & !stl.outside;
                     }
@@ -666,6 +633,7 @@ namespace View3D.view
                 listObjects.Refresh();
             }
         }
+
         public void updateOutside()
         {
             bool dataChanged = false;

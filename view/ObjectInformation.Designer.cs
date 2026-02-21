@@ -59,12 +59,11 @@
             // 
             this.infoVolume.AutoSize = true;
             this.infoVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.infoVolume.Location = new System.Drawing.Point(279, 56);
+            this.infoVolume.Location = new System.Drawing.Point(130, 60);
             this.infoVolume.Name = "infoVolume";
-            this.infoVolume.Size = new System.Drawing.Size(46, 18);
+            this.infoVolume.Size = new System.Drawing.Size(58, 18);
             this.infoVolume.TabIndex = 1;
-            this.infoVolume.Text = "label2";
-            this.infoVolume.Visible = false;
+            this.infoVolume.Text = "Volume";
             // 
             // infoSizeZ
             // 
@@ -122,11 +121,11 @@
             this.groupBox2.Controls.Add(this.label_filename);
             this.groupBox2.Controls.Add(this.lb_ObjInfoFileName);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(14, 13);
+            this.groupBox2.Location = new System.Drawing.Point(14, 4);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(493, 90);
+            this.groupBox2.Size = new System.Drawing.Size(493, 99);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
@@ -134,18 +133,18 @@
             // 
             this.labelFileFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelFileFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.labelFileFormat.Location = new System.Drawing.Point(176, 56);
+            this.labelFileFormat.Location = new System.Drawing.Point(391, 21);
             this.labelFileFormat.Name = "labelFileFormat";
-            this.labelFileFormat.Size = new System.Drawing.Size(306, 16);
+            this.labelFileFormat.Size = new System.Drawing.Size(86, 18);
             this.labelFileFormat.TabIndex = 6;
-            this.labelFileFormat.Text = "label2";
+            this.labelFileFormat.Text = "File Format";
             this.labelFileFormat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label_format
             // 
             this.label_format.AutoSize = true;
             this.label_format.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_format.Location = new System.Drawing.Point(19, 56);
+            this.label_format.Location = new System.Drawing.Point(291, 21);
             this.label_format.Name = "label_format";
             this.label_format.Size = new System.Drawing.Size(87, 18);
             this.label_format.TabIndex = 7;
@@ -155,40 +154,37 @@
             // 
             this.label_collision_flag.AutoSize = true;
             this.label_collision_flag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_collision_flag.Location = new System.Drawing.Point(430, 56);
+            this.label_collision_flag.Location = new System.Drawing.Point(396, 65);
             this.label_collision_flag.Name = "label_collision_flag";
-            this.label_collision_flag.Size = new System.Drawing.Size(46, 18);
+            this.label_collision_flag.Size = new System.Drawing.Size(65, 18);
             this.label_collision_flag.TabIndex = 5;
-            this.label_collision_flag.Text = "label1";
-            this.label_collision_flag.Visible = false;
+            this.label_collision_flag.Text = "Collision";
             // 
             // label_collision
             // 
             this.label_collision.AutoSize = true;
             this.label_collision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_collision.Location = new System.Drawing.Point(357, 56);
+            this.label_collision.Location = new System.Drawing.Point(308, 63);
             this.label_collision.Name = "label_collision";
             this.label_collision.Size = new System.Drawing.Size(69, 18);
             this.label_collision.TabIndex = 4;
             this.label_collision.Text = "Collision:";
-            this.label_collision.Visible = false;
             // 
             // label_volume
             // 
             this.label_volume.AutoSize = true;
             this.label_volume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_volume.Location = new System.Drawing.Point(192, 56);
+            this.label_volume.Location = new System.Drawing.Point(17, 59);
             this.label_volume.Name = "label_volume";
             this.label_volume.Size = new System.Drawing.Size(62, 18);
             this.label_volume.TabIndex = 2;
             this.label_volume.Text = "Volume:";
-            this.label_volume.Visible = false;
             // 
             // label_filename
             // 
             this.label_filename.AutoSize = true;
             this.label_filename.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label_filename.Location = new System.Drawing.Point(19, 31);
+            this.label_filename.Location = new System.Drawing.Point(6, 21);
             this.label_filename.Name = "label_filename";
             this.label_filename.Size = new System.Drawing.Size(72, 18);
             this.label_filename.TabIndex = 1;
@@ -198,11 +194,11 @@
             // 
             this.lb_ObjInfoFileName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_ObjInfoFileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lb_ObjInfoFileName.Location = new System.Drawing.Point(176, 31);
+            this.lb_ObjInfoFileName.Location = new System.Drawing.Point(124, 16);
             this.lb_ObjInfoFileName.Name = "lb_ObjInfoFileName";
-            this.lb_ObjInfoFileName.Size = new System.Drawing.Size(306, 16);
+            this.lb_ObjInfoFileName.Size = new System.Drawing.Size(139, 28);
             this.lb_ObjInfoFileName.TabIndex = 0;
-            this.lb_ObjInfoFileName.Text = "label1";
+            this.lb_ObjInfoFileName.Text = "Filename";
             this.lb_ObjInfoFileName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // groupBox3

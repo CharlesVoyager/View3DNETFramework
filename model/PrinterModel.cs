@@ -5,11 +5,8 @@ namespace View3D.model
 {
     public class PrinterModel : INotifyPropertyChanged
     {
-        private RegistryKey key;
-
         public PrinterModel()
         {
-            key = Main.printerSettings.currentPrinterKey;      
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

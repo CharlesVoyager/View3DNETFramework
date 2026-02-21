@@ -69,7 +69,6 @@ namespace View3D.view
         {
             InitializeComponent();
 
-            /* vic add start*/
             ui = new View3D.view.wpf.UI();
             WindowInteropHelper helper = new WindowInteropHelper(ui);
             helper.Owner = this.Handle;
@@ -81,7 +80,6 @@ namespace View3D.view
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            /* vic add end*/
 
             cam = new ThreeDCamera(this);
             SetCameraDefaults();
@@ -240,6 +238,7 @@ namespace View3D.view
         {
             gl.Invalidate();
         }
+
         public void SetupViewport()
         {
             try
@@ -361,8 +360,6 @@ namespace View3D.view
                     break;
             }
         }
-
-        public static bool reDrawModel = false;
 
         private void DrawModels(bool showBbox = true)
         {

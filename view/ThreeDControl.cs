@@ -1334,7 +1334,7 @@ namespace View3D.view
 
         public void ThreeDControl_KeyDown(object sender, KeyEventArgs e)
         {
-                Main.main.objectPlacement.listSTLObjects_KeyDown(sender, e);
+            Main.main.objectPlacement.listSTLObjects_KeyDown(sender, e);
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

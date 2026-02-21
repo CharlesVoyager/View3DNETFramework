@@ -17,6 +17,8 @@ namespace View3D.view
 {
     public partial class ThreeDControl : UserControl
     {
+        public static double GLversion; // EX: 4.6
+
         public ThreeDCamera cam;
         float bedRadius;
         FormPrinterSettings ps = Main.printerSettings;
@@ -32,7 +34,7 @@ namespace View3D.view
         public float zoom = 1.0f;
         public Matrix4 lookAt, persp, modelView;
         public float nearDist, farDist, aspectRatio, nearHeight, midHeight;
-        public static double GLversion;
+
         int keyX = -1;
         int keyY = -1;
 

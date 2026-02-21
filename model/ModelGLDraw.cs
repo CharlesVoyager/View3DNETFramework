@@ -434,7 +434,7 @@ namespace View3D.model
             GL.Enable(EnableCap.DepthTest);
 
             GL.StencilFunc(StencilFunction.Notequal, 1, ~0);
-            drawCappingPlane(mesh, (float)Main.printerSettings.PrintAreaWidth / 2, skin.R, skin.G, skin.B, skin.A, true);
+            drawCappingPlane(mesh, (float)Main.main.PrintAreaWidth / 2, skin.R, skin.G, skin.B, skin.A, true);
             
             GL.Disable(EnableCap.StencilTest);
 

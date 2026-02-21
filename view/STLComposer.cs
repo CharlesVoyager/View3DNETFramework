@@ -299,7 +299,7 @@ namespace View3D.view
             if (null == model.originalModel) return;
             if (model.BoundingBoxWOSupport.zMin < liftHeight)
             {
-                model.Position.z += (float)Math.Min((liftHeight - model.BoundingBoxWOSupport.zMin), ((double)Main.printerSettings.PrintAreaHeight - model.BoundingBoxWOSupport.zMax));
+                model.Position.z += (float)Math.Min((liftHeight - model.BoundingBoxWOSupport.zMin), ((double)Main.main.PrintAreaHeight - model.BoundingBoxWOSupport.zMax));
             }
             model.UpdateBoundingBox();
         }
@@ -353,7 +353,7 @@ namespace View3D.view
             {
                 if (true)   // Auto Position is true
                 {
-                    models[models.Count - 1].Center(Main.printerSettings.PrintAreaWidth / 2, Main.printerSettings.PrintAreaDepth / 2);  // PrintAreaWidth: 128, PrintAreaDepth: 128
+                    models[models.Count - 1].Center(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);  // PrintAreaWidth: 128, PrintAreaDepth: 128
 
                     if (models[models.Count - 1].BoundingBox.Center.x != 0 || models[models.Count - 1].BoundingBox.Center.y != 0 || models[models.Count - 1].BoundingBox.Center.z != 0)
                     {
@@ -412,43 +412,43 @@ namespace View3D.view
                         //DoInchOrScale(models[models.Count - 1], true);
                     }
                 }
-                else if (models[models.Count - 1].BoundingBox.Size.x - epsilon > Convert.ToDouble(Main.printerSettings.PrintAreaWidth) ||
-                         models[models.Count - 1].BoundingBox.Size.y - epsilon > Convert.ToDouble(Main.printerSettings.PrintAreaDepth) ||
-                         modelsZ > Convert.ToDouble(Main.printerSettings.PrintAreaHeight))
+                else if (models[models.Count - 1].BoundingBox.Size.x - epsilon > Convert.ToDouble(Main.main.PrintAreaWidth) ||
+                         models[models.Count - 1].BoundingBox.Size.y - epsilon > Convert.ToDouble(Main.main.PrintAreaDepth) ||
+                         modelsZ > Convert.ToDouble(Main.main.PrintAreaHeight))
                 {
                     #region object too large
-                    double tXBound = models[models.Count - 1].BoundingBox.Size.x / Convert.ToDouble(Main.printerSettings.PrintAreaWidth);
-                    double tYBound = models[models.Count - 1].BoundingBox.Size.y / Convert.ToDouble(Main.printerSettings.PrintAreaDepth);
-                    double tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.printerSettings.PrintAreaHeight);
+                    double tXBound = models[models.Count - 1].BoundingBox.Size.x / Convert.ToDouble(Main.main.PrintAreaWidth);
+                    double tYBound = models[models.Count - 1].BoundingBox.Size.y / Convert.ToDouble(Main.main.PrintAreaDepth);
+                    double tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
                     double tMax = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
                     float scaleValue = 0;
 
                     if (tMax == tXBound)
                     {
-                        scaleValue = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x) * 100;
+                        scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x) * 100;
                     }
                     else if (tMax == tYBound)
                     {
-                        scaleValue = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaDepth) / models[models.Count - 1].BoundingBox.Size.y) * 100;
+                        scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaDepth) / models[models.Count - 1].BoundingBox.Size.y) * 100;
                     }
                     else if (tMax == tZBound)
                     {
-                        scaleValue = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaHeight) / models[models.Count - 1].BoundingBox.Size.z) * 100;
+                        scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaHeight) / models[models.Count - 1].BoundingBox.Size.z) * 100;
                     }
 
                     if (MessageBox.Show(Trans.T("M_OBJ_TOO_SMALL") + " " + (int)scaleValue + "%", Trans.T("W_OBJ_TOO_LARGE"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         try
                         {
-                            tXBound = models[models.Count - 1].BoundingBox.Size.x / Convert.ToDouble(Main.printerSettings.PrintAreaWidth);
-                            tYBound = models[models.Count - 1].BoundingBox.Size.y / Convert.ToDouble(Main.printerSettings.PrintAreaDepth);
-                            tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.printerSettings.PrintAreaHeight);
+                            tXBound = models[models.Count - 1].BoundingBox.Size.x / Convert.ToDouble(Main.main.PrintAreaWidth);
+                            tYBound = models[models.Count - 1].BoundingBox.Size.y / Convert.ToDouble(Main.main.PrintAreaDepth);
+                            tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
 
                             tMax = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
                             autosizeFailed = false;//Fix Autoposition_160223
                             if (tMax == tXBound)
                             {
-                                models[models.Count - 1].Scale.x = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x);
+                                models[models.Count - 1].Scale.x = (float)(Convert.ToDouble(Main.main.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x);
                                 models[models.Count - 1].Scale.y = models[models.Count - 1].Scale.x;
                                 models[models.Count - 1].Scale.z = models[models.Count - 1].Scale.x;
 
@@ -458,7 +458,7 @@ namespace View3D.view
                             else if (tMax == tYBound)
                             {
                                 //Fix_AutoReSize_issue_160830
-                                models[models.Count - 1].Scale.y = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaDepth) / models[models.Count - 1].BoundingBox.Size.y);
+                                models[models.Count - 1].Scale.y = (float)(Convert.ToDouble(Main.main.PrintAreaDepth) / models[models.Count - 1].BoundingBox.Size.y);
                                 models[models.Count - 1].Scale.x = models[models.Count - 1].Scale.y;
                                 models[models.Count - 1].Scale.z = models[models.Count - 1].Scale.y;
                                 Main.main.threedview.ui.UI_move.button_land_Click(null, null);
@@ -466,7 +466,7 @@ namespace View3D.view
                             }
                             else if (tMax == tZBound)
                             {
-                                models[models.Count - 1].Scale.z = (float)(Convert.ToDouble(Main.printerSettings.PrintAreaHeight) / models[models.Count - 1].BoundingBox.Size.z);
+                                models[models.Count - 1].Scale.z = (float)(Convert.ToDouble(Main.main.PrintAreaHeight) / models[models.Count - 1].BoundingBox.Size.z);
                                 models[models.Count - 1].Scale.x = models[models.Count - 1].Scale.z;
                                 models[models.Count - 1].Scale.y = models[models.Count - 1].Scale.z;
                                 Main.main.threedview.ui.UI_move.button_land_Click(null, null);
@@ -560,7 +560,6 @@ namespace View3D.view
         public void updateSTLState(PrintModel stl2)
         {
             bool dataChanged = false;
-            FormPrinterSettings ps = Main.printerSettings;
                   
             stl2.UpdateBoundingBox();
 
@@ -577,14 +576,14 @@ namespace View3D.view
 
                 if ( stl.convexHull3DVtxOrg != null)
                 {
-                    double radiusSqrt = Math.Pow(Main.printerSettings.PrintAreaWidth / 2, 2);
+                    double radiusSqrt = Math.Pow(Main.main.PrintAreaWidth / 2, 2);
 
                     Main.main.threedview.TransConvexHull3D(stl);
 
                     for (int i = 0; i < stl.convexHull2DVtx.Length / 2; i++)
                     {
-                        if ((Math.Pow(stl.convexHull2DVtx[i * 2] - (Main.printerSettings.PrintAreaWidth / 2), 2) +
-                            Math.Pow(stl.convexHull2DVtx[i * 2 + 1] - (Main.printerSettings.PrintAreaWidth / 2), 2))
+                        if ((Math.Pow(stl.convexHull2DVtx[i * 2] - (Main.main.PrintAreaWidth / 2), 2) +
+                            Math.Pow(stl.convexHull2DVtx[i * 2 + 1] - (Main.main.PrintAreaWidth / 2), 2))
                             > radiusSqrt)
                         {
                             stl.outside = true;
@@ -595,14 +594,14 @@ namespace View3D.view
                 }
                 else
                 {
-                    if (!ps.PointInside(xMin, stl.yMin, stl.zMin) ||
-                       !ps.PointInside(xMax, stl.yMin, stl.zMin) ||
-                       !ps.PointInside(xMin, stl.yMax, stl.zMin) ||
-                       !ps.PointInside(xMax, stl.yMax, stl.zMin) ||
-                       !ps.PointInside(xMin, stl.yMin, stl.zMax) ||
-                       !ps.PointInside(xMax, stl.yMin, stl.zMax) ||
-                       !ps.PointInside(xMin, stl.yMax, stl.zMax) ||
-                       !ps.PointInside(xMax, stl.yMax, stl.zMax))
+                    if (!Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
+                       !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
+                       !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
+                       !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
+                       !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
+                       !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
+                       !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
+                       !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
                     {
                         stl.outside = true;
                         showButton = showButton & !stl.outside;
@@ -637,7 +636,6 @@ namespace View3D.view
         public void updateOutside()
         {
             bool dataChanged = false;
-            FormPrinterSettings ps = Main.printerSettings;
             LinkedList<PrintModel> testList = ListObjects(false);
 
             foreach (PrintModel pm in testList)
@@ -649,14 +647,14 @@ namespace View3D.view
             foreach (PrintModel stl in testList)
             {
                 float xMin = stl.xMin, xMax = stl.xMax;
-                if (!ps.PointInside(xMin, stl.yMin, stl.zMin) ||
-                    !ps.PointInside(xMax, stl.yMin, stl.zMin) ||
-                    !ps.PointInside(xMin, stl.yMax, stl.zMin) ||
-                    !ps.PointInside(xMax, stl.yMax, stl.zMin) ||
-                    !ps.PointInside(xMin, stl.yMin, stl.zMax) ||
-                    !ps.PointInside(xMax, stl.yMin, stl.zMax) ||
-                    !ps.PointInside(xMin, stl.yMax, stl.zMax) ||
-                    !ps.PointInside(xMax, stl.yMax, stl.zMax))
+                if (!Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
+                    !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
+                    !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
+                    !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
+                    !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
+                    !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
+                    !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
+                    !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
                 {
                     showButton = showButton & !stl.outside;
                 }
@@ -785,9 +783,9 @@ namespace View3D.view
             //if (stl == null) return;
             foreach (PrintModel stl in ListObjects(true))
             {
-                if (stl.Position.x + dx < Main.printerSettings.PrintAreaWidth * 1.2 && stl.Position.x + dx > -Main.printerSettings.PrintAreaWidth * 0.2)
+                if (stl.Position.x + dx < Main.main.PrintAreaWidth * 1.2 && stl.Position.x + dx > -Main.main.PrintAreaWidth * 0.2)
                     stl.Position.x += dx;
-                if (stl.Position.y + dy < Main.printerSettings.PrintAreaDepth * 1.2 && stl.Position.y + dy > -Main.printerSettings.PrintAreaDepth * 0.2)
+                if (stl.Position.y + dy < Main.main.PrintAreaDepth * 1.2 && stl.Position.y + dy > -Main.main.PrintAreaDepth * 0.2)
                     stl.Position.y += dy;
                 if (listObjects.SelectedItems.Count == 1)
                 {
@@ -1157,7 +1155,7 @@ namespace View3D.view
             {
                 PrintModel stl = (PrintModel)listObjects.Items[0].Tag;
 
-                stl.CenterWOLand(Main.printerSettings.BedLeft + Main.printerSettings.PrintAreaWidth / 2, Main.printerSettings.BedFront + Main.printerSettings.PrintAreaDepth / 2);
+                stl.CenterWOLand(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);
 
                 Main.main.threedview.UpdateChanges();
                 return true;
@@ -1167,34 +1165,12 @@ namespace View3D.view
             OutRectPacker outPacker = new OutRectPacker(1000);
 
             int border = 1;//3
-            FormPrinterSettings ps = Main.printerSettings;
-            float maxW = ps.PrintAreaWidth;
-            float maxH = ps.PrintAreaDepth;
-            float xOff = ps.BedLeft, yOff = ps.BedFront;
+
+            float maxW = Main.main.PrintAreaWidth;
+            float maxH = Main.main.PrintAreaDepth;
+            float xOff = 0, yOff = 0;
             outPacker.SetPlatformSize(maxW, maxH);
-            if (ps.printerType == 1)
-            {
-                if (ps.DumpAreaFront <= 0)
-                {
-                    yOff = ps.BedFront + ps.DumpAreaDepth - ps.DumpAreaFront;
-                    maxH -= yOff;
-                }
-                else if (ps.DumpAreaDepth + ps.DumpAreaFront >= maxH)
-                {
-                    yOff = ps.BedFront + -(maxH - ps.DumpAreaFront);
-                    maxH += yOff;
-                }
-                else if (ps.DumpAreaLeft <= 0)
-                {
-                    xOff = ps.BedLeft + ps.DumpAreaWidth - ps.DumpAreaLeft;
-                    maxW -= xOff;
-                }
-                else if (ps.DumpAreaWidth + ps.DumpAreaLeft >= maxW)
-                {
-                    xOff = ps.BedLeft + maxW - ps.DumpAreaLeft;
-                    maxW += xOff;
-                }
-            }
+
             foreach (PrintModel stl in ListObjects(false))
             {
                 if (typeof(PrintModel) != stl.GetType())
@@ -1559,9 +1535,9 @@ namespace View3D.view
                     Double tempY = bbox.Size.y * 25.4;
                     Double tempZ = bbox.Size.z * 25.4;
 
-                    if ((tempX > Main.printerSettings.PrintAreaWidth) ||
-                        (tempY > Main.printerSettings.PrintAreaDepth) ||
-                        (tempZ > Main.printerSettings.PrintAreaHeight))
+                    if ((tempX > Main.main.PrintAreaWidth) ||
+                        (tempY > Main.main.PrintAreaDepth) ||
+                        (tempZ > Main.main.PrintAreaHeight))
                     {
                         if (!AskUserToChangeUnit())
                         {

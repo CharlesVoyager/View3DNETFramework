@@ -21,7 +21,6 @@ namespace View3D.view
 
         public ThreeDCamera cam;
         float bedRadius;
-        FormPrinterSettings ps = Main.printerSettings;
         bool loaded = false;
         float xDown, yDown;
         float xPos, yPos;
@@ -156,7 +155,7 @@ namespace View3D.view
                 int w = gl.Width;
                 int h = gl.Height;
 
-                bedRadius = (float)(1.5 * Math.Sqrt((ps.PrintAreaDepth * ps.PrintAreaDepth + ps.PrintAreaHeight * ps.PrintAreaHeight + ps.PrintAreaWidth * ps.PrintAreaWidth) * 0.25));
+                bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
                 GL.Viewport(0, 0, w, h);
                 
                 GL.MatrixMode(MatrixMode.Projection);
@@ -358,10 +357,10 @@ namespace View3D.view
  
         private void DrawPrintbedFrame()
         {
-            float dx1 = ps.DumpAreaLeft;
-            float dx2 = dx1 + ps.DumpAreaWidth;
-            float dy1 = ps.DumpAreaFront;
-            float dy2 = dy1 + ps.DumpAreaDepth;
+            float dx1 = 0;
+            float dx2 = dx1 + 0;
+            float dy1 = 0;
+            float dy2 = dy1 + 0;
             GL.LineWidth(2f);
             GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
             GL.BlendFunc((BlendingFactor)BlendingFactorSrc.SrcAlpha, (BlendingFactor)BlendingFactorDest.OneMinusSrcAlpha);
@@ -380,14 +379,14 @@ namespace View3D.view
                 GL.Begin(PrimitiveType.LineStrip);
                 int pad = 2;
                 int tri = 10;
-                GL.Vertex3(-pad, ps.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(-pad, Main.main.PrintAreaDepth + pad, -pad);
                 GL.Vertex3(-pad, -pad, -pad);
-                GL.Vertex3(ps.PrintAreaWidth + pad, -pad, -pad);
-                GL.Vertex3(ps.PrintAreaWidth + pad, ps.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(ps.PrintAreaWidth / 2 + tri, ps.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(ps.PrintAreaWidth / 2, ps.PrintAreaDepth + pad + tri, -pad);
-                GL.Vertex3(ps.PrintAreaWidth / 2 - tri, ps.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(-pad, ps.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(Main.main.PrintAreaWidth + pad, -pad, -pad);
+                GL.Vertex3(Main.main.PrintAreaWidth + pad, Main.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(Main.main.PrintAreaWidth / 2 + tri, Main.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth + pad + tri, -pad);
+                GL.Vertex3(Main.main.PrintAreaWidth / 2 - tri, Main.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(-pad, Main.main.PrintAreaDepth + pad, -pad);
                 GL.End();
             }
 
@@ -411,80 +410,52 @@ namespace View3D.view
 
                 GL.End();
                 GL.Begin(PrimitiveType.Lines);
-                if (ps.printerType < 2)
+
                 {
                     // Original Print cube
-                    GL.Vertex3(ps.BedLeft, ps.BedFront, 0);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, 0);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront + ps.PrintAreaDepth, 0);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, 0);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront + ps.PrintAreaDepth, ps.PrintAreaHeight);
-                    GL.Vertex3(ps.BedLeft, ps.BedFront, ps.PrintAreaHeight);
+                    GL.Vertex3(0, 0, 0);
+                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
 
-                    if (ps.printerType == 1)
-                    {
-                        if (dy1 != 0)
-                        {
-                            GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy1, 0);
-                        }
-                        GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy1, 0);
-                        GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy2, 0);
-                        GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy2, 0);
-                        GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy2, 0);
-                        GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy2, 0);
-                        GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy1, 0);
-                    }
                     float dx = 10; // ps.PrintAreaWidth / 20f;
                     float dy = 10; // ps.PrintAreaDepth / 20f;
                     float x, y;
+
                     for (i = 0; i < 200; i++)
                     {
                         x = (float)i * dx;
-                        if (x >= ps.PrintAreaWidth)
-                            x = ps.PrintAreaWidth;
-                        if (ps.printerType == 1 && x >= dx1 && x <= dx2)
-                        {
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront, 0);
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront + dy2, 0);
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront + ps.PrintAreaDepth, 0);
-                        }
-                        else
-                        {
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront, 0);
-                            GL.Vertex3(ps.BedLeft + x, ps.BedFront + ps.PrintAreaDepth, 0);
-                        }
-                        if (x >= ps.PrintAreaWidth) break;
+                        if (x >= Main.main.PrintAreaWidth)
+                            x = Main.main.PrintAreaWidth;
+
+           
+                            GL.Vertex3(0 + x, 0, 0);
+                            GL.Vertex3(0 + x, 0 + Main.main.PrintAreaDepth, 0);
+              
+                        if (x >= Main.main.PrintAreaWidth) break;
                     }
                     for (i = 0; i < 200; i++)
                     {
                         y = (float)i * dy;
-                        if (y > ps.PrintAreaDepth)
-                            y = ps.PrintAreaDepth;
-                        if (ps.printerType == 1 && y >= dy1 && y <= dy2)
-                        {
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + y, 0);
-                            GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + y, 0);
-                            GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + y, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + y, 0);
-                        }
-                        else
-                        {
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + y, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + y, 0);
-                        }
-                        if (y >= ps.PrintAreaDepth)
+                        if (y > Main.main.PrintAreaDepth)
+                            y = Main.main.PrintAreaDepth;
+         
+                            GL.Vertex3(0, 0 + y, 0);
+                            GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + y, 0);
+              
+                        if (y >= Main.main.PrintAreaDepth)
                             break;
                     }
                 }
@@ -495,10 +466,10 @@ namespace View3D.view
 
         private void DrawPrintbedBase()
         {
-            float dx1 = ps.DumpAreaLeft;
-            float dx2 = dx1 + ps.DumpAreaWidth;
-            float dy1 = ps.DumpAreaFront;
-            float dy2 = dy1 + ps.DumpAreaDepth;
+            float dx1 = 0;
+            float dx2 = dx1 + 0;
+            float dy1 = 0;
+            float dy2 = dy1 + 0;
 
             if (Main.threeDSettings.showPrintbed.Checked)
             {
@@ -519,49 +490,17 @@ namespace View3D.view
                     GL.Translate(0, 0, -0.04);
                 else
                     GL.Translate(0, 0, +0.04);
-                if (ps.printerType < 2 || ps.printerType == 3)
+
                 {
                     GL.Begin(PrimitiveType.Quads);
                     GL.Normal3(0, 0, 1);
 
-                    if (ps.printerType == 1)
-                    {
-                        if (dy1 > 0)
-                        {
-                            GL.Vertex3(ps.BedLeft, ps.BedFront, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + dy1, 0);
-                        }
-                        if (dy2 < ps.PrintAreaDepth)
-                        {
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + dy2, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + dy2, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, 0);
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + ps.PrintAreaDepth, 0);
-                        }
-                        if (dx1 > 0)
-                        {
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + dx1, ps.BedFront + dy2, 0);
-                            GL.Vertex3(ps.BedLeft, ps.BedFront + dy2, 0);
-                        }
-                        if (dx2 < ps.PrintAreaWidth)
-                        {
-                            GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + dy1, 0);
-                            GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + dy2, 0);
-                            GL.Vertex3(ps.BedLeft + dx2, ps.BedFront + dy2, 0);
-                        }
-                    }
-                    else
-                    {
-                        GL.Vertex3(ps.BedLeft, ps.BedFront, 0);
-                        GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront, 0);
-                        GL.Vertex3(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, 0);
-                        GL.Vertex3(ps.BedLeft + 0, ps.BedFront + ps.PrintAreaDepth, 0);
-                    }
+                  
+                        GL.Vertex3(0, 0, 0);
+                        GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
+                        GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
+                        GL.Vertex3(0 + 0, 0 + Main.main.PrintAreaDepth, 0);
+             
 
                     GL.End();
                 }
@@ -638,7 +577,7 @@ namespace View3D.view
                 GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
                 //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                 Color col = Main.threeDSettings.printerBase.BackColor;
-                //GL.Translate(-ps.BedLeft-ps.PrintAreaWidth * 0.5f,-ps.BedFront -ps.PrintAreaDepth * 0.5f, -0.5f * ps.PrintAreaHeight);
+                //GL.Translate(-0-ps.PrintAreaWidth * 0.5f,-0 -ps.PrintAreaDepth * 0.5f, -0.5f * ps.PrintAreaHeight);
                 GL.GetFloat(GetPName.ModelviewMatrix, out modelView);
                 GL.Material(
                     MaterialFace.Front,
@@ -1028,7 +967,7 @@ namespace View3D.view
         private void SetCameraDefaults()
         {
             cam.viewCenter = new Vector3(0, 0, 0);
-            cam.defaultDistance = 1.6f * (float)Math.Sqrt(ps.PrintAreaDepth * ps.PrintAreaDepth + ps.PrintAreaWidth * ps.PrintAreaWidth + ps.PrintAreaHeight * ps.PrintAreaHeight);
+            cam.defaultDistance = 1.6f * (float)Math.Sqrt(Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight);
             cam.minDistance = 0.001 * cam.defaultDistance;
         }
 

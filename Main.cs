@@ -20,11 +20,14 @@ namespace View3D
         public event languageChangedEvent languageChanged;
 
         public static Main main;
-        public static FormPrinterSettings printerSettings;
         public static PrinterModel printerModel;
         public static ThreeDSettings threeDSettings;
 
         private string basicTitle = "";
+
+        public float PrintAreaWidth = 128;  // x-axis direction
+        public float PrintAreaDepth = 128;  // y-axis direction
+        public float PrintAreaHeight = 200; // z-axis direction
 
         public ThreeDControl threedview = null;
         public STLComposer objectPlacement = null;
@@ -33,6 +36,20 @@ namespace View3D
         public Trans trans = null;
 
         public float dpiX, dpiY;
+
+        private double epsilon = 1e-4; // 0.0001
+        public bool PointInside(float x, float y, float z)
+        {
+            if (z < -0.1 || z > PrintAreaHeight) //0.0005
+                return false;
+
+
+            if (x <  -epsilon || x > PrintAreaWidth + epsilon) return false;
+            if (y < -epsilon || y > PrintAreaDepth + epsilon) return false;
+    
+
+            return true;
+        }
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -63,7 +80,6 @@ namespace View3D
             main = this;
 
             trans = new Trans(Application.StartupPath + Path.DirectorySeparatorChar + "Resources");
-            printerSettings = new FormPrinterSettings();
             printerModel = new PrinterModel();
             threeDSettings = new ThreeDSettings();
 

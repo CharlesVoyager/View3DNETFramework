@@ -15,7 +15,6 @@ namespace View3D.view
         public double angle = 15.0 * Math.PI / 180;
         public Vector3 viewCenterStart = new Vector3();
         public double startTheta, startPhi,startDistance;
-        FormPrinterSettings ps = Main.printerSettings;
         ThreeDControl control;
 
         public ThreeDCamera(ThreeDControl ctl)
@@ -220,8 +219,8 @@ namespace View3D.view
         public RHBoundingBox PrinterBoundingBox()
         {
             RHBoundingBox b = new RHBoundingBox();
-            b.Add(ps.BedLeft, ps.BedFront, -0.0 * ps.PrintAreaHeight);
-            b.Add(ps.BedLeft + ps.PrintAreaWidth, ps.BedFront + ps.PrintAreaDepth, 1.0 * ps.PrintAreaHeight);
+            b.Add(0, 0, -0.0 * Main.main.PrintAreaHeight);
+            b.Add(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 1.0 * Main.main.PrintAreaHeight);
             return b;
         }
 
@@ -250,8 +249,8 @@ namespace View3D.view
 
         public void FitBoundingBox(RHBoundingBox box)
         {
-            float bedRadius = (float)(1.5 * Math.Sqrt((ps.PrintAreaDepth * ps.PrintAreaDepth + ps.PrintAreaHeight * ps.PrintAreaHeight + ps.PrintAreaWidth * ps.PrintAreaWidth) * 0.25));
-            RHVector3 shift = new RHVector3(-ps.BedLeft - 0.5 * ps.PrintAreaWidth, -ps.BedFront - 0.5 * ps.PrintAreaDepth, -0.5 * ps.PrintAreaHeight);
+            float bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
+            RHVector3 shift = new RHVector3( -0.5 * Main.main.PrintAreaWidth, -0.5 * Main.main.PrintAreaDepth, -0.5 * Main.main.PrintAreaHeight);
             viewCenter = box.Center.asVector3();
             distance = defaultDistance;
             int loops = 5;
@@ -314,8 +313,8 @@ namespace View3D.view
 
         public void FitBoundingBox(RHBoundingBox box, int width, int heigth)
         {
-            float bedRadius = (float)(1.5 * Math.Sqrt((ps.PrintAreaDepth * ps.PrintAreaDepth + ps.PrintAreaHeight * ps.PrintAreaHeight + ps.PrintAreaWidth * ps.PrintAreaWidth) * 0.25));
-            RHVector3 shift = new RHVector3(-ps.BedLeft - 0.5 * ps.PrintAreaWidth, -ps.BedFront - 0.5 * ps.PrintAreaDepth, -0.5 * ps.PrintAreaHeight);
+            float bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
+            RHVector3 shift = new RHVector3(-0.5 * Main.main.PrintAreaWidth, -0.5 * Main.main.PrintAreaDepth, -0.5 * Main.main.PrintAreaHeight);
             viewCenter = box.Center.asVector3();
             distance = defaultDistance;
             int loops = 5;

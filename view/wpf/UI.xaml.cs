@@ -152,10 +152,10 @@ namespace View3D.view.wpf
 
             double moveMax, moveMin;
 
-            moveMax = (int)Math.Floor((Main.printerSettings.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x)) * 100) * 0.01;
+            moveMax = (int)Math.Floor((Main.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x)) * 100) * 0.01;
             moveMin = (int)Math.Ceiling((stl.Position.x - stl.BoundingBox.xMin) * 100) * 0.01;
 
-            double a = Main.printerSettings.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x);
+            double a = Main.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x);
             double b = stl.Position.x - stl.BoundingBox.xMin;
 
             a += 0;
@@ -186,7 +186,7 @@ namespace View3D.view.wpf
             }
 
 
-            moveMax = (int)Math.Floor((Main.printerSettings.PrintAreaDepth - (stl.BoundingBox.yMax - stl.Position.y)) * 100) * 0.01;
+            moveMax = (int)Math.Floor((Main.main.PrintAreaDepth - (stl.BoundingBox.yMax - stl.Position.y)) * 100) * 0.01;
             moveMin = (int)Math.Ceiling((stl.Position.y - stl.BoundingBox.yMin) * 100) * 0.01;
             
             //module is out of bound,it can not move. 
@@ -213,7 +213,7 @@ namespace View3D.view.wpf
                 Main.main.threedview.ui.UI_move.slider_moveY.Minimum = moveMin;
             }
 
-            moveMax = Main.printerSettings.PrintAreaHeight - (stl.BoundingBoxWOSupport.zMax - stl.Position.z);
+            moveMax = Main.main.PrintAreaHeight - (stl.BoundingBoxWOSupport.zMax - stl.Position.z);
             moveMin = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
             if (moveMin > moveMax)
                 moveMin = moveMax;

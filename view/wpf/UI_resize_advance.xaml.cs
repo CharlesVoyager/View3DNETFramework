@@ -390,19 +390,19 @@ namespace View3D.view.wpf
 
         public void checkMin()
         {
-            double txMaxScalableValue = Convert.ToDouble(Main.printerSettings.PrintAreaWidth) / dimX;
-            double tyMaxScalableValue = Convert.ToDouble(Main.printerSettings.PrintAreaDepth) / dimY;
-            double tzMaxScalableValue = Convert.ToDouble(Main.printerSettings.PrintAreaHeight) / dimZ;
+            double txMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaWidth) / dimX;
+            double tyMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaDepth) / dimY;
+            double tzMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaHeight) / dimZ;
             double tMaxScalableValue = Math.Min(Math.Min(txMaxScalableValue, tyMaxScalableValue), Math.Min(tyMaxScalableValue, tzMaxScalableValue));
 
             IsScale = false;
             if (txMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "x";
-                slider_resize.Maximum = (double)Main.printerSettings.PrintAreaWidth;
+                slider_resize.Maximum = (double)Main.main.PrintAreaWidth;
 
-                if ((dimY * txMaxScalableValue > (double)Main.printerSettings.PrintAreaDepth)
-                        || (dimZ * txMaxScalableValue > (double)Main.printerSettings.PrintAreaHeight))
+                if ((dimY * txMaxScalableValue > (double)Main.main.PrintAreaDepth)
+                        || (dimZ * txMaxScalableValue > (double)Main.main.PrintAreaHeight))
                 {
                     slider_resize.Maximum = Math.Floor(dimX * Math.Min(tyMaxScalableValue, tzMaxScalableValue) * 1000) / 1000;
                 }
@@ -410,10 +410,10 @@ namespace View3D.view.wpf
             else if (tyMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "y";
-                slider_resize.Maximum = (double)Main.printerSettings.PrintAreaDepth;
+                slider_resize.Maximum = (double)Main.main.PrintAreaDepth;
 
-                if ((dimX * tyMaxScalableValue > (double)Main.printerSettings.PrintAreaWidth)
-                        || (dimZ * tyMaxScalableValue > (double)Main.printerSettings.PrintAreaHeight))
+                if ((dimX * tyMaxScalableValue > (double)Main.main.PrintAreaWidth)
+                        || (dimZ * tyMaxScalableValue > (double)Main.main.PrintAreaHeight))
                 {
                     slider_resize.Maximum = Math.Floor(dimY * Math.Min(txMaxScalableValue, tzMaxScalableValue) * 1000) / 1000;
                 }
@@ -421,10 +421,10 @@ namespace View3D.view.wpf
             else if (tzMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "z";
-                slider_resize.Maximum = (double)Main.printerSettings.PrintAreaHeight;
+                slider_resize.Maximum = (double)Main.main.PrintAreaHeight;
 
-                if ((dimX * tzMaxScalableValue > (double)Main.printerSettings.PrintAreaWidth)
-                        || (dimY * tzMaxScalableValue > (double)Main.printerSettings.PrintAreaDepth))
+                if ((dimX * tzMaxScalableValue > (double)Main.main.PrintAreaWidth)
+                        || (dimY * tzMaxScalableValue > (double)Main.main.PrintAreaDepth))
                 {
                     slider_resize.Maximum = Math.Floor(dimZ * Math.Min(txMaxScalableValue, tyMaxScalableValue) * 1000) / 1000;
                 }
@@ -584,7 +584,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimX;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.printerSettings.PrintAreaWidth);
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaWidth);
                     }
                     txtX.Text = dimForDisplay.ToString("0.000");
                     break;
@@ -593,7 +593,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimY;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.printerSettings.PrintAreaDepth);                      
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaDepth);                      
                     }
                     txtY.Text = dimForDisplay.ToString("0.000");
                     break;
@@ -602,7 +602,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimZ;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.printerSettings.PrintAreaHeight);
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaHeight);
                     }
                     txtZ.Text = dimForDisplay.ToString("0.000");
                     break;

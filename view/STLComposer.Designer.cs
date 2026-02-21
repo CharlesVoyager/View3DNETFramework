@@ -196,34 +196,32 @@
             this.tableLayoutPanel1.Controls.Add(this.labelFaces, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelIntersectingTriangles, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textNormals, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelNormals, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textLoopEdges, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textIntersectingTriangles, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelLoopEdges, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textHighlyConnected, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelHighConnected, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.textVertices, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.labelVertices, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.textEdges, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.labelEdges, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.textFaces, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.textShells, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.labelShells, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.textShells, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.labelNormals, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textHighlyConnected, 0, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 19);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 238);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -240,7 +238,7 @@
             // textNormals
             // 
             this.textNormals.AutoSize = true;
-            this.textNormals.Location = new System.Drawing.Point(4, 23);
+            this.textNormals.Location = new System.Drawing.Point(4, 24);
             this.textNormals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textNormals.Name = "textNormals";
             this.textNormals.Size = new System.Drawing.Size(58, 16);
@@ -250,17 +248,17 @@
             // labelNormals
             // 
             this.labelNormals.AutoSize = true;
-            this.labelNormals.Location = new System.Drawing.Point(303, 23);
+            this.labelNormals.Location = new System.Drawing.Point(303, 24);
             this.labelNormals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNormals.Name = "labelNormals";
-            this.labelNormals.Size = new System.Drawing.Size(56, 16);
+            this.labelNormals.Size = new System.Drawing.Size(58, 16);
             this.labelNormals.TabIndex = 17;
-            this.labelNormals.Text = "oriented";
+            this.labelNormals.Text = "Normals";
             // 
             // textLoopEdges
             // 
             this.textLoopEdges.AutoSize = true;
-            this.textLoopEdges.Location = new System.Drawing.Point(4, 46);
+            this.textLoopEdges.Location = new System.Drawing.Point(4, 48);
             this.textLoopEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textLoopEdges.Name = "textLoopEdges";
             this.textLoopEdges.Size = new System.Drawing.Size(83, 16);
@@ -280,17 +278,17 @@
             // labelLoopEdges
             // 
             this.labelLoopEdges.AutoSize = true;
-            this.labelLoopEdges.Location = new System.Drawing.Point(303, 46);
+            this.labelLoopEdges.Location = new System.Drawing.Point(303, 48);
             this.labelLoopEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLoopEdges.Name = "labelLoopEdges";
-            this.labelLoopEdges.Size = new System.Drawing.Size(44, 16);
+            this.labelLoopEdges.Size = new System.Drawing.Size(81, 16);
             this.labelLoopEdges.TabIndex = 7;
-            this.labelLoopEdges.Text = "label8";
+            this.labelLoopEdges.Text = "Loop Edges";
             // 
             // textHighlyConnected
             // 
             this.textHighlyConnected.AutoSize = true;
-            this.textHighlyConnected.Location = new System.Drawing.Point(4, 69);
+            this.textHighlyConnected.Location = new System.Drawing.Point(4, 72);
             this.textHighlyConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textHighlyConnected.Name = "textHighlyConnected";
             this.textHighlyConnected.Size = new System.Drawing.Size(156, 16);
@@ -300,7 +298,7 @@
             // labelHighConnected
             // 
             this.labelHighConnected.AutoSize = true;
-            this.labelHighConnected.Location = new System.Drawing.Point(303, 69);
+            this.labelHighConnected.Location = new System.Drawing.Point(303, 72);
             this.labelHighConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHighConnected.Name = "labelHighConnected";
             this.labelHighConnected.Size = new System.Drawing.Size(14, 16);
@@ -310,7 +308,7 @@
             // textVertices
             // 
             this.textVertices.AutoSize = true;
-            this.textVertices.Location = new System.Drawing.Point(4, 92);
+            this.textVertices.Location = new System.Drawing.Point(4, 96);
             this.textVertices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textVertices.Name = "textVertices";
             this.textVertices.Size = new System.Drawing.Size(59, 16);
@@ -320,17 +318,17 @@
             // labelVertices
             // 
             this.labelVertices.AutoSize = true;
-            this.labelVertices.Location = new System.Drawing.Point(303, 92);
+            this.labelVertices.Location = new System.Drawing.Point(303, 96);
             this.labelVertices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVertices.Name = "labelVertices";
-            this.labelVertices.Size = new System.Drawing.Size(44, 16);
+            this.labelVertices.Size = new System.Drawing.Size(56, 16);
             this.labelVertices.TabIndex = 1;
-            this.labelVertices.Text = "label2";
+            this.labelVertices.Text = "Vertices";
             // 
             // textEdges
             // 
             this.textEdges.AutoSize = true;
-            this.textEdges.Location = new System.Drawing.Point(4, 115);
+            this.textEdges.Location = new System.Drawing.Point(4, 120);
             this.textEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textEdges.Name = "textEdges";
             this.textEdges.Size = new System.Drawing.Size(50, 16);
@@ -340,17 +338,17 @@
             // labelEdges
             // 
             this.labelEdges.AutoSize = true;
-            this.labelEdges.Location = new System.Drawing.Point(303, 115);
+            this.labelEdges.Location = new System.Drawing.Point(303, 120);
             this.labelEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEdges.Name = "labelEdges";
-            this.labelEdges.Size = new System.Drawing.Size(44, 16);
+            this.labelEdges.Size = new System.Drawing.Size(47, 16);
             this.labelEdges.TabIndex = 3;
-            this.labelEdges.Text = "label4";
+            this.labelEdges.Text = "Edges";
             // 
             // textFaces
             // 
             this.textFaces.AutoSize = true;
-            this.textFaces.Location = new System.Drawing.Point(4, 138);
+            this.textFaces.Location = new System.Drawing.Point(4, 144);
             this.textFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textFaces.Name = "textFaces";
             this.textFaces.Size = new System.Drawing.Size(48, 16);
@@ -360,7 +358,7 @@
             // textShells
             // 
             this.textShells.AutoSize = true;
-            this.textShells.Location = new System.Drawing.Point(4, 161);
+            this.textShells.Location = new System.Drawing.Point(4, 168);
             this.textShells.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textShells.Name = "textShells";
             this.textShells.Size = new System.Drawing.Size(47, 16);
@@ -370,12 +368,12 @@
             // labelShells
             // 
             this.labelShells.AutoSize = true;
-            this.labelShells.Location = new System.Drawing.Point(303, 161);
+            this.labelShells.Location = new System.Drawing.Point(303, 168);
             this.labelShells.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelShells.Name = "labelShells";
-            this.labelShells.Size = new System.Drawing.Size(51, 16);
+            this.labelShells.Size = new System.Drawing.Size(44, 16);
             this.labelShells.TabIndex = 9;
-            this.labelShells.Text = "label10";
+            this.labelShells.Text = "Shells";
             // 
             // panel1
             // 
@@ -604,12 +602,12 @@
             // 
             // labelFaces
             // 
-            this.labelFaces.Location = new System.Drawing.Point(303, 138);
+            this.labelFaces.Location = new System.Drawing.Point(303, 144);
             this.labelFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFaces.Name = "labelFaces";
             this.labelFaces.Size = new System.Drawing.Size(95, 23);
             this.labelFaces.TabIndex = 20;
-            this.labelFaces.Text = "labelFaces";
+            this.labelFaces.Text = "Faces";
             // 
             // errorProvider
             // 

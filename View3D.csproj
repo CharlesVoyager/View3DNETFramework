@@ -197,7 +197,6 @@
     <Compile Include="model\Commands.cs" />
     <Compile Include="model\GCode.cs" />
     <Compile Include="model\GCodeAnalyzer.cs" />
-    <Compile Include="model\GCodeVisual.cs" />
     <Compile Include="model\Geom3D.cs" />
     <Compile Include="model\ModelData.cs" />
     <Compile Include="model\ModelGLDraw.cs" />

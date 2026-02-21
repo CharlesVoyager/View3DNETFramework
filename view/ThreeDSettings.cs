@@ -247,7 +247,6 @@ namespace View3D.view
                 xdir4.Text = (string)threedKey.GetValue("light4X", xdir4.Text);
                 ydir4.Text = (string)threedKey.GetValue("light4Y", ydir4.Text);
                 zdir4.Text = (string)threedKey.GetValue("light4Z", zdir4.Text);
-                GCodePath.correctNorms = checkCorrectNormals.Checked;
                 
                 if (threedKey.GetValue("backgroundColor", null) != null)
                 {
@@ -406,7 +405,6 @@ namespace View3D.view
 
         private void checkCorrectNormals_CheckedChanged(object sender, EventArgs e)
         {
-            GCodePath.correctNorms = checkCorrectNormals.Checked;
             Main.main.Update3D();
         }
     }

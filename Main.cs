@@ -1,20 +1,4 @@
-﻿/*
-   Copyright 2011 repetier repetierdev@gmail.com
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -275,14 +259,8 @@ namespace View3D
             catch { }
         }
 
-        static bool firstSizeCall = true;
-
         private void Main_SizeChanged(object sender, EventArgs e)
         {
-            if (firstSizeCall)
-            {
-                firstSizeCall = false;
-            }
         }
 
         public void toolStripButton_helpInfo_Click(object sender, EventArgs e)
@@ -294,37 +272,6 @@ namespace View3D
             Point location = threedview.gl.PointToScreen(Point.Empty);
             threedview.ui.Left = (double)location.X / dpiX * 96;
             threedview.ui.Top = (double)location.Y / dpiY * 96;
-        }
-
-        public bool toolStripSaveJobFun()
-        {
-            objectPlacement.saveSTL.FileName = "";
-
-
-            if (objectPlacement.saveSTL.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    Main.main.threedview.ui.BusyWindow.labelBusyMessage.Text = Trans.T("B_SAVING");
-                    Main.main.threedview.ui.BusyWindow.Visibility = System.Windows.Visibility.Visible;
-                    Main.main.threedview.ui.BusyWindow.buttonCancel.Visibility = System.Windows.Visibility.Visible;
-                    Main.main.threedview.ui.BusyWindow.busyProgressbar.IsIndeterminate = false;
-                    Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = 0;
-                    Main.main.threedview.ui.BusyWindow.busyProgressbar.Maximum = 100;
-                    Main.main.threedview.ui.BusyWindow.StartTimer();
-
-                    objectPlacement.saveComposition(objectPlacement.saveSTL.FileName);
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
         }
 
         public void DoCommand(PrintModel stl)

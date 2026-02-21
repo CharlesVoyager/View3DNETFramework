@@ -35,25 +35,27 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelCutPosition = new System.Windows.Forms.Label();
+            this.cutAzimuthSlider = new MB.Controls.ColorSlider();
+            this.cutInclinationSlider = new MB.Controls.ColorSlider();
+            this.cutPositionSlider = new MB.Controls.ColorSlider();
             this.checkCutFaces = new System.Windows.Forms.CheckBox();
             this.panelAnalysis = new System.Windows.Forms.Panel();
             this.groupBoxObjectAnalysis = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelFaces = new System.Windows.Forms.Label();
             this.labelIntersectingTriangles = new System.Windows.Forms.Label();
-            this.textNormals = new System.Windows.Forms.Label();
-            this.labelNormals = new System.Windows.Forms.Label();
             this.textLoopEdges = new System.Windows.Forms.Label();
             this.textIntersectingTriangles = new System.Windows.Forms.Label();
             this.labelLoopEdges = new System.Windows.Forms.Label();
-            this.textHighlyConnected = new System.Windows.Forms.Label();
             this.labelHighConnected = new System.Windows.Forms.Label();
             this.textVertices = new System.Windows.Forms.Label();
             this.labelVertices = new System.Windows.Forms.Label();
             this.textEdges = new System.Windows.Forms.Label();
             this.labelEdges = new System.Windows.Forms.Label();
             this.textFaces = new System.Windows.Forms.Label();
-            this.textShells = new System.Windows.Forms.Label();
             this.labelShells = new System.Windows.Forms.Label();
+            this.textShells = new System.Windows.Forms.Label();
+            this.textHighlyConnected = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,13 +76,9 @@
             this.columnMesh = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnCollision = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDelete = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.labelFaces = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.openFileSTL = new System.Windows.Forms.OpenFileDialog();
             this.saveSTL = new System.Windows.Forms.SaveFileDialog();
-            this.cutAzimuthSlider = new MB.Controls.ColorSlider();
-            this.cutInclinationSlider = new MB.Controls.ColorSlider();
-            this.cutPositionSlider = new MB.Controls.ColorSlider();
             this.panelControls.SuspendLayout();
             this.panelCut.SuspendLayout();
             this.panelAnalysis.SuspendLayout();
@@ -150,6 +148,78 @@
             this.labelCutPosition.TabIndex = 2;
             this.labelCutPosition.Text = "Position";
             // 
+            // cutAzimuthSlider
+            // 
+            this.cutAzimuthSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutAzimuthSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutAzimuthSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutAzimuthSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutAzimuthSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutAzimuthSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutAzimuthSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutAzimuthSlider.LargeChange = ((uint)(5u));
+            this.cutAzimuthSlider.Location = new System.Drawing.Point(111, 104);
+            this.cutAzimuthSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutAzimuthSlider.Maximum = 3600;
+            this.cutAzimuthSlider.Name = "cutAzimuthSlider";
+            this.cutAzimuthSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutAzimuthSlider.SmallChange = ((uint)(1u));
+            this.cutAzimuthSlider.TabIndex = 1;
+            this.cutAzimuthSlider.Text = "colorSlider1";
+            this.cutAzimuthSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutAzimuthSlider.ThumbSize = 10;
+            this.cutAzimuthSlider.Value = 0;
+            this.cutAzimuthSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
+            // 
+            // cutInclinationSlider
+            // 
+            this.cutInclinationSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutInclinationSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutInclinationSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutInclinationSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutInclinationSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutInclinationSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutInclinationSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutInclinationSlider.LargeChange = ((uint)(5u));
+            this.cutInclinationSlider.Location = new System.Drawing.Point(111, 71);
+            this.cutInclinationSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutInclinationSlider.Maximum = 1800;
+            this.cutInclinationSlider.Name = "cutInclinationSlider";
+            this.cutInclinationSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutInclinationSlider.SmallChange = ((uint)(1u));
+            this.cutInclinationSlider.TabIndex = 1;
+            this.cutInclinationSlider.Text = "colorSlider1";
+            this.cutInclinationSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutInclinationSlider.ThumbSize = 10;
+            this.cutInclinationSlider.Value = 0;
+            this.cutInclinationSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
+            // 
+            // cutPositionSlider
+            // 
+            this.cutPositionSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cutPositionSlider.BackColor = System.Drawing.Color.Transparent;
+            this.cutPositionSlider.BarInnerColor = System.Drawing.Color.LightGray;
+            this.cutPositionSlider.BarOuterColor = System.Drawing.Color.Gray;
+            this.cutPositionSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutPositionSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
+            this.cutPositionSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
+            this.cutPositionSlider.LargeChange = ((uint)(5u));
+            this.cutPositionSlider.Location = new System.Drawing.Point(111, 36);
+            this.cutPositionSlider.Margin = new System.Windows.Forms.Padding(4);
+            this.cutPositionSlider.Maximum = 1000;
+            this.cutPositionSlider.Name = "cutPositionSlider";
+            this.cutPositionSlider.Size = new System.Drawing.Size(361, 24);
+            this.cutPositionSlider.SmallChange = ((uint)(1u));
+            this.cutPositionSlider.TabIndex = 1;
+            this.cutPositionSlider.Text = "colorSlider1";
+            this.cutPositionSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
+            this.cutPositionSlider.ThumbSize = 10;
+            this.cutPositionSlider.Value = 500;
+            this.cutPositionSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
+            // 
             // checkCutFaces
             // 
             this.checkCutFaces.AutoSize = true;
@@ -193,22 +263,20 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.65517F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.34483F));
-            this.tableLayoutPanel1.Controls.Add(this.labelFaces, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.labelIntersectingTriangles, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textNormals, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textLoopEdges, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textIntersectingTriangles, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelLoopEdges, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelHighConnected, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textVertices, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.labelVertices, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textEdges, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.labelEdges, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.textFaces, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.labelShells, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.textShells, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.labelNormals, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textHighlyConnected, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textLoopEdges, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelLoopEdges, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textHighlyConnected, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelHighConnected, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textVertices, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.labelVertices, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textEdges, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.labelEdges, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.textFaces, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.labelFaces, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.textShells, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.labelShells, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 19);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -225,6 +293,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 238);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
+            // labelFaces
+            // 
+            this.labelFaces.Location = new System.Drawing.Point(303, 120);
+            this.labelFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFaces.Name = "labelFaces";
+            this.labelFaces.Size = new System.Drawing.Size(95, 23);
+            this.labelFaces.TabIndex = 20;
+            this.labelFaces.Text = "Faces";
+            // 
             // labelIntersectingTriangles
             // 
             this.labelIntersectingTriangles.AutoSize = true;
@@ -235,30 +312,10 @@
             this.labelIntersectingTriangles.TabIndex = 11;
             this.labelIntersectingTriangles.Text = "0";
             // 
-            // textNormals
-            // 
-            this.textNormals.AutoSize = true;
-            this.textNormals.Location = new System.Drawing.Point(4, 24);
-            this.textNormals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.textNormals.Name = "textNormals";
-            this.textNormals.Size = new System.Drawing.Size(58, 16);
-            this.textNormals.TabIndex = 16;
-            this.textNormals.Text = "Normals";
-            // 
-            // labelNormals
-            // 
-            this.labelNormals.AutoSize = true;
-            this.labelNormals.Location = new System.Drawing.Point(303, 24);
-            this.labelNormals.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelNormals.Name = "labelNormals";
-            this.labelNormals.Size = new System.Drawing.Size(58, 16);
-            this.labelNormals.TabIndex = 17;
-            this.labelNormals.Text = "Normals";
-            // 
             // textLoopEdges
             // 
             this.textLoopEdges.AutoSize = true;
-            this.textLoopEdges.Location = new System.Drawing.Point(4, 48);
+            this.textLoopEdges.Location = new System.Drawing.Point(4, 24);
             this.textLoopEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textLoopEdges.Name = "textLoopEdges";
             this.textLoopEdges.Size = new System.Drawing.Size(83, 16);
@@ -278,27 +335,17 @@
             // labelLoopEdges
             // 
             this.labelLoopEdges.AutoSize = true;
-            this.labelLoopEdges.Location = new System.Drawing.Point(303, 48);
+            this.labelLoopEdges.Location = new System.Drawing.Point(303, 24);
             this.labelLoopEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLoopEdges.Name = "labelLoopEdges";
             this.labelLoopEdges.Size = new System.Drawing.Size(81, 16);
             this.labelLoopEdges.TabIndex = 7;
             this.labelLoopEdges.Text = "Loop Edges";
             // 
-            // textHighlyConnected
-            // 
-            this.textHighlyConnected.AutoSize = true;
-            this.textHighlyConnected.Location = new System.Drawing.Point(4, 72);
-            this.textHighlyConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.textHighlyConnected.Name = "textHighlyConnected";
-            this.textHighlyConnected.Size = new System.Drawing.Size(156, 16);
-            this.textHighlyConnected.TabIndex = 14;
-            this.textHighlyConnected.Text = "Highly connected edges:";
-            // 
             // labelHighConnected
             // 
             this.labelHighConnected.AutoSize = true;
-            this.labelHighConnected.Location = new System.Drawing.Point(303, 72);
+            this.labelHighConnected.Location = new System.Drawing.Point(303, 48);
             this.labelHighConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelHighConnected.Name = "labelHighConnected";
             this.labelHighConnected.Size = new System.Drawing.Size(14, 16);
@@ -308,7 +355,7 @@
             // textVertices
             // 
             this.textVertices.AutoSize = true;
-            this.textVertices.Location = new System.Drawing.Point(4, 96);
+            this.textVertices.Location = new System.Drawing.Point(4, 72);
             this.textVertices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textVertices.Name = "textVertices";
             this.textVertices.Size = new System.Drawing.Size(59, 16);
@@ -318,7 +365,7 @@
             // labelVertices
             // 
             this.labelVertices.AutoSize = true;
-            this.labelVertices.Location = new System.Drawing.Point(303, 96);
+            this.labelVertices.Location = new System.Drawing.Point(303, 72);
             this.labelVertices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelVertices.Name = "labelVertices";
             this.labelVertices.Size = new System.Drawing.Size(56, 16);
@@ -328,7 +375,7 @@
             // textEdges
             // 
             this.textEdges.AutoSize = true;
-            this.textEdges.Location = new System.Drawing.Point(4, 120);
+            this.textEdges.Location = new System.Drawing.Point(4, 96);
             this.textEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textEdges.Name = "textEdges";
             this.textEdges.Size = new System.Drawing.Size(50, 16);
@@ -338,7 +385,7 @@
             // labelEdges
             // 
             this.labelEdges.AutoSize = true;
-            this.labelEdges.Location = new System.Drawing.Point(303, 120);
+            this.labelEdges.Location = new System.Drawing.Point(303, 96);
             this.labelEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEdges.Name = "labelEdges";
             this.labelEdges.Size = new System.Drawing.Size(47, 16);
@@ -348,32 +395,42 @@
             // textFaces
             // 
             this.textFaces.AutoSize = true;
-            this.textFaces.Location = new System.Drawing.Point(4, 144);
+            this.textFaces.Location = new System.Drawing.Point(4, 120);
             this.textFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textFaces.Name = "textFaces";
             this.textFaces.Size = new System.Drawing.Size(48, 16);
             this.textFaces.TabIndex = 4;
             this.textFaces.Text = "Faces:";
             // 
+            // labelShells
+            // 
+            this.labelShells.AutoSize = true;
+            this.labelShells.Location = new System.Drawing.Point(303, 144);
+            this.labelShells.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelShells.Name = "labelShells";
+            this.labelShells.Size = new System.Drawing.Size(44, 16);
+            this.labelShells.TabIndex = 9;
+            this.labelShells.Text = "Shells";
+            // 
             // textShells
             // 
             this.textShells.AutoSize = true;
-            this.textShells.Location = new System.Drawing.Point(4, 168);
+            this.textShells.Location = new System.Drawing.Point(4, 144);
             this.textShells.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.textShells.Name = "textShells";
             this.textShells.Size = new System.Drawing.Size(47, 16);
             this.textShells.TabIndex = 8;
             this.textShells.Text = "Shells:";
             // 
-            // labelShells
+            // textHighlyConnected
             // 
-            this.labelShells.AutoSize = true;
-            this.labelShells.Location = new System.Drawing.Point(303, 168);
-            this.labelShells.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelShells.Name = "labelShells";
-            this.labelShells.Size = new System.Drawing.Size(44, 16);
-            this.labelShells.TabIndex = 9;
-            this.labelShells.Text = "Shells";
+            this.textHighlyConnected.AutoSize = true;
+            this.textHighlyConnected.Location = new System.Drawing.Point(4, 48);
+            this.textHighlyConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.textHighlyConnected.Name = "textHighlyConnected";
+            this.textHighlyConnected.Size = new System.Drawing.Size(156, 16);
+            this.textHighlyConnected.TabIndex = 14;
+            this.textHighlyConnected.Text = "Highly connected edges:";
             // 
             // panel1
             // 
@@ -600,15 +657,6 @@
             this.columnDelete.Text = "";
             this.columnDelete.Width = 26;
             // 
-            // labelFaces
-            // 
-            this.labelFaces.Location = new System.Drawing.Point(303, 144);
-            this.labelFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelFaces.Name = "labelFaces";
-            this.labelFaces.Size = new System.Drawing.Size(95, 23);
-            this.labelFaces.TabIndex = 20;
-            this.labelFaces.Text = "Faces";
-            // 
             // errorProvider
             // 
             this.errorProvider.ContainerControl = this;
@@ -625,78 +673,6 @@
             this.saveSTL.DefaultExt = "stl";
             this.saveSTL.Filter = "STL-Files|*.stl;*.STL|3ws-Files|*.3ws;*.3WS";
             this.saveSTL.Title = "Save composition";
-            // 
-            // cutAzimuthSlider
-            // 
-            this.cutAzimuthSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutAzimuthSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutAzimuthSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutAzimuthSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutAzimuthSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutAzimuthSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutAzimuthSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutAzimuthSlider.LargeChange = ((uint)(5u));
-            this.cutAzimuthSlider.Location = new System.Drawing.Point(111, 104);
-            this.cutAzimuthSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutAzimuthSlider.Maximum = 3600;
-            this.cutAzimuthSlider.Name = "cutAzimuthSlider";
-            this.cutAzimuthSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutAzimuthSlider.SmallChange = ((uint)(1u));
-            this.cutAzimuthSlider.TabIndex = 1;
-            this.cutAzimuthSlider.Text = "colorSlider1";
-            this.cutAzimuthSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutAzimuthSlider.ThumbSize = 10;
-            this.cutAzimuthSlider.Value = 0;
-            this.cutAzimuthSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
-            // 
-            // cutInclinationSlider
-            // 
-            this.cutInclinationSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutInclinationSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutInclinationSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutInclinationSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutInclinationSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutInclinationSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutInclinationSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutInclinationSlider.LargeChange = ((uint)(5u));
-            this.cutInclinationSlider.Location = new System.Drawing.Point(111, 71);
-            this.cutInclinationSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutInclinationSlider.Maximum = 1800;
-            this.cutInclinationSlider.Name = "cutInclinationSlider";
-            this.cutInclinationSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutInclinationSlider.SmallChange = ((uint)(1u));
-            this.cutInclinationSlider.TabIndex = 1;
-            this.cutInclinationSlider.Text = "colorSlider1";
-            this.cutInclinationSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutInclinationSlider.ThumbSize = 10;
-            this.cutInclinationSlider.Value = 0;
-            this.cutInclinationSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
-            // 
-            // cutPositionSlider
-            // 
-            this.cutPositionSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cutPositionSlider.BackColor = System.Drawing.Color.Transparent;
-            this.cutPositionSlider.BarInnerColor = System.Drawing.Color.LightGray;
-            this.cutPositionSlider.BarOuterColor = System.Drawing.Color.Gray;
-            this.cutPositionSlider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutPositionSlider.ElapsedInnerColor = System.Drawing.Color.LightGray;
-            this.cutPositionSlider.ElapsedOuterColor = System.Drawing.Color.Gray;
-            this.cutPositionSlider.LargeChange = ((uint)(5u));
-            this.cutPositionSlider.Location = new System.Drawing.Point(111, 36);
-            this.cutPositionSlider.Margin = new System.Windows.Forms.Padding(4);
-            this.cutPositionSlider.Maximum = 1000;
-            this.cutPositionSlider.Name = "cutPositionSlider";
-            this.cutPositionSlider.Size = new System.Drawing.Size(361, 24);
-            this.cutPositionSlider.SmallChange = ((uint)(1u));
-            this.cutPositionSlider.TabIndex = 1;
-            this.cutPositionSlider.Text = "colorSlider1";
-            this.cutPositionSlider.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.cutPositionSlider.ThumbSize = 10;
-            this.cutPositionSlider.Value = 500;
-            this.cutPositionSlider.ValueChanged += new System.EventHandler(this.cutPositionSlider_ValueChanged);
             // 
             // STLComposer
             // 
@@ -759,8 +735,6 @@
         private System.Windows.Forms.Label labelIntersectingTriangles;
         private System.Windows.Forms.Label textHighlyConnected;
         private System.Windows.Forms.Label labelHighConnected;
-        private System.Windows.Forms.Label textNormals;
-        private System.Windows.Forms.Label labelNormals;
         private System.Windows.Forms.Panel panelCut;
         private System.Windows.Forms.Label labelCutPosition;
         private System.Windows.Forms.Label label5;

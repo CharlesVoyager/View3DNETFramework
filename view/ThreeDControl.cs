@@ -652,78 +652,6 @@ namespace View3D.view
             }
         }
 
-        bool oldCut = false;
-        int oldPosition = -1;
-        int oldInclination = -1;
-        int oldAzimuth = -1;
-        public bool updateCuts = false;
-        public RHVector3 cutPos = new RHVector3(0, 0, 0);
-        public RHVector3 cutDirection = new RHVector3(0, 0, 1);
-        RHBoundingBox cutBBox = new RHBoundingBox();
-
-        void UpdateCutData()
-        {
-            updateCuts = true;
-            cutBBox.Clear();
-            foreach (PrintModel model in Main.main.objectPlacement.ListObjects(false))
-            {
-                cutBBox.Add(model.BoundingBoxWOSupport);
-            }
-            oldPosition = Main.main.objectPlacement.cutPositionSlider.Value;
-            oldInclination = Main.main.objectPlacement.cutInclinationSlider.Value;
-            oldAzimuth = Main.main.objectPlacement.cutAzimuthSlider.Value;
-            double inclination = (double)oldInclination * Math.PI / 1800.0;
-            double azimuth = (double)oldAzimuth * Math.PI / 1800.0;
-
-            cutDirection.x = Math.Sin(inclination) * Math.Cos(azimuth);
-            cutDirection.y = Math.Sin(inclination) * Math.Sin(azimuth);
-            cutDirection.z = Math.Cos(inclination);
-
-            RHVector3 center = cutBBox.Center;
-            TopoPlane plane = new TopoPlane(cutDirection, center);
-
-            double min = 0, max = 0, dist;
-
-            RHVector3 p = new RHVector3(cutBBox.xMin, cutBBox.yMin, cutBBox.zMin);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMax, cutBBox.yMin, cutBBox.zMin);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMin, cutBBox.yMax, cutBBox.zMin);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMax, cutBBox.yMax, cutBBox.zMin);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMin, cutBBox.yMin, cutBBox.zMax);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMax, cutBBox.yMin, cutBBox.zMax);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMin, cutBBox.yMax, cutBBox.zMax);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-            p = new RHVector3(cutBBox.xMax, cutBBox.yMax, cutBBox.zMax);
-            dist = plane.VertexDistance(p);
-            max = Math.Max(dist, max);
-            min = Math.Min(dist, min);
-
-            double spos = min + 1.001 * (max - min) * (double)oldPosition / 1000.0;
-
-            cutPos.x = center.x + spos * cutDirection.x;
-            cutPos.y = center.y + spos * cutDirection.y;
-            cutPos.z = center.z + spos * cutDirection.z;
-        }
-
         public void gl_Paint(object sender, PaintEventArgs e)
         {
             if (view == null) return;
@@ -751,14 +679,6 @@ namespace View3D.view
                 ui.Left = (double)location.X / dpiX * 96;
                 ui.Top = (double)location.Y / dpiY * 96;
                 DetectDrawingMethod();
-                if (oldCut != Main.main.objectPlacement.checkCutFaces.Checked || 
-                    oldPosition != Main.main.objectPlacement.cutPositionSlider.Value || 
-                    oldInclination != Main.main.objectPlacement.cutInclinationSlider.Value || 
-                    oldAzimuth != Main.main.objectPlacement.cutAzimuthSlider.Value || 
-                    updateCuts)
-                {
-                    UpdateCutData();
-                }
                 fpsTimer.Reset();
                 fpsTimer.Start();
                 gl.MakeCurrent();
@@ -851,8 +771,6 @@ namespace View3D.view
                     slowCounter--;
             }
             catch { }
-            updateCuts = false;
-            oldCut = Main.main.objectPlacement.checkCutFaces.Checked;
         }
 
         static bool configureSettings = true;

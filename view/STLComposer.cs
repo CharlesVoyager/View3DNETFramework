@@ -751,7 +751,6 @@ namespace View3D.view
 
         public void listSTLObjects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Main.main.threedview.updateCuts = false;
             updateEnabled();
             LinkedList<PrintModel> list = ListObjects(false);
             LinkedList<PrintModel> sellist = ListObjects(true);

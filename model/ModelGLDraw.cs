@@ -241,17 +241,17 @@ namespace View3D.model
 
         public RHVector3 GetCutPosition()
         {
-            return Main.main.threedview.cutPos;
+            return new RHVector3(0, 0, 0);
         }
 
         public RHVector3 GetCutDirection()
         {
-            return Main.main.threedview.cutDirection;
+            return new RHVector3(0, 0, 0);
         }
 
         public bool IsCutFaceUpdated()
         {
-            return Main.main.threedview.updateCuts;
+            return false;
         }
         #endregion
 

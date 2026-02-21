@@ -279,7 +279,6 @@ namespace View3D.view
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 edges.BackColor = colorDialog.Color;
-                Main.main.threedview.updateCuts = true;
                 Main.main.Update3D();
             }
         }
@@ -290,7 +289,6 @@ namespace View3D.view
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 selectedFaces.BackColor = colorDialog.Color;
-                Main.main.threedview.updateCuts = true;
                 Main.main.Update3D();
             }
         }
@@ -302,7 +300,6 @@ namespace View3D.view
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 p.BackColor = colorDialog.Color;
-                Main.main.threedview.updateCuts = true;
                 Main.main.Update3D();
             }
         }
@@ -352,7 +349,6 @@ namespace View3D.view
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 outsidePrintbed.BackColor = colorDialog.Color;
-                Main.main.threedview.updateCuts = true;
                 Main.main.Update3D();
             }
         }
@@ -364,7 +360,6 @@ namespace View3D.view
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 p.BackColor = colorDialog.Color;
-                Main.main.threedview.updateCuts = true;
                 Main.main.Update3D();
             }
         }

@@ -25,10 +25,6 @@ namespace View3D
 
         private string basicTitle = "";
 
-        public float PrintAreaWidth = 128;  // x-axis direction
-        public float PrintAreaDepth = 128;  // y-axis direction
-        public float PrintAreaHeight = 200; // z-axis direction
-
         public ThreeDControl threedview = null;
         public STLComposer objectPlacement = null;
         public ObjectInformation gObjectInformation = new ObjectInformation();
@@ -37,19 +33,22 @@ namespace View3D
 
         public float dpiX, dpiY;
 
-        private double epsilon = 1e-4; // 0.0001
+        #region Print Area settings
+        public float PrintAreaWidth = 128;  // x-axis direction
+        public float PrintAreaDepth = 128;  // y-axis direction
+        public float PrintAreaHeight = 200; // z-axis direction
+        double epsilon = 1e-4; // 0.0001
         public bool PointInside(float x, float y, float z)
         {
             if (z < -0.1 || z > PrintAreaHeight) //0.0005
                 return false;
 
-
-            if (x <  -epsilon || x > PrintAreaWidth + epsilon) return false;
+            if (x < -epsilon || x > PrintAreaWidth + epsilon) return false;
             if (y < -epsilon || y > PrintAreaDepth + epsilon) return false;
-    
 
             return true;
         }
+        #endregion
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -107,20 +106,6 @@ namespace View3D
             Main.main.threedview.ui.UI_view.modifyViewTextSize();
 
             assign3DView();
-
-            string titleAdd = "";
-
-            if (titleAdd.Length > 0)
-            {
-                int p = basicTitle.IndexOf(' ');
-                basicTitle = basicTitle.Substring(0, p) + titleAdd + basicTitle.Substring(p);
-                Text = basicTitle;
-            }
-
-            UpdateToolbarSize();
-            // Add languages
-            languageChanged += translate;
-            translate();
 
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
@@ -186,24 +171,6 @@ namespace View3D
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
 
             foreach (string file in files) LoadGCodeOrSTL(file);
-        }
-
-        public void translate()
-        {
-            openGCode.Title = Trans.T("W_IMPORT_FILE");
-            saveJobDialog.Title = Trans.T("W_SAVE_FILE_3WN");     
-        }
-
-        public void UpdateToolbarSize()
-        {
-        }
-
-        private void languageSelected(object sender, EventArgs e)
-        {
-            ToolStripItem it = (ToolStripItem)sender;
-            trans.selectLanguage((Translation)it.Tag);
-            if (languageChanged != null)
-                languageChanged();
         }
 
         public void toolGCodeLoad_Click(object sender, EventArgs e)

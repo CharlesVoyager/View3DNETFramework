@@ -198,9 +198,6 @@ namespace View3D
                 Main.main.threedview.Enabled = false;
                 LoadGCodeOrSTL(openGCode.FileName);
                 Main.main.threedview.Enabled = true;
-
-                //Modified by RCGREY for STL Slice Previewer
-                Main.main.threedview.setMinMaxClippingLayer();
             }
         }
 

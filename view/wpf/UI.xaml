@@ -467,12 +467,9 @@
             </StackPanel.Resources>
         
         </StackPanel>
-        <!--STL Slice PreViewer Slice Layer slider RCGREY 20180122-->
-        <Slider x:Name="LayerSlider" Orientation="Vertical" Margin="0,198,40,192" Minimum="0" Maximum="4800" ValueChanged="slider_ValueChanged" HorizontalAlignment="Right" Width="22" AutoToolTipPlacement="None" Visibility="Hidden" SmallChange="1" Background="#FFDA9315" Delay="100" IsMoveToPointEnabled="True">
-        </Slider>
-        <TextBox x:Name="LayerNumber" Background="#FFDA9315" Width="60" Height="30" FontWeight="Bold" Foreground="#FFF9F7F7" Margin="0,0,70,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsReadOnly="True" FontSize="16">
-        </TextBox>
+
         <local:BusyWindow x:Name="BusyWindow" />
+        
         <Label x:Name="WarnOverlapArea" Content="請勿在此區域列印需要細節的物件或部品" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Height="60" Width="400" Background="Red" Margin="0,0,0,30" FontWeight="Bold" FontFamily="Microsoft JhengHei" FontSize="20" Visibility="Hidden" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderThickness="1" BorderBrush="Gold" />
         <Grid>
             <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-60,0,0">

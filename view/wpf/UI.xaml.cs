@@ -256,9 +256,6 @@ namespace View3D.view.wpf
 
             }
             Main.main.Focus();
-
-            //KPPH CP2 SW added by RCGREY for STL Slice Previewer
-            Main.main.threedview.setMinMaxClippingLayer();
             Main.main.threedview.stlComp.Update3D();
         }
 
@@ -402,19 +399,12 @@ namespace View3D.view.wpf
             Main.main.threedview.ui.UI_move.slider_moveY.Maximum = 1000;
 
             Main.main.threedview.ui.OutofBound.Visibility = System.Windows.Visibility.Hidden;
-            Main.main.threedview.ui.LayerSlider.Visibility = System.Windows.Visibility.Hidden;
-            Main.main.threedview.ui.LayerNumber.Visibility = System.Windows.Visibility.Hidden;
             Main.main.threedview.clipviewEnabled = false;
             Main.main.gObjectInformation.Hide();
             Main.main.threedview.button_remove_Click(null, null);
             if (Main.main.objectPlacement.listObjects.Items.Count > 0)
             {
                 Main.main.objectPlacement.updateSTLState((PrintModel)Main.main.objectPlacement.listObjects.Items[0].Tag);
-            }
-            else
-            {
-                //Modified by RCGREY for STL Slice Previewer
-                Main.main.threedview.setMinMaxClippingLayer();
             }
             Main.main.Focus();
         }
@@ -469,38 +459,8 @@ namespace View3D.view.wpf
 
         System.Windows.Forms.Timer timer;
         int sec = 0;
-
-        #region STL Slice Previewer
-        //Modified by RCGrey for STL Slice Previewer tool
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            double layerNum;
-
-            if (Keyboard.IsKeyDown(Key.Right) || Keyboard.IsKeyDown(Key.Left))
-            {
-                LayerSlider.Value = (int)Main.main.threedview.clippingLayerCur;
-                return;
-            }
-            if (Main.main.threedview.clipviewEnabled && LayerSlider.IsFocused)
-            {
-                LayerSlider.Value = (int)LayerSlider.Value;
-
-                if (Main.main.threedview.ui.LayerSlider.Value <= 0)
-                    Main.main.threedview.ui.LayerNumber.Visibility = System.Windows.Visibility.Hidden;
-                else
-                    Main.main.threedview.ui.LayerNumber.Visibility = System.Windows.Visibility.Visible;
-
-                LayerNumber.Text = LayerSlider.Value.ToString();
-                Main.main.threedview.UpdateLayerNumPosition();
-
-                layerNum = LayerSlider.Value;
-                Main.main.threedview.clippingLayerCur = layerNum;
-
-                Main.main.threedview.stlComp.Update3D();
-            }
-        }
-        #endregion
     }
+
     public static class MouseDownHelper
     {
         public static readonly DependencyProperty IsEnabledProperty = DependencyProperty.RegisterAttached("IsEnabled",

@@ -171,9 +171,7 @@ namespace View3D.view.wpf
                     if (stl == null) return;
                     stl.modifiedM = true;
                     Main.main.objectPlacement.textTransX.Text = Convert.ToString(slider_moveX.Value);
-                //Modified by RCGREY for STL Slice Previewer
-                Main.main.threedview.setMinMaxClippingLayer();
-                Main.main.threedview.UpdateChanges();
+                    Main.main.threedview.UpdateChanges();
                 }
             }
             catch { }
@@ -189,8 +187,6 @@ namespace View3D.view.wpf
                     if (stl == null) return;
                     stl.modifiedM = true;
                     Main.main.objectPlacement.textTransY.Text = Convert.ToString(slider_moveY.Value);
-                //Modified by RCGREY for STL Slice Previewer
-                Main.main.threedview.setMinMaxClippingLayer();
                 Main.main.threedview.UpdateChanges();
 
                 }
@@ -210,9 +206,7 @@ namespace View3D.view.wpf
 
                     Main.main.objectPlacement.textTransZ.Text = Convert.ToString(slider_moveZ.Value);
                     moveZ_textbox.Text = (Math.Round(slider_moveZ.Value, 3) - Math.Round(slider_moveZ.Minimum, 3)).ToString();
-                //Modified by RCGREY for STL Slice Previewer                
-                Main.main.threedview.updateMaximumClipLevel();
-                Main.main.threedview.UpdateChanges();
+                    Main.main.threedview.UpdateChanges();
                 }
             }
             catch { }

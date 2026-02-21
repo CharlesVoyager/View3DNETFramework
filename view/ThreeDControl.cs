@@ -144,88 +144,6 @@ namespace View3D.view
             view.objectsSelected = sel;
         }
 
-        #region STL Slice Previewer
-        public void setMinMaxClippingLayer()
-        {
-            double sliderval = 999;
-            double zMin = Main.printerSettings.Height;
-            double layerMultiplier = 1 / setclipLayerHeight;
-            bool checkDirection = clipDownward;
-
-            updateMaximumClipLevel();
-
-            clipviewEnabled = false;
-            ui.LayerSlider.Visibility = System.Windows.Visibility.Hidden;
-            ui.LayerNumber.Visibility = System.Windows.Visibility.Hidden;          
-
-            if (sliderval < clippingLayerMax && sliderval > clippingLayerMin)
-            {
-                ui.LayerSlider.Value = (int)sliderval;
-                ui.LayerNumber.Text = ui.LayerSlider.Value.ToString();
-                UpdateLayerNumPosition();
-            }
-
-            ui.LayerSlider.Value = ui.LayerSlider.Minimum;
-            ui.LayerNumber.Text = ui.LayerSlider.Value.ToString();
-            UpdateLayerNumPosition();
-
-            if (ui.LayerSlider.Value <= 0)
-                ui.LayerNumber.Visibility = System.Windows.Visibility.Hidden;
-
-            clippingLayerCur = (double)ui.LayerSlider.Value;
-        }
-
-        public void updateMaximumClipLevel()
-        {
-            double zMax = 0;
-            double zMin = Main.printerSettings.Height;
-            double layerMultiplier = 1 / setclipLayerHeight;
-            //Debug.WriteLine("updateMaximumClipLevel");
-            if (clipviewEnabled)
-            {
-                zMax = Math.Round(zMax, 2, MidpointRounding.AwayFromZero);
-                clippingLayerMax = (zMax * layerMultiplier); // layer height
-                clippingLayerMax = Math.Round(clippingLayerMax, 0, MidpointRounding.AwayFromZero);
-
-                zMin = Math.Round(zMin, 2, MidpointRounding.AwayFromZero);
-                clippingLayerMin = (zMin * layerMultiplier); // layer height
-                clippingLayerMin = Math.Round(clippingLayerMin, 0, MidpointRounding.AwayFromZero);
-
-                if (clipDownward)
-                {
-                    //Debug.WriteLine("Downward Direction");
-                    ui.LayerSlider.Maximum = (int) (clippingLayerMax - clippingLayerMin);
-                    ui.LayerSlider.Minimum = 0;
-                    ui.LayerSlider.CoerceValue(System.Windows.Controls.Slider.ValueProperty);
-
-        }
-                else
-                {
-                    //Debug.WriteLine("Upward Direction");
-                    ui.LayerSlider.Minimum = 0;
-                    ui.LayerSlider.Maximum = (int) (clippingLayerMax - clippingLayerMin);
-                    ui.LayerSlider.CoerceValue(System.Windows.Controls.Slider.ValueProperty);
-                }
-            }
-        }
-
-        //Add layer number text box display
-        public void UpdateLayerNumPosition()
-        {
-            if (ui.LayerNumber.Visibility == System.Windows.Visibility.Hidden) return;
-
-            double yvalratio = ui.LayerSlider.Value / (ui.LayerSlider.Maximum - ui.LayerSlider.Minimum);
-            double absolutePos = ((ui.Height - ui.LayerSlider.RenderSize.Height) / 2) +
-                (ui.LayerSlider.RenderSize.Height * yvalratio) - 20; // 20 is offset to texbox size;
-            // Fixed a bug caused by yvalratio = NaN...
-            if (Double.IsNaN(yvalratio))
-            { yvalratio = 0; }
-            if (Double.IsNaN(absolutePos))
-            { absolutePos = 0; }
-            ui.LayerNumber.Margin = new System.Windows.Thickness(0, 0, 70, absolutePos);
-        }
-        #endregion
-
         public void UpdateChanges()
         {
             gl.Invalidate();
@@ -894,7 +812,6 @@ namespace View3D.view
             ui.Height = gl.Size.Height / dpiY * 96;
 
             SetupViewport();
-            UpdateLayerNumPosition();
             gl.Invalidate();
         }
 
@@ -1259,11 +1176,6 @@ namespace View3D.view
                 m.Clear();
             }
             gl.Invalidate();
-
-            if (view.models.Count == 0)
-            {
-                setMinMaxClippingLayer();
-            }
             Main.main.objectPlacement.updateOutside();
         }
 

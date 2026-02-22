@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View3D.view.wpf"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="Window_Loaded">
     <Grid>
 
         <StackPanel Orientation="Vertical">
@@ -24,11 +24,11 @@
 
                 <Rectangle Name="rectangle0" Grid.ColumnSpan="5" Grid.RowSpan="5" Fill="#C8F7931E" />
                 <Label Content="Filename:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
-                <Label Content="File Format:" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
+                <Label Content="Collision:" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
                 <Label Content="Volume:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
 
                 <TextBox Name="txtFilename" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="???.stl" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
-                <TextBox Name="txtFileFormat" Grid.Row="1" Grid.Column="1" Text="STL" HorizontalAlignment="Left" VerticalAlignment="Center" Width="54" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
+                <TextBox Name="txtCollision" Grid.Row="1" Grid.Column="1" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Width="54" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
                 <TextBox Name="txtVolume" Grid.Row="1" Grid.Column="3" Text="100" HorizontalAlignment="Left" VerticalAlignment="Center" Width="54" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
 
 

@@ -7,9 +7,6 @@ namespace View3D.view
 {
     public partial class ObjectInformation : Form
     {
-        public static string ResinVolum = "", moduleX = "", moduleY = "", moduleZ = "";
-        public static double moduleWidth = 0, moduleLen = 0, moudleHigh = 0;
-
         public void Analyse(PrintModel pm)
         {
             double volume = 0;

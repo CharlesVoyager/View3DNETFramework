@@ -476,36 +476,6 @@ namespace View3D.view
 
                             models[models.Count - 1].UpdateMatrix();
                             model.Merge(models[models.Count - 1].ActiveModel, models[models.Count - 1].trans, null);
-                            string scaleDownName;
-                            if (file.ToUpper().EndsWith(".STL") == false)
-                            {
-                                scaleDownName = "\\" + Path.GetFileName(file.Remove(file.IndexOf("."), file.Length - file.IndexOf(".")) + ".stl");
-                            }
-                            else
-                            {
-                                scaleDownName = "\\" + Path.GetFileName(file);
-                            }
-                            //model.exportSTL(scaleDownName, writeSTLBinary, false);
-                            outSetting.Binary = writeSTLBinary;
-                            outSetting.RepairModel = false;
-                            modelIO.Save(scaleDownName, model, (outSetting as MeshInOut.Setting));
-
-                            cont.models.Remove(models[models.Count - 1]);
-                            models.Remove(models[models.Count - 1]);
-                            listObjects.Items.Remove(listObjects.Items[listObjects.Items.Count - 1]);
-
-                            openAndAddObject(scaleDownName);
-
-                            try
-                            {
-                                if (File.Exists(scaleDownName))
-                                {
-                                    File.SetAttributes(scaleDownName, FileAttributes.Normal);
-                                    File.Delete(scaleDownName);
-                                }
-                            }
-                            catch { }
-                            return;
                         }
                         catch { }
                     }

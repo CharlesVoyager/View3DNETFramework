@@ -58,7 +58,6 @@ namespace View3D.view
 
         IDraw modelDrawer = new ModelGLDraw();
         int mergedCount;
-        bool SaveTaskAbort = false;
         private List<PrintModel> cloneModels = new List<PrintModel>();
 
         public double inchtommX = 0, inchtommY = 0, inchtommZ = 0;
@@ -1469,11 +1468,6 @@ namespace View3D.view
                 }
                 Application.DoEvents();
             }
-        }
-
-        public void OnSaveTaskAbort(object sender, EventArgs e)
-        {
-            SaveTaskAbort = true;
         }
     }
 }

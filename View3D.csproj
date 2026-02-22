@@ -173,6 +173,9 @@
     <Compile Include="view\wpf\UI_move.xaml.cs">
       <DependentUpon>UI_move.xaml</DependentUpon>
     </Compile>
+    <Compile Include="view\wpf\UI_object_information.xaml.cs">
+      <DependentUpon>UI_object_information.xaml</DependentUpon>
+    </Compile>
     <Compile Include="view\wpf\UI_resize.xaml.cs">
       <DependentUpon>UI_resize.xaml</DependentUpon>
     </Compile>
@@ -281,6 +284,10 @@
     <Page Include="view\wpf\UI_move.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\wpf\UI_object_information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\wpf\UI_resize.xaml">
       <Generator>MSBuild:Compile</Generator>

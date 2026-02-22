@@ -91,6 +91,7 @@ namespace View3D
             objectPlacement = stlComposerWnd.stlComposerWindow;
             stlComposerWnd.Show();
 
+            // ThreeDControl
             threedview = new ThreeDControl();
             threedview.Dock = DockStyle.Fill;
 
@@ -98,9 +99,8 @@ namespace View3D
             splitLog.Panel1.Controls.Add(threedview);   
 
             basicTitle = Text;
-            // Modify UI font size
-            Main.main.threedview.ui.modifyUITextSize();
-            Main.main.threedview.ui.UI_view.modifyViewTextSize();
+            threedview.ui.modifyUITextSize();
+            threedview.ui.UI_view.modifyViewTextSize();
 
             assign3DView();
 
@@ -172,9 +172,9 @@ namespace View3D
         {
             if (openGCode.ShowDialog() == DialogResult.OK)
             {
-                Main.main.threedview.Enabled = false;
+                threedview.Enabled = false;
                 LoadGCodeOrSTL(openGCode.FileName);
-                Main.main.threedview.Enabled = true;
+                threedview.Enabled = true;
             }
         }
 
@@ -184,7 +184,7 @@ namespace View3D
             if (!File.Exists(file)) return;
 
             FileInfo f = new FileInfo(file);
-            Main.threeDSettings.filament.BackColor = System.Drawing.Color.Chocolate;
+            threeDSettings.filament.BackColor = System.Drawing.Color.Chocolate;
 
             string fileLow = file.ToLower();
 

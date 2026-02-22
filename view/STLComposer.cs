@@ -1,20 +1,4 @@
-﻿/*
-   Copyright 2011 repetier repetierdev@gmail.com
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -49,7 +33,6 @@ namespace View3D.view
         }
 
         public BBoxInfo BBoxOfAllObjects = new BBoxInfo();
-        private bool writeSTLBinary = true;
         public ThreeDView cont;
         private Dictionary<ListViewItem, Button> delButtonList = new Dictionary<ListViewItem, Button>();
         public event ObjectModelRemovedEvent objectModelRemovedEvent = null;
@@ -62,6 +45,7 @@ namespace View3D.view
 
         public double inchtommX = 0, inchtommY = 0, inchtommZ = 0;
         public double mmtoinchX = 0, mmtoinchY = 0, mmtoinchZ = 0;
+
         public STLComposer()
         {
             InitializeComponent();
@@ -115,6 +99,7 @@ namespace View3D.view
             listObjects.Items.Add(item);
             SetObjectSelected(model, true);
         }
+
         private bool CloneObject(PrintModel model)
         {
             PrintModel newModel = (PrintModel)model.cloneWithModel();// (iSameName);
@@ -314,7 +299,7 @@ namespace View3D.view
             modelDatas.Add(new ModelData(file));
             models.Add(new PrintModel(modelDrawer, modelDatas[modelDatas.Count - 1].originalModel));
             FileInfo f = new FileInfo(file);
-            bool modelNotToLand = file.ToLower().EndsWith(".3ws");
+            bool modelToLand = true;
 
             ModelInOut modelIO = new ModelInOut();
 
@@ -346,18 +331,15 @@ namespace View3D.view
             models[models.Count - 1].serNum = models.Count - 1;
             models[models.Count - 1].ListviewGetModels += ListObjects;
 
-            if (!modelNotToLand)    // modelNotToLand: false
+            if (modelToLand)   
             {
-                if (true)   // Auto Position is true
-                {
-                    models[models.Count - 1].Center(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);  // PrintAreaWidth: 128, PrintAreaDepth: 128
+                models[models.Count - 1].Center(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);  // PrintAreaWidth: 128, PrintAreaDepth: 128
 
-                    if (models[models.Count - 1].BoundingBox.Center.x != 0 || models[models.Count - 1].BoundingBox.Center.y != 0 || models[models.Count - 1].BoundingBox.Center.z != 0)
-                    {
-                        models[models.Count - 1].ResetVertexPosToBBox();
-                    }
-                    models[models.Count - 1].Land();
+                if (models[models.Count - 1].BoundingBox.Center.x != 0 || models[models.Count - 1].BoundingBox.Center.y != 0 || models[models.Count - 1].BoundingBox.Center.z != 0)
+                {
+                    models[models.Count - 1].ResetVertexPosToBBox();
                 }
+                models[models.Count - 1].Land();
             }
             else
             {
@@ -373,7 +355,7 @@ namespace View3D.view
                 AddObject(models[models.Count - 1]);
                 cont.models.AddLast(models[models.Count - 1]);
 
-                if (!modelNotToLand)
+                if (modelToLand)
                     Autoposition();
                 
                 updateSTLState(models[models.Count - 1]);

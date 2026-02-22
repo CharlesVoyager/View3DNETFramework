@@ -473,10 +473,8 @@ namespace View3D.view.wpf
 
         private void button_mmtoinch_Click(object sender, RoutedEventArgs e)
         {
-
-            //Main.main.threedview.ui.UI_resize_advance.button_Reset_Click(null, null);
-            Main.main.threedview.ui.UI_resize_advance.button_mmtoinch.IsEnabled = false;
-            Main.main.threedview.ui.UI_resize_advance.button_inchtomm.IsEnabled = true;
+            button_mmtoinch.IsEnabled = false;
+            button_inchtomm.IsEnabled = true;
             PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             Main.main.objectPlacement.DoInchOrScale(stl, true);
@@ -484,9 +482,8 @@ namespace View3D.view.wpf
 
         private void button_inchtomm_Click(object sender, RoutedEventArgs e)
         {
-            //Main.main.threedview.ui.UI_resize_advance.button_Reset_Click(null, null);
-            Main.main.threedview.ui.UI_resize_advance.button_mmtoinch.IsEnabled = true;
-            Main.main.threedview.ui.UI_resize_advance.button_inchtomm.IsEnabled = false;
+            button_mmtoinch.IsEnabled = true;
+            button_inchtomm.IsEnabled = false;
             PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
             Main.main.objectPlacement.DoInchtomm(model);

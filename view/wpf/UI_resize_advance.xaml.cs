@@ -335,6 +335,8 @@ namespace View3D.view.wpf
                 slider_resizeTemp.IsEnabled = false;
                 txt_Scale.IsEnabled = false;
                 btn_Scale.IsEnabled = false;
+
+                txt_Scale.Text = "";
             }
             catch { }
         }
@@ -383,6 +385,8 @@ namespace View3D.view.wpf
                     }
                     break;
             }
+
+            txt_Scale.Text = (Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text) * 100).ToString("0");
         }
 
         public void checkMin()

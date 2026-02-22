@@ -7,42 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="Common">
-                <VisualState x:Name="State1">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0">
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Visible</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                        <DoubleAnimation To="1" Duration="0:00:00.7" Storyboard.TargetName="State1Panel" Storyboard.TargetProperty="(UIElement.Opacity)" />
-                    </Storyboard>
-                </VisualState>
-                <VisualState x:Name="State2">
-                    <Storyboard>
-                        <ObjectAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="Visibility">
-                            <DiscreteObjectKeyFrame KeyTime="0">
-                                <DiscreteObjectKeyFrame.Value>
-                                    <Visibility>Hidden</Visibility>
-                                </DiscreteObjectKeyFrame.Value>
-                            </DiscreteObjectKeyFrame>
-                        </ObjectAnimationUsingKeyFrames>
-                        <DoubleAnimation To="0" Duration="0:00:00.4" Storyboard.TargetName="State1Panel" Storyboard.TargetProperty="(UIElement.Opacity)" />
-                    </Storyboard>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
         <Border Opacity="1">
-
-            <Border.Background>
-                <SolidColorBrush />
-            </Border.Background>
-            
-            <Grid Name="grid1" Height="150" Width="310" Margin="2.5">
+            <Grid Height="150" Width="310" Margin="2.5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70"/>
                     <ColumnDefinition Width="80"/>
@@ -57,8 +23,8 @@
                     <RowDefinition Height="30"/>
                 </Grid.RowDefinitions>
 
-
                 <Rectangle Name="rectangle1" Grid.ColumnSpan="5" Grid.RowSpan="5" Fill="#C8F7931E" />
+              
                 <Label Content="Dimension:" Grid.Row="2" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" />
                 <Label Content="Position:" Grid.Row="3" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" />
                 <Label Content="Size:" Grid.Row="4" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontFamily="Arial" />

@@ -702,7 +702,7 @@ namespace View3D.view
                 textTransX.Text = (stl.Position.x).ToString(GCode.format);
                 textTransY.Text = (stl.Position.y).ToString(GCode.format);
                 textTransZ.Text = (stl.Position.z).ToString(GCode.format);
-                Main.main.gObjectInformation.Analyse(stl);
+                Main.main.threedview.ui.UI_object_information.Analyse(stl);
             }
             Main.main.threedview.UpdateChanges();
         }
@@ -1327,10 +1327,6 @@ namespace View3D.view
                 columnName.Width = nameWith;
         }
 
-        public void showObjectInfo(object sender, EventArgs e)
-        {
-            Main.main.gObjectInformation.Show();
-        }
 
         public void DoInchScale(PrintModel stl)
         {

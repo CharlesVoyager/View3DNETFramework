@@ -113,12 +113,6 @@
     <Compile Include="ModelLib\SWSetting.cs" />
     <Compile Include="ModelLib\Utils\RamTools.cs" />
     <Compile Include="view\ModelInOut.cs" />
-    <Compile Include="view\ObjectInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ObjectInformation.designer.cs">
-      <DependentUpon>ObjectInformation.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\STLComposer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -221,9 +215,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ObjectInformation.resx">
-      <DependentUpon>ObjectInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\STLComposer.resx">
       <DependentUpon>STLComposer.cs</DependentUpon>

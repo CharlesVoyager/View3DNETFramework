@@ -27,7 +27,6 @@ namespace View3D
 
         public ThreeDControl threedview = null;
         public STLComposer objectPlacement = null;
-        public ObjectInformation gObjectInformation = new ObjectInformation();
 
         public Trans trans = null;
 
@@ -110,8 +109,6 @@ namespace View3D
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
             this.DragDrop += new DragEventHandler(Form1_DragDrop);
- 
-            gObjectInformation.Owner = this;
         }
 
 

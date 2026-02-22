@@ -98,7 +98,6 @@ namespace View3D.view
             landObjectToolStripMenuItem.Text = Trans.T("B_LAND");
             resetObjectToolStripMenuItem.Text = Trans.T("B_RESET");
             removeObjectToolStripMenuItem.Text = Trans.T("B_REMOVE");
-            objectInfomationToolStripMenuItem.Text = Trans.T("B_INFO");
             mminchToolStripMenuItem.Text = Trans.T("B_SCALE_UP") + " (" + Trans.T("L_MM") + ">" + Trans.T("L_INCH") + ")";
             inchmmToolStripMenuItem.Text = Trans.T("B_SCALE_DOWN") + " (" + Trans.T("L_INCH") + ">" + Trans.T("L_MM") + ")";
             cloneToolStripMenuItem.Text = Trans.T("B_CLONE_OBJECT");
@@ -1128,7 +1127,6 @@ namespace View3D.view
             if (model == null)
             {
                 landObjectToolStripMenuItem.Visible = false;
-                objectInfomationToolStripMenuItem.Visible = false;
                 toolStripSeparator3.Visible = false;
                 resetObjectToolStripMenuItem.Visible = false;
                 removeObjectToolStripMenuItem.Visible = false;
@@ -1140,7 +1138,6 @@ namespace View3D.view
             else
             {
                 landObjectToolStripMenuItem.Visible = true;
-                objectInfomationToolStripMenuItem.Visible = true;
                 toolStripSeparator3.Visible = true;
                 resetObjectToolStripMenuItem.Visible = true;
                 removeObjectToolStripMenuItem.Visible = true;
@@ -1167,14 +1164,6 @@ namespace View3D.view
             Main.main.threedview.ui.remove_toggleButton_Click(null, null);
         }
 
-        private void objectInfomationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Main.main.objectPlacement.showObjectInfo(null, null);
-        }
-
-        private void newWorkspacetoolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
 
         private void mminchToolStripMenuItem_Click(object sender, EventArgs e)
         {

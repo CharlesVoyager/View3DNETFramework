@@ -38,7 +38,6 @@
             this.removeObjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cloneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.objectInfomationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gl = new View3D.view.utils.RHOpenGL();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -58,10 +57,9 @@
             this.resetObjectToolStripMenuItem,
             this.removeObjectToolStripMenuItem,
             this.cloneToolStripMenuItem,
-            this.toolStripSeparator3,
-            this.objectInfomationToolStripMenuItem});
+            this.toolStripSeparator3});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(234, 178);
+            this.contextMenu.Size = new System.Drawing.Size(234, 182);
             this.contextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenu_Opening);
             // 
             // landObjectToolStripMenuItem
@@ -111,13 +109,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
             // 
-            // objectInfomationToolStripMenuItem
-            // 
-            this.objectInfomationToolStripMenuItem.Name = "objectInfomationToolStripMenuItem";
-            this.objectInfomationToolStripMenuItem.Size = new System.Drawing.Size(233, 24);
-            this.objectInfomationToolStripMenuItem.Text = "Object infomation";
-            this.objectInfomationToolStripMenuItem.Click += new System.EventHandler(this.objectInfomationToolStripMenuItem_Click);
-            // 
             // gl
             // 
             this.gl.BackColor = System.Drawing.Color.Transparent;
@@ -160,7 +151,6 @@
         private System.Windows.Forms.ToolStripMenuItem resetObjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeObjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem objectInfomationToolStripMenuItem;
         public utils.RHOpenGL gl;
         private System.Windows.Forms.ToolStripMenuItem mminchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inchmmToolStripMenuItem;

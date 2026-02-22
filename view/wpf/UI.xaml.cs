@@ -35,6 +35,7 @@ namespace View3D.view.wpf
             VisualStateManager.GoToState(UI_move, "State2", true);
             VisualStateManager.GoToState(UI_rotate, "State2", true);
             VisualStateManager.GoToState(UI_resize_advance, "State2", true);
+            VisualStateManager.GoToState(UI_object_information, "State2", true);
 
             translate();
             Main.main.languageChanged += translate;
@@ -110,7 +111,7 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
-            Main.main.gObjectInformation.Hide();
+            info_toggleButton.IsChecked = false;
         }
 
         private void view_toggleButton_Unchecked(object sender, RoutedEventArgs e)
@@ -126,7 +127,7 @@ namespace View3D.view.wpf
                 return;
             }
 
-            //KPPH RCGREY - fix to bug for scenarios where move reset has been invoked in between support generation
+            //Fix the bug for scenarios where move reset has been invoked in between support generation
             if (!move_toggleButton.IsEnabled)
                 return;
 
@@ -134,8 +135,7 @@ namespace View3D.view.wpf
             view_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
-
-            Main.main.gObjectInformation.Hide();
+            info_toggleButton.IsChecked = false;
 
             PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
@@ -245,7 +245,8 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
-            Main.main.gObjectInformation.Hide();
+            info_toggleButton.IsChecked = false;
+
             Main.main.toolGCodeLoad_Click(null, null);
             // not enable
             if (Main.main.objectPlacement.listObjects.Items.Count > 0)
@@ -278,8 +279,8 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
+            info_toggleButton.IsChecked = false;
 
-            Main.main.gObjectInformation.Hide();
             Main.main.threedview.button_helpInfo_Click(null, null);
             Main.main.Focus();
         }
@@ -293,7 +294,7 @@ namespace View3D.view.wpf
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
-            Main.main.gObjectInformation.Hide();
+            info_toggleButton.IsChecked = false;
         }
 
         // Scale
@@ -303,7 +304,7 @@ namespace View3D.view.wpf
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
-            Main.main.gObjectInformation.Hide();
+            info_toggleButton.IsChecked = false;
 
             PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
@@ -375,15 +376,19 @@ namespace View3D.view.wpf
             return true;
         }
    
-        public void info_toggleButton_Click(object sender, RoutedEventArgs e)
+        private void info_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
+            VisualStateManager.GoToState(UI_object_information, "State1", true);
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
+        }
 
-            Main.main.gObjectInformation.Hide();
-            Main.main.objectPlacement.showObjectInfo(null, null);
+        private void info_toggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(UI_object_information, "State2", true);
+            Main.main.Focus();
         }
 
         public void remove_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -392,6 +397,7 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
+            info_toggleButton.IsChecked = false;
 
             Main.main.threedview.ui.UI_move.slider_moveX.Minimum = -1000;
             Main.main.threedview.ui.UI_move.slider_moveX.Maximum = 1000;
@@ -400,7 +406,6 @@ namespace View3D.view.wpf
 
             Main.main.threedview.ui.OutofBound.Visibility = System.Windows.Visibility.Hidden;
             Main.main.threedview.clipviewEnabled = false;
-            Main.main.gObjectInformation.Hide();
             Main.main.threedview.button_remove_Click(null, null);
             if (Main.main.objectPlacement.listObjects.Items.Count > 0)
             {
@@ -436,16 +441,8 @@ namespace View3D.view.wpf
             killed = true;
         }
 
-        private void button_slice_kill_Click(object sender, RoutedEventArgs e)
-        {
-   
-        }
 
-        private void info_toggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-            info_toggleButton.IsChecked = false;
-        }
-
+     
         private void remove_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
             remove_toggleButton.IsChecked = false;
@@ -459,6 +456,8 @@ namespace View3D.view.wpf
 
         System.Windows.Forms.Timer timer;
         int sec = 0;
+
+
     }
 
     public static class MouseDownHelper

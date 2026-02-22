@@ -471,11 +471,7 @@ namespace View3D.view
                                 Main.main.threedview.ui.UI_move.button_land_Click(null, null);
                                 Autoposition();
                             }
-                            TopoModel model = new TopoModel();
-                            StlSetting outSetting = new StlSetting();
-
                             models[models.Count - 1].UpdateMatrix();
-                            model.Merge(models[models.Count - 1].ActiveModel, models[models.Count - 1].trans, null);
                         }
                         catch { }
                     }

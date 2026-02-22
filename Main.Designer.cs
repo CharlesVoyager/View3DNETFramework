@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             this.openGCode = new System.Windows.Forms.OpenFileDialog();
-            this.saveJobDialog = new System.Windows.Forms.SaveFileDialog();
             this.splitLog = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitLog)).BeginInit();
-            this.splitLog.Panel1.SuspendLayout();
             this.splitLog.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,12 +39,6 @@
             this.openGCode.DefaultExt = "3wn";
             this.openGCode.Filter = "STL-Files|*.stl;";
             this.openGCode.Title = "Import 3wn";
-            // 
-            // saveJobDialog
-            // 
-            this.saveJobDialog.DefaultExt = "3wn";
-            this.saveJobDialog.Filter = "3wn|*.3wn";
-            this.saveJobDialog.Title = "Save 3wn";
             // 
             // splitLog
             // 
@@ -57,9 +49,6 @@
             this.splitLog.Margin = new System.Windows.Forms.Padding(4);
             this.splitLog.Name = "splitLog";
             this.splitLog.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitLog.Panel1
-            // 
             this.splitLog.Panel2Collapsed = true;
             this.splitLog.Size = new System.Drawing.Size(1105, 765);
             this.splitLog.SplitterDistance = 359;
@@ -86,18 +75,14 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Move += new System.EventHandler(this.Main_Move);
             this.Resize += new System.EventHandler(this.Main_Resize);
-            this.splitLog.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitLog)).EndInit();
             this.splitLog.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
-
 
         }
         #endregion
 
         public System.Windows.Forms.OpenFileDialog openGCode;
-        public System.Windows.Forms.SaveFileDialog saveJobDialog;
         private System.Windows.Forms.SplitContainer splitLog;
     }
 }

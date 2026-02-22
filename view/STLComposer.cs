@@ -30,7 +30,6 @@ using View3D.view.wpf;
 
 namespace View3D.view
 {
-    public delegate void RepairToolDelegate(PrintModel model);
     public delegate void ObjectModelRemovedEvent(PrintModel model);
 
     public partial class STLComposer : UserControl

@@ -383,9 +383,6 @@ namespace View3D.view.wpf
                     }
                     break;
             }
-
-            //Modified by RCGREY for STL Slice Previewer
-            //Main.main.threedview.setMinMaxClippingLayer();
         }
 
         public void checkMin()
@@ -471,10 +468,7 @@ namespace View3D.view.wpf
             IsScale = true;
             gIsShow = false;
             checkMin();
-            txt_Scale.Text = "";
             Main.main.objectPlacement.check_stl_size_too_small();
-            //Modified by RCGREY for STL Slice Previewer
-            //Main.main.threedview.setMinMaxClippingLayer();
         }
 
         private void button_mmtoinch_Click(object sender, RoutedEventArgs e)

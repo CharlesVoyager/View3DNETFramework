@@ -259,7 +259,7 @@ namespace View3D.view
                 textRotX.Enabled = true;
                 textRotY.Enabled = true;
                 textRotZ.Enabled = true;
-                textScaleX.Enabled = true;
+                textScaleX.Enabled = !LockAspectRatio;
                 textScaleY.Enabled = !LockAspectRatio;
                 textScaleZ.Enabled = !LockAspectRatio;
                 buttonLockAspect.Enabled = true;
@@ -658,6 +658,7 @@ namespace View3D.view
             set
             {
                 buttonLockAspect.ImageIndex = value ? 1 : 0;
+                textScaleX.Enabled = !value;
                 textScaleY.Enabled = !value;
                 textScaleZ.Enabled = !value;
             }

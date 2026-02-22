@@ -52,7 +52,6 @@ namespace View3D.view
         public BBoxInfo BBoxOfAllObjects = new BBoxInfo();
         private bool writeSTLBinary = true;
         public ThreeDView cont;
-        private bool autosizeFailed = false;
         private Dictionary<ListViewItem, Button> delButtonList = new Dictionary<ListViewItem, Button>();
         public event ObjectModelRemovedEvent objectModelRemovedEvent = null;
         public List<PrintModel> models = new List<PrintModel>();
@@ -445,7 +444,6 @@ namespace View3D.view
                             tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
 
                             tMax = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
-                            autosizeFailed = false;
                             if (tMax == tXBound)
                             {
                                 models[models.Count - 1].Scale.x = (float)(Convert.ToDouble(Main.main.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x);
@@ -471,7 +469,6 @@ namespace View3D.view
                                 Main.main.threedview.ui.UI_move.button_land_Click(null, null);
                                 Autoposition();
                             }
-                            models[models.Count - 1].UpdateMatrix();
                         }
                         catch { }
                     }
@@ -910,7 +907,6 @@ namespace View3D.view
             PrintModel model = (PrintModel)((Button)sender).Tag;
             cont.models.Remove(model);
             RemoveObject(model);
-            autosizeFailed = false;
             models[model.mid].Clear();
             Main.main.threedview.UpdateChanges();
         }
@@ -956,7 +952,6 @@ namespace View3D.view
         {
             cont.models.Remove(model);
             RemoveObject(model);
-            autosizeFailed = false; // Reset autoposition
             for (int i = 0; i < models.Count; i++)
             {
                 if (models[i] == model)
@@ -1019,11 +1014,6 @@ namespace View3D.view
             RemoveAllSelectedModels();
         }
 
-
-     
-
-      
-
         public bool Autoposition(bool inputByClone = false)
         {  
             if (listObjects.Items.Count == 1)
@@ -1035,7 +1025,7 @@ namespace View3D.view
                 Main.main.threedview.UpdateChanges();
                 return true;
             }
-            //if (autosizeFailed) return;
+
             RectPacker packer = new RectPacker(1, 1);
             OutRectPacker outPacker = new OutRectPacker(1000);
 
@@ -1045,7 +1035,7 @@ namespace View3D.view
             float maxH = Main.main.PrintAreaDepth;
             float xOff = 0, yOff = 0;
             outPacker.SetPlatformSize(maxW, maxH);
-
+            bool autosizeFailed = false;
             foreach (PrintModel stl in ListObjects(false))
             {
                 if (typeof(PrintModel) != stl.GetType())
@@ -1085,6 +1075,7 @@ namespace View3D.view
                 Trans.T("W_PRINTER_BED_FULL"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             float xAdd = (maxW - packer.w) / 2.0f;
             float yAdd = (maxH - packer.h) / 2.0f;
             foreach (PackerRect rect in packer.vRects)

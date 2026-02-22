@@ -20,7 +20,6 @@ namespace View3D
         public event languageChangedEvent languageChanged;
 
         public static Main main;
-        public static PrinterModel printerModel;
         public static ThreeDSettings threeDSettings;
 
         private string basicTitle = "";
@@ -78,7 +77,6 @@ namespace View3D
             main = this;
 
             trans = new Trans(Application.StartupPath + Path.DirectorySeparatorChar + "Resources");
-            printerModel = new PrinterModel();
             threeDSettings = new ThreeDSettings();
 
             InitializeComponent();

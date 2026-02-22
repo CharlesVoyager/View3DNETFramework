@@ -111,7 +111,7 @@ For troubleshooting, please refer to our user guide.</t>
 <t id="B_LAND">Land</t>
 <t id="L_MODELING">Loading model…</t>
 <t id="W_OBJ_TOO_SMALL">Object is too small</t>
-<t id="M_OBJ_TOO_SMALL">The object is too large for the platform. To fit the object in the platform, do you want to scale it down?
+<t id="M_OBJ_SCALE_DOWN">The object is too large for the platform. To fit the object in the platform, do you want to scale it down?
 Scale by</t>
 <t id="L_ELAPSED_TIME">Elapsed Time</t>
 <t id="L_PRODUCT_REGISTRATION">Register Printer</t>

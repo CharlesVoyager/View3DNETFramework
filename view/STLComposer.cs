@@ -436,7 +436,7 @@ namespace View3D.view
                         scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaHeight) / models[models.Count - 1].BoundingBox.Size.z) * 100;
                     }
 
-                    if (MessageBox.Show(Trans.T("M_OBJ_TOO_SMALL") + " " + (int)scaleValue + "%", Trans.T("W_OBJ_TOO_LARGE"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show(Trans.T("M_OBJ_SCALE_DOWN") + " " + (int)scaleValue + "%", Trans.T("W_OBJ_TOO_LARGE"), MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         try
                         {
@@ -445,7 +445,7 @@ namespace View3D.view
                             tZBound = models[models.Count - 1].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
 
                             tMax = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
-                            autosizeFailed = false;//Fix Autoposition_160223
+                            autosizeFailed = false;
                             if (tMax == tXBound)
                             {
                                 models[models.Count - 1].Scale.x = (float)(Convert.ToDouble(Main.main.PrintAreaWidth) / models[models.Count - 1].BoundingBox.Size.x);
@@ -457,7 +457,6 @@ namespace View3D.view
                             }
                             else if (tMax == tYBound)
                             {
-                                //Fix_AutoReSize_issue_160830
                                 models[models.Count - 1].Scale.y = (float)(Convert.ToDouble(Main.main.PrintAreaDepth) / models[models.Count - 1].BoundingBox.Size.y);
                                 models[models.Count - 1].Scale.x = models[models.Count - 1].Scale.y;
                                 models[models.Count - 1].Scale.z = models[models.Count - 1].Scale.y;

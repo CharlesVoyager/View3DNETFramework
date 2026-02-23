@@ -752,9 +752,6 @@ namespace View3D.view
 
         private void gl_MouseDown(object sender, MouseEventArgs e)
         {
-            if (System.Environment.OSVersion.Version.Major <= 5)
-                ui.ui_grid.Visibility = System.Windows.Visibility.Hidden;
-
             ui.view_toggleButton.IsChecked = false;
             ui.move_toggleButton.IsChecked = false;
             ui.resize_toggleButton.IsChecked = false;
@@ -804,9 +801,6 @@ namespace View3D.view
 
         private void gl_MouseUp(object sender, MouseEventArgs e)
         {
-            if (System.Environment.OSVersion.Version.Major <= 5)
-                ui.ui_grid.Visibility = System.Windows.Visibility.Visible;
-
             ThreeDModel sel = null;
 
             // not in Support Editor mode, check if changing the 'selected' object. Otherwise, not change.

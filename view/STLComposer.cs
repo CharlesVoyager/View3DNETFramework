@@ -1158,33 +1158,22 @@ namespace View3D.view
             cloneModels.Clear();
             cloneModels = GetSelectedPrintModels();
             foreach (PrintModel pm in cloneModels)
-            {
                 CloneObject(pm);
-                //if(CloneObject(pm))
-                //{
-                //    return;
-                //}
-            }
         }
 
         private void listObjects_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 1) // Mesh
             {
                 e.DrawDefault = false;
-                //  if ((e.ItemState & ListViewItemStates.Selected) == 0)
-                //      e.DrawBackground();
-
                 Graphics g = e.Graphics;
                 PrintModel model = (PrintModel)e.Item.Tag;
                 g.DrawImage(imageList16.Images[model.Model.manifold ? 2 : 3], e.Bounds.Left + e.Bounds.Width / 2 - 8, e.Bounds.Top + e.Bounds.Height / 2 - 8);
             }
-            else if (e.ColumnIndex == 2)
+            else if (e.ColumnIndex == 2) // Collision
             {
                 PrintModel model = (PrintModel)e.Item.Tag;
                 e.DrawDefault = false;
-                //  if ((e.ItemState & ListViewItemStates.Selected) == 0)
-                //      e.DrawBackground();
                 Graphics g = e.Graphics;
                 int idx = model.outside ? 3 : 2;
                 g.DrawImage(imageList16.Images[idx], e.Bounds.Left + e.Bounds.Width / 2 - 8, e.Bounds.Top + e.Bounds.Height / 2 - 8);
@@ -1192,8 +1181,6 @@ namespace View3D.view
             else if (e.ColumnIndex == 3) // Trash
             {
                 e.DrawDefault = false;
-                //if ((e.ItemState & ListViewItemStates.Selected) == 0)
-                //    e.DrawBackground();
                 Button b = delButtonList.ContainsKey(e.Item) ? delButtonList[e.Item] : null;
                 if (b != null)
                 {

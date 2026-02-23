@@ -101,8 +101,7 @@ namespace View3D
             basicTitle = Text;
             threedview.ui.modifyUITextSize();
             threedview.ui.UI_view.modifyViewTextSize();
-
-            assign3DView();
+            threedview.SetView(objectPlacement.cont);
 
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
@@ -203,16 +202,6 @@ namespace View3D
         {
             if (threedview != null)
                 threedview.UpdateChanges();
-        }
-
-        public void assign3DView()
-        {
-            threedview.SetView(objectPlacement.cont);
-
-            //threedview.SetView(jobPreview);
-            //threedview.ui.info_toggleButton.Visibility = System.Windows.Visibility.Visible;
-
-            //threedview.SetView(printPreview);
         }
 
         private void Main_Resize(object sender, EventArgs e)

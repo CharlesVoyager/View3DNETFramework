@@ -24,9 +24,6 @@ namespace View3D.view
         IDraw modelDrawer = new ModelGLDraw();
         private List<PrintModel> cloneModels = new List<PrintModel>();
 
-        public double inchtommX = 0, inchtommY = 0, inchtommZ = 0;
-        public double mmtoinchX = 0, mmtoinchY = 0, mmtoinchZ = 0;
-
         public STLComposer()
         {
             InitializeComponent();
@@ -1344,7 +1341,6 @@ namespace View3D.view
                     textScaleX.Text = (tempX / Main.main.threedview.ui.UI_resize_advance.bboxnow).ToString("0.000");
                     textScaleY.Text = (tempY / Main.main.threedview.ui.UI_resize_advance.bboynow).ToString("0.000");
                     textScaleZ.Text = (tempZ / Main.main.threedview.ui.UI_resize_advance.bboznow).ToString("0.000");
-                    inchtommX = tempX; inchtommY = tempY; inchtommZ = tempZ;
                     updateSTLState(stl);
                     stl.LandUpdateBBNoPreUpdate();
                     Main.main.threedview.UpdateChanges();

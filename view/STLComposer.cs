@@ -18,21 +18,6 @@ namespace View3D.view
 
     public partial class STLComposer : UserControl
     {
-        public class BBoxInfo
-        {
-            public double MaxX;
-            public double MinX;
-            public double MaxY;
-            public double MinY;
-            public double MaxZ;
-            public double MinZ;
-            public double NewScaleX;
-            public double NewScaleY;
-            public double OffsetX;
-            public double OffsetY;
-        }
-
-        public BBoxInfo BBoxOfAllObjects = new BBoxInfo();
         public ThreeDView cont;
         private Dictionary<ListViewItem, Button> delButtonList = new Dictionary<ListViewItem, Button>();
         public event ObjectModelRemovedEvent objectModelRemovedEvent = null;

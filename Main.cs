@@ -76,15 +76,19 @@ namespace View3D
 
             main = this;
 
-            trans = new Trans(Application.StartupPath + Path.DirectorySeparatorChar + "Resources");
-            threeDSettings = new ThreeDSettings();
-
             InitializeComponent();
 
             if (WindowState == FormWindowState.Maximized)
                 Application.DoEvents();
 
             splitLog.Panel2Collapsed = true;
+
+            // Translator
+            trans = new Trans(Application.StartupPath + Path.DirectorySeparatorChar + "Resources");
+
+            // ThreeDSettings
+            threeDSettings = new ThreeDSettings();
+            threeDSettings.Show();
 
             // STLComposer
             View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();

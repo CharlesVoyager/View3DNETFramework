@@ -88,7 +88,7 @@ namespace View3D
 
             // STLComposer
             View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();
-            objectPlacement = stlComposerWnd.stlComposerWindow;
+            objectPlacement = stlComposerWnd.stlComposerUserControl;
             stlComposerWnd.Show();
 
             // ThreeDControl

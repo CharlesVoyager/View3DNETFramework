@@ -8,7 +8,7 @@
         Title="StlComposer Window" Height="540" Width="360">
     <Grid>
         <WindowsFormsHost>
-            <local:STLComposer x:Name="stlComposerWindow" />
+            <local:STLComposer x:Name="stlComposerUserControl" />
         </WindowsFormsHost>
     </Grid>
 </Window>

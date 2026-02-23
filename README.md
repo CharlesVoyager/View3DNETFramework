@@ -1,5 +1,5 @@
 # OpenGL 3D Viwer
-<img src="Snapshot.PNG" alt="image">
+<img src="Snapshot.png" alt="image">
 This is a simple 3D model viewer built with OpenGL and C#. It allows you to load 3D models in STL format and view them in a 3D environment. 
 
 ## Requirements

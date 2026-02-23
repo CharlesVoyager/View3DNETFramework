@@ -420,6 +420,7 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
+            info_toggleButton.IsChecked = false;
 
             Main.main.threedview.button_zoomIn_Click(null, null);
             Main.main.Focus();
@@ -431,6 +432,7 @@ namespace View3D.view.wpf
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
+            info_toggleButton.IsChecked = false;
 
             Main.main.threedview.button_zoomOut_Click(null, null);
             Main.main.Focus();
@@ -446,8 +448,6 @@ namespace View3D.view.wpf
         public void ChangeLoginUI(bool isForceLogin)
         {
         }
-
-
     }
 
     public static class MouseDownHelper

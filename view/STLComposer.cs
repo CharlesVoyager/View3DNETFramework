@@ -14,13 +14,11 @@ using View3D.view.wpf;
 
 namespace View3D.view
 {
-    public delegate void ObjectModelRemovedEvent(PrintModel model);
 
     public partial class STLComposer : UserControl
     {
         public ThreeDView cont;
         private Dictionary<ListViewItem, Button> delButtonList = new Dictionary<ListViewItem, Button>();
-        public event ObjectModelRemovedEvent objectModelRemovedEvent = null;
         public List<PrintModel> models = new List<PrintModel>();
         public List<ModelData> modelDatas = new List<ModelData>();
 
@@ -151,8 +149,6 @@ namespace View3D.view
             foreach (Button b in delButtonList.Values)
                 b.Visible = false;
             listObjects.Items.Remove(item);
-            if (objectModelRemovedEvent != null)
-                objectModelRemovedEvent(model);
             GC.Collect();
         }
 

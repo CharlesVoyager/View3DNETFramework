@@ -12,8 +12,6 @@ namespace View3D.view
         public onObjectSelected eventObjectSelected;
         public bool editor = false;
         public bool autoupdateable = false;
-        public int slowCounter = 0; // Indicates slow framerates
-        public uint timeCall = 0;
         public bool objectsSelected = false;
         public LinkedList<ThreeDModel> models;
 
@@ -26,11 +24,5 @@ namespace View3D.view
         {
             editor = ed;
         }
-
-        public LinkedList<ThreeDModel> OnGetAllViewModels()
-        {
-            return models;
-        }
-
     }
 }

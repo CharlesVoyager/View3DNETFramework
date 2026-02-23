@@ -1041,19 +1041,6 @@ namespace View3D.view
             Application_Idle(sender, e);
         }
 
-        private void toolStripClear_Click(object sender, EventArgs e)
-        {
-            if (view.editor)
-            {
-                Main.main.objectPlacement.buttonRemoveSTL_Click(null, null);
-            }
-            foreach (ThreeDModel m in view.models)
-            {
-                m.Clear();
-            }
-            gl.Invalidate();
-        }
-
         private void ThreeDControl_MouseEnter(object sender, EventArgs e)
         {
             // Focus();

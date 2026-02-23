@@ -67,7 +67,7 @@
             this.MinimumSize = new System.Drawing.Size(796, 737);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "View 3D STL Files";
+            this.Text = "OpenGL 3D Viewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.Shown += new System.EventHandler(this.Main_Shown);

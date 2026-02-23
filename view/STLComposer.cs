@@ -14,7 +14,6 @@ using View3D.view.wpf;
 
 namespace View3D.view
 {
-
     public partial class STLComposer : UserControl
     {
         public ThreeDView cont;
@@ -125,31 +124,6 @@ namespace View3D.view
             Autoposition();
             updateSTLState(newModel);
             return true;
-        }
-
-        public void RemoveObject(PrintModel model)
-        {
-            ListViewItem item = null;
-            resetTotalTime(model.serNum);
-            foreach (ListViewItem test in listObjects.Items)
-            {
-                if (test.Tag == model)
-                {
-                    item = test;
-                    break;
-                }
-            }
-            if (item == null) return;
-            Button trash = delButtonList[item];
-            if (trash != null)
-            {
-                listObjects.Controls.Remove(trash);
-                delButtonList.Remove(item);
-            }
-            foreach (Button b in delButtonList.Values)
-                b.Visible = false;
-            listObjects.Items.Remove(item);
-            GC.Collect();
         }
 
         public LinkedList<PrintModel> ListObjects(bool selected)
@@ -853,8 +827,7 @@ namespace View3D.view
         {
             PrintModel model = (PrintModel)((Button)sender).Tag;
             cont.models.Remove(model);
-            RemoveObject(model);
-            models[model.mid].Clear();
+            RemoveModel(model);
             Main.main.threedview.UpdateChanges();
         }
 
@@ -898,7 +871,31 @@ namespace View3D.view
         private void RemoveModel(PrintModel model)
         {
             cont.models.Remove(model);
-            RemoveObject(model);
+
+            #region Remove the litem from the list.
+            ListViewItem item = null;
+            resetTotalTime(model.serNum);
+            foreach (ListViewItem test in listObjects.Items)
+            {
+                if (test.Tag == model)
+                {
+                    item = test;
+                    break;
+                }
+            }
+            if (item == null) return;
+            Button trash = delButtonList[item];
+            if (trash != null)
+            {
+                listObjects.Controls.Remove(trash);
+                delButtonList.Remove(item);
+            }
+            foreach (Button b in delButtonList.Values)
+                b.Visible = false;
+            listObjects.Items.Remove(item);
+            GC.Collect();
+            #endregion
+
             for (int i = 0; i < models.Count; i++)
             {
                 if (models[i] == model)

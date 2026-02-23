@@ -40,7 +40,6 @@
             this.labelSelectedFaces = new System.Windows.Forms.Label();
             this.labelFaces = new System.Windows.Forms.Label();
             this.labelBackgroundTop = new System.Windows.Forms.Label();
-            this.buttonOK = new System.Windows.Forms.Button();
             this.showEdges = new System.Windows.Forms.CheckBox();
             this.tdSettings = new System.Windows.Forms.BindingSource(this.components);
             this.comboDrawMethod = new System.Windows.Forms.ComboBox();
@@ -227,18 +226,6 @@
             this.labelBackgroundTop.TabIndex = 0;
             this.labelBackgroundTop.Text = "Background Top:";
             // 
-            // buttonOK
-            // 
-            this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOK.Location = new System.Drawing.Point(528, 579);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(100, 28);
-            this.buttonOK.TabIndex = 0;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
             // showEdges
             // 
             this.showEdges.AutoSize = true;
@@ -360,7 +347,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(618, 511);
+            this.tabControl1.Size = new System.Drawing.Size(618, 446);
             this.tabControl1.TabIndex = 0;
             // 
             // tabGeneral
@@ -371,7 +358,7 @@
             this.tabGeneral.Location = new System.Drawing.Point(4, 25);
             this.tabGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.tabGeneral.Name = "tabGeneral";
-            this.tabGeneral.Size = new System.Drawing.Size(610, 482);
+            this.tabGeneral.Size = new System.Drawing.Size(610, 417);
             this.tabGeneral.TabIndex = 0;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
@@ -445,7 +432,7 @@
             this.tabModel.Location = new System.Drawing.Point(4, 25);
             this.tabModel.Margin = new System.Windows.Forms.Padding(4);
             this.tabModel.Name = "tabModel";
-            this.tabModel.Size = new System.Drawing.Size(610, 482);
+            this.tabModel.Size = new System.Drawing.Size(610, 417);
             this.tabModel.TabIndex = 1;
             this.tabModel.Text = "Model";
             this.tabModel.UseVisualStyleBackColor = true;
@@ -458,7 +445,7 @@
             this.groupEditor.Margin = new System.Windows.Forms.Padding(4);
             this.groupEditor.Name = "groupEditor";
             this.groupEditor.Padding = new System.Windows.Forms.Padding(4);
-            this.groupEditor.Size = new System.Drawing.Size(570, 129);
+            this.groupEditor.Size = new System.Drawing.Size(570, 89);
             this.groupEditor.TabIndex = 1;
             this.groupEditor.TabStop = false;
             this.groupEditor.Text = "Editor";
@@ -638,7 +625,7 @@
             this.tabLights.Location = new System.Drawing.Point(4, 25);
             this.tabLights.Margin = new System.Windows.Forms.Padding(4);
             this.tabLights.Name = "tabLights";
-            this.tabLights.Size = new System.Drawing.Size(610, 482);
+            this.tabLights.Size = new System.Drawing.Size(610, 417);
             this.tabLights.TabIndex = 3;
             this.tabLights.Text = "Lights";
             this.tabLights.UseVisualStyleBackColor = true;
@@ -1090,14 +1077,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(646, 645);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(646, 461);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.buttonOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "ThreeDSettings";
             this.Text = "3D visualization settings";
             this.TopMost = true;
@@ -1127,7 +1110,6 @@
         private System.Windows.Forms.Label labelSelectedFaces;
         private System.Windows.Forms.Label labelFaces;
         private System.Windows.Forms.Label labelBackgroundTop;
-        private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label labelPrinterBase;
         public System.Windows.Forms.Panel faces;
         public System.Windows.Forms.Panel backgroundTop;

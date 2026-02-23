@@ -197,12 +197,6 @@ namespace View3D.view
             catch { }
         }
 
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
-            FormToRegistry();
-            Hide();
-        }
-
         private void faces_Click(object sender, EventArgs e)
         {
             colorDialog.Color = faces.BackColor;

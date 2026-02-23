@@ -22,7 +22,6 @@ namespace View3D.view
         public List<ModelData> modelDatas = new List<ModelData>();
 
         IDraw modelDrawer = new ModelGLDraw();
-        int mergedCount;
         private List<PrintModel> cloneModels = new List<PrintModel>();
 
         public double inchtommX = 0, inchtommY = 0, inchtommZ = 0;
@@ -1401,19 +1400,6 @@ namespace View3D.view
                 Main.main.threedview.UpdateChanges();
             }
             catch { }
-        }
-
-        public void OnProcessUpdateForStlMerge(double value)
-        {
-            if (Main.main.threedview.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
-                Main.main.threedview.ui.BusyWindow.increment != 0.0)
-            {
-                if (Main.main.threedview.ui.BusyWindow.busyProgressbar.Value < Main.main.threedview.ui.BusyWindow.firstStagePercent)
-                {
-                    Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((value + mergedCount * 100) / GetAllPrintModels().Count) * Main.main.threedview.ui.BusyWindow.firstStagePercent / 100;
-                }
-                Application.DoEvents();
-            }
         }
     }
 }

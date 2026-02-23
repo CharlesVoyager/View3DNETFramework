@@ -54,55 +54,6 @@ namespace View3D.view
 
         public void translate()
         {
-            Text = Trans.T("W_3D_VISUALIZATION_SETTINGS");
-            groupColors.Text = Trans.T("L_COLORS");
-            groupColors2.Text = Trans.T("L_COLORS");
-            groupEditor.Text = Trans.T("L_EDITOR");
-            groupPrintbed.Text = Trans.T("L_PRINTBED");
-            groupVisualization.Text = Trans.T("L_VISUALIZATION");
-            labelAmbientColor.Text = Trans.T("L_AMBIENT_COLOR");
-            labelBackgroundTop.Text = Trans.T("L_BACKGROUND_TOP");
-            labelBackgroundBottom.Text = Trans.T("L_BACKGROUND_BOTTOM");
-            labelPrinterFrame.Text = Trans.T("L_PRINTER_FRAME");
-            labelDiffuseColor.Text = Trans.T("L_DIFFUSE_COLOR");
-            labelDrawMethod.Text = Trans.T("L_DRAW_METHOD");
-            labelEdges.Text = Trans.T("L_EDGES");
-            labelFaces.Text = Trans.T("L_FACES");
-            labelLight1.Text = Trans.T1("L_LIGHT_X", "1");
-            labelLight2.Text = Trans.T1("L_LIGHT_X", "2");
-            labelLight3.Text = Trans.T1("L_LIGHT_X", "3");
-            labelLight4.Text = Trans.T1("L_LIGHT_X", "4");
-            labelObjectsOutsidePrintbed.Text = Trans.T("L_OBJECTS_OUTSIDE_PRINTBED");
-            labelPrinterBase.Text = Trans.T("L_PRINTER_BASE");
-            labelSelectedFaces.Text = Trans.T("L_SELECTED_FACES");
-            labelSelectedFilament.Text = Trans.T("L_SELECTED_FILAMENT");
-            labelSpecularColor.Text = Trans.T("L_SPECULAR_COLOR");
-            labelXDirection.Text = Trans.T("L_X_DIRECTION");
-            labelYDirection.Text = Trans.T("L_Y_DIRECTION");
-            labelZDirection.Text = Trans.T("L_Z_DIRECTION");
-            enableLight1.Text = enableLight2.Text = enableLight3.Text = enableLight4.Text = Trans.T("L_ENABLE_LIGHT");
-            showEdges.Text = Trans.T("L_SHOW_EDGES");
-            showFaces.Text = Trans.T("L_SHOW_FACES");
-            showPrintbed.Text = Trans.T("L_SHOW_PRINTBED");
-            tabGeneral.Text = Trans.T("TAB_GENERAL");
-            tabFilament.Text = Trans.T("TAB_FILAMENT");
-            tabModel.Text = Trans.T("TAB_MODEL");
-            tabLights.Text = Trans.T("TAB_LIGHTS");
-            labelModelError.Text = Trans.T("L_MODEL_ERRORS");
-            labelInsideFaces.Text = Trans.T("L_INNER_FACES");
-            /*  Autodetect best
-                VBOs (fastest)
-                Arrays (medium)
-                Immediate (slow)    */
-            comboDrawMethod.Items[0] = Trans.T("L_DRAW_METHOD_AUTODETECT");
-            comboDrawMethod.Items[1] = Trans.T("L_DRAW_METHOD_VBOS");
-            comboDrawMethod.Items[2] = Trans.T("L_DRAW_METHOD_ARRAYS");
-            comboDrawMethod.Items[3] = Trans.T("L_DRAW_METHOD_IMMEDIATE");
-            buttonOK.Text = Trans.T("B_OK");
-            labelSelectionBox.Text = Trans.T("L_SELECTION_BOX");
-            labelTravelMoves.Text = Trans.T("L_TRAVEL_MOVES:");
-            checkDisableTravelMoves.Text = Trans.T("L_DISABLE_TRAVEL_MOVES_VIS");
-            checkCorrectNormals.Text = Trans.T("L_CORRECT_NORMALS");
         }
 
         public bool ShowEdges
@@ -142,15 +93,10 @@ namespace View3D.view
                 threedKey.SetValue("selectedFacesColor", selectedFaces.BackColor.ToArgb());
                 threedKey.SetValue("printerBaseColor", printerBase.BackColor.ToArgb());
                 threedKey.SetValue("printerFrameColor", printerFrame.BackColor.ToArgb());
-                threedKey.SetValue("filamenColor", filament.BackColor.ToArgb());
-                threedKey.SetValue("travelColor", travelMoves.BackColor.ToArgb());
-                threedKey.SetValue("selectedFilamentColor", selectedFilament.BackColor.ToArgb());
                 threedKey.SetValue("outsidePrintbedColor", outsidePrintbed.BackColor.ToArgb());
                 threedKey.SetValue("showEdges", _showEdges ? 1 : 0);
                 threedKey.SetValue("showFaces", _showFaces ? 1 : 0);
                 threedKey.SetValue("showPrintbed", showPrintbed.Checked ? 1 : 0);
-                threedKey.SetValue("disableTravelVisualization", checkDisableTravelMoves.Checked ? 1 : 0);
-                threedKey.SetValue("correctNormals", checkCorrectNormals.Checked ? 1 : 0);
                 threedKey.SetValue("enableLight1", enableLight1.Checked ? 1 : 0);
                 threedKey.SetValue("enableLight2", enableLight2.Checked ? 1 : 0);
                 threedKey.SetValue("enableLight3", enableLight3.Checked ? 1 : 0);
@@ -204,14 +150,10 @@ namespace View3D.view
                 selectedFaces.BackColor = Color.FromArgb((int)threedKey.GetValue("selectedFacesColor", selectedFaces.BackColor.ToArgb()));
                 printerBase.BackColor = Color.FromArgb((int)threedKey.GetValue("printerBaseColor", printerBase.BackColor.ToArgb()));
                 printerFrame.BackColor = Color.FromArgb((int)threedKey.GetValue("printerFrameColor", printerFrame.BackColor.ToArgb()));
-                filament.BackColor = Color.FromArgb((int)threedKey.GetValue("filamenColor", filament.BackColor.ToArgb()));
-                travelMoves.BackColor = Color.FromArgb((int)threedKey.GetValue("travelColor", travelMoves.BackColor.ToArgb()));
-                selectedFilament.BackColor = Color.FromArgb((int)threedKey.GetValue("selectedFilamentColor", selectedFilament.BackColor.ToArgb()));
                 outsidePrintbed.BackColor = Color.FromArgb((int)threedKey.GetValue("outsidePrintbedColor", outsidePrintbed.BackColor.ToArgb()));
                 _showEdges = 0 != (int)threedKey.GetValue("showEdges", _showEdges ? 1 : 0);
                 _showFaces = 0 != (int)threedKey.GetValue("showFaces", _showFaces ? 1 : 0);
                 showPrintbed.Checked = 0 != (int)threedKey.GetValue("showPrintbed", showPrintbed.Checked ? 1 : 0);
-                checkDisableTravelMoves.Checked = 0 != (int)threedKey.GetValue("disableTravelVisualization", checkDisableTravelMoves.Checked ? 1 : 0);
                 enableLight1.Checked = 0 != (int)threedKey.GetValue("enableLight1", enableLight1.Checked ? 1 : 0);
                 enableLight2.Checked = 0 != (int)threedKey.GetValue("enableLight2", enableLight2.Checked ? 1 : 0);
                 enableLight3.Checked = 0 != (int)threedKey.GetValue("enableLight3", enableLight3.Checked ? 1 : 0);
@@ -219,7 +161,6 @@ namespace View3D.view
 
                 // useVBOs = 0 != (int)threedKey.GetValue("useVBOs", useVBOs.Checked ? 1 : 0);
                 comboDrawMethod.SelectedIndex = (int)threedKey.GetValue("drawMethod", 0);
-                checkCorrectNormals.Checked = 0 != (int)threedKey.GetValue("correctNormals", checkCorrectNormals.Checked ? 1 : 0);
                 ambient1.BackColor = Color.FromArgb((int)threedKey.GetValue("ambient1Color", ambient1.BackColor.ToArgb()));
                 diffuse1.BackColor = Color.FromArgb((int)threedKey.GetValue("diffuse1Color", diffuse1.BackColor.ToArgb()));
                 specular1.BackColor = Color.FromArgb((int)threedKey.GetValue("specular1Color", specular1.BackColor.ToArgb()));

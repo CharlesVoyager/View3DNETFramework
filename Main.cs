@@ -182,11 +182,7 @@ namespace View3D
         {
             if (!File.Exists(file)) return;
 
-            FileInfo f = new FileInfo(file);
-            threeDSettings.filament.BackColor = System.Drawing.Color.Chocolate;
-
             string fileLow = file.ToLower();
-
             if (fileLow.EndsWith(".stl"))
                 objectPlacement.openAndAddObject(file);
         }

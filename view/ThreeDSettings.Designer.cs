@@ -30,13 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.groupColors2 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelTravelMoves = new System.Windows.Forms.Label();
-            this.selectedFilament = new System.Windows.Forms.Panel();
-            this.labelSelectedFilament = new System.Windows.Forms.Label();
-            this.travelMoves = new System.Windows.Forms.Panel();
-            this.filament = new System.Windows.Forms.Panel();
             this.labelPrinterBase = new System.Windows.Forms.Label();
             this.printerBase = new System.Windows.Forms.Panel();
             this.selectedFaces = new System.Windows.Forms.Panel();
@@ -81,10 +74,6 @@
             this.errorModel = new System.Windows.Forms.Panel();
             this.selectionBox = new System.Windows.Forms.Panel();
             this.outsidePrintbed = new System.Windows.Forms.Panel();
-            this.tabFilament = new System.Windows.Forms.TabPage();
-            this.groupVisualization = new System.Windows.Forms.GroupBox();
-            this.checkCorrectNormals = new System.Windows.Forms.CheckBox();
-            this.checkDisableTravelMoves = new System.Windows.Forms.CheckBox();
             this.tabLights = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelLight1 = new System.Windows.Forms.Label();
@@ -121,8 +110,6 @@
             this.specular3 = new System.Windows.Forms.Panel();
             this.specular4 = new System.Windows.Forms.Panel();
             this.diffuse4 = new System.Windows.Forms.Panel();
-            this.groupColors2.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tdSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -131,107 +118,9 @@
             this.tabModel.SuspendLayout();
             this.groupEditor.SuspendLayout();
             this.groupColors.SuspendLayout();
-            this.tabFilament.SuspendLayout();
-            this.groupVisualization.SuspendLayout();
             this.tabLights.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupColors2
-            // 
-            this.groupColors2.Controls.Add(this.tableLayoutPanel2);
-            this.groupColors2.Location = new System.Drawing.Point(4, 4);
-            this.groupColors2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupColors2.Name = "groupColors2";
-            this.groupColors2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupColors2.Size = new System.Drawing.Size(594, 141);
-            this.groupColors2.TabIndex = 0;
-            this.groupColors2.TabStop = false;
-            this.groupColors2.Text = "Colors";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
-            this.tableLayoutPanel2.Controls.Add(this.labelTravelMoves, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.selectedFilament, 3, 1);
-            this.tableLayoutPanel2.Controls.Add(this.labelSelectedFilament, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.travelMoves, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.filament, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 24);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(409, 114);
-            this.tableLayoutPanel2.TabIndex = 10;
-            // 
-            // labelTravelMoves
-            // 
-            this.labelTravelMoves.AutoSize = true;
-            this.labelTravelMoves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelTravelMoves.Location = new System.Drawing.Point(150, 76);
-            this.labelTravelMoves.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelTravelMoves.Name = "labelTravelMoves";
-            this.labelTravelMoves.Size = new System.Drawing.Size(109, 38);
-            this.labelTravelMoves.TabIndex = 9;
-            this.labelTravelMoves.Text = "Travel Moves:";
-            this.labelTravelMoves.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // selectedFilament
-            // 
-            this.selectedFilament.BackColor = System.Drawing.Color.Yellow;
-            this.selectedFilament.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedFilament.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectedFilament.Location = new System.Drawing.Point(267, 42);
-            this.selectedFilament.Margin = new System.Windows.Forms.Padding(4);
-            this.selectedFilament.Name = "selectedFilament";
-            this.selectedFilament.Size = new System.Drawing.Size(138, 30);
-            this.selectedFilament.TabIndex = 3;
-            this.selectedFilament.Click += new System.EventHandler(this.changecolor_Click);
-            // 
-            // labelSelectedFilament
-            // 
-            this.labelSelectedFilament.AutoSize = true;
-            this.labelSelectedFilament.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSelectedFilament.Location = new System.Drawing.Point(150, 38);
-            this.labelSelectedFilament.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labelSelectedFilament.Name = "labelSelectedFilament";
-            this.labelSelectedFilament.Size = new System.Drawing.Size(109, 38);
-            this.labelSelectedFilament.TabIndex = 9;
-            this.labelSelectedFilament.Text = "Selected filament:";
-            this.labelSelectedFilament.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // travelMoves
-            // 
-            this.travelMoves.BackColor = System.Drawing.Color.Aquamarine;
-            this.travelMoves.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.travelMoves.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.travelMoves.Location = new System.Drawing.Point(267, 80);
-            this.travelMoves.Margin = new System.Windows.Forms.Padding(4);
-            this.travelMoves.Name = "travelMoves";
-            this.travelMoves.Size = new System.Drawing.Size(138, 30);
-            this.travelMoves.TabIndex = 3;
-            this.travelMoves.Click += new System.EventHandler(this.changecolor_Click);
-            // 
-            // filament
-            // 
-            this.filament.BackColor = System.Drawing.Color.Blue;
-            this.filament.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.filament.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filament.Location = new System.Drawing.Point(4, 4);
-            this.filament.Margin = new System.Windows.Forms.Padding(4);
-            this.filament.Name = "filament";
-            this.filament.Size = new System.Drawing.Size(138, 30);
-            this.filament.TabIndex = 0;
-            this.filament.Click += new System.EventHandler(this.changecolor_Click);
             // 
             // labelPrinterBase
             // 
@@ -239,7 +128,7 @@
             this.labelPrinterBase.Location = new System.Drawing.Point(8, 128);
             this.labelPrinterBase.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPrinterBase.Name = "labelPrinterBase";
-            this.labelPrinterBase.Size = new System.Drawing.Size(78, 15);
+            this.labelPrinterBase.Size = new System.Drawing.Size(82, 16);
             this.labelPrinterBase.TabIndex = 5;
             this.labelPrinterBase.Text = "Printer base:";
             // 
@@ -304,7 +193,7 @@
             this.labelEdges.Location = new System.Drawing.Point(8, 98);
             this.labelEdges.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelEdges.Name = "labelEdges";
-            this.labelEdges.Size = new System.Drawing.Size(45, 15);
+            this.labelEdges.Size = new System.Drawing.Size(50, 16);
             this.labelEdges.TabIndex = 1;
             this.labelEdges.Text = "Edges:";
             // 
@@ -314,7 +203,7 @@
             this.labelSelectedFaces.Location = new System.Drawing.Point(8, 60);
             this.labelSelectedFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSelectedFaces.Name = "labelSelectedFaces";
-            this.labelSelectedFaces.Size = new System.Drawing.Size(90, 15);
+            this.labelSelectedFaces.Size = new System.Drawing.Size(100, 16);
             this.labelSelectedFaces.TabIndex = 2;
             this.labelSelectedFaces.Text = "Selected faces:";
             // 
@@ -324,7 +213,7 @@
             this.labelFaces.Location = new System.Drawing.Point(8, 25);
             this.labelFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelFaces.Name = "labelFaces";
-            this.labelFaces.Size = new System.Drawing.Size(42, 15);
+            this.labelFaces.Size = new System.Drawing.Size(48, 16);
             this.labelFaces.TabIndex = 1;
             this.labelFaces.Text = "Faces:";
             // 
@@ -334,7 +223,7 @@
             this.labelBackgroundTop.Location = new System.Drawing.Point(8, 58);
             this.labelBackgroundTop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBackgroundTop.Name = "labelBackgroundTop";
-            this.labelBackgroundTop.Size = new System.Drawing.Size(106, 15);
+            this.labelBackgroundTop.Size = new System.Drawing.Size(111, 16);
             this.labelBackgroundTop.TabIndex = 0;
             this.labelBackgroundTop.Text = "Background Top:";
             // 
@@ -357,7 +246,7 @@
             this.showEdges.Location = new System.Drawing.Point(8, 24);
             this.showEdges.Margin = new System.Windows.Forms.Padding(4);
             this.showEdges.Name = "showEdges";
-            this.showEdges.Size = new System.Drawing.Size(96, 19);
+            this.showEdges.Size = new System.Drawing.Size(104, 20);
             this.showEdges.TabIndex = 0;
             this.showEdges.Text = "Show edges";
             this.showEdges.UseVisualStyleBackColor = true;
@@ -378,7 +267,7 @@
             this.comboDrawMethod.Location = new System.Drawing.Point(164, 256);
             this.comboDrawMethod.Margin = new System.Windows.Forms.Padding(4);
             this.comboDrawMethod.Name = "comboDrawMethod";
-            this.comboDrawMethod.Size = new System.Drawing.Size(179, 23);
+            this.comboDrawMethod.Size = new System.Drawing.Size(179, 24);
             this.comboDrawMethod.TabIndex = 0;
             this.comboDrawMethod.SelectedIndexChanged += new System.EventHandler(this.comboDrawMethod_SelectedIndexChanged);
             // 
@@ -388,7 +277,7 @@
             this.labelDrawMethod.Location = new System.Drawing.Point(25, 260);
             this.labelDrawMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDrawMethod.Name = "labelDrawMethod";
-            this.labelDrawMethod.Size = new System.Drawing.Size(88, 15);
+            this.labelDrawMethod.Size = new System.Drawing.Size(89, 16);
             this.labelDrawMethod.TabIndex = 15;
             this.labelDrawMethod.Text = "Draw method:";
             // 
@@ -400,7 +289,7 @@
             this.showPrintbed.Location = new System.Drawing.Point(8, 24);
             this.showPrintbed.Margin = new System.Windows.Forms.Padding(4);
             this.showPrintbed.Name = "showPrintbed";
-            this.showPrintbed.Size = new System.Drawing.Size(112, 19);
+            this.showPrintbed.Size = new System.Drawing.Size(114, 20);
             this.showPrintbed.TabIndex = 1;
             this.showPrintbed.Text = "Show printbed";
             this.showPrintbed.UseVisualStyleBackColor = true;
@@ -412,7 +301,7 @@
             this.enableLight4.Location = new System.Drawing.Point(472, 42);
             this.enableLight4.Margin = new System.Windows.Forms.Padding(4);
             this.enableLight4.Name = "enableLight4";
-            this.enableLight4.Size = new System.Drawing.Size(98, 19);
+            this.enableLight4.Size = new System.Drawing.Size(99, 20);
             this.enableLight4.TabIndex = 7;
             this.enableLight4.Text = "Enable light";
             this.enableLight4.UseVisualStyleBackColor = true;
@@ -424,7 +313,7 @@
             this.enableLight3.Location = new System.Drawing.Point(355, 42);
             this.enableLight3.Margin = new System.Windows.Forms.Padding(4);
             this.enableLight3.Name = "enableLight3";
-            this.enableLight3.Size = new System.Drawing.Size(98, 19);
+            this.enableLight3.Size = new System.Drawing.Size(99, 20);
             this.enableLight3.TabIndex = 6;
             this.enableLight3.Text = "Enable light";
             this.enableLight3.UseVisualStyleBackColor = true;
@@ -438,7 +327,7 @@
             this.enableLight2.Location = new System.Drawing.Point(238, 42);
             this.enableLight2.Margin = new System.Windows.Forms.Padding(4);
             this.enableLight2.Name = "enableLight2";
-            this.enableLight2.Size = new System.Drawing.Size(98, 19);
+            this.enableLight2.Size = new System.Drawing.Size(99, 20);
             this.enableLight2.TabIndex = 5;
             this.enableLight2.Text = "Enable light";
             this.enableLight2.UseVisualStyleBackColor = true;
@@ -452,7 +341,7 @@
             this.enableLight1.Location = new System.Drawing.Point(121, 42);
             this.enableLight1.Margin = new System.Windows.Forms.Padding(4);
             this.enableLight1.Name = "enableLight1";
-            this.enableLight1.Size = new System.Drawing.Size(98, 19);
+            this.enableLight1.Size = new System.Drawing.Size(99, 20);
             this.enableLight1.TabIndex = 4;
             this.enableLight1.Text = "Enable light";
             this.enableLight1.UseVisualStyleBackColor = true;
@@ -466,7 +355,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Controls.Add(this.tabModel);
-            this.tabControl1.Controls.Add(this.tabFilament);
             this.tabControl1.Controls.Add(this.tabLights);
             this.tabControl1.Location = new System.Drawing.Point(15, 15);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -514,7 +402,7 @@
             this.labelBackgroundBottom.Location = new System.Drawing.Point(8, 92);
             this.labelBackgroundBottom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBackgroundBottom.Name = "labelBackgroundBottom";
-            this.labelBackgroundBottom.Size = new System.Drawing.Size(125, 15);
+            this.labelBackgroundBottom.Size = new System.Drawing.Size(128, 16);
             this.labelBackgroundBottom.TabIndex = 0;
             this.labelBackgroundBottom.Text = "Background Bottom:";
             // 
@@ -535,7 +423,7 @@
             this.labelPrinterFrame.Location = new System.Drawing.Point(8, 162);
             this.labelPrinterFrame.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPrinterFrame.Name = "labelPrinterFrame";
-            this.labelPrinterFrame.Size = new System.Drawing.Size(90, 15);
+            this.labelPrinterFrame.Size = new System.Drawing.Size(90, 16);
             this.labelPrinterFrame.TabIndex = 5;
             this.labelPrinterFrame.Text = "Printer Frame:";
             // 
@@ -584,7 +472,7 @@
             this.showFaces.Location = new System.Drawing.Point(8, 54);
             this.showFaces.Margin = new System.Windows.Forms.Padding(4);
             this.showFaces.Name = "showFaces";
-            this.showFaces.Size = new System.Drawing.Size(93, 19);
+            this.showFaces.Size = new System.Drawing.Size(98, 20);
             this.showFaces.TabIndex = 1;
             this.showFaces.Text = "Show faces";
             this.showFaces.UseVisualStyleBackColor = true;
@@ -624,7 +512,7 @@
             this.labelCutFaces.Location = new System.Drawing.Point(305, 64);
             this.labelCutFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCutFaces.Name = "labelCutFaces";
-            this.labelCutFaces.Size = new System.Drawing.Size(63, 15);
+            this.labelCutFaces.Size = new System.Drawing.Size(65, 16);
             this.labelCutFaces.TabIndex = 1;
             this.labelCutFaces.Text = "Cut faces;";
             // 
@@ -634,7 +522,7 @@
             this.labelInsideFaces.Location = new System.Drawing.Point(305, 25);
             this.labelInsideFaces.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelInsideFaces.Name = "labelInsideFaces";
-            this.labelInsideFaces.Size = new System.Drawing.Size(73, 15);
+            this.labelInsideFaces.Size = new System.Drawing.Size(75, 16);
             this.labelInsideFaces.TabIndex = 1;
             this.labelInsideFaces.Text = "Inner faces:";
             // 
@@ -666,7 +554,7 @@
             this.labelModelErrorEdge.Location = new System.Drawing.Point(8, 240);
             this.labelModelErrorEdge.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelModelErrorEdge.Name = "labelModelErrorEdge";
-            this.labelModelErrorEdge.Size = new System.Drawing.Size(125, 15);
+            this.labelModelErrorEdge.Size = new System.Drawing.Size(129, 16);
             this.labelModelErrorEdge.TabIndex = 1;
             this.labelModelErrorEdge.Text = "Model errors (edge):";
             // 
@@ -676,7 +564,7 @@
             this.labelModelError.Location = new System.Drawing.Point(8, 205);
             this.labelModelError.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelModelError.Name = "labelModelError";
-            this.labelModelError.Size = new System.Drawing.Size(122, 15);
+            this.labelModelError.Size = new System.Drawing.Size(123, 16);
             this.labelModelError.TabIndex = 1;
             this.labelModelError.Text = "Model errors (face):";
             // 
@@ -686,7 +574,7 @@
             this.labelSelectionBox.Location = new System.Drawing.Point(8, 170);
             this.labelSelectionBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSelectionBox.Name = "labelSelectionBox";
-            this.labelSelectionBox.Size = new System.Drawing.Size(90, 15);
+            this.labelSelectionBox.Size = new System.Drawing.Size(92, 16);
             this.labelSelectionBox.TabIndex = 1;
             this.labelSelectionBox.Text = "Selection Box:";
             // 
@@ -696,7 +584,7 @@
             this.labelObjectsOutsidePrintbed.Location = new System.Drawing.Point(8, 135);
             this.labelObjectsOutsidePrintbed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelObjectsOutsidePrintbed.Name = "labelObjectsOutsidePrintbed";
-            this.labelObjectsOutsidePrintbed.Size = new System.Drawing.Size(148, 15);
+            this.labelObjectsOutsidePrintbed.Size = new System.Drawing.Size(155, 16);
             this.labelObjectsOutsidePrintbed.TabIndex = 1;
             this.labelObjectsOutsidePrintbed.Text = "Objects outside printbed:";
             // 
@@ -743,59 +631,6 @@
             this.outsidePrintbed.Size = new System.Drawing.Size(87, 27);
             this.outsidePrintbed.TabIndex = 3;
             this.outsidePrintbed.Click += new System.EventHandler(this.outsidePrintbed_Click);
-            // 
-            // tabFilament
-            // 
-            this.tabFilament.Controls.Add(this.groupVisualization);
-            this.tabFilament.Controls.Add(this.groupColors2);
-            this.tabFilament.Location = new System.Drawing.Point(4, 25);
-            this.tabFilament.Margin = new System.Windows.Forms.Padding(4);
-            this.tabFilament.Name = "tabFilament";
-            this.tabFilament.Size = new System.Drawing.Size(610, 482);
-            this.tabFilament.TabIndex = 2;
-            this.tabFilament.Text = "Filament";
-            this.tabFilament.UseVisualStyleBackColor = true;
-            // 
-            // groupVisualization
-            // 
-            this.groupVisualization.Controls.Add(this.checkCorrectNormals);
-            this.groupVisualization.Controls.Add(this.checkDisableTravelMoves);
-            this.groupVisualization.Location = new System.Drawing.Point(4, 155);
-            this.groupVisualization.Margin = new System.Windows.Forms.Padding(4);
-            this.groupVisualization.Name = "groupVisualization";
-            this.groupVisualization.Padding = new System.Windows.Forms.Padding(4);
-            this.groupVisualization.Size = new System.Drawing.Size(594, 320);
-            this.groupVisualization.TabIndex = 0;
-            this.groupVisualization.TabStop = false;
-            this.groupVisualization.Text = "Visualization";
-            // 
-            // checkCorrectNormals
-            // 
-            this.checkCorrectNormals.AutoSize = true;
-            this.checkCorrectNormals.Checked = true;
-            this.checkCorrectNormals.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkCorrectNormals.Location = new System.Drawing.Point(8, 52);
-            this.checkCorrectNormals.Margin = new System.Windows.Forms.Padding(4);
-            this.checkCorrectNormals.Name = "checkCorrectNormals";
-            this.checkCorrectNormals.Size = new System.Drawing.Size(271, 19);
-            this.checkCorrectNormals.TabIndex = 15;
-            this.checkCorrectNormals.Text = "Use correct normals (needs more memory)";
-            this.checkCorrectNormals.UseVisualStyleBackColor = true;
-            this.checkCorrectNormals.CheckedChanged += new System.EventHandler(this.checkCorrectNormals_CheckedChanged);
-            // 
-            // checkDisableTravelMoves
-            // 
-            this.checkDisableTravelMoves.AutoSize = true;
-            this.checkDisableTravelMoves.Checked = true;
-            this.checkDisableTravelMoves.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkDisableTravelMoves.Location = new System.Drawing.Point(281, 24);
-            this.checkDisableTravelMoves.Margin = new System.Windows.Forms.Padding(4);
-            this.checkDisableTravelMoves.Name = "checkDisableTravelMoves";
-            this.checkDisableTravelMoves.Size = new System.Drawing.Size(217, 19);
-            this.checkDisableTravelMoves.TabIndex = 14;
-            this.checkDisableTravelMoves.Text = "Disable travel move visualization";
-            this.checkDisableTravelMoves.UseVisualStyleBackColor = true;
-            this.checkDisableTravelMoves.CheckedChanged += new System.EventHandler(this.checkDisableTravelMoves_CheckedChanged);
             // 
             // tabLights
             // 
@@ -928,7 +763,7 @@
             this.labelXDirection.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelXDirection.Name = "labelXDirection";
             this.labelXDirection.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelXDirection.Size = new System.Drawing.Size(75, 21);
+            this.labelXDirection.Size = new System.Drawing.Size(72, 22);
             this.labelXDirection.TabIndex = 8;
             this.labelXDirection.Text = "X direction:";
             // 
@@ -939,7 +774,7 @@
             this.labelYDirection.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelYDirection.Name = "labelYDirection";
             this.labelYDirection.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelYDirection.Size = new System.Drawing.Size(75, 21);
+            this.labelYDirection.Size = new System.Drawing.Size(73, 22);
             this.labelYDirection.TabIndex = 9;
             this.labelYDirection.Text = "Y direction:";
             // 
@@ -950,7 +785,7 @@
             this.labelZDirection.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelZDirection.Name = "labelZDirection";
             this.labelZDirection.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelZDirection.Size = new System.Drawing.Size(74, 21);
+            this.labelZDirection.Size = new System.Drawing.Size(72, 22);
             this.labelZDirection.TabIndex = 10;
             this.labelZDirection.Text = "Z direction:";
             // 
@@ -961,7 +796,7 @@
             this.labelAmbientColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAmbientColor.Name = "labelAmbientColor";
             this.labelAmbientColor.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelAmbientColor.Size = new System.Drawing.Size(93, 21);
+            this.labelAmbientColor.Size = new System.Drawing.Size(92, 22);
             this.labelAmbientColor.TabIndex = 11;
             this.labelAmbientColor.Text = "Ambient color:";
             // 
@@ -972,7 +807,7 @@
             this.labelDiffuseColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelDiffuseColor.Name = "labelDiffuseColor";
             this.labelDiffuseColor.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelDiffuseColor.Size = new System.Drawing.Size(86, 21);
+            this.labelDiffuseColor.Size = new System.Drawing.Size(84, 22);
             this.labelDiffuseColor.TabIndex = 12;
             this.labelDiffuseColor.Text = "Diffuse color:";
             // 
@@ -983,7 +818,7 @@
             this.labelSpecularColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelSpecularColor.Name = "labelSpecularColor";
             this.labelSpecularColor.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.labelSpecularColor.Size = new System.Drawing.Size(93, 21);
+            this.labelSpecularColor.Size = new System.Drawing.Size(97, 22);
             this.labelSpecularColor.TabIndex = 13;
             this.labelSpecularColor.Text = "Specular color:";
             // 
@@ -992,7 +827,7 @@
             this.xdir1.Location = new System.Drawing.Point(121, 80);
             this.xdir1.Margin = new System.Windows.Forms.Padding(4);
             this.xdir1.Name = "xdir1";
-            this.xdir1.Size = new System.Drawing.Size(109, 25);
+            this.xdir1.Size = new System.Drawing.Size(109, 22);
             this.xdir1.TabIndex = 8;
             this.xdir1.Text = "-1";
             this.xdir1.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1003,7 +838,7 @@
             this.xdir2.Location = new System.Drawing.Point(238, 80);
             this.xdir2.Margin = new System.Windows.Forms.Padding(4);
             this.xdir2.Name = "xdir2";
-            this.xdir2.Size = new System.Drawing.Size(109, 25);
+            this.xdir2.Size = new System.Drawing.Size(109, 22);
             this.xdir2.TabIndex = 9;
             this.xdir2.Text = "1";
             this.xdir2.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1014,7 +849,7 @@
             this.xdir3.Location = new System.Drawing.Point(355, 80);
             this.xdir3.Margin = new System.Windows.Forms.Padding(4);
             this.xdir3.Name = "xdir3";
-            this.xdir3.Size = new System.Drawing.Size(109, 25);
+            this.xdir3.Size = new System.Drawing.Size(109, 22);
             this.xdir3.TabIndex = 10;
             this.xdir3.Text = "1";
             this.xdir3.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1025,7 +860,7 @@
             this.xdir4.Location = new System.Drawing.Point(472, 80);
             this.xdir4.Margin = new System.Windows.Forms.Padding(4);
             this.xdir4.Name = "xdir4";
-            this.xdir4.Size = new System.Drawing.Size(109, 25);
+            this.xdir4.Size = new System.Drawing.Size(109, 22);
             this.xdir4.TabIndex = 11;
             this.xdir4.Text = "1.7";
             this.xdir4.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1036,7 +871,7 @@
             this.ydir2.Location = new System.Drawing.Point(238, 118);
             this.ydir2.Margin = new System.Windows.Forms.Padding(4);
             this.ydir2.Name = "ydir2";
-            this.ydir2.Size = new System.Drawing.Size(109, 25);
+            this.ydir2.Size = new System.Drawing.Size(109, 22);
             this.ydir2.TabIndex = 13;
             this.ydir2.Text = "2";
             this.ydir2.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1047,7 +882,7 @@
             this.ydir1.Location = new System.Drawing.Point(121, 118);
             this.ydir1.Margin = new System.Windows.Forms.Padding(4);
             this.ydir1.Name = "ydir1";
-            this.ydir1.Size = new System.Drawing.Size(109, 25);
+            this.ydir1.Size = new System.Drawing.Size(109, 22);
             this.ydir1.TabIndex = 12;
             this.ydir1.Text = "-1";
             this.ydir1.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1058,7 +893,7 @@
             this.zdir1.Location = new System.Drawing.Point(121, 156);
             this.zdir1.Margin = new System.Windows.Forms.Padding(4);
             this.zdir1.Name = "zdir1";
-            this.zdir1.Size = new System.Drawing.Size(109, 25);
+            this.zdir1.Size = new System.Drawing.Size(109, 22);
             this.zdir1.TabIndex = 16;
             this.zdir1.Text = "2";
             this.zdir1.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1069,7 +904,7 @@
             this.zdir2.Location = new System.Drawing.Point(238, 156);
             this.zdir2.Margin = new System.Windows.Forms.Padding(4);
             this.zdir2.Name = "zdir2";
-            this.zdir2.Size = new System.Drawing.Size(109, 25);
+            this.zdir2.Size = new System.Drawing.Size(109, 22);
             this.zdir2.TabIndex = 17;
             this.zdir2.Text = "3";
             this.zdir2.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1080,7 +915,7 @@
             this.zdir3.Location = new System.Drawing.Point(355, 156);
             this.zdir3.Margin = new System.Windows.Forms.Padding(4);
             this.zdir3.Name = "zdir3";
-            this.zdir3.Size = new System.Drawing.Size(109, 25);
+            this.zdir3.Size = new System.Drawing.Size(109, 22);
             this.zdir3.TabIndex = 18;
             this.zdir3.Text = "2";
             this.zdir3.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1091,7 +926,7 @@
             this.ydir3.Location = new System.Drawing.Point(355, 118);
             this.ydir3.Margin = new System.Windows.Forms.Padding(4);
             this.ydir3.Name = "ydir3";
-            this.ydir3.Size = new System.Drawing.Size(109, 25);
+            this.ydir3.Size = new System.Drawing.Size(109, 22);
             this.ydir3.TabIndex = 14;
             this.ydir3.Text = "-2";
             this.ydir3.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1102,7 +937,7 @@
             this.ydir4.Location = new System.Drawing.Point(472, 118);
             this.ydir4.Margin = new System.Windows.Forms.Padding(4);
             this.ydir4.Name = "ydir4";
-            this.ydir4.Size = new System.Drawing.Size(109, 25);
+            this.ydir4.Size = new System.Drawing.Size(109, 22);
             this.ydir4.TabIndex = 15;
             this.ydir4.Text = "-1";
             this.ydir4.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1113,7 +948,7 @@
             this.zdir4.Location = new System.Drawing.Point(472, 156);
             this.zdir4.Margin = new System.Windows.Forms.Padding(4);
             this.zdir4.Name = "zdir4";
-            this.zdir4.Size = new System.Drawing.Size(109, 25);
+            this.zdir4.Size = new System.Drawing.Size(109, 22);
             this.zdir4.TabIndex = 19;
             this.zdir4.Text = "-2.5";
             this.zdir4.TextChanged += new System.EventHandler(this.light_TextChanged);
@@ -1267,10 +1102,6 @@
             this.Text = "3D visualization settings";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThreeDSettings_FormClosing);
-            this.groupColors2.ResumeLayout(false);
-            this.groupColors2.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tdSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.tabControl1.ResumeLayout(false);
@@ -1283,9 +1114,6 @@
             this.groupEditor.PerformLayout();
             this.groupColors.ResumeLayout(false);
             this.groupColors.PerformLayout();
-            this.tabFilament.ResumeLayout(false);
-            this.groupVisualization.ResumeLayout(false);
-            this.groupVisualization.PerformLayout();
             this.tabLights.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -1296,7 +1124,6 @@
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.GroupBox groupColors2;
         private System.Windows.Forms.Label labelSelectedFaces;
         private System.Windows.Forms.Label labelFaces;
         private System.Windows.Forms.Label labelBackgroundTop;
@@ -1305,7 +1132,6 @@
         public System.Windows.Forms.Panel faces;
         public System.Windows.Forms.Panel backgroundTop;
         public System.Windows.Forms.Panel selectedFaces;
-        public System.Windows.Forms.Panel filament;
         public System.Windows.Forms.Panel printerBase;
         public System.Windows.Forms.CheckBox showPrintbed;
         public System.Windows.Forms.CheckBox enableLight4;
@@ -1320,16 +1146,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.TabPage tabModel;
-        private System.Windows.Forms.TabPage tabFilament;
         private System.Windows.Forms.TabPage tabLights;
         private System.Windows.Forms.GroupBox groupColors;
-        private System.Windows.Forms.GroupBox groupVisualization;
         private System.Windows.Forms.GroupBox groupPrintbed;
         private System.Windows.Forms.Label labelObjectsOutsidePrintbed;
         public System.Windows.Forms.Panel outsidePrintbed;
         private System.Windows.Forms.GroupBox groupEditor;
-        private System.Windows.Forms.Label labelSelectedFilament;
-        public System.Windows.Forms.Panel selectedFilament;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelLight4;
         private System.Windows.Forms.Label labelLight3;
@@ -1367,11 +1189,6 @@
         public System.Windows.Forms.TextBox ydir3;
         private System.Windows.Forms.Label labelSelectionBox;
         public System.Windows.Forms.Panel selectionBox;
-        private System.Windows.Forms.Label labelTravelMoves;
-        public System.Windows.Forms.Panel travelMoves;
-        public System.Windows.Forms.CheckBox checkDisableTravelMoves;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.CheckBox checkCorrectNormals;
         private System.Windows.Forms.Label labelModelError;
         public System.Windows.Forms.Panel errorModel;
         private System.Windows.Forms.Label labelCutFaces;

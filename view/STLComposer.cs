@@ -982,7 +982,7 @@ namespace View3D.view
                 {
                     continue;
                 }
-                //if (stl.modifiedR == false && stl.modifiedM == false && stl.modifiedS == false)       // Comment this to fix auto position incorrect issue, need to more test
+
                 {
                     int w = 2 * border + (int)Math.Ceiling(stl.xMax - stl.xMin);
                     int h = 2 * border + (int)Math.Ceiling(stl.yMax - stl.yMin);
@@ -1039,8 +1039,6 @@ namespace View3D.view
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A)
             {
-                //foreach (ListViewItem item in listObjects.Items)
-                //    item.Selected = true;
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.Q || e.KeyCode == Keys.E)
@@ -1203,7 +1201,6 @@ namespace View3D.view
                 columnName.Width = nameWith;
         }
 
-
         public void DoInchScale(PrintModel stl)
         {
             try
@@ -1233,7 +1230,6 @@ namespace View3D.view
 
                 updateSTLState(stl);
 
-                //stl.LandUpdateBBNoPreUpdate();
                 stl.LandToZ(0);
                 Main.main.threedview.UpdateChanges();
             }

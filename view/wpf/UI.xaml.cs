@@ -436,13 +436,6 @@ namespace View3D.view.wpf
             Main.main.Focus();
         }
 
-        private void button_import_kill_Click(object sender, RoutedEventArgs e)
-        {
-            killed = true;
-        }
-
-
-     
         private void remove_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
             remove_toggleButton.IsChecked = false;
@@ -453,9 +446,6 @@ namespace View3D.view.wpf
         public void ChangeLoginUI(bool isForceLogin)
         {
         }
-
-        System.Windows.Forms.Timer timer;
-        int sec = 0;
 
 
     }

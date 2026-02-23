@@ -47,7 +47,8 @@ namespace View3D.view
             {
                 if (value == _showEdges) return;
                 _showEdges = value;
-                threedKey.SetValue("showEdges", _showEdges ? 1 : 0);
+                if (threedKey != null)
+                    threedKey.SetValue("showEdges", _showEdges ? 1 : 0);
                 OnPropertyChanged(new PropertyChangedEventArgs("ShowEdges"));
                 Main.main.Update3D();
             }
@@ -60,7 +61,8 @@ namespace View3D.view
             {
                 if (value == _showFaces) return;
                 _showFaces = value;
-                threedKey.SetValue("showFaces", _showFaces ? 1 : 0);
+                if (threedKey != null)
+                    threedKey.SetValue("showFaces", _showFaces ? 1 : 0);
                 OnPropertyChanged(new PropertyChangedEventArgs("ShowFaces"));
                 Main.main.Update3D();
             }
@@ -68,6 +70,9 @@ namespace View3D.view
 
         public void FormToRegistry()
         {
+            if (threedKey == null)
+                return;
+
             try
             {
                 threedKey.SetValue("backgroundTopColor", backgroundTop.BackColor.ToArgb());
@@ -174,9 +179,7 @@ namespace View3D.view
                 zdir4.Text = (string)threedKey.GetValue("light4Z", zdir4.Text);
                 
                 if (threedKey.GetValue("backgroundColor", null) != null)
-                {
                     threedKey.DeleteValue("backgroundColor");
-                }
             }
             catch { }
         }

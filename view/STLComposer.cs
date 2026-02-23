@@ -254,19 +254,6 @@ namespace View3D.view
             }
         }
 
-        public void liftModel(PrintModel model)
-        {
-            double liftHeight = 6.0;
-
-            if (typeof(PrintModel) != model.GetType()) return;
-            if (null == model.originalModel) return;
-            if (model.BoundingBoxWOSupport.zMin < liftHeight)
-            {
-                model.Position.z += (float)Math.Min((liftHeight - model.BoundingBoxWOSupport.zMin), ((double)Main.main.PrintAreaHeight - model.BoundingBoxWOSupport.zMax));
-            }
-            model.UpdateBoundingBox();
-        }
-
         public void landModel(PrintModel model)
         {
             if (typeof(PrintModel) != model.GetType()) return;
@@ -369,7 +356,6 @@ namespace View3D.view
                     else if (tResizeMSG.gIsInch)
                     {
                         DoInchScale(models[models.Count - 1]);
-                        //DoInchOrScale(models[models.Count - 1], true);
                     }
                 }
                 else if (models[models.Count - 1].BoundingBox.Size.x - epsilon > Convert.ToDouble(Main.main.PrintAreaWidth) ||
@@ -662,7 +648,6 @@ namespace View3D.view
                 // model is not a support model, and model has no support
                 updateSTLState(stl);
             }
-
             Main.main.threedview.UpdateChanges();
         }
 
@@ -721,7 +706,7 @@ namespace View3D.view
             Main.main.threedview.UpdateChanges();
         }
 
-        /* vic add for delete all stl object */
+        // Delete all stl objects.
         public void RemoveAllObject()
         {
             foreach (ListViewItem item in listObjects.Items)

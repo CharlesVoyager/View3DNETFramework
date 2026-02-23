@@ -1082,7 +1082,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ThreeDSettings";
-            this.Text = "3D visualization settings";
+            this.Text = "3D Visualization Settings";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThreeDSettings_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tdSettings)).EndInit();

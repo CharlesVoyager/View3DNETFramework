@@ -42,15 +42,10 @@ namespace View3D.view
         public bool isShowWPF = true, isPreShowWPF = false;
 
         //STL Slice Previewer
-        public double clippingLayerCur = 999.0;
-        public double clippingLayerMax = 999.0;
-        public double clippingLayerMin = -1.0;
         public double setclipLayerHeight = 0.1;
         public bool clipDownward;
         public bool clipviewEnabled;
         public bool viewSilhouette;
-        public bool enableStencilbufClear = true;
-        public int disableStencilMask = 0;
 
         //Tree and cone support generation
         private static bool symbolDetected = false;

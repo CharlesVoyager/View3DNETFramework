@@ -16,7 +16,6 @@ namespace View3D.model
 
         // mesh color setting
         GetColorSettingHandler GetColorSetting { get; set; }
-        //int GetColorRGBA(Submesh.MeshColor color);
         int GetColorRGBA(Submesh.MeshColor color, Color frontBackColor);
 
         // mesh cut face setting
@@ -25,12 +24,5 @@ namespace View3D.model
         RHVector3 GetCutPosition();
         RHVector3 GetCutDirection();
         bool IsCutFaceUpdated();
-
-        //Modified by RCGREY for STL Slice Previewer tool
-        double GetClipPlaneHeight();
-        double GetMaxLayerHeight();
-        double GetMinLayerHeight();
-        float GetInverseClipLayerHeight();
-        float GetAppliedThickness();
     }
 }

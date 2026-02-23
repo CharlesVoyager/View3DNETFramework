@@ -248,14 +248,14 @@ namespace View3D.view.wpf
             info_toggleButton.IsChecked = false;
 
             Main.main.toolGCodeLoad_Click(null, null);
-            // not enable
+
             if (Main.main.objectPlacement.listObjects.Items.Count > 0)
             {
                 Main.main.threedview.viewSilhouette = false;
                 Main.main.threedview.clipDownward = true;
                 Main.main.threedview.setclipLayerHeight = (double)0.1;
-
             }
+
             Main.main.Focus();
             Main.main.threedview.stlComp.Update3D();
         }

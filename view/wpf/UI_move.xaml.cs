@@ -17,23 +17,20 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                Main.main.languageChanged += translate;
+                if (Main.main != null)
+                    Main.main.languageChanged += translate;
             }
             catch { }
         }
 
         private void translate()
         {
-            //if (Main.main.show_tooltip)
-            //{
+
                 button_move_reset.ToolTip = Trans.T("B_RESET");
                 button_land.ToolTip = Trans.T("B_LAND");
-            //}
-            //if (Main.main.only_show_english_button)
-            //{
+
                 button_move_reset.Content = Trans.T("B_RESET");
                 button_land.Content = Trans.T("B_LAND");
-            //}
         }
 
         protected override void OnPreviewTextInput( TextCompositionEventArgs e)

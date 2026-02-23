@@ -28,7 +28,8 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                Main.main.languageChanged += translate;
+                if (Main.main != null)
+                    Main.main.languageChanged += translate;
             }
             catch { }
         }

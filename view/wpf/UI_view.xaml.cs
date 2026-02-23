@@ -15,33 +15,29 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                Main.main.languageChanged += translate;
+                if (Main.main != null)
+                    Main.main.languageChanged += translate;
             }
             catch { }
         }
 
         private void translate()
         {
-            //if (Main.main.show_tooltip)
-            //{
-                top_button.ToolTip = Trans.T("B_TOP");
-                left_button.ToolTip = Trans.T("B_LEFT");
-                right_button.ToolTip = Trans.T("B_RIGHT");
-                front_button.ToolTip = Trans.T("B_FRONT");
-                back_button.ToolTip = Trans.T("B_BACK");
-                bottom_button.ToolTip = Trans.T("B_BOTTOM");
-                view_resetButton.ToolTip = Trans.T("B_RESET");
-            //}
-            //if (Main.main.only_show_english_button)
-            //{
-                top_button.Content = Trans.T("B_TOP");
-                left_button.Content = Trans.T("B_LEFT");
-                right_button.Content = Trans.T("B_RIGHT");
-                front_button.Content = Trans.T("B_FRONT");
-                back_button.Content = Trans.T("B_BACK");
-                bottom_button.Content = Trans.T("B_BOTTOM");
-                view_resetButton.Content = Trans.T("B_RESET");
-            //}
+            top_button.ToolTip = Trans.T("B_TOP");
+            left_button.ToolTip = Trans.T("B_LEFT");
+            right_button.ToolTip = Trans.T("B_RIGHT");
+            front_button.ToolTip = Trans.T("B_FRONT");
+            back_button.ToolTip = Trans.T("B_BACK");
+            bottom_button.ToolTip = Trans.T("B_BOTTOM");
+            view_resetButton.ToolTip = Trans.T("B_RESET");
+
+            top_button.Content = Trans.T("B_TOP");
+            left_button.Content = Trans.T("B_LEFT");
+            right_button.Content = Trans.T("B_RIGHT");
+            front_button.Content = Trans.T("B_FRONT");
+            back_button.Content = Trans.T("B_BACK");
+            bottom_button.Content = Trans.T("B_BOTTOM");
+            view_resetButton.Content = Trans.T("B_RESET");
         }
 
         public void modifyViewTextSize()

@@ -14,6 +14,18 @@ namespace View3D.view.wpf
         public UI_object_information()
         {
             InitializeComponent();
+
+            try
+            {
+                translate();
+                if (Main.main != null)
+                    Main.main.languageChanged += translate;
+            }
+            catch { }
+        }
+
+        public void translate()
+        {
         }
 
         public void Analyse(PrintModel pm)
@@ -42,14 +54,6 @@ namespace View3D.view.wpf
             txtPosZ.Text = bbox.zMin.ToString("0.000");
         }
 
-        public void translate()
-        {
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            translate();
-            Main.main.languageChanged += translate;
-        }
     }
 }

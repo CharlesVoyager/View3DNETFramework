@@ -1137,18 +1137,11 @@ namespace View3D.view
             else if (e.KeyCode == Keys.V)
             {
                 foreach (PrintModel pm in cloneModels)
-                {
                     CloneObject(pm);
-                    //if(!CloneObject(pm))
-                    //{
-                    //    return;
-                    //}
-                }
             }
             else if (e.KeyCode == Keys.Delete)
             {
                 Main.main.threedview.ui.remove_toggleButton_Click(null, null);
-                //buttonRemoveSTL_Click(sender, null);
                 e.Handled = true;
             }
         }

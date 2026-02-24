@@ -31,11 +31,20 @@ namespace View3D.view.wpf
         public UI()
         {
             InitializeComponent();
+
             VisualStateManager.GoToState(UI_view, "State2", true);
             VisualStateManager.GoToState(UI_move, "State2", true);
             VisualStateManager.GoToState(UI_rotate, "State2", true);
             VisualStateManager.GoToState(UI_resize_advance, "State2", true);
             VisualStateManager.GoToState(UI_object_information, "State2", true);
+
+            UI_resize_advance.btn_Scale.FontSize = 12;
+            UI_resize_advance.button_mmtoinch.FontSize = 12;
+            UI_resize_advance.button_inchtomm.FontSize = 12;
+            UI_resize_advance.lbl_Size.FontSize = 12;
+
+            move_toggleButton.FontSize = 12;
+            import_button.FontSize = 12;
 
             translate();
             Main.main.languageChanged += translate;
@@ -62,17 +71,6 @@ namespace View3D.view.wpf
             help_button.Content = Trans.T("W_HELP");
         }
 
-        public void modifyUITextSize()
-        {
-            UI_resize_advance.btn_Scale.FontSize = 12;
-            UI_resize_advance.button_mmtoinch.FontSize = 12;
-            UI_resize_advance.button_inchtomm.FontSize = 12;
-            UI_resize_advance.lbl_Size.FontSize = 12;
-
-            move_toggleButton.FontSize = 12;
-            import_button.FontSize = 12;
-        }
-
         public void setbuttonVisable(bool flag)
         {
             if (flag == true)
@@ -90,14 +88,11 @@ namespace View3D.view.wpf
                 resize_toggleButton.Visibility = Visibility.Hidden;
                 info_toggleButton.Visibility = Visibility.Hidden;
             }
+
             if (Main.main.objectPlacement.listObjects.SelectedItems.Count == 0)
-            {
                 remove_toggleButton.Visibility = Visibility.Hidden;
-            }
             else
-            {
                 remove_toggleButton.Visibility = Visibility.Visible;
-            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -345,8 +340,6 @@ namespace View3D.view.wpf
             UI_resize_advance.btn_Scale.Content = Trans.T("B_APPLY");
             UI_resize_advance.button_mmtoinch.Content = Trans.T("B_SCALE_UP") + " (" + Trans.T("L_MM") + "→" + Trans.T("L_INCH") + ")";
             UI_resize_advance.button_inchtomm.Content = Trans.T("B_SCALE_DOWN") + " (" + Trans.T("L_INCH") + "→" + Trans.T("L_MM") + ")";
-
-            modifyUITextSize();
         }
 
         private void rotate_toggleButton_Unchecked(object sender, RoutedEventArgs e)

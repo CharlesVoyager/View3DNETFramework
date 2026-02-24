@@ -22,8 +22,6 @@ namespace View3D
         public static Main main;
         public static ThreeDSettings threeDSettings;
 
-        private string basicTitle = "";
-
         public ThreeDControl threedview = null;
         public STLComposer objectPlacement = null;
 
@@ -100,20 +98,15 @@ namespace View3D
             // ThreeDControl
             threedview = new ThreeDControl();
             threedview.Dock = DockStyle.Fill;
+            splitLog.Panel1.Controls.Add(threedview);
 
-            threedview.SetComp(objectPlacement);
-            splitLog.Panel1.Controls.Add(threedview);   
-
-            basicTitle = Text;
-            threedview.ui.modifyUITextSize();
-            threedview.ui.UI_view.modifyViewTextSize();
+            threedview.SetComp(objectPlacement);            // STLComposer object
             threedview.SetView(objectPlacement.cont);
 
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
             this.DragDrop += new DragEventHandler(Form1_DragDrop);
         }
-
 
         void ProcessCommandLine()
         {

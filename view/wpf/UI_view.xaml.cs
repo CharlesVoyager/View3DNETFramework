@@ -12,6 +12,7 @@ namespace View3D.view.wpf
         public UI_view()
         {
             InitializeComponent();
+
             try
             {
                 translate();
@@ -40,10 +41,6 @@ namespace View3D.view.wpf
             view_resetButton.Content = Trans.T("B_RESET");
         }
 
-        public void modifyViewTextSize()
-        {
-                right_button.FontSize = 12;
-        }
 
         private void top_button_Click(object sender, RoutedEventArgs e)
         {

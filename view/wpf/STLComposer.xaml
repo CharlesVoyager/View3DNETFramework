@@ -115,24 +115,12 @@
                         <RowDefinition Height="28"/>
                         <RowDefinition Height="28"/>
                         <RowDefinition Height="28"/>
-                        <RowDefinition Height="11"/> <!-- axis header row -->
                     </Grid.RowDefinitions>
 
-                    <!-- Axis header labels (row 3) -->
-                    <TextBlock Grid.Row="3" Grid.Column="2" Text="X"
-                               HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
-                    <TextBlock Grid.Row="3" Grid.Column="4" Text="Y"
-                               HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
-                    <TextBlock Grid.Row="3" Grid.Column="6" Text="Z"
-                               HorizontalAlignment="Center" FontWeight="Bold" FontSize="10"/>
-
                     <!-- Row labels -->
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Trans"
-                               VerticalAlignment="Center" Margin="4,0"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Scale"
-                               VerticalAlignment="Center" Margin="4,0"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Rotate"
-                               VerticalAlignment="Center" Margin="4,0"/>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Trans" VerticalAlignment="Center" Margin="4,0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Scale" VerticalAlignment="Center" Margin="4,0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Rotate" VerticalAlignment="Center" Margin="4,0"/>
 
                     <!-- Trans -->
                     <TextBox x:Name="textTransX" Grid.Row="0" Grid.Column="2"

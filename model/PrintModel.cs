@@ -350,12 +350,10 @@ namespace View3D.model
 
         public void LandToZ(float oriZmin)
         {
-            // milton
             if (Math.Abs(oriZmin - zMin) < 0.001) return;
             Position.z += oriZmin - zMin;
             //Console.WriteLine("zMin="+zMin);
             UpdateBoundingBox();
-
         }
 
         public void LandUpdateBB()

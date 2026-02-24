@@ -528,43 +528,6 @@ namespace View3D.model
             }
         }
 
-        // ADDED BY: J. SAHAGUN 04-15-2019 | Added a function specific for Facet to Base edit mode
-        public void UpdateSpacePartitionF2B()
-        {
-
-
-            calVtxWorldCoordinate();
-
-            if (originalModel.triangles.Count > 5000)
-            {
-                double spanX = (bbox.xMax - bbox.xMin);
-                double spanY = (bbox.yMax - bbox.yMin);
-                double spanZ = (bbox.zMax - bbox.zMin);
-                double spanSmall = 0;
-                if (spanX < spanY)
-                    spanSmall = spanX;
-                else
-                    spanSmall = spanY;
-                if (spanZ < spanSmall)
-                    spanSmall = spanZ;
-                int span = (int)(spanSmall / 10);
-                if (span < 1) span = 1;
-
-
-
-                dirtySpaceInfo = false;
-            }
-        }
-
-        #region support event handler
-
-        public void TaskAbort(object sender, EventArgs e)
-        {
-            //Command = COMMAND.Abort;
-        }
-        #endregion
-
-
         public unsafe void CalcBoundingBox()
         {
             ConvexVector();

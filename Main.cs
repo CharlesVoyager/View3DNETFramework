@@ -88,12 +88,14 @@ namespace View3D
 
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
+#if DEBUG
             threeDSettings.Show();
+#endif
 
             // STLComposer
             View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();
             objectPlacement = stlComposerWnd.stlComposerUserControl;
-            stlComposerWnd.Show();
+            stlComposerWnd.Show();  // NOTE: This is necessary; otherwise, the list control event won't work.
 
             // ThreeDControl
             threedview = new ThreeDControl();

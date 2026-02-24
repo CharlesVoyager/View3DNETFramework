@@ -13,8 +13,6 @@ namespace View3D.model
     public delegate LinkedList<PrintModel> ListviewGetModelsDelegate(bool selected);
     public partial class PrintModel : ThreeDModel
     {
-        public bool EnableHexagonBase;
-
         public int modelDataId = 0; // model data id
         public TopoModel originalModel = new TopoModel();
         public TopoModel repairedModel = null;

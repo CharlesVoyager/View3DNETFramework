@@ -77,6 +77,7 @@ namespace View3D.view.wpf
         {
             if (flag == true)
             {
+                view_toggleButton.Visibility = Visibility.Visible;
                 move_toggleButton.Visibility = Visibility.Visible;
                 rotate_toggleButton.Visibility = Visibility.Visible;
                 resize_toggleButton.Visibility = Visibility.Visible;
@@ -122,11 +123,6 @@ namespace View3D.view.wpf
 
         public void move_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            if (false == confirmSupportEditModeBreak())
-            {
-                return;
-            }
-
             //Fix the bug for scenarios where move reset has been invoked in between support generation
             if (!move_toggleButton.IsEnabled)
                 return;
@@ -163,10 +159,7 @@ namespace View3D.view.wpf
 
             //module is out of bound,it cannot move. 
             if (moveMin > moveMax)
-            {
-                //Tim---20191014---Fix model and support separate
                 Main.main.threedview.ui.UI_move.slider_moveX.Value = (float)(moveMin + moveMax) / 2;
-            }
             else if (moveMin <= stl.Position.x && stl.Position.x <= moveMax)//module is in of bound.
                 Main.main.threedview.ui.UI_move.slider_moveX.Value = stl.Position.x;
             else if (stl.Position.x > moveMax)//model is out of bound(too big), but it can move.
@@ -191,10 +184,7 @@ namespace View3D.view.wpf
             
             //module is out of bound,it can not move. 
             if (moveMin > moveMax)
-            {
-                //Tim---20191014---Fix model and support separate
                 Main.main.threedview.ui.UI_move.slider_moveY.Value = (float)(moveMin + moveMax) / 2;
-            }
             else if (moveMin <= stl.Position.y && stl.Position.y <= moveMax)//module is in of bound.
                 Main.main.threedview.ui.UI_move.slider_moveY.Value = stl.Position.y;
             else if (stl.Position.y > moveMax)//model is out of bound(too big), but it can move.

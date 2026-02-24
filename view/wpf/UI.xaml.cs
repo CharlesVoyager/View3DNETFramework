@@ -444,10 +444,6 @@ namespace View3D.view.wpf
         }
 
         public static ManualResetEvent allDone = new ManualResetEvent(false);
-
-        public void ChangeLoginUI(bool isForceLogin)
-        {
-        }
     }
 
     public static class MouseDownHelper

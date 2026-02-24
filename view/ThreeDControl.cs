@@ -47,32 +47,30 @@ namespace View3D.view
         public bool clipviewEnabled;
         public bool viewSilhouette;
 
-        //Tree and cone support generation
-        private static bool symbolDetected = false;
         public View3D.view.wpf.UI ui = null;
 
         public ThreeDControl()
         {
             InitializeComponent();
 
+            // Integrate UI
             ui = new View3D.view.wpf.UI();
-            WindowInteropHelper helper = new WindowInteropHelper(ui);
-            helper.Owner = this.Handle;
-
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(ui);
-
-            ui.ChangeLoginUI(true);
 
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
+            // Initialize camera
             cam = new ThreeDCamera(this);
             SetCameraDefaults();
             cam.OrientIsometric();
             timer.Start();
+
+            // Languages
             translate();
             Main.main.languageChanged += translate;
+
             tooltips();
         }
 
@@ -879,14 +877,11 @@ namespace View3D.view
 
             if (emode == 0) // Rotate
             {
-                if (!symbolDetected)
-                {
-                    float d = Math.Min(gl.Width, gl.Height) / 3;
-                    speedX = (xPos - xDown) / d;
-                    speedY = (yPos - yDown) / d;
-                    cam.Rotate(-speedX * 0.9, speedY * 0.9);
-                    gl.Invalidate();
-                }
+                float d = Math.Min(gl.Width, gl.Height) / 3;
+                speedX = (xPos - xDown) / d;
+                speedY = (yPos - yDown) / d;
+                cam.Rotate(-speedX * 0.9, speedY * 0.9);
+                gl.Invalidate();
             }
             else if (emode == 1) // Pan
             {

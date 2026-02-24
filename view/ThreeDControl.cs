@@ -38,7 +38,7 @@ namespace View3D.view
         int keyY = -1;
 
         public ThreeDView view = null;
-        public STLComposer stlComp = null;
+        public View3D.view.wpf.STLComposer stlComp = null;
 
         //STL Slice Previewer
         public double setclipLayerHeight = 0.1;
@@ -97,7 +97,7 @@ namespace View3D.view
             cloneToolStripMenuItem.Text = Trans.T("B_CLONE_OBJECT");
         }
 
-        public void SetComp(STLComposer comp)
+        public void SetComp(View3D.view.wpf.STLComposer comp)
         {
             this.stlComp = comp;
         }
@@ -1026,7 +1026,7 @@ namespace View3D.view
 
         public void ThreeDControl_KeyDown(object sender, KeyEventArgs e)
         {
-            Main.main.objectPlacement.listSTLObjects_KeyDown(sender, e);
+  //          Main.main.objectPlacement.listSTLObjects_KeyDown(sender, e);
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

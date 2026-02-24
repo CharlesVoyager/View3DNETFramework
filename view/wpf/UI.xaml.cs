@@ -391,9 +391,7 @@ namespace View3D.view.wpf
             Main.main.threedview.clipviewEnabled = false;
             Main.main.threedview.button_remove_Click(null, null);
             if (Main.main.objectPlacement.listObjects.Items.Count > 0)
-            {
-                Main.main.objectPlacement.updateSTLState((PrintModel)Main.main.objectPlacement.listObjects.Items[0].Tag);
-            }
+                Main.main.objectPlacement.updateSTLState(Main.main.objectPlacement.SingleSelectedModel);
             Main.main.Focus();
         }
 

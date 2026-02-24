@@ -113,12 +113,6 @@
     <Compile Include="ModelLib\SWSetting.cs" />
     <Compile Include="ModelLib\Utils\RamTools.cs" />
     <Compile Include="view\ModelInOut.cs" />
-    <Compile Include="view\STLComposer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="view\STLComposer.designer.cs">
-      <DependentUpon>STLComposer.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\ThreedCamera.cs" />
     <Compile Include="view\ThreeDControl.cs">
       <SubType>UserControl</SubType>
@@ -158,8 +152,8 @@
     <Compile Include="view\wpf\OutofBound.xaml.cs">
       <DependentUpon>OutofBound.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\StlComposerWindow.xaml.cs">
-      <DependentUpon>StlComposerWindow.xaml</DependentUpon>
+    <Compile Include="view\wpf\STLComposer.xaml.cs">
+      <DependentUpon>STLComposer.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\wpf\UI.xaml.cs">
       <DependentUpon>UI.xaml</DependentUpon>
@@ -216,9 +210,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\STLComposer.resx">
-      <DependentUpon>STLComposer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="view\ThreeDControl.resx">
       <DependentUpon>ThreeDControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,9 +255,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\StlComposerWindow.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="view\wpf\STLComposer.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="view\wpf\UI.xaml">
       <Generator>MSBuild:Compile</Generator>

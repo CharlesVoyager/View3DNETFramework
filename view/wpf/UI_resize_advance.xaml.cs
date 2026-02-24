@@ -205,6 +205,9 @@ namespace View3D.view.wpf
         private void txtZ_TextChanged(object sender, TextChangedEventArgs e)
         {
             PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+         
+            if (stl == null) return;
+
             if (gIsShow == true)
             {
                 stl.LandToZ(stl.zMin);
@@ -214,7 +217,6 @@ namespace View3D.view.wpf
                 stl.modifiedM = false;
                 return;
             }
-            if (stl == null) return;
             try
             { 
                 if (dimZ == 0)

@@ -23,7 +23,7 @@ namespace View3D
         public static ThreeDSettings threeDSettings;
 
         public ThreeDControl threedview = null;
-        public STLComposer objectPlacement = null;
+        public View3D.view.wpf.STLComposer objectPlacement = null;
 
         public Trans trans = null;
 
@@ -87,13 +87,16 @@ namespace View3D
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
 #if DEBUG
-            threeDSettings.Show();
+            //threeDSettings.Show();
 #endif
 
             // STLComposer
-            View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();
-            objectPlacement = stlComposerWnd.stlComposerUserControl;
-            stlComposerWnd.Show();  // NOTE: This is necessary; otherwise, the list control event won't work.
+            //View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();
+            //objectPlacement = stlComposerWnd.stlComposerUserControl;
+            //stlComposerWnd.Show();  // NOTE: This is necessary; otherwise, the list control event won't work.
+
+            objectPlacement = new View3D.view.wpf.STLComposer();
+            objectPlacement.Show();
 
             // ThreeDControl
             threedview = new ThreeDControl();

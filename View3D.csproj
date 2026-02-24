@@ -183,7 +183,6 @@
     <Compile Include="model\Geom3D.cs" />
     <Compile Include="model\ModelData.cs" />
     <Compile Include="model\ModelGLDraw.cs" />
-    <Compile Include="model\PrinterModel.cs" />
     <Compile Include="model\PrintModel.cs" />
     <Compile Include="model\PulseAnimation.cs" />
     <Compile Include="model\RectPacker.cs" />

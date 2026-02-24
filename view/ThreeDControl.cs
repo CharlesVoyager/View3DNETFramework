@@ -125,7 +125,7 @@ namespace View3D.view
 
         public void SetObjectSelected(bool sel)
         {
-            if (Main.main.objectPlacement.listObjects.SelectedItems.Count == 1)
+            if (stlComp.listObjects.SelectedItems.Count == 1)
             {
                 ui.setbuttonVisable(sel);
             }
@@ -576,7 +576,7 @@ namespace View3D.view
                     //" available memory is " + new Microsoft.VisualBasic.Devices.ComputerInfo().AvailablePhysicalMemory.ToString("N0"));
                     if (view.models.Count > 0)
                     {
-                        Main.main.objectPlacement.RemoveLastModel();
+                        stlComp.RemoveLastModel();
                         UpdateChanges();
                     }
                     Main.main.threedview.ui.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
@@ -807,7 +807,7 @@ namespace View3D.view
                         view.eventObjectSelected(sel);
                     }
                     else if (keyX == e.X && keyY == e.Y)
-                        Main.main.objectPlacement.listObjects.SelectedItems.Clear();
+                        stlComp.listObjects.SelectedItems.Clear();
                 }
                 if (e.Button == MouseButtons.Right)
                 {
@@ -1026,7 +1026,9 @@ namespace View3D.view
 
         public void ThreeDControl_KeyDown(object sender, KeyEventArgs e)
         {
-  //          Main.main.objectPlacement.listSTLObjects_KeyDown(sender, e);
+#if false
+            stlComp.listSTLObjects_KeyDown(sender, e);
+#endif
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -1066,14 +1068,14 @@ namespace View3D.view
         {
             if (view.editor)
             {
-                Main.main.objectPlacement.buttonRemoveSTL_Click(null, null);
+                stlComp.buttonRemoveSTL_Click(null, null);
             }
             foreach (ThreeDModel m in view.models)
             {
                 m.Clear();
             }
             gl.Invalidate();
-            Main.main.objectPlacement.updateOutside();
+            stlComp.updateOutside();
         }
 
         public void button_helpInfo_Click(object sender, EventArgs e)
@@ -1083,7 +1085,7 @@ namespace View3D.view
 
         private void contextMenu_Opening(object sender, CancelEventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = stlComp.SingleSelectedModel;
             if (model == null)
             {
                 landObjectToolStripMenuItem.Visible = false;
@@ -1127,16 +1129,16 @@ namespace View3D.view
 
         private void mminchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = stlComp.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchOrScale(model, true);
+            stlComp.DoInchOrScale(model, true);
         }
 
         private void inchmmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = stlComp.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchtomm(model);
+            stlComp.DoInchtomm(model);
         }
 
         private void cloneToolStripMenuItem_Click(object sender, EventArgs e)

@@ -91,10 +91,6 @@ namespace View3D
 #endif
 
             // STLComposer
-            //View3D.view.wpf.StlComposerWindow stlComposerWnd = new View3D.view.wpf.StlComposerWindow();
-            //objectPlacement = stlComposerWnd.stlComposerUserControl;
-            //stlComposerWnd.Show();  // NOTE: This is necessary; otherwise, the list control event won't work.
-
             objectPlacement = new View3D.view.wpf.STLComposer();
             objectPlacement.Show();
 

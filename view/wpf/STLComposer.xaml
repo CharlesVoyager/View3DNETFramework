@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignWidth="480" d:DesignHeight="768">
+             Height="540" 
+             Width="400"
+             Title="STLCompoer"
+             ResizeMode="NoResize" Closing="Window_Closing">
 
     <Window.Resources>
         <!-- Validation error style for TextBox -->

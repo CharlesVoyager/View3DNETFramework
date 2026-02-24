@@ -1286,5 +1286,11 @@ namespace View3D.view.wpf
             }
             return images;
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true; // Prevent the window from actually closing
+            this.Hide();
+        }
     }
 }

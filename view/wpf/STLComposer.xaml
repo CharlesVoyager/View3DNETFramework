@@ -22,79 +22,79 @@
         </Style>
     </Window.Resources>
 
-    <!-- Root scroll container mirroring WinForms panelControls AutoScroll -->
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" x:Name="panelControls">
+    <Grid>
+
         <StackPanel Orientation="Vertical">
 
             <!-- ═══════════════════════════════════════════
                  listObjects  –  replaces WinForms ListView
                  ═══════════════════════════════════════════ -->
-                <ListView x:Name="listObjects"
-                      Height="180"
-                      Margin="4,2"
-                      BorderBrush="Gray"                   
-                      SelectionMode="Extended"
-                      SelectionChanged="listObjects_SelectionChanged"
-                      KeyDown="listObjects_KeyDown"
-                      SizeChanged="listObjects_SizeChanged">
-                    <ListView.View>
-                        <GridView AllowsColumnReorder="False">
-                            <!-- Name column – width managed in code-behind -->
-                            <GridViewColumn x:Name="columnName"
-                                        Header="Name"
-                                        Width="150"
-                                        DisplayMemberBinding="{Binding Name}"/>
+            <ListView x:Name="listObjects"
+                    Height="180"
+                    Margin="4,2"
+                    BorderBrush="Gray"                   
+                    SelectionMode="Extended"
+                    SelectionChanged="listObjects_SelectionChanged"
+                    KeyDown="listObjects_KeyDown"
+                    SizeChanged="listObjects_SizeChanged">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <!-- Name column – width managed in code-behind -->
+                        <GridViewColumn x:Name="columnName"
+                                    Header="Name"
+                                    Width="150"
+                                    DisplayMemberBinding="{Binding Name}"/>
 
-                            <!-- Mesh column – custom cell template -->
-                            <GridViewColumn x:Name="columnMesh"
-                                        Header="Mesh"
-                                        Width="50">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image x:Name="imgMesh"
-                                           Width="16" Height="16"
-                                           HorizontalAlignment="Center"
-                                           Source="{Binding MeshStatusImage}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                        <!-- Mesh column – custom cell template -->
+                        <GridViewColumn x:Name="columnMesh"
+                                    Header="Mesh"
+                                    Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image x:Name="imgMesh"
+                                        Width="16" Height="16"
+                                        HorizontalAlignment="Center"
+                                        Source="{Binding MeshStatusImage}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                            <!-- Collision column -->
-                            <GridViewColumn x:Name="columnCollision"
-                                        Header="Collision"
-                                        Width="50">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image Width="16" Height="16"
-                                           HorizontalAlignment="Center"
-                                           Source="{Binding CollisionStatusImage}"/>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                        <!-- Collision column -->
+                        <GridViewColumn x:Name="columnCollision"
+                                    Header="Collision"
+                                    Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Width="16" Height="16"
+                                        HorizontalAlignment="Center"
+                                        Source="{Binding CollisionStatusImage}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
 
-                            <!-- Delete column -->
-                            <GridViewColumn x:Name="columnDelete"
-                                        Header=""
-                                        Width="26">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Width="16" Height="16"
-                                            Padding="0"
-                                            BorderThickness="0"
-                                            Background="Transparent"
-                                            Tag="{Binding Model}"
-                                            Click="buttonRemoveObject_Click"
-                                            ToolTip="Remove">
-                                            <!-- Trash icon –  replace Source with your resource URI -->
-                                            <Image Source="/View3D;component/Resources/trash16.png"
-                                               Width="14" Height="14"/>
-                                        </Button>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                        <!-- Delete column -->
+                        <GridViewColumn x:Name="columnDelete"
+                                    Header=""
+                                    Width="26">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="16" Height="16"
+                                        Padding="0"
+                                        BorderThickness="0"
+                                        Background="Transparent"
+                                        Tag="{Binding Model}"
+                                        Click="buttonRemoveObject_Click"
+                                        ToolTip="Remove">
+                                        <!-- Trash icon –  replace Source with your resource URI -->
+                                        <Image Source="/View3D;component/Resources/trash16.png"
+                                            Width="14" Height="14"/>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <!-- ═══════════════════════════════════════════
                  panel1  –  Trans / Scale / Rotate controls
@@ -182,15 +182,14 @@
                              Margin="4,4" VerticalAlignment="Center"
                              Style="{StaticResource ValidatedTextBox}"
                              TextChanged="textRotZ_TextChanged"/>
-                    </Grid>
+                 </Grid>
             </Border>
 
             <!-- ═══════════════════════════════════════════
                  panelAnalysis  –  Object Analysis GroupBox
                  ═══════════════════════════════════════════ -->
             <Border x:Name="panelAnalysis" Height="200" Visibility="Visible">
-                <GroupBox Header="Object Analysis" Margin="4,2" Background="White"
-                          x:Name="groupBoxObjectAnalysis">
+                <GroupBox Header="Object Analysis" Margin="4,2" Background="White" x:Name="groupBoxObjectAnalysis">
                     <Grid Margin="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="65*"/>
@@ -261,5 +260,5 @@
             </Border>
 
         </StackPanel>
-    </ScrollViewer>
+     </Grid>
 </Window>

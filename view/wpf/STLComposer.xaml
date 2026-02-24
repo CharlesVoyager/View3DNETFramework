@@ -258,7 +258,7 @@
                     </Grid>
                 </GroupBox>
             </Border>
-
+            
         </StackPanel>
-     </Grid>
+    </Grid>
 </Window>

@@ -316,5 +316,12 @@
     <Resource Include="Resources\submenu_viewRside1.png" />
     <Resource Include="Resources\submenu_viewTop1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bad16.png" />
+    <Resource Include="Resources\lock16.png" />
+    <Resource Include="Resources\ok16.png" />
+    <Resource Include="Resources\trash16.png" />
+    <Resource Include="Resources\unlock16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

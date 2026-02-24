@@ -29,9 +29,6 @@ namespace View3D.model
         public Matrix4 curPos2 = new Matrix4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
         // pre-rotate, diff-rotate?, pre-s?, pre-move?
         public float preRX = 0, preRY = 0, preRZ = 0, dRX = 0, dRY = 0, dRZ = 0, preSX = 0, preSY = 0, preSZ = 0, preMX = 0, preMY = 0, preMZ = 0, preRX2 = 0, preRY2 = 0, preRZ2 = 0;
-        public float[] convexHull3DVtxOrg;
-        public float[] convexHull3DVtx;
-        public float[] convexHull2DVtx;
 
         public void addAnimation(ModelAnimation anim)
         {

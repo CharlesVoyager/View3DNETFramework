@@ -13,8 +13,6 @@ namespace View3D.model
     public delegate LinkedList<PrintModel> ListviewGetModelsDelegate(bool selected);
     public partial class PrintModel : ThreeDModel
     {
-        public static int GEN_CUBEOFLAYER_THRESHOLD = 3000; // minimum triangle count to generate cubes of layer
-
         public bool EnableHexagonBase;
 
         public int modelDataId = 0; // model data id
@@ -65,12 +63,10 @@ namespace View3D.model
 
         public List<Vector3> convexVectorList;
 
-        //public List<Vector3> convexHull3DList;
         public PrintModel()
         {
             this.submesh = new Submesh();
         }
-
 
         public PrintModel(IDraw newDrawer)
         {
@@ -516,7 +512,6 @@ namespace View3D.model
             OriginalBboxMax = new RHVector3(bbox.maxPoint);
             OriginalBboxMin = new RHVector3(bbox.minPoint);
 
-            //if (originalModel.triangles.Count > GEN_CUBEOFLAYER_THRESHOLD)
             {
                 double spanX = (bbox.xMax - bbox.xMin);
                 double spanY = (bbox.yMax - bbox.yMin);

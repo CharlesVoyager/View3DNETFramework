@@ -1145,31 +1145,5 @@ namespace View3D.view
         {
             this.stlComp.CloneObject();
         }
-
-        public void TransConvexHull3D(ThreeDModel model)
-        {
-            float[] tempConvexHullAry = new float[model.convexHull3DVtxOrg.Length];
-
-            for (int i = 0; i < model.convexHull3DVtxOrg.Length / 3; i++)
-            {
-                Vector4 ver = new Vector4(model.convexHull3DVtxOrg[i * 3], model.convexHull3DVtxOrg[i * 3 + 1], model.convexHull3DVtxOrg[i * 3 + 2], 0);
-
-                ver.X *= model.Scale.x;
-                ver.Y *= model.Scale.y;
-                ver.Z *= model.Scale.z;
-
-                ver = Vector4.Transform(ver, (Matrix4.Invert(model.curPos2)));
-                //ver = Vector4.Transform(ver, (getRotationMatrix(model.Rotation.x, model.Rotation.y, model.Rotation.z)));
-
-                ver.X += model.Position.x;
-                ver.Y += model.Position.y;
-                ver.Z += model.Position.z;
-
-                tempConvexHullAry[i * 3] = ver.X;
-                tempConvexHullAry[i * 3 + 1] = ver.Y;
-                tempConvexHullAry[i * 3 + 2] = ver.Z;
-            }
-            model.convexHull3DVtx = tempConvexHullAry;
-        }
     }
 }

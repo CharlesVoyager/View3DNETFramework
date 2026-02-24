@@ -437,41 +437,25 @@ namespace View3D.view.wpf
             var testList  = ListObjects(false);
             foreach (var pm in testList) { pm.oldOutside = pm.outside; pm.outside = false; }
 
-            bool showButton = true;
+            bool allObjectsInside = true;
             foreach (var stl in testList)
             {
                 float xMin = stl.xMin, xMax = stl.xMax;
-                if (stl.convexHull3DVtxOrg != null)
-                {
-                    double radiusSqrt = Math.Pow(Main.main.PrintAreaWidth / 2, 2);
-                    Main.main.threedview.TransConvexHull3D(stl);
-                    for (int i = 0; i < stl.convexHull2DVtx.Length / 2; i++)
-                    {
-                        if ((Math.Pow(stl.convexHull2DVtx[i * 2]     - Main.main.PrintAreaWidth / 2, 2) +
-                             Math.Pow(stl.convexHull2DVtx[i * 2 + 1] - Main.main.PrintAreaWidth / 2, 2)) > radiusSqrt)
-                        {
-                            stl.outside  = true;
-                            showButton   = showButton & !stl.outside;
-                            break;
-                        }
-                    }
-                }
-                else if (!Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
-                         !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
-                         !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
-                         !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
-                         !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
-                         !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
-                         !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
-                         !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
+                if (    !Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
+                        !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
+                        !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
+                        !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
+                        !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
+                        !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
+                        !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
+                        !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
                 {
                     stl.outside = true;
-                    showButton  = showButton & !stl.outside;
+                    allObjectsInside = false;
                 }
             }
 
-            Main.main.threedview.ui.OutofBound.Visibility =
-                showButton ? Visibility.Collapsed : Visibility.Visible;
+            Main.main.threedview.ui.OutofBound.Visibility = allObjectsInside ? Visibility.Collapsed : Visibility.Visible;
 
             foreach (var pm in testList)
             {

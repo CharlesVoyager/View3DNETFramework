@@ -253,9 +253,9 @@ namespace View3D.view.wpf
             get => buttonLockAspect.IsChecked == true;
             set
             {
-                textScaleX.IsEnabled   = value;
-                textScaleY.IsEnabled   = value;
-                textScaleZ.IsEnabled   = value;
+                textScaleX.IsEnabled = value;
+                textScaleY.IsEnabled = value;
+                textScaleZ.IsEnabled = value;
             }
         }
 

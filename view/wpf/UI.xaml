@@ -19,7 +19,7 @@
         </Storyboard>
     </Window.Resources>
 
-    <Grid x:Name="ui_grid">
+    <Grid>
         <local:OutofBound x:Name="OutofBound" />
         <local:UI_view x:Name="UI_view" Margin="101,123,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <local:UI_rotate x:Name="UI_rotate" Margin="84,256,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />

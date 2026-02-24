@@ -39,7 +39,6 @@ namespace View3D.view
 
         public ThreeDView view = null;
         public STLComposer stlComp = null;
-        public bool isShowWPF = true, isPreShowWPF = false;
 
         //STL Slice Previewer
         public double setclipLayerHeight = 0.1;
@@ -55,6 +54,8 @@ namespace View3D.view
 
             // Integrate UI
             ui = new View3D.view.wpf.UI();
+            WindowInteropHelper helper = new WindowInteropHelper(ui);
+            helper.Owner = this.Handle; // Make the UI be top of this control, but not top of other windows.
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(ui);
 
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -508,22 +509,6 @@ namespace View3D.view
             {
                 if (!loaded) return;
 
-                // disable UI icons when user rotate object
-                if (isPreShowWPF != isShowWPF)
-                {
-                    if (isShowWPF)
-                    {
-                        ui.Show();
-                        this.Focus();
-                    }
-                    else
-                    {
-                        ui.Hide();
-                        this.Focus();
-                    }
-                }
-                isPreShowWPF = isShowWPF;
-
                 Point location = gl.PointToScreen(Point.Empty);
                 ui.Left = (double)location.X / dpiX * 96;
                 ui.Top = (double)location.Y / dpiY * 96;
@@ -659,6 +644,8 @@ namespace View3D.view
             }
             loaded = true;
             SetupViewport();
+            ui.Show();
+            Focus();
         }
 
         public uint lastDepth = 0;
@@ -780,12 +767,14 @@ namespace View3D.view
             if (e.Button == MouseButtons.None)
             {
                 speedX = speedY = 0;
-                isShowWPF = true;
+                //ui.Show();
+                //Focus();
                 gl.Invalidate();
                 return;
             }
 
-            isShowWPF = false;
+            //ui.Hide();
+            //Focus();
 
             xPos = e.X;
             yPos = e.Y;

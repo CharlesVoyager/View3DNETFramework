@@ -437,7 +437,7 @@ namespace View3D.view.wpf
             var testList  = ListObjects(false);
             foreach (var pm in testList) { pm.oldOutside = pm.outside; pm.outside = false; }
 
-            bool allObjectsInside = true;
+            bool allPointsInside = true;
             foreach (var stl in testList)
             {
                 float xMin = stl.xMin, xMax = stl.xMax;
@@ -451,11 +451,11 @@ namespace View3D.view.wpf
                         !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
                 {
                     stl.outside = true;
-                    allObjectsInside = false;
+                    allPointsInside = false;
                 }
             }
 
-            Main.main.threedview.ui.OutofBound.Visibility = allObjectsInside ? Visibility.Collapsed : Visibility.Visible;
+            Main.main.threedview.ui.OutofBound.Visibility = allPointsInside ? Visibility.Collapsed : Visibility.Visible;
 
             foreach (var pm in testList)
             {
@@ -880,8 +880,10 @@ namespace View3D.view.wpf
             if (stl == null) return;
             float old = stl.Scale.z;
             float.TryParse(textScaleZ.Text, NumberStyles.Float, GCode.format, out stl.Scale.z);
-            updateSTLState(stl);
+            stl.UpdateBoundingBox();
             if (old != stl.Scale.z) stl.LandUpdateBBNoPreUpdate();
+            updateSTLState(stl);
+
             Main.main.threedview.UpdateChanges();
         }
 

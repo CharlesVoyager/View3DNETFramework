@@ -61,9 +61,9 @@
                     <Label Content="Collision:" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
                     <Label Content="Volume:" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" FontSize="14"/>
 
-                    <TextBox Name="txtFilename" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="???.stl" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
-                    <TextBox Name="txtCollision" Grid.Row="1" Grid.Column="1" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
-                    <TextBox Name="txtVolume" Grid.Row="1" Grid.Column="3" Text="100" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
+                    <TextBlock Name="txtFilename" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="???.stl" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
+                    <TextBlock Name="txtCollision" Grid.Row="1" Grid.Column="1" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
+                    <TextBlock Name="txtVolume" Grid.Row="1" Grid.Column="3" Text="100" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial" FontSize="14"/>
 
                 </Grid>
 
@@ -91,13 +91,13 @@
                     <Label Content="Y" Grid.Column="2" Grid.Row="0" Height="28" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" />
                     <Label Content="Z" Grid.Column="3" Grid.Row="0" Height="28" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontFamily="Arial" />
 
-                    <TextBox Name="txtPosX" Grid.Column="1" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
-                    <TextBox Name="txtPosY" Grid.Column="2" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
-                    <TextBox Name="txtPosZ" Grid.Column="3" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtPosX" Grid.Column="1" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtPosY" Grid.Column="2" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtPosZ" Grid.Column="3" Grid.Row="1" Text="100" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}"  Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
 
-                    <TextBox Name="txtSizeX" Grid.Column="1" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
-                    <TextBox Name="txtSizeY" Grid.Column="2" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
-                    <TextBox Name="txtSizeZ" Grid.Column="3" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtSizeX" Grid.Column="1" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtSizeY" Grid.Column="2" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
+                    <TextBlock Name="txtSizeZ" Grid.Column="3" Grid.Row="2" Text="10 mm" Height="23" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.8" Background="{x:Null}" Foreground="White" TextAlignment="Right" FontFamily="Arial"/>
 
                 </Grid>
             </StackPanel>

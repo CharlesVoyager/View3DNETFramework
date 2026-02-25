@@ -56,12 +56,13 @@ namespace View3D.view.wpf
 
         // Image sources replacing WinForms ImageList (index → meaning):
         //   0 = unlock16   1 = lock16   2 = ok16   3 = bad16   4 = trash16
-        private static readonly ImageSource[] _icons = LoadIcons();
+        private ImageSource[] _icons = null;
 
         // ── Constructor ───────────────────────────────────────────────────────
         public STLComposer()
         {
             InitializeComponent();
+            _icons = LoadIcons();
             try
             {
                 cont = new ThreeDView();
@@ -1141,7 +1142,7 @@ namespace View3D.view.wpf
         // =====================================================================
         //  Static icon loader
         // =====================================================================
-        private static ImageSource[] LoadIcons()
+        private ImageSource[] LoadIcons()
         {
             // Load embedded resource icons.
             // Adjust the pack URIs to match your project's resource paths.

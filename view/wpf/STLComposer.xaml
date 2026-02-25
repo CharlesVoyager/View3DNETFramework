@@ -40,15 +40,10 @@
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <!-- Name column – width managed in code-behind -->
-                        <GridViewColumn x:Name="columnName"
-                                    Header="Name"
-                                    Width="150"
-                                    DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn x:Name="columnName" Header="Name" Width="150" DisplayMemberBinding="{Binding Name}"/>
 
                         <!-- Mesh column – custom cell template -->
-                        <GridViewColumn x:Name="columnMesh"
-                                    Header="Mesh"
-                                    Width="50">
+                        <GridViewColumn x:Name="columnMesh" Header="Mesh" Width="50">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image x:Name="imgMesh"
@@ -60,9 +55,7 @@
                         </GridViewColumn>
 
                         <!-- Collision column -->
-                        <GridViewColumn x:Name="columnCollision"
-                                    Header="Collision"
-                                    Width="50">
+                        <GridViewColumn x:Name="columnCollision" Header="Collision" Width="50">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Width="16" Height="16"
@@ -73,9 +66,7 @@
                         </GridViewColumn>
 
                         <!-- Delete column -->
-                        <GridViewColumn x:Name="columnDelete"
-                                    Header=""
-                                    Width="26">
+                        <GridViewColumn x:Name="columnDelete" Header="" Width="26">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Width="16" Height="16"
@@ -85,9 +76,7 @@
                                         Tag="{Binding Model}"
                                         Click="buttonRemoveObject_Click"
                                         ToolTip="Remove">
-                                        <!-- Trash icon –  replace Source with your resource URI -->
-                                        <Image Source="/View3D;component/Resources/trash16.png"
-                                            Width="14" Height="14"/>
+                                        <Image Source="/View3D;component/Resources/trash16.png" Width="14" Height="14"/>
                                     </Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

@@ -319,15 +319,5 @@ namespace View3D.view
         public float[] Diffuse4() { return toGLColor(diffuse4.BackColor); }
         public float[] Ambient4() { return toGLColor(ambient4.BackColor); }
         public float[] Specular4() { return toGLColor(specular4.BackColor); }
-
-        public void checkDisableTravelMoves_CheckedChanged(object sender, EventArgs e)
-        {
-            Main.main.Update3D();
-        }
-
-        private void checkCorrectNormals_CheckedChanged(object sender, EventArgs e)
-        {
-            Main.main.Update3D();
-        }
     }
 }

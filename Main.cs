@@ -20,8 +20,8 @@ namespace View3D
         public event languageChangedEvent languageChanged;
 
         public static Main main;
-        public static ThreeDSettings threeDSettings;
 
+        public ThreeDSettings threeDSettings = null;
         public ThreeDControl threedview = null;
         public View3D.view.wpf.STLComposer objectPlacement = null;
 

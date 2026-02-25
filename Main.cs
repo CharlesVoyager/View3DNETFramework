@@ -92,8 +92,9 @@ namespace View3D
 
             // STLComposer
             objectPlacement = new View3D.view.wpf.STLComposer();
+            System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(objectPlacement);
             objectPlacement.Show();
-
+          
             // ThreeDControl
             threedview = new ThreeDControl();
             threedview.Dock = DockStyle.Fill;

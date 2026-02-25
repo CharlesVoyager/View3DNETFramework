@@ -510,8 +510,6 @@ namespace View3D.view
                 if (!loaded) return;
 
                 Point location = gl.PointToScreen(Point.Empty);
-                ui.Left = (double)location.X / dpiX * 96;
-                ui.Top = (double)location.Y / dpiY * 96;
                 DetectDrawingMethod();
                 fpsTimer.Reset();
                 fpsTimer.Start();

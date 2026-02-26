@@ -297,6 +297,9 @@ namespace View3D.view
         private void ThreeDSettings_Closing(object sender, CancelEventArgs e)
         {
             //RegMemory.StoreWindowPos("threeDSettingsWindow", this, false, false);
+
+            e.Cancel = true; // Prevent the window from actually closing
+            this.Hide();
         }
 
         // ── OpenGL colour helpers ─────────────────────────────────────────────────

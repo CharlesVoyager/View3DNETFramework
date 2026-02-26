@@ -120,12 +120,6 @@
     <Compile Include="view\ThreeDControl.designer.cs">
       <DependentUpon>ThreeDControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\ThreeDSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\ThreeDSettings.designer.cs">
-      <DependentUpon>ThreeDSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\utils\ColorSlider.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -154,6 +148,9 @@
     </Compile>
     <Compile Include="view\wpf\STLComposer.xaml.cs">
       <DependentUpon>STLComposer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\wpf\ThreeDSettings.xaml.cs">
+      <DependentUpon>ThreeDSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\wpf\UI.xaml.cs">
       <DependentUpon>UI.xaml</DependentUpon>
@@ -212,9 +209,6 @@
     <EmbeddedResource Include="view\ThreeDControl.resx">
       <DependentUpon>ThreeDControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\ThreeDSettings.resx">
-      <DependentUpon>ThreeDSettings.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="view\utils\ColorSlider.resx">
       <DependentUpon>ColorSlider.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +249,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\wpf\STLComposer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="view\wpf\ThreeDSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -184,7 +184,7 @@ namespace View3D.view
             GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 0, 0, 0, 0 });
             GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 0, 0, 0, 0 });
             GL.Enable(EnableCap.Light0);
-            if (Main.main.threeDSettings.enableLight1.Checked)
+            if (Main.main.threeDSettings.enableLight1.IsChecked == true)
             {
                 GL.Light(LightName.Light1, LightParameter.Ambient, Main.main.threeDSettings.Ambient1());
                 GL.Light(LightName.Light1, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse1());
@@ -194,7 +194,7 @@ namespace View3D.view
                 GL.Enable(EnableCap.Light1);
             }
             else GL.Disable(EnableCap.Light1);
-            if (Main.main.threeDSettings.enableLight2.Checked)
+            if (Main.main.threeDSettings.enableLight2.IsChecked == true)
             {
                 GL.Light(LightName.Light2, LightParameter.Ambient, Main.main.threeDSettings.Ambient2());
                 GL.Light(LightName.Light2, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse2());
@@ -207,7 +207,7 @@ namespace View3D.view
                 GL.Enable(EnableCap.Light2);
             }
             else GL.Disable(EnableCap.Light2);
-            if (Main.main.threeDSettings.enableLight3.Checked)
+            if (Main.main.threeDSettings.enableLight3.IsChecked == true)
             {
                 GL.Light(LightName.Light3, LightParameter.Ambient, Main.main.threeDSettings.Ambient3());
                 GL.Light(LightName.Light3, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse3());
@@ -220,7 +220,7 @@ namespace View3D.view
                 GL.Enable(EnableCap.Light3);
             }
             else GL.Disable(EnableCap.Light3);
-            if (Main.main.threeDSettings.enableLight4.Checked)
+            if (Main.main.threeDSettings.enableLight4.IsChecked == true)
             {
                 GL.Light(LightName.Light4, LightParameter.Ambient, Main.main.threeDSettings.Ambient4());
                 GL.Light(LightName.Light4, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse4());

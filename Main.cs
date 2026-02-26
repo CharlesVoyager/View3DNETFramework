@@ -86,7 +86,7 @@ namespace View3D
 
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
-            //threeDSettings.Show();
+            threeDSettings.Show();
 
             // STLComposer
             objectPlacement = new View3D.view.wpf.STLComposer();
@@ -242,6 +242,23 @@ namespace View3D
             catch { }
         }
 
+        /// <summary>
+        /// Converts a WPF SolidColorBrush to a WinForms System.Drawing.Color.
+        /// Returns Color.Empty or throws if the brush is not a SolidColorBrush.
+        /// </summary>
+        public System.Drawing.Color ToDrawingColor(System.Windows.Media.Brush wpfBrush)
+        {
+            if (wpfBrush is System.Windows.Media.SolidColorBrush solidBrush)
+            {
+                System.Windows.Media.Color c = solidBrush.Color;
+                return System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
+            }
+
+            // Alternative: Handle Gradients by taking the first stop, 
+            // or throw an exception based on your architectural requirements.
+            throw new InvalidOperationException("Only SolidColorBrush can be converted to a single Color.");
+        }
+
         public Color GetColorSetting(Submesh.MeshColor color, Color frontBackColor)
         {
             switch (color)
@@ -249,21 +266,21 @@ namespace View3D
                 case Submesh.MeshColor.FrontBack:
                     return frontBackColor;
                 case Submesh.MeshColor.Back:
-                    return threeDSettings.insideFaces.BackColor;
+                    return ToDrawingColor(threeDSettings.insideFaces.Background);
                 case Submesh.MeshColor.ErrorFace:
-                    return threeDSettings.errorModel.BackColor;
+                    return ToDrawingColor(threeDSettings.errorModel.Background);
                 case Submesh.MeshColor.ErrorEdge:
-                    return threeDSettings.errorModelEdge.BackColor;
+                    return ToDrawingColor(threeDSettings.errorModelEdge.Background);
                 case Submesh.MeshColor.OutSide:
-                    return threeDSettings.outsidePrintbed.BackColor;
+                    return ToDrawingColor(threeDSettings.outsidePrintbed.Background);
                 case Submesh.MeshColor.EdgeLoop:
-                    return threeDSettings.edges.BackColor;
+                    return ToDrawingColor(threeDSettings.edges.Background);
                 case Submesh.MeshColor.CutEdge:
-                    return threeDSettings.cutFaces.BackColor;
+                    return ToDrawingColor(threeDSettings.cutFaces.Background);
                 case Submesh.MeshColor.Normal:
                     return Color.Blue;
                 case Submesh.MeshColor.Edge:
-                    return threeDSettings.edges.BackColor;
+                    return ToDrawingColor(threeDSettings.edges.Background);
                 case Submesh.MeshColor.TransBlue:
                     return Color.FromArgb(128, 0, 0, 255);
                 case Submesh.MeshColor.OverhangLv1: // pink

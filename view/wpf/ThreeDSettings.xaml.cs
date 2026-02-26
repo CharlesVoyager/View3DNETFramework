@@ -1,28 +1,233 @@
+using OpenTK;
+using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using View3D.model;
+using View3D.view.utils;
 
-// Note: WPF's built-in ColorDialog doesn't exist; use a NuGet package such as
-// "ColorPickerWPF" or "Ookii.Dialogs.Wpf", or the Windows Forms one via interop.
-// This file uses a simple Windows Forms ColorDialog via interop (add reference to
-// System.Windows.Forms and WindowsFormsIntegration in your .csproj).
-using WinForms = System.Windows.Forms;
+// ColorDialog interop: add <UseWindowsForms>true</UseWindowsForms> to your .csproj.
+using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
+using WinFormsDialogResult = System.Windows.Forms.DialogResult;
 
 namespace View3D.view
 {
-    public partial class ThreeDSettings : Window
+    public partial class ThreeDSettings : Window, INotifyPropertyChanged
     {
+        // ── Fields ───────────────────────────────────────────────────────────────
+        private RegistryKey threedKey = null;
+        public bool useVBOs = false;
+        public int drawMethod = 0;         // 0 = elements, 1 = drawElements, 2 = VBO
+        public float openGLVersion = 1.0f; // Version for feature detection
+        private bool _showEdges = false;
+        private bool _showFaces = true;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
         // ── Constructor ──────────────────────────────────────────────────────────
         public ThreeDSettings()
         {
             InitializeComponent();
-            comboDrawMethod.SelectedIndex = 0;
+            comboDrawMethod.SelectedIndex = 0; // Autodetect best
+            RegistryToForm();
+            translate();
+            Main.main.languageChanged += translate;
         }
 
-        // ── Helper: open color picker for a Border swatch ───────────────────────
+        public void translate()
+        {
+            // Localisation hook — populate as needed.
+        }
+
+        // ── ShowEdges / ShowFaces properties (INotifyPropertyChanged + registry) ─
+        public bool ShowEdges
+        {
+            get => _showEdges;
+            set
+            {
+                if (value == _showEdges) return;
+                _showEdges = value;
+                threedKey?.SetValue("showEdges", _showEdges ? 1 : 0);
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ShowEdges)));
+                Main.main.Update3D();
+            }
+        }
+
+        public bool ShowFaces
+        {
+            get => _showFaces;
+            set
+            {
+                if (value == _showFaces) return;
+                _showFaces = value;
+                threedKey?.SetValue("showFaces", _showFaces ? 1 : 0);
+                OnPropertyChanged(new PropertyChangedEventArgs(nameof(ShowFaces)));
+                Main.main.Update3D();
+            }
+        }
+
+        // ── Registry persistence ─────────────────────────────────────────────────
+
+        /// <summary>Persist all current UI values to the registry.</summary>
+        public void FormToRegistry()
+        {
+            if (threedKey == null) return;
+            try
+            {
+                threedKey.SetValue("backgroundTopColor",    ToArgb(backgroundTop));
+                threedKey.SetValue("backgroundBottomColor", ToArgb(backgroundBottom));
+                threedKey.SetValue("facesColor",            ToArgb(faces));
+                threedKey.SetValue("edgesColor",            ToArgb(edges));
+                threedKey.SetValue("selectedFacesColor",    ToArgb(selectedFaces));
+                threedKey.SetValue("printerBaseColor",      ToArgb(printerBase));
+                threedKey.SetValue("printerFrameColor",     ToArgb(printerFrame));
+                threedKey.SetValue("outsidePrintbedColor",  ToArgb(outsidePrintbed));
+                threedKey.SetValue("showEdges",             _showEdges  ? 1 : 0);
+                threedKey.SetValue("showFaces",             _showFaces  ? 1 : 0);
+                threedKey.SetValue("showPrintbed",          showPrintbed.IsChecked == true ? 1 : 0);
+                threedKey.SetValue("enableLight1",          enableLight1.IsChecked == true ? 1 : 0);
+                threedKey.SetValue("enableLight2",          enableLight2.IsChecked == true ? 1 : 0);
+                threedKey.SetValue("enableLight3",          enableLight3.IsChecked == true ? 1 : 0);
+                threedKey.SetValue("enableLight4",          enableLight4.IsChecked == true ? 1 : 0);
+                threedKey.SetValue("drawMethod",            comboDrawMethod.SelectedIndex);
+
+                threedKey.SetValue("ambient1Color",   ToArgb(ambient1));
+                threedKey.SetValue("diffuse1Color",   ToArgb(diffuse1));
+                threedKey.SetValue("specular1Color",  ToArgb(specular1));
+                threedKey.SetValue("ambient2Color",   ToArgb(ambient2));
+                threedKey.SetValue("diffuse2Color",   ToArgb(diffuse2));
+                threedKey.SetValue("specular2Color",  ToArgb(specular2));
+                threedKey.SetValue("ambient3Color",   ToArgb(ambient3));
+                threedKey.SetValue("diffuse3Color",   ToArgb(diffuse3));
+                threedKey.SetValue("specular3Color",  ToArgb(specular3));
+                threedKey.SetValue("ambient4Color",   ToArgb(ambient4));
+                threedKey.SetValue("diffuse4Color",   ToArgb(diffuse4));
+                threedKey.SetValue("specular4Color",  ToArgb(specular4));
+                threedKey.SetValue("selectionBoxColor", ToArgb(selectionBox));
+                threedKey.SetValue("errorModelColor",   ToArgb(errorModel));
+                threedKey.SetValue("insideFacesColor",  ToArgb(insideFaces));
+
+                threedKey.SetValue("light1X", xdir1.Text);
+                threedKey.SetValue("light1Y", ydir1.Text);
+                threedKey.SetValue("light1Z", zdir1.Text);
+                threedKey.SetValue("light2X", xdir2.Text);
+                threedKey.SetValue("light2Y", ydir2.Text);
+                threedKey.SetValue("light2Z", zdir2.Text);
+                threedKey.SetValue("light3X", xdir3.Text);
+                threedKey.SetValue("light3Y", ydir3.Text);
+                threedKey.SetValue("light3Z", zdir3.Text);
+                threedKey.SetValue("light4X", xdir4.Text);
+                threedKey.SetValue("light4Y", ydir4.Text);
+                threedKey.SetValue("light4Z", zdir4.Text);
+            }
+            catch { }
+        }
+
+        /// <summary>Restore all UI values from the registry.</summary>
+        private void RegistryToForm()
+        {
+            if (threedKey == null) return;
+            try
+            {
+                SetSwatchColor(backgroundTop,    "backgroundTopColor",    backgroundTop);
+                SetSwatchColor(backgroundBottom, "backgroundBottomColor", backgroundBottom);
+                SetSwatchColor(faces,            "facesColor",            faces);
+                SetSwatchColor(edges,            "edgesColor",            faces);         // original used faces as fallback
+                SetSwatchColor(selectedFaces,    "selectedFacesColor",    selectedFaces);
+                SetSwatchColor(printerBase,      "printerBaseColor",      printerBase);
+                SetSwatchColor(printerFrame,     "printerFrameColor",     printerFrame);
+                SetSwatchColor(outsidePrintbed,  "outsidePrintbedColor",  outsidePrintbed);
+
+                _showEdges = 0 != (int)(threedKey.GetValue("showEdges",  _showEdges  ? 1 : 0));
+                _showFaces = 0 != (int)(threedKey.GetValue("showFaces",  _showFaces  ? 1 : 0));
+
+                showPrintbed.IsChecked  = 0 != (int)(threedKey.GetValue("showPrintbed",  showPrintbed.IsChecked  == true ? 1 : 0));
+                enableLight1.IsChecked  = 0 != (int)(threedKey.GetValue("enableLight1",  enableLight1.IsChecked  == true ? 1 : 0));
+                enableLight2.IsChecked  = 0 != (int)(threedKey.GetValue("enableLight2",  enableLight2.IsChecked  == true ? 1 : 0));
+                enableLight3.IsChecked  = 0 != (int)(threedKey.GetValue("enableLight3",  enableLight3.IsChecked  == true ? 1 : 0));
+                enableLight4.IsChecked  = 0 != (int)(threedKey.GetValue("enableLight4",  enableLight4.IsChecked  == true ? 1 : 0));
+
+                comboDrawMethod.SelectedIndex = (int)(threedKey.GetValue("drawMethod", 0));
+
+                SetSwatchColor(ambient1,  "ambient1Color",  ambient1);
+                SetSwatchColor(diffuse1,  "diffuse1Color",  diffuse1);
+                SetSwatchColor(specular1, "specular1Color", specular1);
+                SetSwatchColor(ambient2,  "ambient2Color",  ambient2);
+                SetSwatchColor(diffuse2,  "diffuse2Color",  diffuse2);
+                SetSwatchColor(specular2, "specular2Color", specular2);
+                SetSwatchColor(ambient3,  "ambient3Color",  ambient3);
+                SetSwatchColor(diffuse3,  "diffuse3Color",  diffuse3);
+                SetSwatchColor(specular3, "specular3Color", specular3);
+                SetSwatchColor(ambient4,  "ambient4Color",  ambient4);
+                SetSwatchColor(diffuse4,  "diffuse4Color",  diffuse4);
+                SetSwatchColor(specular4, "specular4Color", specular4);
+                SetSwatchColor(selectionBox,  "selectionBoxColor", selectionBox);
+                SetSwatchColor(errorModel,    "errorModelColor",   errorModel);
+                SetSwatchColor(insideFaces,   "insideFacesColor",  insideFaces);
+
+                xdir1.Text = (string)threedKey.GetValue("light1X", xdir1.Text);
+                ydir1.Text = (string)threedKey.GetValue("light1Y", ydir1.Text);
+                zdir1.Text = (string)threedKey.GetValue("light1Z", zdir1.Text);
+                xdir2.Text = (string)threedKey.GetValue("light2X", xdir2.Text);
+                ydir2.Text = (string)threedKey.GetValue("light2Y", ydir2.Text);
+                zdir2.Text = (string)threedKey.GetValue("light2Z", zdir2.Text);
+                xdir3.Text = (string)threedKey.GetValue("light3X", xdir3.Text);
+                ydir3.Text = (string)threedKey.GetValue("light3Y", ydir3.Text);
+                zdir3.Text = (string)threedKey.GetValue("light3Z", zdir3.Text);
+                xdir4.Text = (string)threedKey.GetValue("light4X", xdir4.Text);
+                ydir4.Text = (string)threedKey.GetValue("light4Y", ydir4.Text);
+                zdir4.Text = (string)threedKey.GetValue("light4Z", zdir4.Text);
+
+                // Migrate legacy key
+                if (threedKey.GetValue("backgroundColor", null) != null)
+                    threedKey.DeleteValue("backgroundColor");
+            }
+            catch { }
+        }
+
+        // ── Color-swatch helpers ─────────────────────────────────────────────────
+
+        /// <summary>Return the ARGB int of a swatch Border's SolidColorBrush background.</summary>
+        private static int ToArgb(Border b)
+        {
+            if (b.Background is SolidColorBrush scb)
+            {
+                var c = scb.Color;
+                return (c.A << 24) | (c.R << 16) | (c.G << 8) | c.B;
+            }
+            return 0;
+        }
+
+        /// <summary>
+        /// Read an ARGB int from the registry and apply it to <paramref name="target"/>.
+        /// Falls back to the current colour of <paramref name="fallback"/> when the key is absent.
+        /// </summary>
+        private void SetSwatchColor(Border target, string regKey, Border fallback)
+        {
+            int argb = (int)(threedKey.GetValue(regKey, ToArgb(fallback)));
+            target.Background = new SolidColorBrush(ArgbToColor(argb));
+        }
+
+        private static Color ArgbToColor(int argb)
+        {
+            byte a = (byte)((argb >> 24) & 0xFF);
+            byte r = (byte)((argb >> 16) & 0xFF);
+            byte g = (byte)((argb >>  8) & 0xFF);
+            byte b = (byte)( argb        & 0xFF);
+            return Color.FromArgb(a, r, g, b);
+        }
+
+        // ── Color picker (replaces WinForms ColorDialog) ─────────────────────────
+
         private void ColorSwatch_Click(object sender, MouseButtonEventArgs e)
         {
             if (sender is Border border)
@@ -31,149 +236,150 @@ namespace View3D.view
 
         private void PickColor(Border border)
         {
-            var dialog = new WinForms.ColorDialog();
-
-            // Pre-select the current swatch color
+            var dlg = new WinFormsColorDialog();
             if (border.Background is SolidColorBrush scb)
             {
                 var c = scb.Color;
-                dialog.Color = System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
+                dlg.Color = System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
             }
-
-            if (dialog.ShowDialog() == WinForms.DialogResult.OK)
+            if (dlg.ShowDialog() == WinFormsDialogResult.OK)
             {
-                var dc = dialog.Color;
+                var dc = dlg.Color;
                 border.Background = new SolidColorBrush(Color.FromArgb(dc.A, dc.R, dc.G, dc.B));
-                OnColorChanged(border);
+                Main.main.Update3D();
             }
         }
 
-        // Called after any color swatch changes — override / hook as needed.
-        protected virtual void OnColorChanged(Border changedSwatch)
-        {
-            // Consumers can subscribe to per-swatch changes here or override this method.
-        }
+        // ── Event handlers ───────────────────────────────────────────────────────
 
-        // ── Tab: General ─────────────────────────────────────────────────────────
-        private void showPrintbed_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            // Mirror: WinForms showEdges_CheckedChanged called for printbed too
-            OnSettingsChanged();
-        }
-
-        private void comboDrawMethod_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Mirror: WinForms comboDrawMethod_SelectedIndexChanged
-            OnSettingsChanged();
-        }
-
-        // ── Tab: Model ───────────────────────────────────────────────────────────
+        /// <summary>
+        /// Single unified handler that mirrors all the WinForms CheckedChanged /
+        /// showEdges_CheckedChanged events that simply called Main.main.Update3D().
+        /// Also syncs the ShowEdges / ShowFaces backing properties when those
+        /// checkboxes are the source.
+        /// </summary>
         private void showEdges_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            OnSettingsChanged();
-        }
-
-        private void showFaces_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            OnSettingsChanged();
-        }
-
-        // ── Tab: Lights ──────────────────────────────────────────────────────────
-        private void enableLight_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            OnSettingsChanged();
+            if (sender == showEdges)
+                ShowEdges = showEdges.IsChecked == true;
+            else if (sender == showFaces)
+                ShowFaces = showFaces.IsChecked == true;
+            else
+                Main.main.Update3D();
         }
 
         private void light_TextChanged(object sender, TextChangedEventArgs e)
         {
-            // Mirror: WinForms light_TextChanged
-            OnSettingsChanged();
+            Main.main.Update3D();
         }
 
         /// <summary>
-        /// Validates that the TextBox contains a valid float; highlights in red on failure.
-        /// Mirrors: WinForms float_Validating / ErrorProvider pattern.
+        /// Validates that the TextBox contains a valid float.
+        /// Mirrors WinForms float_Validating / ErrorProvider pattern using a red border.
         /// </summary>
         private void float_LostFocus(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox tb)
             {
-                bool valid = float.TryParse(tb.Text, NumberStyles.Float,
-                                            CultureInfo.InvariantCulture, out _);
+                bool valid = float.TryParse(tb.Text, NumberStyles.Float, GCode.format, out _);
                 tb.BorderBrush = valid
                     ? SystemColors.ControlDarkBrush
                     : Brushes.Red;
-                tb.ToolTip = valid ? null : "Please enter a valid floating-point number.";
+                tb.ToolTip = valid ? null : Trans.T("L_NOT_A_NUMBER");
             }
         }
 
-        // ── Window closing ───────────────────────────────────────────────────────
-        private void ThreeDSettings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void comboDrawMethod_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Mirror: WinForms ThreeDSettings_FormClosing
-            // Add any save / cancel logic here.
+            // Intentionally empty — mirrors the commented-out body in the original.
         }
 
-        // ── Shared notification hook ─────────────────────────────────────────────
-        protected virtual void OnSettingsChanged()
+        private void ThreeDSettings_Closing(object sender, CancelEventArgs e)
         {
-            // Raise an event or call a ViewModel method here as needed.
+            //RegMemory.StoreWindowPos("threeDSettingsWindow", this, false, false);
         }
 
-        // ── Public accessors (mirror the public WinForms fields) ─────────────────
+        // ── OpenGL colour helpers ─────────────────────────────────────────────────
 
-        public SolidColorBrush FacesColor       => (SolidColorBrush)faces.Background;
-        public SolidColorBrush SelectedFacesColor => (SolidColorBrush)selectedFaces.Background;
-        public SolidColorBrush EdgesColor        => (SolidColorBrush)edges.Background;
-        public SolidColorBrush InsideFacesColor  => (SolidColorBrush)insideFaces.Background;
-        public SolidColorBrush CutFacesColor     => (SolidColorBrush)cutFaces.Background;
-        public SolidColorBrush SelectionBoxColor => (SolidColorBrush)selectionBox.Background;
-        public SolidColorBrush OutsidePrintbedColor => (SolidColorBrush)outsidePrintbed.Background;
-        public SolidColorBrush ErrorModelColor   => (SolidColorBrush)errorModel.Background;
-        public SolidColorBrush ErrorModelEdgeColor => (SolidColorBrush)errorModelEdge.Background;
+        /// <summary>Convert a WPF SolidColorBrush swatch to a normalised OpenGL float[4].</summary>
+        private static float[] ToGLColor(Border b)
+        {
+            if (b.Background is SolidColorBrush scb)
+            {
+                var c = scb.Color;
+                return new float[] { c.R / 255f, c.G / 255f, c.B / 255f, 1f };
+            }
+            return new float[] { 0f, 0f, 0f, 1f };
+        }
 
-        public SolidColorBrush BackgroundTopColor    => (SolidColorBrush)backgroundTop.Background;
-        public SolidColorBrush BackgroundBottomColor => (SolidColorBrush)backgroundBottom.Background;
-        public SolidColorBrush PrinterBaseColor      => (SolidColorBrush)printerBase.Background;
-        public SolidColorBrush PrinterFrameColor     => (SolidColorBrush)printerFrame.Background;
+        // ── Light direction helpers ───────────────────────────────────────────────
 
-        public bool ShowPrintbed => showPrintbed.IsChecked == true;
-        public bool ShowEdges    => showEdges.IsChecked == true;
-        public bool ShowFaces    => showFaces.IsChecked == true;
+        private static Vector4 ToDir(TextBox x, TextBox y, TextBox z)
+        {
+            float.TryParse(x.Text, NumberStyles.Float, GCode.format, out float xf);
+            float.TryParse(y.Text, NumberStyles.Float, GCode.format, out float yf);
+            float.TryParse(z.Text, NumberStyles.Float, GCode.format, out float zf);
+            return new Vector4(xf, yf, zf, 0f);
+        }
 
-        public bool EnableLight1 => enableLight1.IsChecked == true;
-        public bool EnableLight2 => enableLight2.IsChecked == true;
-        public bool EnableLight3 => enableLight3.IsChecked == true;
-        public bool EnableLight4 => enableLight4.IsChecked == true;
+        // ── Public API (identical signatures to the original) ────────────────────
 
-        public int DrawMethodIndex => comboDrawMethod.SelectedIndex;
+        public Vector4 Dir1() => ToDir(xdir1, ydir1, zdir1);
+        public Vector4 Dir2() => ToDir(xdir2, ydir2, zdir2);
+        public Vector4 Dir3() => ToDir(xdir3, ydir3, zdir3);
+        public Vector4 Dir4() => ToDir(xdir4, ydir4, zdir4);
 
-        // Light direction accessors
-        public string XDir1 => xdir1.Text;
-        public string XDir2 => xdir2.Text;
-        public string XDir3 => xdir3.Text;
-        public string XDir4 => xdir4.Text;
-        public string YDir1 => ydir1.Text;
-        public string YDir2 => ydir2.Text;
-        public string YDir3 => ydir3.Text;
-        public string YDir4 => ydir4.Text;
-        public string ZDir1 => zdir1.Text;
-        public string ZDir2 => zdir2.Text;
-        public string ZDir3 => zdir3.Text;
-        public string ZDir4 => zdir4.Text;
+        public float[] Diffuse1()  => ToGLColor(diffuse1);
+        public float[] Ambient1()  => ToGLColor(ambient1);
+        public float[] Specular1() => ToGLColor(specular1);
+        public float[] Diffuse2()  => ToGLColor(diffuse2);
+        public float[] Ambient2()  => ToGLColor(ambient2);
+        public float[] Specular2() => ToGLColor(specular2);
+        public float[] Diffuse3()  => ToGLColor(diffuse3);
+        public float[] Ambient3()  => ToGLColor(ambient3);
+        public float[] Specular3() => ToGLColor(specular3);
+        public float[] Diffuse4()  => ToGLColor(diffuse4);
+        public float[] Ambient4()  => ToGLColor(ambient4);
+        public float[] Specular4() => ToGLColor(specular4);
 
-        // Light color accessors
-        public SolidColorBrush Ambient1Color  => (SolidColorBrush)ambient1.Background;
-        public SolidColorBrush Ambient2Color  => (SolidColorBrush)ambient2.Background;
-        public SolidColorBrush Ambient3Color  => (SolidColorBrush)ambient3.Background;
-        public SolidColorBrush Ambient4Color  => (SolidColorBrush)ambient4.Background;
-        public SolidColorBrush Diffuse1Color  => (SolidColorBrush)diffuse1.Background;
-        public SolidColorBrush Diffuse2Color  => (SolidColorBrush)diffuse2.Background;
-        public SolidColorBrush Diffuse3Color  => (SolidColorBrush)diffuse3.Background;
-        public SolidColorBrush Diffuse4Color  => (SolidColorBrush)diffuse4.Background;
-        public SolidColorBrush Specular1Color => (SolidColorBrush)specular1.Background;
-        public SolidColorBrush Specular2Color => (SolidColorBrush)specular2.Background;
-        public SolidColorBrush Specular3Color => (SolidColorBrush)specular3.Background;
-        public SolidColorBrush Specular4Color => (SolidColorBrush)specular4.Background;
+
+        public System.Drawing.Color InsideFacesBackgroundColor() => ToDrawingColor(insideFaces.Background);
+        public System.Drawing.Color ErrorModelBackgroundColor() => ToDrawingColor(errorModel.Background);
+
+        public System.Drawing.Color ErrorModelEdgeBackgroundColor() => ToDrawingColor(errorModelEdge.Background);
+
+        public System.Drawing.Color OutsidePrintbedBackgroundColor() => ToDrawingColor(outsidePrintbed.Background);
+
+        public System.Drawing.Color EdgesLoopBackgroundColor() => ToDrawingColor(edges.Background);
+
+        public System.Drawing.Color CutFacesBackgroundColor() => ToDrawingColor(cutFaces.Background);
+
+        public System.Drawing.Color EdgesBackgroundColor() => ToDrawingColor(edges.Background);
+
+        public System.Drawing.Color SelectionBoxBackgroundColor() => ToDrawingColor(selectionBox.Background);
+
+        public System.Drawing.Color PrinterFrameBackgroundColor() => ToDrawingColor(printerFrame.Background);
+
+        public System.Drawing.Color PrinterBaseBackgroundColor() => ToDrawingColor(printerBase.Background);
+
+        public System.Drawing.Color BackgroundTopBackgroundColor() => ToDrawingColor(backgroundTop.Background);
+
+        public System.Drawing.Color BackgroundBottomBackgroundColor() => ToDrawingColor(backgroundBottom.Background);
+        /// <summary>
+        /// Converts a WPF SolidColorBrush to a WinForms System.Drawing.Color.
+        /// Returns Color.Empty or throws if the brush is not a SolidColorBrush.
+        /// </summary>
+        public System.Drawing.Color ToDrawingColor(System.Windows.Media.Brush wpfBrush)
+        {
+            if (wpfBrush is System.Windows.Media.SolidColorBrush solidBrush)
+            {
+                System.Windows.Media.Color c = solidBrush.Color;
+                return System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
+            }
+
+            // Alternative: Handle Gradients by taking the first stop, 
+            // or throw an exception based on your architectural requirements.
+            throw new InvalidOperationException("Only SolidColorBrush can be converted to a single Color.");
+        }
     }
 }

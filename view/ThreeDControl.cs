@@ -296,7 +296,7 @@ namespace View3D.view
                 {
                     GL.PushMatrix();
                     model.AnimationBefore();
-                    Color col = Main.main.threeDSettings.selectionBox.BackColor;
+                    Color col = Main.main.threeDSettings.SelectionBoxBackgroundColor();
                     GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(0, 0, 0, 255));
                     GL.Material(MaterialFace.Front, MaterialParameter.Emission, new OpenTK.Graphics.Color4(0, 0, 0, 0));
                     GL.Material(MaterialFace.Front, MaterialParameter.Specular, new float[] { 0.0f, 0.0f, 0.0f, 1.0f });
@@ -384,7 +384,7 @@ namespace View3D.view
             }
 
             GL.LineWidth(1f);
-            Color col = Main.main.threeDSettings.printerFrame.BackColor;
+            Color col = Main.main.threeDSettings.PrinterFrameBackgroundColor();
             GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(0, 0, 0, 255));
             GL.Material(MaterialFace.Front, MaterialParameter.Emission, new OpenTK.Graphics.Color4(0, 0, 0, 0));
             GL.Material(MaterialFace.Front, MaterialParameter.Specular, new float[] { 0.0f, 0.0f, 0.0f, 1.0f });
@@ -393,7 +393,7 @@ namespace View3D.view
                 MaterialParameter.Emission,
                 new OpenTK.Graphics.Color4(col.R, col.G, col.B, col.A));
             GL.Enable(EnableCap.LineSmooth);
-            if (Main.main.threeDSettings.showPrintbed.Checked)
+            if (Main.main.threeDSettings.showPrintbed.IsChecked == true)
             {
                 int i;
                 // Draw origin
@@ -464,7 +464,7 @@ namespace View3D.view
             float dy1 = 0;
             float dy2 = dy1 + 0;
 
-            if (Main.main.threeDSettings.showPrintbed.Checked)
+            if (Main.main.threeDSettings.showPrintbed.IsChecked == true)
             {
                 GL.Disable(EnableCap.CullFace);
                 GL.Enable(EnableCap.Blend);	// Turn Blending On
@@ -473,7 +473,7 @@ namespace View3D.view
                 //GL.Disable(EnableCap.Lighting);
 
                 // Draw bottom
-                Color col = Main.main.threeDSettings.printerBase.BackColor;
+                Color col = Main.main.threeDSettings.PrinterBaseBackgroundColor();
                 float[] transblack = new float[] { 0, 0, 0, 0 };
                 GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(col.R, col.G, col.B, 130));
                 GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, transblack);
@@ -488,12 +488,10 @@ namespace View3D.view
                     GL.Begin(PrimitiveType.Quads);
                     GL.Normal3(0, 0, 1);
 
-                  
-                        GL.Vertex3(0, 0, 0);
-                        GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
-                        GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
-                        GL.Vertex3(0 + 0, 0 + Main.main.PrintAreaDepth, 0);
-             
+                    GL.Vertex3(0, 0, 0);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
+                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0 + 0, 0 + Main.main.PrintAreaDepth, 0);
 
                     GL.End();
                 }
@@ -515,7 +513,7 @@ namespace View3D.view
                 fpsTimer.Start();
                 gl.MakeCurrent();
                 GL.Enable(EnableCap.Multisample);
-                GL.ClearColor(Main.main.threeDSettings.backgroundTop.BackColor);
+                GL.ClearColor(Main.main.threeDSettings.BackgroundTopBackgroundColor());
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
                 
                 // Draw gradient background
@@ -527,10 +525,10 @@ namespace View3D.view
                 GL.Disable(EnableCap.Lighting);
 
                 GL.Begin(PrimitiveType.Quads);
-                GL.Color4(convertColor(Main.main.threeDSettings.backgroundBottom.BackColor)); // Silver -> CornflowerBlue
+                GL.Color4(convertColor(Main.main.threeDSettings.BackgroundBottomBackgroundColor())); // Silver -> CornflowerBlue
                 GL.Vertex2(-1.0, -1.0);
                 GL.Vertex2(1.0, -1.0);
-                GL.Color4(convertColor(Main.main.threeDSettings.backgroundTop.BackColor));    // White -> WhiteSmoke   
+                GL.Color4(convertColor(Main.main.threeDSettings.BackgroundTopBackgroundColor()));    // White -> WhiteSmoke   
                 GL.Vertex2(1.0, 1.0);
                 GL.Vertex2(-1.0, 1.0);
                 GL.End();
@@ -551,7 +549,7 @@ namespace View3D.view
                 GL.LineWidth(2f);
                 GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
                 //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-                Color col = Main.main.threeDSettings.printerBase.BackColor;
+                Color col = Main.main.threeDSettings.PrinterBaseBackgroundColor();
                 //GL.Translate(-0-ps.PrintAreaWidth * 0.5f,-0 -ps.PrintAreaDepth * 0.5f, -0.5f * ps.PrintAreaHeight);
                 GL.GetFloat(GetPName.ModelviewMatrix, out modelView);
                 GL.Material(

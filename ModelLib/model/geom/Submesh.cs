@@ -61,7 +61,6 @@ namespace View3D.model.geom
     }
     public class Submesh
     {
-
         public enum MeshColor {
             FrontBack   = -1,
             ErrorFace   = -2,
@@ -76,17 +75,6 @@ namespace View3D.model.geom
             OverhangLv1 = -11,
             OverhangLv2 = -12,
             OverhangLv3 = -13,
-            // Cone Support Generator
-            // Added mesh color - orange
-            // Developer: RC Grey
-            // 01-12-2017
-            ConeSupport = -14,
-            // Trunk Support Generator
-            TreeSymbol = -15,
-            TreeMesh = -16,
-            TreeError = -17,
-            TreeSlect = -18,
-            TreeTest = -19
         };
 
         //KPPH CP2-SW RCGREY: STL Slice Previewer
@@ -107,22 +95,11 @@ namespace View3D.model.geom
         public const int MESHCOLOR_NORMAL = -7;
         public const int MESHCOLOR_EDGE = -8;
         public const int MESHCOLOR_BACK = -9;
-        //--- MODEL_SLA	// milton
         public const int MESHCOLOR_TRANS_BLUE = -10;
         public const int MESHCOLOR_PINK = -11;
         public const int MESHCOLOR_LIGHTPINK = -12;
         public const int MESHCOLOR_LIGHTPINK_WHITE = -13;
-        // Tree/Cone Support Generator
-        // Added mesh colors
-        // Developer: RC Grey
-        // 01-12-2017
-        public const int MESHCOLOR_CONESUP = -14;
-        public const int MESHCOLOR_TREESYM = -15;
-        public const int MESHCOLOR_TREEMSH = -16;
-        public const int MESHCOLOR_BRNHERR = -17;
-        public const int MESHCOLOR_TREESEL = -18;
-        public const int MESHCOLOR_TREETES = -19;
-        //--
+
         public List<Vector3> vertices = new List<Vector3>();
         public List<SubmeshEdge> edges = new List<SubmeshEdge>();
         public List<SubmeshTriangle> triangles = new List<SubmeshTriangle>();

@@ -239,19 +239,6 @@ namespace View3D
                     return Color.FromArgb(255, 255, 190, 190);
                 case Submesh.MeshColor.OverhangLv3: // light pink white
                     return Color.FromArgb(255, 250, 215, 205);
-                case Submesh.MeshColor.ConeSupport:
-                    return Color.FromArgb(255, 128, 0); //orange
-                case Submesh.MeshColor.TreeSymbol:
-                    return Color.FromArgb(255, 255, 102); //yellow
-                case Submesh.MeshColor.TreeMesh:
-                    return Color.FromArgb(0, 255, 128); //light green
-                case Submesh.MeshColor.TreeError:
-                    return Color.FromArgb(255, 102, 102); //red
-                case Submesh.MeshColor.TreeSlect:
-                    return Color.FromArgb(102, 255, 255); //light blue
-                case Submesh.MeshColor.TreeTest:
-                    return Color.Transparent; //yellow
-
                 default:
                     return Color.White;
             }

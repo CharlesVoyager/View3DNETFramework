@@ -206,10 +206,6 @@ namespace View3D
             catch { }
         }
 
-        private void Main_SizeChanged(object sender, EventArgs e)
-        {
-        }
-
         public void toolStripButton_helpInfo_Click(object sender, EventArgs e)
         {
         }

@@ -182,7 +182,6 @@ namespace View3D.model
 
             Color color;
             if (GetColorSetting != null)
-                //color = GetColorSetting(colorCode);
                 color = GetColorSetting(colorCode, frontBackColor);
             else
                 color = Color.Wheat;

@@ -207,41 +207,5 @@ namespace View3D
             }
             catch { }
         }
-
-
-        public Color GetColorSetting(Submesh.MeshColor color, Color frontBackColor)
-        {
-            switch (color)
-            {
-                case Submesh.MeshColor.FrontBack:
-                    return frontBackColor;
-                case Submesh.MeshColor.Back:
-                    return threeDSettings.InsideFacesBackgroundColor();
-                case Submesh.MeshColor.ErrorFace:
-                    return threeDSettings.ErrorModelBackgroundColor();
-                case Submesh.MeshColor.ErrorEdge:
-                    return threeDSettings.ErrorModelEdgeBackgroundColor();
-                case Submesh.MeshColor.OutSide:
-                    return threeDSettings.OutsidePrintbedBackgroundColor();
-                case Submesh.MeshColor.EdgeLoop:
-                    return threeDSettings.EdgesLoopBackgroundColor();
-                case Submesh.MeshColor.CutEdge:
-                    return threeDSettings.CutFacesBackgroundColor();
-                case Submesh.MeshColor.Normal:
-                    return Color.Blue;
-                case Submesh.MeshColor.Edge:
-                    return threeDSettings.EdgesBackgroundColor();
-                case Submesh.MeshColor.TransBlue:
-                    return Color.FromArgb(128, 0, 0, 255);
-                case Submesh.MeshColor.OverhangLv1: // pink
-                    return Color.FromArgb(255, 255, 140, 140);
-                case Submesh.MeshColor.OverhangLv2: // light pink
-                    return Color.FromArgb(255, 255, 190, 190);
-                case Submesh.MeshColor.OverhangLv3: // light pink white
-                    return Color.FromArgb(255, 250, 215, 205);
-                default:
-                    return Color.White;
-            }
-        }
     }
 }

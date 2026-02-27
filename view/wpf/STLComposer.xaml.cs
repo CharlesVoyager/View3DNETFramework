@@ -73,7 +73,7 @@ namespace View3D.view.wpf
                 cont.autoupdateable        = true;
                 updateEnabled();
 
-                modelDrawer.GetColorSetting = Main.main.GetColorSetting;
+                modelDrawer.GetColorSetting = Main.main.threeDSettings.GetColorSetting;
 
                 if (Main.main != null)
                 {

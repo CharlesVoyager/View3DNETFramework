@@ -1,5 +1,5 @@
-using OpenTK;
 using Microsoft.Win32;
+using OpenTK;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using View3D.model;
+using View3D.model.geom;
 using View3D.view.utils;
 
 // ColorDialog interop: add <UseWindowsForms>true</UseWindowsForms> to your .csproj.
@@ -383,6 +384,41 @@ namespace View3D.view
             // Alternative: Handle Gradients by taking the first stop, 
             // or throw an exception based on your architectural requirements.
             throw new InvalidOperationException("Only SolidColorBrush can be converted to a single Color.");
+        }
+
+        public System.Drawing.Color GetColorSetting(Submesh.MeshColor color, System.Drawing.Color frontBackColor)
+        {
+            switch (color)
+            {
+                case Submesh.MeshColor.FrontBack:
+                    return frontBackColor;
+                case Submesh.MeshColor.Back:
+                    return InsideFacesBackgroundColor();
+                case Submesh.MeshColor.ErrorFace:
+                    return ErrorModelBackgroundColor();
+                case Submesh.MeshColor.ErrorEdge:
+                    return ErrorModelEdgeBackgroundColor();
+                case Submesh.MeshColor.OutSide:
+                    return OutsidePrintbedBackgroundColor();
+                case Submesh.MeshColor.EdgeLoop:
+                    return EdgesLoopBackgroundColor();
+                case Submesh.MeshColor.CutEdge:
+                    return CutFacesBackgroundColor();
+                case Submesh.MeshColor.Normal:
+                    return System.Drawing.Color.Blue;
+                case Submesh.MeshColor.Edge:
+                    return EdgesBackgroundColor();
+                case Submesh.MeshColor.TransBlue:
+                    return System.Drawing.Color.FromArgb(128, 0, 0, 255);
+                case Submesh.MeshColor.OverhangLv1: // pink
+                    return System.Drawing.Color.FromArgb(255, 255, 140, 140);
+                case Submesh.MeshColor.OverhangLv2: // light pink
+                    return System.Drawing.Color.FromArgb(255, 255, 190, 190);
+                case Submesh.MeshColor.OverhangLv3: // light pink white
+                    return System.Drawing.Color.FromArgb(255, 250, 215, 205);
+                default:
+                    return System.Drawing.Color.White;
+            }
         }
     }
 }

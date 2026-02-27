@@ -94,21 +94,6 @@ namespace View3D.view
             UpdateChanges();
         }
 
-        public void MakeVisible(bool vis)
-        {
-            if (vis)
-            {
-                if (!Controls.Contains(gl))
-                    Controls.Add(gl);
-            }
-            else
-            {
-                if (Controls.Contains(gl))
-                    Controls.Remove(gl);
-            }
-            gl.Visible = vis;
-        }
-
         public void SetObjectSelected(bool sel)
         {
             if (stlComp.listObjects.SelectedItems.Count == 1)
@@ -630,9 +615,7 @@ namespace View3D.view
             Focus();
         }
 
-        public uint lastDepth = 0;
         public Geom3DLine pickLine = null; // Last pick up line ray
-        public Geom3DLine viewLine = null; // Direction of view
         public Geom3DVector pickPoint = new Geom3DVector(0, 0, 0); // Koordinates of last pick
 
         public void UpdatePickLine(int x, int y)

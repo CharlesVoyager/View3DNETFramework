@@ -92,26 +92,10 @@ namespace View3D
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    // Maximize to working area minus a small margin
-            //    var screen = System.Windows.Forms.Screen.PrimaryScreen;
-            //    this.Width  = screen.WorkingArea.Width  - 100;
-            //    this.Height = screen.WorkingArea.Height - 100;
-            //    this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            // Don't set Windows startup location to center screen in XAML to avoid issues with DPI scaling on multi-monitor setups.
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            //    ProcessCommandLine();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-
-            ProcessCommandLine();
-        }
-
-        private void ProcessCommandLine()
-        {
+            // Process command line arguments
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length < 1) return;
 
@@ -121,6 +105,7 @@ namespace View3D
                 if (File.Exists(file))
                     LoadGCodeOrSTL(file);
             }
+            // <>
         }
 
         private void MainWindow_DragEnter(object sender, DragEventArgs e)

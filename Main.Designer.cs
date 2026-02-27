@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openGCode = new System.Windows.Forms.OpenFileDialog();
             this.splitLog = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitLog)).BeginInit();
             this.splitLog.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // openGCode
-            // 
-            this.openGCode.DefaultExt = "3wn";
-            this.openGCode.Filter = "STL-Files|*.stl;";
-            this.openGCode.Title = "Import 3wn";
             // 
             // splitLog
             // 
@@ -78,8 +71,6 @@
 
         }
         #endregion
-
-        public System.Windows.Forms.OpenFileDialog openGCode;
         private System.Windows.Forms.SplitContainer splitLog;
     }
 }

@@ -164,16 +164,6 @@ namespace View3D
             foreach (string file in files) LoadGCodeOrSTL(file);
         }
 
-        public void toolGCodeLoad_Click(object sender, EventArgs e)
-        {
-            if (openGCode.ShowDialog() == DialogResult.OK)
-            {
-                threedview.Enabled = false;
-                LoadGCodeOrSTL(openGCode.FileName);
-                threedview.Enabled = true;
-            }
-        }
-
         // Called when importing a STL file.
         public void LoadGCodeOrSTL(string file)
         {

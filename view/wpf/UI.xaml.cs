@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using View3D.model;
 using System.Threading;
+using Microsoft.Win32;
 
 namespace View3D.view.wpf
 {
@@ -232,17 +233,31 @@ namespace View3D.view.wpf
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            Main.main.toolGCodeLoad_Click(null, null);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            if (Main.main.objectPlacement.listObjects.Items.Count > 0)
+            openFileDialog.Title = "Select a File";
+            openFileDialog.Filter = "STL Files (*.stl)|*.stl";
+
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
             {
-                Main.main.threedview.viewSilhouette = false;
-                Main.main.threedview.clipDownward = true;
-                Main.main.threedview.setclipLayerHeight = (double)0.1;
-            }
+                string filePath = openFileDialog.FileName;
 
-            Main.main.Focus();
-            Main.main.threedview.stlComp.Update3D();
+                string fileLow = filePath.ToLower();
+                if (fileLow.EndsWith(".stl"))
+                    Main.main.objectPlacement.openAndAddObject(filePath);
+
+                if (Main.main.objectPlacement.listObjects.Items.Count > 0)
+                {
+                    Main.main.threedview.viewSilhouette = false;
+                    Main.main.threedview.clipDownward = true;
+                    Main.main.threedview.setclipLayerHeight = (double)0.1;
+                }
+
+                Main.main.Focus();
+                Main.main.threedview.stlComp.Update3D();
+            }
         }
 
         public void IsTabStopAllToggleButton(object control, bool pIsTabStop)

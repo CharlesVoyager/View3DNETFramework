@@ -197,15 +197,6 @@ namespace View3D
                 threedview.UpdateChanges();
         }
 
-        private void Main_Resize(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Main_Shown(object sender, EventArgs e)
-        {
-        }
-
         private void Main_KeyDown(object sender, KeyEventArgs e)
         {
             try

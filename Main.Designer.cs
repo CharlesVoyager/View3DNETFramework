@@ -70,11 +70,9 @@
             this.Text = "OpenGL 3D Viewer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
-            this.Shown += new System.EventHandler(this.Main_Shown);
             this.SizeChanged += new System.EventHandler(this.Main_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Move += new System.EventHandler(this.Main_Move);
-            this.Resize += new System.EventHandler(this.Main_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.splitLog)).EndInit();
             this.splitLog.ResumeLayout(false);
             this.ResumeLayout(false);

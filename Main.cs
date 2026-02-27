@@ -133,13 +133,7 @@ namespace View3D
 
                 foreach (string file in files)
                 {
-                    if (
-                        file.ToUpper().EndsWith(".STL") == false
-                        && file.ToUpper().EndsWith(".3WN") == false
-                        && file.ToUpper().EndsWith(".3WS") == false
-                        && file.ToUpper().EndsWith(".3W") == false
-                        && file.ToUpper().EndsWith(".NKG") == false
-                        )
+                    if ( file.ToUpper().EndsWith(".STL") == false )
                     {
                         tCanSupport = false;
                         break;

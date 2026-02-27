@@ -256,7 +256,7 @@ namespace View3D.view.wpf
                 }
 
                 Main.main.Focus();
-                Main.main.threedview.stlComp.Update3D();
+                Main.main.threedview.UpdateChanges();
             }
         }
 

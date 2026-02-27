@@ -157,11 +157,6 @@ namespace View3D.view.wpf
             }
         }
 
-        public void Update3D()
-        {
-            Main.main.threedview.UpdateChanges();
-        }
-
         public void UpdateAnalyserData()
         {
             PrintModel model = SingleSelectedModel;

@@ -157,7 +157,6 @@ namespace View3D
             foreach (string file in files) LoadGCodeOrSTL(file);
         }
 
-        // Called when importing a STL file.
         public void LoadGCodeOrSTL(string file)
         {
             if (!File.Exists(file)) return;

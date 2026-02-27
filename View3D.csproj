@@ -288,7 +288,6 @@
   <ItemGroup>
     <Resource Include="Resources\bar1.png" />
     <Resource Include="Resources\bar2.png" />
-    <Resource Include="Resources\button_help1.png" />
     <Resource Include="Resources\button_import1.png" />
     <Resource Include="Resources\button_info1.png" />
     <Resource Include="Resources\button_move1.png" />
@@ -319,6 +318,9 @@
     <Resource Include="Resources\ok16.png" />
     <Resource Include="Resources\trash16.png" />
     <Resource Include="Resources\unlock16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\button_about.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

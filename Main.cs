@@ -206,10 +206,6 @@ namespace View3D
             catch { }
         }
 
-        public void toolStripButton_helpInfo_Click(object sender, EventArgs e)
-        {
-        }
-
         private void Main_Move(object sender, EventArgs e)
         {
             Point location = threedview.gl.PointToScreen(Point.Empty);

@@ -61,7 +61,8 @@
 <t id="L_POSITION">Position</t>
 <t id="L_SIZE">Size</t>
 <t id="B_CLOSE">Close</t>
-<t id="W_HELP">About</t>
+<t id="B_ABOUT">About</t>
+<t id="W_ABOUT">About</t>
 <t id="G_VERSION">Version</t>
 <t id="L_SOFTWARE">Software</t>
 <t id="L_FIRMWARE">Firmware</t>

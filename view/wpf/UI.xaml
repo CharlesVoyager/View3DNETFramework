@@ -367,10 +367,10 @@
                     <ImageBrush ImageSource="/View3D;component/Resources/button_import1.png" />
                 </ToggleButton.Background>
             </ToggleButton>
-            <Image Name="image1" Source="/View3D;component/Resources/bar1.png" Stretch="None" Width="10" />
-            <ToggleButton Content="Help" Height="70" Margin="2.5" Name="help_button" Padding="3" Width="50" Click="help_button_Click" FontFamily="Arial">
+            <Image Source="/View3D;component/Resources/bar1.png" Stretch="None" Width="10" />
+            <ToggleButton Content="About" Height="70" Margin="2.5" Name="about_button" Padding="3" Width="50" Click="about_button_Click" FontFamily="Arial">
                 <ToggleButton.Background>
-                    <ImageBrush ImageSource="/View3D;component/Resources/button_help1.png" />
+                    <ImageBrush ImageSource="/View3D;component/Resources/button_about.png" />
                 </ToggleButton.Background>
             </ToggleButton>
         </StackPanel>

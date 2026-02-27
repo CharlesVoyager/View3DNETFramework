@@ -1042,11 +1042,6 @@ namespace View3D.view
             stlComp.updateOutside();
         }
 
-        public void button_helpInfo_Click(object sender, EventArgs e)
-        {
-            Main.main.toolStripButton_helpInfo_Click(null, null);
-        }
-
         private void contextMenu_Opening(object sender, CancelEventArgs e)
         {
             PrintModel model = stlComp.SingleSelectedModel;

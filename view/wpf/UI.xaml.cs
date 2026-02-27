@@ -59,7 +59,7 @@ namespace View3D.view.wpf
             info_toggleButton.ToolTip = Trans.T("B_INFO");
             remove_toggleButton.ToolTip = Trans.T("B_REMOVE");
             import_button.ToolTip = Trans.T("B_IMPORT");
-            help_button.ToolTip = Trans.T("W_HELP");
+            about_button.ToolTip = Trans.T("B_ABOUT");
 
             view_toggleButton.Content = Trans.T("B_VIEW");
             move_toggleButton.Content = Trans.T("B_MOVE");
@@ -68,7 +68,7 @@ namespace View3D.view.wpf
             info_toggleButton.Content = Trans.T("B_INFO");
             remove_toggleButton.Content = Trans.T("B_REMOVE");
             import_button.Content = Trans.T("B_IMPORT");
-            help_button.Content = Trans.T("W_HELP");
+            about_button.Content = Trans.T("B_ABOUT");
         }
 
         public void setbuttonVisable(bool flag)
@@ -258,16 +258,13 @@ namespace View3D.view.wpf
                     IsTabStopAllToggleButton(child, pIsTabStop);
         }
 
-        private void help_button_Click(object sender, RoutedEventArgs e)
+        private void about_button_Click(object sender, RoutedEventArgs e)
         {
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
-
-            Main.main.threedview.button_helpInfo_Click(null, null);
-            Main.main.Focus();
         }
 
         private void rotate_toggleButton_Checked(object sender, RoutedEventArgs e)

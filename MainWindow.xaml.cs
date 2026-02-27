@@ -63,6 +63,8 @@ namespace View3D
                 {
                     dpiX = (float)(96.0 * source.CompositionTarget.TransformToDevice.M11);
                     dpiY = (float)(96.0 * source.CompositionTarget.TransformToDevice.M22);
+
+                    MainWindow_LocationChanged(null, null);
                 }
             };
 
@@ -104,6 +106,8 @@ namespace View3D
             //{
             //    MessageBox.Show(ex.ToString());
             //}
+
+            ProcessCommandLine();
         }
 
         private void ProcessCommandLine()
@@ -161,7 +165,7 @@ namespace View3D
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-       //     RegMemory.StoreWindowPos("mainWindow", this, true, true);
+       ///  RegMemory.StoreWindowPos("mainWindow", this, true, true);
             Environment.Exit(Environment.ExitCode);
         }
 

@@ -121,12 +121,6 @@
     <Compile Include="view\ThreeDControl.designer.cs">
       <DependentUpon>ThreeDControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\utils\ColorSlider.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="view\utils\ColorSlider.designer.cs">
-      <DependentUpon>ColorSlider.cs</DependentUpon>
-    </Compile>
     <Compile Include="view\utils\RayCasting.cs" />
     <Compile Include="view\utils\RegMemory.cs" />
     <Compile Include="view\utils\RHOpenGL.cs">
@@ -137,9 +131,6 @@
     </Compile>
     <Compile Include="view\wpf\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\wpf\ModuleControlMessage.xaml.cs">
-      <DependentUpon>ModuleControlMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\wpf\ObjectResizeDialog.xaml.cs">
       <DependentUpon>ObjectResizeDialog.xaml</DependentUpon>
@@ -206,9 +197,6 @@
     <EmbeddedResource Include="view\ThreeDControl.resx">
       <DependentUpon>ThreeDControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\utils\ColorSlider.resx">
-      <DependentUpon>ColorSlider.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -238,10 +226,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\wpf\CircularProgressBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="view\wpf\ModuleControlMessage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -3,7 +3,6 @@ using System.IO;
 using View3D.model;
 using View3D.model.geom;
 using View3D.MeshInOut;
-using System.Windows.Forms;
 
 namespace View3D.view
 {
@@ -34,7 +33,7 @@ namespace View3D.view
                 }
                 catch
                 {
-                    MessageBox.Show(Trans.T("M_LOAD_STL_FILE_ERROR"), Trans.T("W_LOAD_STL_FILE_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ///MessageBox.Show(Trans.T("M_LOAD_STL_FILE_ERROR"), Trans.T("W_LOAD_STL_FILE_ERROR"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 AbortTask -= fileMesh.TaskAbort;
@@ -90,7 +89,6 @@ namespace View3D.view
             MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = 0; 
             MainWindow.main.threedview.ui.BusyWindow.AbortTask += OnUIAbort;
             MainWindow.main.threedview.ui.BusyWindow.StartTimer();
-            System.Windows.Forms.Application.DoEvents();
         }
 
         private void EnableBusyWindowNoCancleButton()
@@ -104,7 +102,6 @@ namespace View3D.view
             MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = 0; 
             MainWindow.main.threedview.ui.BusyWindow.AbortTask += OnUIAbort;
             MainWindow.main.threedview.ui.BusyWindow.StartTimer();
-            System.Windows.Forms.Application.DoEvents();
         }
 
         private void DisableBusyWindow()
@@ -119,7 +116,6 @@ namespace View3D.view
             {
                 MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = rate; 
             }
-            Application.DoEvents();
         }
 
         public void OnProcessUpdate3wsLoadStageLoadStl(int rate)
@@ -128,7 +124,6 @@ namespace View3D.view
             {
                 MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = rate / 2; 
             }
-            Application.DoEvents();
         }
 
         public void OnProcessUpdateSaveStageMerge(double value)
@@ -140,7 +135,6 @@ namespace View3D.view
                 {
                     MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((value + mergedCount * 100) / mergeCountTotal) * MainWindow.main.threedview.ui.BusyWindow.firstStagePercent / 100;
                 }
-                Application.DoEvents();
             }
         }
 
@@ -153,7 +147,6 @@ namespace View3D.view
                         (rate) * (100.0 - MainWindow.main.threedview.ui.BusyWindow.firstStagePercent)
                         + MainWindow.main.threedview.ui.BusyWindow.firstStagePercent;
             }
-            Application.DoEvents();
         }
 
         public void OnUIAbort(object sender, EventArgs e)

@@ -48,7 +48,7 @@ namespace View3D.view.wpf
             import_button.FontSize = 12;
 
             translate();
-            Main.main.languageChanged += translate;
+            MainWindow.main.languageChanged += translate;
         }
 
         private void translate()
@@ -90,7 +90,7 @@ namespace View3D.view.wpf
                 info_toggleButton.Visibility = Visibility.Hidden;
             }
 
-            if (Main.main.objectPlacement.listObjects.SelectedItems.Count == 0)
+            if (MainWindow.main.objectPlacement.listObjects.SelectedItems.Count == 0)
                 remove_toggleButton.Visibility = Visibility.Hidden;
             else
                 remove_toggleButton.Visibility = Visibility.Visible;
@@ -98,7 +98,7 @@ namespace View3D.view.wpf
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Main.main.Close();
+            MainWindow.main.Close();
         }
 
         private void view_toggleButton_Checked(object sender, RoutedEventArgs e)
@@ -114,7 +114,7 @@ namespace View3D.view.wpf
         private void view_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_view, "State2", true);
-            Main.main.Focus();
+            MainWindow.main.Focus();
         }
 
         public void move_toggleButton_Checked(object sender, RoutedEventArgs e)
@@ -129,25 +129,25 @@ namespace View3D.view.wpf
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
-            Main.main.threedview.ui.UI_move.slider_moveX.Maximum = 1000;
-            Main.main.threedview.ui.UI_move.slider_moveX.Minimum = -1000;
-            Main.main.threedview.ui.UI_move.slider_moveY.Maximum = 1000;
-            Main.main.threedview.ui.UI_move.slider_moveY.Minimum = -1000;
-            Main.main.threedview.ui.UI_move.slider_moveZ.Maximum = 1000;
-            Main.main.threedview.ui.UI_move.slider_moveZ.Minimum = -1000;
-            Main.main.threedview.ui.UI_move.slider_moveX.Value = stl.Position.x;
-            Main.main.threedview.ui.UI_move.slider_moveY.Value = stl.Position.y;
-            Main.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
+            MainWindow.main.threedview.ui.UI_move.slider_moveX.Maximum = 1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveX.Minimum = -1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveY.Maximum = 1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveY.Minimum = -1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveZ.Maximum = 1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = -1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveX.Value = stl.Position.x;
+            MainWindow.main.threedview.ui.UI_move.slider_moveY.Value = stl.Position.y;
+            MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
 
             double moveMax, moveMin;
 
-            moveMax = (int)Math.Floor((Main.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x)) * 100) * 0.01;
+            moveMax = (int)Math.Floor((MainWindow.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x)) * 100) * 0.01;
             moveMin = (int)Math.Ceiling((stl.Position.x - stl.BoundingBox.xMin) * 100) * 0.01;
 
-            double a = Main.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x);
+            double a = MainWindow.main.PrintAreaWidth - (stl.BoundingBox.xMax - stl.Position.x);
             double b = stl.Position.x - stl.BoundingBox.xMin;
 
             a += 0;
@@ -155,70 +155,70 @@ namespace View3D.view.wpf
 
             //module is out of bound,it cannot move. 
             if (moveMin > moveMax)
-                Main.main.threedview.ui.UI_move.slider_moveX.Value = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Value = (float)(moveMin + moveMax) / 2;
             else if (moveMin <= stl.Position.x && stl.Position.x <= moveMax)//module is in of bound.
-                Main.main.threedview.ui.UI_move.slider_moveX.Value = stl.Position.x;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Value = stl.Position.x;
             else if (stl.Position.x > moveMax)//model is out of bound(too big), but it can move.
-                Main.main.threedview.ui.UI_move.slider_moveX.Value = moveMax;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Value = moveMax;
             else // (moveMin > stl.Position.x)//model is out of bound(too small), but it can move.
-                Main.main.threedview.ui.UI_move.slider_moveX.Value = moveMin;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Value = moveMin;
 
             if (moveMin > moveMax)
             {
-                Main.main.threedview.ui.UI_move.slider_moveX.Maximum = (float)(moveMin + moveMax) / 2;
-                Main.main.threedview.ui.UI_move.slider_moveX.Minimum = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Maximum = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Minimum = (float)(moveMin + moveMax) / 2;
             }
             else
             {
-                Main.main.threedview.ui.UI_move.slider_moveX.Maximum = moveMax;
-                Main.main.threedview.ui.UI_move.slider_moveX.Minimum = moveMin;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Maximum = moveMax;
+                MainWindow.main.threedview.ui.UI_move.slider_moveX.Minimum = moveMin;
             }
 
 
-            moveMax = (int)Math.Floor((Main.main.PrintAreaDepth - (stl.BoundingBox.yMax - stl.Position.y)) * 100) * 0.01;
+            moveMax = (int)Math.Floor((MainWindow.main.PrintAreaDepth - (stl.BoundingBox.yMax - stl.Position.y)) * 100) * 0.01;
             moveMin = (int)Math.Ceiling((stl.Position.y - stl.BoundingBox.yMin) * 100) * 0.01;
             
             //module is out of bound,it can not move. 
             if (moveMin > moveMax)
-                Main.main.threedview.ui.UI_move.slider_moveY.Value = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Value = (float)(moveMin + moveMax) / 2;
             else if (moveMin <= stl.Position.y && stl.Position.y <= moveMax)//module is in of bound.
-                Main.main.threedview.ui.UI_move.slider_moveY.Value = stl.Position.y;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Value = stl.Position.y;
             else if (stl.Position.y > moveMax)//model is out of bound(too big), but it can move.
-                Main.main.threedview.ui.UI_move.slider_moveY.Value = moveMax;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Value = moveMax;
             else // (moveMin > stl.Position.y)//model is out of bound(too small), but it can move.
-                Main.main.threedview.ui.UI_move.slider_moveY.Value = moveMin;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Value = moveMin;
 
             if (moveMin > moveMax)
             {
-                Main.main.threedview.ui.UI_move.slider_moveY.Maximum = (float)(moveMin + moveMax) / 2;
-                Main.main.threedview.ui.UI_move.slider_moveY.Minimum = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Maximum = (float)(moveMin + moveMax) / 2;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Minimum = (float)(moveMin + moveMax) / 2;
             }
             else
             {
-                Main.main.threedview.ui.UI_move.slider_moveY.Maximum = moveMax;
-                Main.main.threedview.ui.UI_move.slider_moveY.Minimum = moveMin;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Maximum = moveMax;
+                MainWindow.main.threedview.ui.UI_move.slider_moveY.Minimum = moveMin;
             }
 
-            moveMax = Main.main.PrintAreaHeight - (stl.BoundingBoxWOSupport.zMax - stl.Position.z);
+            moveMax = MainWindow.main.PrintAreaHeight - (stl.BoundingBoxWOSupport.zMax - stl.Position.z);
             moveMin = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
             if (moveMin > moveMax)
                 moveMin = moveMax;
             if (moveMin <= stl.Position.z && moveMax >= stl.Position.z)
-                Main.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
             else if (moveMax < stl.Position.z)
-                Main.main.threedview.ui.UI_move.slider_moveZ.Value = moveMax;
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = moveMax;
             else // (moveMin > stl.Position.z)
-                Main.main.threedview.ui.UI_move.slider_moveZ.Value = moveMin;
-            Main.main.threedview.ui.UI_move.slider_moveZ.Maximum = moveMax;
-            Main.main.threedview.ui.UI_move.slider_moveZ.Minimum = moveMin;
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = moveMin;
+            MainWindow.main.threedview.ui.UI_move.slider_moveZ.Maximum = moveMax;
+            MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = moveMin;
 
-            Main.main.threedview.ui.UI_move.moveZ_textbox.Text = (Math.Round(Main.main.threedview.ui.UI_move.slider_moveZ.Value - Main.main.threedview.ui.UI_move.slider_moveZ.Minimum, 3)).ToString();
+            MainWindow.main.threedview.ui.UI_move.moveZ_textbox.Text = (Math.Round(MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value - MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum, 3)).ToString();
         }
 
         public void move_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_move, "State2", true);
-            Main.main.Focus();
+            MainWindow.main.Focus();
         }
 
         private void import_button_Click(object sender, RoutedEventArgs e)
@@ -246,17 +246,17 @@ namespace View3D.view.wpf
 
                 string fileLow = filePath.ToLower();
                 if (fileLow.EndsWith(".stl"))
-                    Main.main.objectPlacement.openAndAddObject(filePath);
+                    MainWindow.main.objectPlacement.openAndAddObject(filePath);
 
-                if (Main.main.objectPlacement.listObjects.Items.Count > 0)
+                if (MainWindow.main.objectPlacement.listObjects.Items.Count > 0)
                 {
-                    Main.main.threedview.viewSilhouette = false;
-                    Main.main.threedview.clipDownward = true;
-                    Main.main.threedview.setclipLayerHeight = (double)0.1;
+                    MainWindow.main.threedview.viewSilhouette = false;
+                    MainWindow.main.threedview.clipDownward = true;
+                    MainWindow.main.threedview.setclipLayerHeight = (double)0.1;
                 }
 
-                Main.main.Focus();
-                Main.main.threedview.UpdateChanges();
+                MainWindow.main.Focus();
+                MainWindow.main.threedview.UpdateChanges();
             }
         }
 
@@ -284,9 +284,9 @@ namespace View3D.view.wpf
 
         private void rotate_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.ui.UI_rotate.sliderX.Value = Convert.ToDouble(Main.main.objectPlacement.textRotX.Text);
-            Main.main.threedview.ui.UI_rotate.sliderY.Value = Convert.ToDouble(Main.main.objectPlacement.textRotY.Text);
-            Main.main.threedview.ui.UI_rotate.sliderZ.Value = Convert.ToDouble(Main.main.objectPlacement.textRotZ.Text);
+            MainWindow.main.threedview.ui.UI_rotate.sliderX.Value = Convert.ToDouble(MainWindow.main.objectPlacement.textRotX.Text);
+            MainWindow.main.threedview.ui.UI_rotate.sliderY.Value = Convert.ToDouble(MainWindow.main.objectPlacement.textRotY.Text);
+            MainWindow.main.threedview.ui.UI_rotate.sliderZ.Value = Convert.ToDouble(MainWindow.main.objectPlacement.textRotZ.Text);
             VisualStateManager.GoToState(UI_rotate, "State1", true);
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
@@ -303,14 +303,14 @@ namespace View3D.view.wpf
             rotate_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             UI_move.slider_moveZ.Maximum = 1000;
 
             model.geom.RHBoundingBox bbox = stl.BoundingBoxWOSupport;
-            UI_resize_advance.bboxnow = bbox.Size.x / Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text);
-            UI_resize_advance.bboynow = bbox.Size.y / Convert.ToDouble(Main.main.objectPlacement.textScaleY.Text);
-            UI_resize_advance.bboznow = bbox.Size.z / Convert.ToDouble(Main.main.objectPlacement.textScaleZ.Text);
+            UI_resize_advance.bboxnow = bbox.Size.x / Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text);
+            UI_resize_advance.bboynow = bbox.Size.y / Convert.ToDouble(MainWindow.main.objectPlacement.textScaleY.Text);
+            UI_resize_advance.bboznow = bbox.Size.z / Convert.ToDouble(MainWindow.main.objectPlacement.textScaleZ.Text);
 
             UI_resize_advance.gIsShow = true;
             UI_resize_advance.dimX = bbox.Size.x;
@@ -320,9 +320,9 @@ namespace View3D.view.wpf
             UI_resize_advance.dimZ = bbox.Size.z;
             UI_resize_advance.updateTxt(Enums.Axis.Z);
 
-            if (Convert.ToDouble(Main.main.objectPlacement.textRotX.Text) != 0 ||
-                Convert.ToDouble(Main.main.objectPlacement.textRotY.Text) != 0 ||
-                Convert.ToDouble(Main.main.objectPlacement.textRotZ.Text) != 0)
+            if (Convert.ToDouble(MainWindow.main.objectPlacement.textRotX.Text) != 0 ||
+                Convert.ToDouble(MainWindow.main.objectPlacement.textRotY.Text) != 0 ||
+                Convert.ToDouble(MainWindow.main.objectPlacement.textRotZ.Text) != 0)
             {
                 UI_resize_advance.chk_Uniform.IsChecked = true;
                 UI_resize_advance.chk_Uniform.IsEnabled = false;
@@ -357,13 +357,13 @@ namespace View3D.view.wpf
         private void rotate_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_rotate, "State2", true);
-            Main.main.Focus();
+            MainWindow.main.Focus();
         }
 
         private void resize_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_resize_advance, "State2", true);
-            Main.main.Focus();
+            MainWindow.main.Focus();
         }
      
         private bool confirmSupportEditModeBreak()
@@ -383,7 +383,7 @@ namespace View3D.view.wpf
         private void info_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_object_information, "State2", true);
-            Main.main.Focus();
+            MainWindow.main.Focus();
         }
 
         public void remove_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -394,17 +394,17 @@ namespace View3D.view.wpf
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            Main.main.threedview.ui.UI_move.slider_moveX.Minimum = -1000;
-            Main.main.threedview.ui.UI_move.slider_moveX.Maximum = 1000;
-            Main.main.threedview.ui.UI_move.slider_moveY.Minimum = -1000;
-            Main.main.threedview.ui.UI_move.slider_moveY.Maximum = 1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveX.Minimum = -1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveX.Maximum = 1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveY.Minimum = -1000;
+            MainWindow.main.threedview.ui.UI_move.slider_moveY.Maximum = 1000;
 
-            Main.main.threedview.ui.OutofBound.Visibility = System.Windows.Visibility.Hidden;
-            Main.main.threedview.clipviewEnabled = false;
-            Main.main.threedview.button_remove_Click(null, null);
-            if (Main.main.objectPlacement.listObjects.Items.Count > 0)
-                Main.main.objectPlacement.updateSTLState(Main.main.objectPlacement.SingleSelectedModel);
-            Main.main.Focus();
+            MainWindow.main.threedview.ui.OutofBound.Visibility = System.Windows.Visibility.Hidden;
+            MainWindow.main.threedview.clipviewEnabled = false;
+            MainWindow.main.threedview.button_remove_Click(null, null);
+            if (MainWindow.main.objectPlacement.listObjects.Items.Count > 0)
+                MainWindow.main.objectPlacement.updateSTLState(MainWindow.main.objectPlacement.SingleSelectedModel);
+            MainWindow.main.Focus();
         }
 
         private void zoomin_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -415,8 +415,8 @@ namespace View3D.view.wpf
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            Main.main.threedview.button_zoomIn_Click(null, null);
-            Main.main.Focus();
+            MainWindow.main.threedview.button_zoomIn_Click(null, null);
+            MainWindow.main.Focus();
         }
 
         private void zoomout_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -427,8 +427,8 @@ namespace View3D.view.wpf
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            Main.main.threedview.button_zoomOut_Click(null, null);
-            Main.main.Focus();
+            MainWindow.main.threedview.button_zoomOut_Click(null, null);
+            MainWindow.main.Focus();
         }
 
         private void remove_toggleButton_Checked(object sender, RoutedEventArgs e)

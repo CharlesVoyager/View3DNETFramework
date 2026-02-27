@@ -41,7 +41,7 @@ namespace View3D.view
             comboDrawMethod.SelectedIndex = 0; // Autodetect best
             RegistryToForm();
             translate();
-            Main.main.languageChanged += translate;
+            MainWindow.main.languageChanged += translate;
         }
 
         public void translate()
@@ -59,7 +59,7 @@ namespace View3D.view
                 _showEdges = value;
                 threedKey?.SetValue("showEdges", _showEdges ? 1 : 0);
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(ShowEdges)));
-                Main.main.Update3D();
+                MainWindow.main.Update3D();
             }
         }
 
@@ -72,7 +72,7 @@ namespace View3D.view
                 _showFaces = value;
                 threedKey?.SetValue("showFaces", _showFaces ? 1 : 0);
                 OnPropertyChanged(new PropertyChangedEventArgs(nameof(ShowFaces)));
-                Main.main.Update3D();
+                MainWindow.main.Update3D();
             }
         }
 
@@ -247,7 +247,7 @@ namespace View3D.view
             {
                 var dc = dlg.Color;
                 border.Background = new SolidColorBrush(Color.FromArgb(dc.A, dc.R, dc.G, dc.B));
-                Main.main.Update3D();
+                MainWindow.main.Update3D();
             }
         }
 
@@ -255,7 +255,7 @@ namespace View3D.view
 
         /// <summary>
         /// Single unified handler that mirrors all the WinForms CheckedChanged /
-        /// showEdges_CheckedChanged events that simply called Main.main.Update3D().
+        /// showEdges_CheckedChanged events that simply called MainWindow.main.Update3D().
         /// Also syncs the ShowEdges / ShowFaces backing properties when those
         /// checkboxes are the source.
         /// </summary>
@@ -266,12 +266,12 @@ namespace View3D.view
             else if (sender == showFaces)
                 ShowFaces = showFaces.IsChecked == true;
             else
-                Main.main.Update3D();
+                MainWindow.main.Update3D();
         }
 
         private void light_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Main.main.Update3D();
+            MainWindow.main.Update3D();
         }
 
         /// <summary>

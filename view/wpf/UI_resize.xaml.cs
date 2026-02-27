@@ -20,19 +20,19 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                if (Main.main != null)
-                    Main.main.languageChanged += translate;
+                if (MainWindow.main != null)
+                    MainWindow.main.languageChanged += translate;
             }
             catch { }
         }
 
         private void translate()
         {
-            //if (Main.main.show_tooltip)
+            //if (MainWindow.main.show_tooltip)
             //{
                 button_resize_reset.ToolTip = Trans.T("B_RESET");
             //}
-            //if (Main.main.only_show_english_button)
+            //if (MainWindow.main.only_show_english_button)
             //{
                 button_resize_reset.Content = Trans.T("B_RESET");
             //}
@@ -49,7 +49,7 @@ namespace View3D.view.wpf
                     gTextChange = false;
                     return;
                 }
-                PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+                PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
                 if (stl == null) return;
                 stl.modifiedS = true;
                 //double centerValue = (stl.maxScaleVector + stl.minScaleVector) / 2.0;
@@ -81,13 +81,13 @@ namespace View3D.view.wpf
 
         private void slider_resize_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if(stl == null) return;
         }
 
         private void slider_resize_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             stl.modifiedS = true;
             if (e.Delta > 0)
@@ -100,13 +100,13 @@ namespace View3D.view.wpf
         public void button_resize_reset_Click(object sender, RoutedEventArgs e)
         {
             float oriZmin;
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             
             oriZmin = stl.zMin;
 
             resize_textbox.Text = "100";
-            Main.main.objectPlacement.textScaleX.Text = "1";
-            Main.main.objectPlacement.check_stl_size_too_small();
+            MainWindow.main.objectPlacement.textScaleX.Text = "1";
+            MainWindow.main.objectPlacement.check_stl_size_too_small();
             stl.modifiedS = false;
         }
 
@@ -114,16 +114,16 @@ namespace View3D.view.wpf
         {
             try
             {
-                PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+                PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
                 if (stl == null) return;
                 stl.modifiedS = true;
 
                 double m = stl.m;
                 double b = stl.b;
                 double marginHardLimit = 1.0;
-                double dx = (Main.main.PrintAreaWidth - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.x;
-                double dy = (Main.main.PrintAreaDepth - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.y;
-                double dz = (Main.main.PrintAreaHeight - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.z;
+                double dx = (MainWindow.main.PrintAreaWidth - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.x;
+                double dy = (MainWindow.main.PrintAreaDepth - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.y;
+                double dz = (MainWindow.main.PrintAreaHeight - marginHardLimit * 2) / stl.originalModel.boundingBox.Size.z;
 
                 double maxScaleVector = Math.Min(dx, Math.Min(dy, dz));
 
@@ -145,10 +145,10 @@ namespace View3D.view.wpf
                 double scaleValue = 0.000;
                 float oriZmin;
                 oriZmin = stl.zMin;
-                Main.main.objectPlacement.textScaleX.Text = Convert.ToString(int.Parse(resize_textbox.Text) / 100.00); 
+                MainWindow.main.objectPlacement.textScaleX.Text = Convert.ToString(int.Parse(resize_textbox.Text) / 100.00); 
                 stl.LandToZ(oriZmin);
-                Main.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
-                Main.main.objectPlacement.updateSTLState(stl);
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
+                MainWindow.main.objectPlacement.updateSTLState(stl);
 
 
                 scaleValue = int.Parse(resize_textbox.Text) / 100.00;
@@ -170,30 +170,30 @@ namespace View3D.view.wpf
 
         private void button_mmtoinch_Checked(object sender, RoutedEventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchOrScale(model, true);
+            MainWindow.main.objectPlacement.DoInchOrScale(model, true);
         }
 
         private void button_inchtomm_Checked(object sender, RoutedEventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchtomm(model);
+            MainWindow.main.objectPlacement.DoInchtomm(model);
         }
 
         private void button_mmtoinch_Click(object sender, RoutedEventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchOrScale(model, true);
+            MainWindow.main.objectPlacement.DoInchOrScale(model, true);
         }
 
         private void button_inchtomm_Click(object sender, RoutedEventArgs e)
         {
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchtomm(model);
+            MainWindow.main.objectPlacement.DoInchtomm(model);
         }
     }
 }

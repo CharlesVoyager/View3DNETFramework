@@ -28,8 +28,8 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                if (Main.main != null)
-                    Main.main.languageChanged += translate;
+                if (MainWindow.main != null)
+                    MainWindow.main.languageChanged += translate;
             }
             catch { }
         }
@@ -43,7 +43,7 @@ namespace View3D.view.wpf
             {
                 return;
             }
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
             {
@@ -62,24 +62,24 @@ namespace View3D.view.wpf
                     }
                 }
 
-                Double tbefore = Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text);
+                Double tbefore = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text);
                 Double tTempx = dimX / bboxnow;
                 Double tMultScale = 0.0;
 
                 tMultScale = tTempx / tbefore;
-                Main.main.objectPlacement.textScaleX.Text = tTempx.ToString();
+                MainWindow.main.objectPlacement.textScaleX.Text = tTempx.ToString();
                 if (chk_Uniform.IsChecked == true)// && gFlag == true)
                 {
-                    Double temp = Convert.ToDouble(Main.main.objectPlacement.textScaleY.Text) * tMultScale;
+                    Double temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleY.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleY.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleY.Text = temp.ToString();
                     }
 
-                    temp = Convert.ToDouble(Main.main.objectPlacement.textScaleZ.Text) * tMultScale;
+                    temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleZ.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleZ.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleZ.Text = temp.ToString();
                     }
 
                     gIsShow = true;
@@ -125,7 +125,7 @@ namespace View3D.view.wpf
             {
                 return;
             }
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
             {
@@ -144,25 +144,25 @@ namespace View3D.view.wpf
                     }
                 }
 
-                Double tbefore = Convert.ToDouble(Main.main.objectPlacement.textScaleY.Text);
+                Double tbefore = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleY.Text);
                 Double tTempy = dimY / bboynow;
                 Double tMultScale = 0.0;
 
                 tMultScale = tTempy / tbefore;
 
-                Main.main.objectPlacement.textScaleY.Text = tTempy.ToString();
+                MainWindow.main.objectPlacement.textScaleY.Text = tTempy.ToString();
                 if (chk_Uniform.IsChecked == true)//&& gFlag==true)
                 {
-                    Double temp = Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text) * tMultScale;
+                    Double temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleX.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleX.Text = temp.ToString();
                     }
 
-                    temp = Convert.ToDouble(Main.main.objectPlacement.textScaleZ.Text) * tMultScale;
+                    temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleZ.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleZ.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleZ.Text = temp.ToString();
                     }
 
                     gIsShow = true;
@@ -204,16 +204,16 @@ namespace View3D.view.wpf
 
         private void txtZ_TextChanged(object sender, TextChangedEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
          
             if (stl == null) return;
 
             if (gIsShow == true)
             {
                 stl.LandToZ(stl.zMin);
-                Main.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
-                Main.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
-                Main.main.objectPlacement.updateSTLState(stl);
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
+                MainWindow.main.objectPlacement.updateSTLState(stl);
                 stl.modifiedM = false;
                 return;
             }
@@ -234,25 +234,25 @@ namespace View3D.view.wpf
                     }
                 }
 
-                Double tbefore = Convert.ToDouble(Main.main.objectPlacement.textScaleZ.Text);
+                Double tbefore = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleZ.Text);
                 Double tTempz = dimZ / bboznow;
                 Double tMultScale = 0.0;
 
                 tMultScale = tTempz / tbefore;
 
-                Main.main.objectPlacement.textScaleZ.Text = tTempz.ToString();
+                MainWindow.main.objectPlacement.textScaleZ.Text = tTempz.ToString();
                 if (chk_Uniform.IsChecked == true)//&& gFlag==true)
                 {
-                    Double temp = Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text) * tMultScale;
+                    Double temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleX.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleX.Text = temp.ToString();
                     }
 
-                    temp = Convert.ToDouble(Main.main.objectPlacement.textScaleY.Text) * tMultScale;
+                    temp = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleY.Text) * tMultScale;
                     if (temp > 0)
                     {
-                        Main.main.objectPlacement.textScaleY.Text = temp.ToString();
+                        MainWindow.main.objectPlacement.textScaleY.Text = temp.ToString();
                     }
 
                     gIsShow = true;
@@ -290,15 +290,15 @@ namespace View3D.view.wpf
                     IsScale = true;
                 }
                     stl.LandToZ(stl.zMin);
-                Main.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
-                Main.main.objectPlacement.updateSTLState(stl);
+                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
+                MainWindow.main.objectPlacement.updateSTLState(stl);
             }
             catch { }
         }
 
         public void chk_Uniform_Checked(object sender, RoutedEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
             {
@@ -346,7 +346,7 @@ namespace View3D.view.wpf
 
         private void slider_resize_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             stl.modifiedS = true;
             if (e.Delta > 0)
@@ -358,7 +358,7 @@ namespace View3D.view.wpf
 
         private void slider_resize_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
             gIsShow = true;
@@ -389,24 +389,24 @@ namespace View3D.view.wpf
                     break;
             }
 
-            txt_Scale.Text = (Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text) * 100).ToString("0");
+            txt_Scale.Text = (Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text) * 100).ToString("0");
         }
 
         public void checkMin()
         {
-            double txMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaWidth) / dimX;
-            double tyMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaDepth) / dimY;
-            double tzMaxScalableValue = Convert.ToDouble(Main.main.PrintAreaHeight) / dimZ;
+            double txMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaWidth) / dimX;
+            double tyMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaDepth) / dimY;
+            double tzMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaHeight) / dimZ;
             double tMaxScalableValue = Math.Min(Math.Min(txMaxScalableValue, tyMaxScalableValue), Math.Min(tyMaxScalableValue, tzMaxScalableValue));
 
             IsScale = false;
             if (txMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "x";
-                slider_resize.Maximum = (double)Main.main.PrintAreaWidth;
+                slider_resize.Maximum = (double)MainWindow.main.PrintAreaWidth;
 
-                if ((dimY * txMaxScalableValue > (double)Main.main.PrintAreaDepth)
-                        || (dimZ * txMaxScalableValue > (double)Main.main.PrintAreaHeight))
+                if ((dimY * txMaxScalableValue > (double)MainWindow.main.PrintAreaDepth)
+                        || (dimZ * txMaxScalableValue > (double)MainWindow.main.PrintAreaHeight))
                 {
                     slider_resize.Maximum = Math.Floor(dimX * Math.Min(tyMaxScalableValue, tzMaxScalableValue) * 1000) / 1000;
                 }
@@ -414,10 +414,10 @@ namespace View3D.view.wpf
             else if (tyMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "y";
-                slider_resize.Maximum = (double)Main.main.PrintAreaDepth;
+                slider_resize.Maximum = (double)MainWindow.main.PrintAreaDepth;
 
-                if ((dimX * tyMaxScalableValue > (double)Main.main.PrintAreaWidth)
-                        || (dimZ * tyMaxScalableValue > (double)Main.main.PrintAreaHeight))
+                if ((dimX * tyMaxScalableValue > (double)MainWindow.main.PrintAreaWidth)
+                        || (dimZ * tyMaxScalableValue > (double)MainWindow.main.PrintAreaHeight))
                 {
                     slider_resize.Maximum = Math.Floor(dimY * Math.Min(txMaxScalableValue, tzMaxScalableValue) * 1000) / 1000;
                 }
@@ -425,10 +425,10 @@ namespace View3D.view.wpf
             else if (tzMaxScalableValue == tMaxScalableValue)
             {
                 xyzbind = "z";
-                slider_resize.Maximum = (double)Main.main.PrintAreaHeight;
+                slider_resize.Maximum = (double)MainWindow.main.PrintAreaHeight;
 
-                if ((dimX * tzMaxScalableValue > (double)Main.main.PrintAreaWidth)
-                        || (dimY * tzMaxScalableValue > (double)Main.main.PrintAreaDepth))
+                if ((dimX * tzMaxScalableValue > (double)MainWindow.main.PrintAreaWidth)
+                        || (dimY * tzMaxScalableValue > (double)MainWindow.main.PrintAreaDepth))
                 {
                     slider_resize.Maximum = Math.Floor(dimZ * Math.Min(txMaxScalableValue, tyMaxScalableValue) * 1000) / 1000;
                 }
@@ -441,12 +441,12 @@ namespace View3D.view.wpf
 
         public void button_Reset_Click(object sender, RoutedEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             model.geom.RHBoundingBox bbox = stl.BoundingBoxWOSupport;
-            Main.main.objectPlacement.textScaleX.Text = "1";
-            Main.main.objectPlacement.textScaleY.Text = "1";
-            Main.main.objectPlacement.textScaleZ.Text = "1";
+            MainWindow.main.objectPlacement.textScaleX.Text = "1";
+            MainWindow.main.objectPlacement.textScaleY.Text = "1";
+            MainWindow.main.objectPlacement.textScaleZ.Text = "1";
             bboxnow = bbox.Size.x;
             bboynow = bbox.Size.y;
             bboznow = bbox.Size.z;
@@ -475,47 +475,47 @@ namespace View3D.view.wpf
             IsScale = true;
             gIsShow = false;
             checkMin();
-            Main.main.objectPlacement.check_stl_size_too_small();
+            MainWindow.main.objectPlacement.check_stl_size_too_small();
         }
 
         private void button_mmtoinch_Click(object sender, RoutedEventArgs e)
         {
             button_mmtoinch.IsEnabled = false;
             button_inchtomm.IsEnabled = true;
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            Main.main.objectPlacement.DoInchOrScale(stl, true);
+            MainWindow.main.objectPlacement.DoInchOrScale(stl, true);
         }
 
         private void button_inchtomm_Click(object sender, RoutedEventArgs e)
         {
             button_mmtoinch.IsEnabled = true;
             button_inchtomm.IsEnabled = false;
-            PrintModel model = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (model == null) return;
-            Main.main.objectPlacement.DoInchtomm(model);
+            MainWindow.main.objectPlacement.DoInchtomm(model);
         }
 
         private void btn_Scale_Click(object sender, RoutedEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
             model.geom.RHBoundingBox bbox = stl.BoundingBoxWOSupport;
 
             try
             {
-                Double tbeforeX = Convert.ToDouble(Main.main.objectPlacement.textScaleX.Text);
-                Double tbeforeY = Convert.ToDouble(Main.main.objectPlacement.textScaleY.Text);
-                Double tbeforeZ = Convert.ToDouble(Main.main.objectPlacement.textScaleZ.Text);
+                Double tbeforeX = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleX.Text);
+                Double tbeforeY = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleY.Text);
+                Double tbeforeZ = Convert.ToDouble(MainWindow.main.objectPlacement.textScaleZ.Text);
                 Double temp = Convert.ToDouble(txt_Scale.Text) / 100;
                 Double tAddScaleX = tbeforeX * temp;
                 Double tAddScaleY = tbeforeY * temp;
                 Double tAddScaleZ = tbeforeZ * temp;
 
-                Main.main.objectPlacement.textScaleX.Text = tAddScaleX.ToString("0.0000000000000");
-                Main.main.objectPlacement.textScaleY.Text = tAddScaleY.ToString("0.0000000000000");
-                Main.main.objectPlacement.textScaleZ.Text = tAddScaleZ.ToString("0.0000000000000");
+                MainWindow.main.objectPlacement.textScaleX.Text = tAddScaleX.ToString("0.0000000000000");
+                MainWindow.main.objectPlacement.textScaleY.Text = tAddScaleY.ToString("0.0000000000000");
+                MainWindow.main.objectPlacement.textScaleZ.Text = tAddScaleZ.ToString("0.0000000000000");
                 gIsShow = true;
                 dimX = stl.BoundingBoxWOSupport.Size.x;
                 updateTxt(Enums.Axis.X);
@@ -545,7 +545,7 @@ namespace View3D.view.wpf
 
         private void scaleLostFocus(object sender, RoutedEventArgs e)
         {
-            PrintModel stl = Main.main.objectPlacement.SingleSelectedModel;
+            PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
             try
@@ -582,7 +582,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimX;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaWidth);
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)MainWindow.main.PrintAreaWidth);
                     }
                     txtX.Text = dimForDisplay.ToString("0.000");
                     break;
@@ -591,7 +591,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimY;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaDepth);                      
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)MainWindow.main.PrintAreaDepth);                      
                     }
                     txtY.Text = dimForDisplay.ToString("0.000");
                     break;
@@ -600,7 +600,7 @@ namespace View3D.view.wpf
                     dimForDisplay = dimZ;
                     if (doUnitTransform)
                     {
-                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)Main.main.PrintAreaHeight);
+                        dimForDisplay = unit2InchTransform(dimForDisplay, (int)MainWindow.main.PrintAreaHeight);
                     }
                     txtZ.Text = dimForDisplay.ToString("0.000");
                     break;

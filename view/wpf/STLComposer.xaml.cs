@@ -73,11 +73,11 @@ namespace View3D.view.wpf
                 cont.autoupdateable        = true;
                 updateEnabled();
 
-                modelDrawer.GetColorSetting = Main.main.threeDSettings.GetColorSetting;
+                modelDrawer.GetColorSetting = MainWindow.main.threeDSettings.GetColorSetting;
 
-                if (Main.main != null)
+                if (MainWindow.main != null)
                 {
-                    Main.main.languageChanged += translate;
+                    MainWindow.main.languageChanged += translate;
                     translate();
                 }
             }
@@ -275,7 +275,7 @@ namespace View3D.view.wpf
             {
                 models[models.Count - 1].Clear();
                 models.RemoveAt(models.Count - 1);
-                Main.main.threedview.ui.BusyWindow.Visibility = Visibility.Hidden;
+                MainWindow.main.threedview.ui.BusyWindow.Visibility = Visibility.Hidden;
                 GC.Collect();
                 MessageBox.Show("Error(" + (short)Protocol.ErrorCode.LOAD_FILE_FAIL + "): " + Trans.T("M_LOAD_FILE_FAIL"));
                 return;
@@ -286,7 +286,7 @@ namespace View3D.view.wpf
                                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (Main.main.threedview.ui.BusyWindow.killed)
+            if (MainWindow.main.threedview.ui.BusyWindow.killed)
             {
                 models[models.Count - 1].Clear();
                 models.RemoveAt(models.Count - 1);
@@ -300,7 +300,7 @@ namespace View3D.view.wpf
 
             if (modelToLand)
             {
-                models[last].Center(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);
+                models[last].Center(MainWindow.main.PrintAreaWidth / 2, MainWindow.main.PrintAreaDepth / 2);
                 if (models[last].BoundingBox.Center.x != 0 ||
                     models[last].BoundingBox.Center.y != 0 ||
                     models[last].BoundingBox.Center.z != 0)
@@ -333,25 +333,25 @@ namespace View3D.view.wpf
                     models[last].BoundingBox.Size.x,
                     models[last].BoundingBox.Size.y,
                     models[last].BoundingBox.Size.z);
-                if (Main.main.threedview.ui.Visibility == Visibility.Visible)
-                    dlg.Owner = Main.main.threedview.ui;
+                if (MainWindow.main.threedview.ui.Visibility == Visibility.Visible)
+                    dlg.Owner = MainWindow.main.threedview.ui;
                 dlg.ShowDialog();
                 if      (dlg.gIsScale) DoInchOrScale(models[last], false);
                 else if (dlg.gIsInch)  DoInchScale(models[last]);
             }
-            else if (models[last].BoundingBox.Size.x - 1e-4 > Convert.ToDouble(Main.main.PrintAreaWidth)  ||
-                     models[last].BoundingBox.Size.y - 1e-4 > Convert.ToDouble(Main.main.PrintAreaDepth)  ||
-                     Math.Floor(models[last].BoundingBox.Size.z * 1000) / 1000 > Convert.ToDouble(Main.main.PrintAreaHeight))
+            else if (models[last].BoundingBox.Size.x - 1e-4 > Convert.ToDouble(MainWindow.main.PrintAreaWidth)  ||
+                     models[last].BoundingBox.Size.y - 1e-4 > Convert.ToDouble(MainWindow.main.PrintAreaDepth)  ||
+                     Math.Floor(models[last].BoundingBox.Size.z * 1000) / 1000 > Convert.ToDouble(MainWindow.main.PrintAreaHeight))
             {
-                double tXBound = models[last].BoundingBox.Size.x / Convert.ToDouble(Main.main.PrintAreaWidth);
-                double tYBound = models[last].BoundingBox.Size.y / Convert.ToDouble(Main.main.PrintAreaDepth);
-                double tZBound = models[last].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
+                double tXBound = models[last].BoundingBox.Size.x / Convert.ToDouble(MainWindow.main.PrintAreaWidth);
+                double tYBound = models[last].BoundingBox.Size.y / Convert.ToDouble(MainWindow.main.PrintAreaDepth);
+                double tZBound = models[last].BoundingBox.Size.z / Convert.ToDouble(MainWindow.main.PrintAreaHeight);
                 double tMax    = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
                 float  scaleValue = 0;
 
-                if      (tMax == tXBound) scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaWidth)  / models[last].BoundingBox.Size.x) * 100;
-                else if (tMax == tYBound) scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaDepth)  / models[last].BoundingBox.Size.y) * 100;
-                else if (tMax == tZBound) scaleValue = (float)(Convert.ToDouble(Main.main.PrintAreaHeight) / models[last].BoundingBox.Size.z) * 100;
+                if      (tMax == tXBound) scaleValue = (float)(Convert.ToDouble(MainWindow.main.PrintAreaWidth)  / models[last].BoundingBox.Size.x) * 100;
+                else if (tMax == tYBound) scaleValue = (float)(Convert.ToDouble(MainWindow.main.PrintAreaDepth)  / models[last].BoundingBox.Size.y) * 100;
+                else if (tMax == tZBound) scaleValue = (float)(Convert.ToDouble(MainWindow.main.PrintAreaHeight) / models[last].BoundingBox.Size.z) * 100;
 
                 var result = MessageBox.Show(
                     Trans.T("M_OBJ_SCALE_DOWN") + " " + (int)scaleValue + "%",
@@ -363,19 +363,19 @@ namespace View3D.view.wpf
                 {
                     try
                     {
-                        tXBound = models[last].BoundingBox.Size.x / Convert.ToDouble(Main.main.PrintAreaWidth);
-                        tYBound = models[last].BoundingBox.Size.y / Convert.ToDouble(Main.main.PrintAreaDepth);
-                        tZBound = models[last].BoundingBox.Size.z / Convert.ToDouble(Main.main.PrintAreaHeight);
+                        tXBound = models[last].BoundingBox.Size.x / Convert.ToDouble(MainWindow.main.PrintAreaWidth);
+                        tYBound = models[last].BoundingBox.Size.y / Convert.ToDouble(MainWindow.main.PrintAreaDepth);
+                        tZBound = models[last].BoundingBox.Size.z / Convert.ToDouble(MainWindow.main.PrintAreaHeight);
                         tMax    = Math.Max(Math.Max(tXBound, tYBound), Math.Max(tYBound, tZBound));
 
                         if      (tMax == tXBound)
-                        { models[last].Scale.x = models[last].Scale.y = models[last].Scale.z = (float)(Convert.ToDouble(Main.main.PrintAreaWidth)  / models[last].BoundingBox.Size.x); }
+                        { models[last].Scale.x = models[last].Scale.y = models[last].Scale.z = (float)(Convert.ToDouble(MainWindow.main.PrintAreaWidth)  / models[last].BoundingBox.Size.x); }
                         else if (tMax == tYBound)
-                        { models[last].Scale.y = models[last].Scale.x = models[last].Scale.z = (float)(Convert.ToDouble(Main.main.PrintAreaDepth)  / models[last].BoundingBox.Size.y); }
+                        { models[last].Scale.y = models[last].Scale.x = models[last].Scale.z = (float)(Convert.ToDouble(MainWindow.main.PrintAreaDepth)  / models[last].BoundingBox.Size.y); }
                         else if (tMax == tZBound)
-                        { models[last].Scale.z = models[last].Scale.x = models[last].Scale.y = (float)(Convert.ToDouble(Main.main.PrintAreaHeight) / models[last].BoundingBox.Size.z); }
+                        { models[last].Scale.z = models[last].Scale.x = models[last].Scale.y = (float)(Convert.ToDouble(MainWindow.main.PrintAreaHeight) / models[last].BoundingBox.Size.z); }
 
-                        Main.main.threedview.ui.UI_move.button_land_Click(null, null);
+                        MainWindow.main.threedview.ui.UI_move.button_land_Click(null, null);
                         Autoposition();
                     }
                     catch { }
@@ -437,21 +437,21 @@ namespace View3D.view.wpf
             foreach (var stl in testList)
             {
                 float xMin = stl.xMin, xMax = stl.xMax;
-                if (    !Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
-                        !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
-                        !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
-                        !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
-                        !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
-                        !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
-                        !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
-                        !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
+                if (    !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMin) ||
+                        !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMin) ||
+                        !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMin) ||
+                        !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMin) ||
+                        !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMax) ||
+                        !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMax) ||
+                        !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMax) ||
+                        !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMax))
                 {
                     stl.outside = true;
                     allPointsInside = false;
                 }
             }
 
-            Main.main.threedview.ui.OutofBound.Visibility = allPointsInside ? Visibility.Collapsed : Visibility.Visible;
+            MainWindow.main.threedview.ui.OutofBound.Visibility = allPointsInside ? Visibility.Collapsed : Visibility.Visible;
 
             foreach (var pm in testList)
             {
@@ -475,18 +475,18 @@ namespace View3D.view.wpf
             foreach (var stl in testList)
             {
                 float xMin = stl.xMin, xMax = stl.xMax;
-                if (!Main.main.PointInside(xMin, stl.yMin, stl.zMin) ||
-                    !Main.main.PointInside(xMax, stl.yMin, stl.zMin) ||
-                    !Main.main.PointInside(xMin, stl.yMax, stl.zMin) ||
-                    !Main.main.PointInside(xMax, stl.yMax, stl.zMin) ||
-                    !Main.main.PointInside(xMin, stl.yMin, stl.zMax) ||
-                    !Main.main.PointInside(xMax, stl.yMin, stl.zMax) ||
-                    !Main.main.PointInside(xMin, stl.yMax, stl.zMax) ||
-                    !Main.main.PointInside(xMax, stl.yMax, stl.zMax))
+                if (!MainWindow.main.PointInside(xMin, stl.yMin, stl.zMin) ||
+                    !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMin) ||
+                    !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMin) ||
+                    !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMin) ||
+                    !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMax) ||
+                    !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMax) ||
+                    !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMax) ||
+                    !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMax))
                     showButton = showButton & !stl.outside;
             }
             if (!showButton)
-                Main.main.threedview.ui.OutofBound.Visibility = Visibility.Visible;
+                MainWindow.main.threedview.ui.OutofBound.Visibility = Visibility.Visible;
             foreach (var pm in testList)
                 if (pm.oldOutside != pm.outside) { dataChanged = true; pm.ForceViewRegeneration(); }
             if (dataChanged) RefreshAllRows();
@@ -517,8 +517,8 @@ namespace View3D.view.wpf
                     models[models.Count - 1].BoundingBox.Size.x,
                     models[models.Count - 1].BoundingBox.Size.y,
                     models[models.Count - 1].BoundingBox.Size.z);
-                if (Main.main.threedview.ui.Visibility == Visibility.Visible)
-                    dlg.Owner = Main.main.threedview.ui;
+                if (MainWindow.main.threedview.ui.Visibility == Visibility.Visible)
+                    dlg.Owner = MainWindow.main.threedview.ui;
                 dlg.ShowDialog();
                 if      (dlg.gIsScale) DoInchOrScale(model, false);
                 else if (dlg.gIsInch)  DoInchScale(model);
@@ -559,9 +559,9 @@ namespace View3D.view.wpf
         {
             foreach (var stl in ListObjects(true).ToList())
                 RemoveModel(stl);
-            if (Main.main.threedview.view.models.Count == 0)
-                Main.main.threedview.ui.OutofBound.Visibility = Visibility.Collapsed;
-            Main.main.threedview.UpdateChanges();
+            if (MainWindow.main.threedview.view.models.Count == 0)
+                MainWindow.main.threedview.ui.OutofBound.Visibility = Visibility.Collapsed;
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         public void buttonRemoveSTL_Click(object sender, EventArgs e)
@@ -592,8 +592,8 @@ namespace View3D.view.wpf
                 textTransX.IsEnabled        = false;
                 textTransY.IsEnabled        = false;
                 textTransZ.IsEnabled        = false;
-                if (Main.main.threedview != null)
-                    Main.main.threedview.SetObjectSelected(n > 0);
+                if (MainWindow.main.threedview != null)
+                    MainWindow.main.threedview.SetObjectSelected(n > 0);
                 panelAnalysis.Visibility = Visibility.Collapsed;
             }
             else
@@ -608,8 +608,8 @@ namespace View3D.view.wpf
                 textTransX.IsEnabled       = true;
                 textTransY.IsEnabled       = true;
                 textTransZ.IsEnabled       = true;
-                if (Main.main.threedview != null)
-                    Main.main.threedview.SetObjectSelected(true);
+                if (MainWindow.main.threedview != null)
+                    MainWindow.main.threedview.SetObjectSelected(true);
                 panelAnalysis.Visibility = Visibility.Visible;
                 UpdateAnalyserData();
             }
@@ -623,15 +623,15 @@ namespace View3D.view.wpf
             if (listObjects.Items.Count == 1)
             {
                 var row = (ListViewItemModel)listObjects.Items[0];
-                row.Model.CenterWOLand(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth / 2);
-                Main.main.threedview.UpdateChanges();
+                row.Model.CenterWOLand(MainWindow.main.PrintAreaWidth / 2, MainWindow.main.PrintAreaDepth / 2);
+                MainWindow.main.threedview.UpdateChanges();
                 return true;
             }
 
             var packer    = new RectPacker(1, 1);
             var outPacker = new OutRectPacker(1000);
             int border    = 1;
-            float maxW = Main.main.PrintAreaWidth, maxH = Main.main.PrintAreaDepth;
+            float maxW = MainWindow.main.PrintAreaWidth, maxH = MainWindow.main.PrintAreaDepth;
             float xOff = 0, yOff = 0;
             outPacker.SetPlatformSize(maxW, maxH);
             bool autosizeFailed = false;
@@ -677,7 +677,7 @@ namespace View3D.view.wpf
                 s.Position.y += yOff + yAdd + rect.y + border - s.yMin;
                 s.UpdateBoundingBox();
             }
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
             return true;
         }
 
@@ -710,9 +710,9 @@ namespace View3D.view.wpf
                 textTransX.Text = stl.Position.x.ToString(GCode.format);
                 textTransY.Text = stl.Position.y.ToString(GCode.format);
                 textTransZ.Text = stl.Position.z.ToString(GCode.format);
-                Main.main.threedview.ui.UI_object_information.Analyse(stl);
+                MainWindow.main.threedview.ui.UI_object_information.Analyse(stl);
             }
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void listObjects_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -802,7 +802,7 @@ namespace View3D.view.wpf
             }
             else if (e.Key == Key.Delete)
             {
-                Main.main.threedview.ui.remove_toggleButton_Click(null, null);
+                MainWindow.main.threedview.ui.remove_toggleButton_Click(null, null);
                 e.Handled = true;
             }
         }
@@ -821,7 +821,7 @@ namespace View3D.view.wpf
             float.TryParse(textTransX.Text, NumberStyles.Float, GCode.format, out stl.Position.x);
             if (Math.Abs(old - stl.Position.x) < 0.001f) return;
             if (typeof(PrintModel) == stl.GetType()) updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textTransY_TextChanged(object sender, TextChangedEventArgs e)
@@ -833,7 +833,7 @@ namespace View3D.view.wpf
             float.TryParse(textTransY.Text, NumberStyles.Float, GCode.format, out stl.Position.y);
             if (Math.Abs(old - stl.Position.y) < 0.001f) return;
             if (typeof(PrintModel) == stl.GetType()) updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textTransZ_TextChanged(object sender, TextChangedEventArgs e)
@@ -845,7 +845,7 @@ namespace View3D.view.wpf
             float.TryParse(textTransZ.Text, NumberStyles.Float, GCode.format, out stl.Position.z);
             if (Math.Abs(old - stl.Position.z) < 0.001f) return;
             updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textScaleX_TextChanged(object sender, TextChangedEventArgs e)
@@ -856,7 +856,7 @@ namespace View3D.view.wpf
             float.TryParse(textScaleX.Text, NumberStyles.Float, GCode.format, out stl.Scale.x);
             if (LockAspectRatio) { stl.Scale.y = stl.Scale.z = stl.Scale.x; SyncScaleFields(stl); }
             updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textScaleY_TextChanged(object sender, TextChangedEventArgs e)
@@ -866,7 +866,7 @@ namespace View3D.view.wpf
             if (stl == null) return;
             float.TryParse(textScaleY.Text, NumberStyles.Float, GCode.format, out stl.Scale.y);
             updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textScaleZ_TextChanged(object sender, TextChangedEventArgs e)
@@ -880,7 +880,7 @@ namespace View3D.view.wpf
             if (old != stl.Scale.z) stl.LandUpdateBBNoPreUpdate();
             updateSTLState(stl);
 
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         public void textRotX_TextChanged(object sender, TextChangedEventArgs e)
@@ -893,7 +893,7 @@ namespace View3D.view.wpf
             stl.ForceViewRegeneration();
             if (Math.Abs(old - stl.Rotation.x) < 0.001f) return;
             updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textRotY_TextChanged(object sender, TextChangedEventArgs e)
@@ -906,7 +906,7 @@ namespace View3D.view.wpf
             stl.ForceViewRegeneration();
             if (Math.Abs(old - stl.Rotation.y) < 0.001f) return;
             updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void textRotZ_TextChanged(object sender, TextChangedEventArgs e)
@@ -919,7 +919,7 @@ namespace View3D.view.wpf
             stl.ForceViewRegeneration();
             if (Math.Abs(old - stl.Rotation.z) < 0.001f) return;
             if (typeof(PrintModel) == stl.GetType()) updateSTLState(stl);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         /// <summary>
@@ -948,7 +948,7 @@ namespace View3D.view.wpf
             var model = (PrintModel)btn.Tag;
             cont.models.Remove(model);
             RemoveModel(model);
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         // =====================================================================
@@ -958,8 +958,8 @@ namespace View3D.view.wpf
         {
             foreach (var stl in ListObjects(true))
             {
-                if (stl.Position.x + dx < Main.main.PrintAreaWidth  * 1.2f && stl.Position.x + dx > -Main.main.PrintAreaWidth  * 0.2f) stl.Position.x += dx;
-                if (stl.Position.y + dy < Main.main.PrintAreaDepth  * 1.2f && stl.Position.y + dy > -Main.main.PrintAreaDepth  * 0.2f) stl.Position.y += dy;
+                if (stl.Position.x + dx < MainWindow.main.PrintAreaWidth  * 1.2f && stl.Position.x + dx > -MainWindow.main.PrintAreaWidth  * 0.2f) stl.Position.x += dx;
+                if (stl.Position.y + dy < MainWindow.main.PrintAreaDepth  * 1.2f && stl.Position.y + dy > -MainWindow.main.PrintAreaDepth  * 0.2f) stl.Position.y += dy;
                 if (listObjects.SelectedItems.Count == 1)
                 {
                     _suppressTextEvents = true;
@@ -969,7 +969,7 @@ namespace View3D.view.wpf
                 }
                 updateSTLState(stl);
             }
-            Main.main.threedview.UpdateChanges();
+            MainWindow.main.threedview.UpdateChanges();
         }
 
         private void objectSelected(ThreeDModel sel)
@@ -997,7 +997,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui = Main.main.threedview.ui.UI_resize_advance;
+                var ui = MainWindow.main.threedview.ui.UI_resize_advance;
                 ui.button_mmtoinch.IsEnabled = false;
                 ui.button_inchtomm.IsEnabled = true;
                 ui.chk_Uniform.IsChecked     = true;
@@ -1019,7 +1019,7 @@ namespace View3D.view.wpf
                 ui.gIsShow = false;
                 updateSTLState(stl);
                 stl.LandToZ(0);
-                Main.main.threedview.UpdateChanges();
+                MainWindow.main.threedview.UpdateChanges();
             }
             catch { }
         }
@@ -1028,7 +1028,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = Main.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.bboxnow = bbox.Size.x / Convert.ToDouble(textScaleX.Text);
                 ui.bboynow = bbox.Size.y / Convert.ToDouble(textScaleY.Text);
@@ -1052,7 +1052,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = Main.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.chk_Uniform.IsChecked = true;
                 ui.bboxnow = bbox.Size.x / Convert.ToDouble(textScaleX.Text);
@@ -1084,7 +1084,7 @@ namespace View3D.view.wpf
                 {
                     ui.chk_Uniform.IsChecked = true;
                     double tempX = bbox.Size.x * 25.4, tempY = bbox.Size.y * 25.4, tempZ = bbox.Size.z * 25.4;
-                    if (tempX > Main.main.PrintAreaWidth || tempY > Main.main.PrintAreaDepth || tempZ > Main.main.PrintAreaHeight)
+                    if (tempX > MainWindow.main.PrintAreaWidth || tempY > MainWindow.main.PrintAreaDepth || tempZ > MainWindow.main.PrintAreaHeight)
                     {
                         if (!AskUserToChangeUnit())
                         {
@@ -1104,7 +1104,7 @@ namespace View3D.view.wpf
                     textScaleZ.Text = (tempZ / ui.bboznow).ToString("0.000");
                     updateSTLState(stl);
                     stl.LandUpdateBBNoPreUpdate();
-                    Main.main.threedview.UpdateChanges();
+                    MainWindow.main.threedview.UpdateChanges();
                 }
             }
             catch { }
@@ -1114,7 +1114,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = Main.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.chk_Uniform.IsChecked = true;
                 double tempX = bbox.Size.x / 25.4, tempY = bbox.Size.y / 25.4, tempZ = bbox.Size.z / 25.4;
@@ -1129,7 +1129,7 @@ namespace View3D.view.wpf
                 textScaleZ.Text = (tempZ / ui.bboznow).ToString("0.000");
                 updateSTLState(stl);
                 stl.LandUpdateBBNoPreUpdate();
-                Main.main.threedview.UpdateChanges();
+                MainWindow.main.threedview.UpdateChanges();
             }
             catch { }
         }

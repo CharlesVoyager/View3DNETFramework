@@ -16,8 +16,8 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                if (Main.main != null)
-                    Main.main.languageChanged += translate;
+                if (MainWindow.main != null)
+                    MainWindow.main.languageChanged += translate;
             }
             catch { }
         }
@@ -44,37 +44,37 @@ namespace View3D.view.wpf
 
         private void top_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.topView();
+            MainWindow.main.threedview.topView();
         }
 
         private void bottom_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.bottomView();
+            MainWindow.main.threedview.bottomView();
         }
 
         private void front_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.frontView();
+            MainWindow.main.threedview.frontView();
         }
 
         private void back_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.backView();
+            MainWindow.main.threedview.backView();
         }
 
         private void left_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.leftView();
+            MainWindow.main.threedview.leftView();
         }
 
         private void right_button_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.rightView();
+            MainWindow.main.threedview.rightView();
         }
 
         private void view_resetButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.main.threedview.isometricView();
+            MainWindow.main.threedview.isometricView();
         }
     }
 }

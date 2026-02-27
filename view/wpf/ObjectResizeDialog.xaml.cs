@@ -28,7 +28,7 @@ namespace View3D.view.wpf
                 gz = pz;
 
                 translate();
-                Main.main.languageChanged += translate;
+                MainWindow.main.languageChanged += translate;
             }
             catch { }
         }

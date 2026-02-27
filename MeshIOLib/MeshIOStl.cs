@@ -129,11 +129,11 @@ namespace View3D.MeshInOut
                     //TODO: check 2 stage loading
                     if (updateRate != null)
                         updateRate( (int)(((double)count / model.triangles.Count) * 100.0) );
-                    ////if (Main.main.threedview.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
-                    ////    Main.main.threedview.ui.BusyWindow.increment != 0.0)
+                    ////if (MainWindow.main.threedview.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
+                    ////    MainWindow.main.threedview.ui.BusyWindow.increment != 0.0)
                     ////{
-                    ////    Main.main.threedview.ui.BusyWindow.busyProgressbar.Value =
-                    ////            ((double)count / model.triangles.Count) * (100.0 - Main.main.threedview.ui.BusyWindow.firstStagePercent) + Main.main.threedview.ui.BusyWindow.firstStagePercent;
+                    ////    MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value =
+                    ////            ((double)count / model.triangles.Count) * (100.0 - MainWindow.main.threedview.ui.BusyWindow.firstStagePercent) + MainWindow.main.threedview.ui.BusyWindow.firstStagePercent;
                     ////}
                     ////Application.DoEvents();
                     //Fix_save_issue_160829
@@ -188,17 +188,17 @@ namespace View3D.MeshInOut
                 if (count % 5000 == 0)
                 {
                     //TODO: check 2 stage loading
-                    ////if (Main.main.threedview.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
-                    ////    Main.main.threedview.ui.BusyWindow.increment != 0.0)
+                    ////if (MainWindow.main.threedview.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
+                    ////    MainWindow.main.threedview.ui.BusyWindow.increment != 0.0)
                     ////{
-                    ////    Main.main.threedview.ui.BusyWindow.busyProgressbar.Value =
-                    ////    ((double)count / model.triangles.Count) * (100.0 - Main.main.threedview.ui.BusyWindow.firstStagePercent) + Main.main.threedview.ui.BusyWindow.firstStagePercent;
+                    ////    MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value =
+                    ////    ((double)count / model.triangles.Count) * (100.0 - MainWindow.main.threedview.ui.BusyWindow.firstStagePercent) + MainWindow.main.threedview.ui.BusyWindow.firstStagePercent;
                     ////    Application.DoEvents();
                     ////}
                     if (updateRate != null)
                         updateRate( (int)(((double)count / model.triangles.Count) * 100.0) );
                     ////if (model.IsActionStopped()) return;
-                    ////if (Main.main.threedview.ui.BusyWindow.killed) return;
+                    ////if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
                     if (Command == COMMAND.Abort)
                     {
                         Command = COMMAND.None;
@@ -291,12 +291,12 @@ namespace View3D.MeshInOut
 
                 if (count % 4000 == 0)
                 {
-                    ////Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)lastP / max) * 100.0;
+                    ////MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)lastP / max) * 100.0;
                     ////Application.DoEvents();
                     if (updateRate != null)
                         updateRate((int)(((double)lastP / max) * 100.0));
                     ////if (IsActionStopped()) return;
-                    ////if (Main.main.threedview.ui.BusyWindow.killed) return;
+                    ////if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
                     if (Command == COMMAND.Abort)
                     {
                         Command = COMMAND.None;
@@ -371,12 +371,12 @@ namespace View3D.MeshInOut
 						//--- MODEL_SLA	// milton
                         if (i > 0 && i % 4000 == 0)
                         {
-                            ////Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
+                            ////MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
                             ////Application.DoEvents();
                             ////if (model.IsActionStopped()) return;
                             if (updateRate != null)
                                 updateRate((int)(((double)i / nTri) * 100.0));
-                            ////if (Main.main.threedview.ui.BusyWindow.killed) return;
+                            ////if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
                             if (Command == COMMAND.Abort)
                             {
                                 Command = COMMAND.None;
@@ -390,7 +390,7 @@ namespace View3D.MeshInOut
                             }
                             //////ulong totalRam = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
                             ////ulong availRam = new Microsoft.VisualBasic.Devices.ComputerInfo().AvailablePhysicalMemory / 1024 / 1024;
-                            ////if (availRam < Main.SWMemoryRemainMin || Main.main.getCurMemoryUsed() >= (Main.Is64BitOperatingSystem()? Main.SWMemoryUsedLimit_64bit : Main.SWMemoryUsedLimit_32bit))
+                            ////if (availRam < Main.SWMemoryRemainMin || MainWindow.main.getCurMemoryUsed() >= (Main.Is64BitOperatingSystem()? Main.SWMemoryUsedLimit_64bit : Main.SWMemoryUsedLimit_32bit))
                             ////{
                             ////    throw new System.OutOfMemoryException();
                             ////}
@@ -458,12 +458,12 @@ namespace View3D.MeshInOut
                         //--- MODEL_SLA	// milton
                         if (i > 0 && i % 4000 == 0)
                         {
-                            ////Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
+                            ////MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
                             ////Application.DoEvents();
                             if (updateRate != null)
                                 updateRate((int)(((double)i / nTri) * 100.0));
                             ////if (model.IsActionStopped()) return;
-                            ////if (Main.main.threedview.ui.BusyWindow.killed) return;
+                            ////if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
                             if (Command == COMMAND.Abort)
                             {
                                 Command = COMMAND.None;
@@ -518,10 +518,10 @@ namespace View3D.MeshInOut
                 {
                     ////if (i>0 && i % 4000 == 0)
                     ////{
-                    ////    Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
+                    ////    MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
                     ////    Application.DoEvents();
                     ////    ////if(model.IsActionStopped()) return;
-                    ////    if (Main.main.threedview.ui.BusyWindow.killed) return;
+                    ////    if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
                     ////}
                     //timer.Start();
                     

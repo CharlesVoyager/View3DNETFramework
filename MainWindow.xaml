@@ -1,0 +1,24 @@
+﻿<Window x:Class="View3D.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        Title="OpenGL 3D Viewer"
+        MinWidth="796" MinHeight="737"
+        Background="White"
+        AllowDrop="True"
+        Loaded="MainWindow_Loaded"
+        Closing="MainWindow_Closing"
+        KeyDown="MainWindow_KeyDown"
+        LocationChanged="MainWindow_LocationChanged"
+        DragEnter="MainWindow_DragEnter"
+        Drop="MainWindow_Drop">
+    <Grid x:Name="MainGrid">
+        <!-- Host panel for ThreeDControl (WinForms OpenGL control) -->
+        <wfi:WindowsFormsHost x:Name="ThreeDHost">
+            <!-- ThreeDControl will be assigned in code-behind -->
+        </wfi:WindowsFormsHost>
+    </Grid>
+</Window>

@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Voyager")]
 [assembly: AssemblyProduct("View3D")]
-[assembly: AssemblyCopyright("Copyright © Voyager 2023")]
+[assembly: AssemblyCopyright("Copyright © Voyager 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

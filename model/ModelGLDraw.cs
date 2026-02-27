@@ -13,7 +13,7 @@ namespace View3D.model
         public void Draw(Submesh mesh, int method, Vector3 edgetrans, bool forceFaces = false)
         {
             GL.LightModel(LightModelParameter.LightModelTwoSide, 1);
-            GL.Material(MaterialFace.Back, MaterialParameter.AmbientAndDiffuse, mesh.convertColor(Main.main.threeDSettings.InsideFacesBackgroundColor()));
+            GL.Material(MaterialFace.Back, MaterialParameter.AmbientAndDiffuse, mesh.convertColor(MainWindow.main.threeDSettings.InsideFacesBackgroundColor()));
             GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Emission, new OpenTK.Graphics.Color4(0, 0, 0, 0));
             GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
             GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Shininess, 50f);
@@ -53,7 +53,7 @@ namespace View3D.model
                 GL.Enable(EnableCap.ColorMaterial);
                 GL.BindBuffer(BufferTarget.ElementArrayBuffer, mesh.glBuffer[3]);
 
-                if (Main.main.threeDSettings.ShowFaces || forceFaces)
+                if (MainWindow.main.threeDSettings.ShowFaces || forceFaces)
                    GL.DrawElements(PrimitiveType.Triangles, mesh.glTriangles.Length, DrawElementsType.UnsignedInt, 0);
 
                 GL.LightModel(LightModelParameter.LightModelTwoSide, 0);
@@ -85,9 +85,9 @@ namespace View3D.model
                 GL.ColorMaterial(MaterialFace.Front, ColorMaterialParameter.AmbientAndDiffuse);
                 GL.ColorPointer(4, ColorPointerType.UnsignedByte, 0, mesh.glColors);
                 GL.EnableClientState(ArrayCap.ColorArray);
-                if (Main.main.threeDSettings.ShowFaces || forceFaces)
+                if (MainWindow.main.threeDSettings.ShowFaces || forceFaces)
                     GL.DrawElements(PrimitiveType.Triangles, mesh.glTriangles.Length, DrawElementsType.UnsignedInt, mesh.glTriangles);
-                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, mesh.convertColor(Main.main.threeDSettings.ErrorModelBackgroundColor()));
+                GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, mesh.convertColor(MainWindow.main.threeDSettings.ErrorModelBackgroundColor()));
                 GL.LightModel(LightModelParameter.LightModelTwoSide, 0);
                 GL.DrawElements(PrimitiveType.Triangles, mesh.glTrianglesError.Length, DrawElementsType.UnsignedInt, mesh.glTrianglesError);
                 GL.DepthFunc(DepthFunction.Lequal);
@@ -108,7 +108,7 @@ namespace View3D.model
                 int n;
                 GL.ColorMaterial(MaterialFace.Front, ColorMaterialParameter.AmbientAndDiffuse);
                 GL.Enable(EnableCap.ColorMaterial);
-                if (Main.main.threeDSettings.ShowFaces || forceFaces)
+                if (MainWindow.main.threeDSettings.ShowFaces || forceFaces)
                 {
                     GL.Begin(PrimitiveType.Triangles);
                     n = mesh.glTriangles.Length;
@@ -166,7 +166,7 @@ namespace View3D.model
 
         public Vector3 GetTranslateVector()
         {
-            return Main.main.threedview.cam.EdgeTranslation();
+            return MainWindow.main.threedview.cam.EdgeTranslation();
         }
         #endregion
 
@@ -203,7 +203,7 @@ namespace View3D.model
 
         public bool IsEdgeShowEnabled()
         {
-            return Main.main.threeDSettings.ShowEdges;
+            return MainWindow.main.threeDSettings.ShowEdges;
         }
 
         public RHVector3 GetCutPosition()

@@ -219,8 +219,8 @@ namespace View3D.view
         public RHBoundingBox PrinterBoundingBox()
         {
             RHBoundingBox b = new RHBoundingBox();
-            b.Add(0, 0, -0.0 * Main.main.PrintAreaHeight);
-            b.Add(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 1.0 * Main.main.PrintAreaHeight);
+            b.Add(0, 0, -0.0 * MainWindow.main.PrintAreaHeight);
+            b.Add(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, 1.0 * MainWindow.main.PrintAreaHeight);
             return b;
         }
 
@@ -228,7 +228,7 @@ namespace View3D.view
         {
             RHBoundingBox b = new RHBoundingBox();
 
-            foreach (PrintModel model in Main.main.objectPlacement.GetAllPrintModels())
+            foreach (PrintModel model in MainWindow.main.objectPlacement.GetAllPrintModels())
             {
                 b.Add(model.BoundingBox.minPoint);
                 b.Add(model.BoundingBox.maxPoint);
@@ -249,8 +249,8 @@ namespace View3D.view
 
         public void FitBoundingBox(RHBoundingBox box)
         {
-            float bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
-            RHVector3 shift = new RHVector3( -0.5 * Main.main.PrintAreaWidth, -0.5 * Main.main.PrintAreaDepth, -0.5 * Main.main.PrintAreaHeight);
+            float bedRadius = (float)(1.5 * Math.Sqrt((MainWindow.main.PrintAreaDepth * MainWindow.main.PrintAreaDepth + MainWindow.main.PrintAreaHeight * MainWindow.main.PrintAreaHeight + MainWindow.main.PrintAreaWidth * MainWindow.main.PrintAreaWidth) * 0.25));
+            RHVector3 shift = new RHVector3( -0.5 * MainWindow.main.PrintAreaWidth, -0.5 * MainWindow.main.PrintAreaDepth, -0.5 * MainWindow.main.PrintAreaHeight);
             viewCenter = box.Center.asVector3();
             distance = defaultDistance;
             int loops = 5;
@@ -313,8 +313,8 @@ namespace View3D.view
 
         public void FitBoundingBox(RHBoundingBox box, int width, int heigth)
         {
-            float bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
-            RHVector3 shift = new RHVector3(-0.5 * Main.main.PrintAreaWidth, -0.5 * Main.main.PrintAreaDepth, -0.5 * Main.main.PrintAreaHeight);
+            float bedRadius = (float)(1.5 * Math.Sqrt((MainWindow.main.PrintAreaDepth * MainWindow.main.PrintAreaDepth + MainWindow.main.PrintAreaHeight * MainWindow.main.PrintAreaHeight + MainWindow.main.PrintAreaWidth * MainWindow.main.PrintAreaWidth) * 0.25));
+            RHVector3 shift = new RHVector3(-0.5 * MainWindow.main.PrintAreaWidth, -0.5 * MainWindow.main.PrintAreaDepth, -0.5 * MainWindow.main.PrintAreaHeight);
             viewCenter = box.Center.asVector3();
             distance = defaultDistance;
             int loops = 5;

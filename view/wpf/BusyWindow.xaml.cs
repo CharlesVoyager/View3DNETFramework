@@ -26,7 +26,7 @@ namespace View3D.view.wpf
             try
             {
                 translate();
-                Main.main.languageChanged += translate;
+                MainWindow.main.languageChanged += translate;
 
 
             }

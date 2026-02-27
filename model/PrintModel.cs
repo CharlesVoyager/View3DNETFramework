@@ -123,7 +123,7 @@ namespace View3D.model
 
                 if (triIdx % processing_step == 0)
                 {
-                    //Main.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)triIdx / totalTriangle) * 15.0;
+                    //MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)triIdx / totalTriangle) * 15.0;
                     //Application.DoEvents();
                     int percentage = (int)(((double)triIdx / totalTriangle) * 15.0);
                 }
@@ -236,7 +236,7 @@ namespace View3D.model
                 activeModel = 0;
             }
             ForceViewRegeneration();
-            //Main.main.threedview.Refresh();
+            //MainWindow.main.threedview.Refresh();
             if (printModelChangedEvent != null)
                 printModelChangedEvent(this);
         }

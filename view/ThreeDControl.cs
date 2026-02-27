@@ -70,7 +70,7 @@ namespace View3D.view
 
             // Languages
             translate();
-            Main.main.languageChanged += translate;
+            MainWindow.main.languageChanged += translate;
         }
 
         private void translate()
@@ -119,7 +119,7 @@ namespace View3D.view
                 int w = gl.Width;
                 int h = gl.Height;
 
-                bedRadius = (float)(1.5 * Math.Sqrt((Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth) * 0.25));
+                bedRadius = (float)(1.5 * Math.Sqrt((MainWindow.main.PrintAreaDepth * MainWindow.main.PrintAreaDepth + MainWindow.main.PrintAreaHeight * MainWindow.main.PrintAreaHeight + MainWindow.main.PrintAreaWidth * MainWindow.main.PrintAreaWidth) * 0.25));
                 GL.Viewport(0, 0, w, h);
                 
                 GL.MatrixMode(MatrixMode.Projection);
@@ -155,22 +155,22 @@ namespace View3D.view
             GL.Light(LightName.Light0, LightParameter.Diffuse, new float[] { 0, 0, 0, 0 });
             GL.Light(LightName.Light0, LightParameter.Specular, new float[] { 0, 0, 0, 0 });
             GL.Enable(EnableCap.Light0);
-            if (Main.main.threeDSettings.enableLight1.IsChecked == true)
+            if (MainWindow.main.threeDSettings.enableLight1.IsChecked == true)
             {
-                GL.Light(LightName.Light1, LightParameter.Ambient, Main.main.threeDSettings.Ambient1());
-                GL.Light(LightName.Light1, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse1());
-                GL.Light(LightName.Light1, LightParameter.Specular, Main.main.threeDSettings.Specular1());
-                GL.Light(LightName.Light1, LightParameter.Position, Main.main.threeDSettings.Dir1());
+                GL.Light(LightName.Light1, LightParameter.Ambient, MainWindow.main.threeDSettings.Ambient1());
+                GL.Light(LightName.Light1, LightParameter.Diffuse, MainWindow.main.threeDSettings.Diffuse1());
+                GL.Light(LightName.Light1, LightParameter.Specular, MainWindow.main.threeDSettings.Specular1());
+                GL.Light(LightName.Light1, LightParameter.Position, MainWindow.main.threeDSettings.Dir1());
                 //  GL.Light(LightName.Light1, LightParameter.SpotExponent, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
                 GL.Enable(EnableCap.Light1);
             }
             else GL.Disable(EnableCap.Light1);
-            if (Main.main.threeDSettings.enableLight2.IsChecked == true)
+            if (MainWindow.main.threeDSettings.enableLight2.IsChecked == true)
             {
-                GL.Light(LightName.Light2, LightParameter.Ambient, Main.main.threeDSettings.Ambient2());
-                GL.Light(LightName.Light2, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse2());
-                GL.Light(LightName.Light2, LightParameter.Specular, Main.main.threeDSettings.Specular2());
-                GL.Light(LightName.Light2, LightParameter.Position, Main.main.threeDSettings.Dir2());
+                GL.Light(LightName.Light2, LightParameter.Ambient, MainWindow.main.threeDSettings.Ambient2());
+                GL.Light(LightName.Light2, LightParameter.Diffuse, MainWindow.main.threeDSettings.Diffuse2());
+                GL.Light(LightName.Light2, LightParameter.Specular, MainWindow.main.threeDSettings.Specular2());
+                GL.Light(LightName.Light2, LightParameter.Position, MainWindow.main.threeDSettings.Dir2());
                 /*  GL.Light(LightName.Light2, LightParameter.Diffuse, new float[] { 0.7f, 0.7f, 0.7f, 1f });
                   GL.Light(LightName.Light2, LightParameter.Specular, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
                   GL.Light(LightName.Light2, LightParameter.Position, (new Vector4(100f, 200f, 300f, 0)));*/
@@ -178,12 +178,12 @@ namespace View3D.view
                 GL.Enable(EnableCap.Light2);
             }
             else GL.Disable(EnableCap.Light2);
-            if (Main.main.threeDSettings.enableLight3.IsChecked == true)
+            if (MainWindow.main.threeDSettings.enableLight3.IsChecked == true)
             {
-                GL.Light(LightName.Light3, LightParameter.Ambient, Main.main.threeDSettings.Ambient3());
-                GL.Light(LightName.Light3, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse3());
-                GL.Light(LightName.Light3, LightParameter.Specular, Main.main.threeDSettings.Specular3());
-                GL.Light(LightName.Light3, LightParameter.Position, Main.main.threeDSettings.Dir3());
+                GL.Light(LightName.Light3, LightParameter.Ambient, MainWindow.main.threeDSettings.Ambient3());
+                GL.Light(LightName.Light3, LightParameter.Diffuse, MainWindow.main.threeDSettings.Diffuse3());
+                GL.Light(LightName.Light3, LightParameter.Specular, MainWindow.main.threeDSettings.Specular3());
+                GL.Light(LightName.Light3, LightParameter.Position, MainWindow.main.threeDSettings.Dir3());
                 /*  GL.Light(LightName.Light3, LightParameter.Diffuse, new float[] { 0.8f, 0.8f, 0.8f, 1f });
                   GL.Light(LightName.Light3, LightParameter.Specular, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
                   GL.Light(LightName.Light3, LightParameter.Position, (new Vector4(100f, -200f, 200f, 0)));*/
@@ -191,12 +191,12 @@ namespace View3D.view
                 GL.Enable(EnableCap.Light3);
             }
             else GL.Disable(EnableCap.Light3);
-            if (Main.main.threeDSettings.enableLight4.IsChecked == true)
+            if (MainWindow.main.threeDSettings.enableLight4.IsChecked == true)
             {
-                GL.Light(LightName.Light4, LightParameter.Ambient, Main.main.threeDSettings.Ambient4());
-                GL.Light(LightName.Light4, LightParameter.Diffuse, Main.main.threeDSettings.Diffuse4());
-                GL.Light(LightName.Light4, LightParameter.Specular, Main.main.threeDSettings.Specular4());
-                GL.Light(LightName.Light4, LightParameter.Position, Main.main.threeDSettings.Dir4());
+                GL.Light(LightName.Light4, LightParameter.Ambient, MainWindow.main.threeDSettings.Ambient4());
+                GL.Light(LightName.Light4, LightParameter.Diffuse, MainWindow.main.threeDSettings.Diffuse4());
+                GL.Light(LightName.Light4, LightParameter.Specular, MainWindow.main.threeDSettings.Specular4());
+                GL.Light(LightName.Light4, LightParameter.Position, MainWindow.main.threeDSettings.Dir4());
                 /* GL.Light(LightName.Light4, LightParameter.Diffuse, new float[] { 0.7f, 0.7f, 0.7f, 1f });
                  GL.Light(LightName.Light4, LightParameter.Specular, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
                  GL.Light(LightName.Light4, LightParameter.Position, (new Vector4(170f, -100f, -250f, 0)));*/
@@ -211,25 +211,25 @@ namespace View3D.view
         private void DetectDrawingMethod()
         {
             // Check drawing method
-            int om = Main.main.threeDSettings.drawMethod;
-            switch (Main.main.threeDSettings.comboDrawMethod.SelectedIndex)
+            int om = MainWindow.main.threeDSettings.drawMethod;
+            switch (MainWindow.main.threeDSettings.comboDrawMethod.SelectedIndex)
             {
                 case 0: // Autodetect;
-                    if (Main.main.threeDSettings.useVBOs && Main.main.threeDSettings.openGLVersion >= 1.499)
-                        Main.main.threeDSettings.drawMethod = 2;
-                    else if (Main.main.threeDSettings.openGLVersion >= 1.099)
-                        Main.main.threeDSettings.drawMethod = 1;
+                    if (MainWindow.main.threeDSettings.useVBOs && MainWindow.main.threeDSettings.openGLVersion >= 1.499)
+                        MainWindow.main.threeDSettings.drawMethod = 2;
+                    else if (MainWindow.main.threeDSettings.openGLVersion >= 1.099)
+                        MainWindow.main.threeDSettings.drawMethod = 1;
                     else
-                        Main.main.threeDSettings.drawMethod = 0;
+                        MainWindow.main.threeDSettings.drawMethod = 0;
                     break;
                 case 1: // VBOs
-                    Main.main.threeDSettings.drawMethod = 2;
+                    MainWindow.main.threeDSettings.drawMethod = 2;
                     break;
                 case 2: // drawElements
-                    Main.main.threeDSettings.drawMethod = 1;
+                    MainWindow.main.threeDSettings.drawMethod = 1;
                     break;
                 case 3: // elements
-                    Main.main.threeDSettings.drawMethod = 0;
+                    MainWindow.main.threeDSettings.drawMethod = 0;
                     break;
             }
         }
@@ -267,7 +267,7 @@ namespace View3D.view
                 {
                     GL.PushMatrix();
                     model.AnimationBefore();
-                    Color col = Main.main.threeDSettings.SelectionBoxBackgroundColor();
+                    Color col = MainWindow.main.threeDSettings.SelectionBoxBackgroundColor();
                     GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(0, 0, 0, 255));
                     GL.Material(MaterialFace.Front, MaterialParameter.Emission, new OpenTK.Graphics.Color4(0, 0, 0, 0));
                     GL.Material(MaterialFace.Front, MaterialParameter.Specular, new float[] { 0.0f, 0.0f, 0.0f, 1.0f });
@@ -343,19 +343,19 @@ namespace View3D.view
                 GL.Begin(PrimitiveType.LineStrip);
                 int pad = 2;
                 int tri = 10;
-                GL.Vertex3(-pad, Main.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(-pad, MainWindow.main.PrintAreaDepth + pad, -pad);
                 GL.Vertex3(-pad, -pad, -pad);
-                GL.Vertex3(Main.main.PrintAreaWidth + pad, -pad, -pad);
-                GL.Vertex3(Main.main.PrintAreaWidth + pad, Main.main.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(Main.main.PrintAreaWidth / 2 + tri, Main.main.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(Main.main.PrintAreaWidth / 2, Main.main.PrintAreaDepth + pad + tri, -pad);
-                GL.Vertex3(Main.main.PrintAreaWidth / 2 - tri, Main.main.PrintAreaDepth + pad, -pad);
-                GL.Vertex3(-pad, Main.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(MainWindow.main.PrintAreaWidth + pad, -pad, -pad);
+                GL.Vertex3(MainWindow.main.PrintAreaWidth + pad, MainWindow.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(MainWindow.main.PrintAreaWidth / 2 + tri, MainWindow.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(MainWindow.main.PrintAreaWidth / 2, MainWindow.main.PrintAreaDepth + pad + tri, -pad);
+                GL.Vertex3(MainWindow.main.PrintAreaWidth / 2 - tri, MainWindow.main.PrintAreaDepth + pad, -pad);
+                GL.Vertex3(-pad, MainWindow.main.PrintAreaDepth + pad, -pad);
                 GL.End();
             }
 
             GL.LineWidth(1f);
-            Color col = Main.main.threeDSettings.PrinterFrameBackgroundColor();
+            Color col = MainWindow.main.threeDSettings.PrinterFrameBackgroundColor();
             GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(0, 0, 0, 255));
             GL.Material(MaterialFace.Front, MaterialParameter.Emission, new OpenTK.Graphics.Color4(0, 0, 0, 0));
             GL.Material(MaterialFace.Front, MaterialParameter.Specular, new float[] { 0.0f, 0.0f, 0.0f, 1.0f });
@@ -364,7 +364,7 @@ namespace View3D.view
                 MaterialParameter.Emission,
                 new OpenTK.Graphics.Color4(col.R, col.G, col.B, col.A));
             GL.Enable(EnableCap.LineSmooth);
-            if (Main.main.threeDSettings.showPrintbed.IsChecked == true)
+            if (MainWindow.main.threeDSettings.showPrintbed.IsChecked == true)
             {
                 int i;
                 // Draw origin
@@ -378,21 +378,21 @@ namespace View3D.view
                 {
                     // Original Print cube
                     GL.Vertex3(0, 0, 0);
-                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, 0);
-                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0, 0 + Main.main.PrintAreaDepth, Main.main.PrintAreaHeight);
-                    GL.Vertex3(0, 0, Main.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0, 0);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + MainWindow.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0 + MainWindow.main.PrintAreaDepth, MainWindow.main.PrintAreaHeight);
+                    GL.Vertex3(0, 0, MainWindow.main.PrintAreaHeight);
 
                     float dx = 10; // ps.PrintAreaWidth / 20f;
                     float dy = 10; // ps.PrintAreaDepth / 20f;
@@ -401,25 +401,25 @@ namespace View3D.view
                     for (i = 0; i < 200; i++)
                     {
                         x = (float)i * dx;
-                        if (x >= Main.main.PrintAreaWidth)
-                            x = Main.main.PrintAreaWidth;
+                        if (x >= MainWindow.main.PrintAreaWidth)
+                            x = MainWindow.main.PrintAreaWidth;
 
            
                             GL.Vertex3(0 + x, 0, 0);
-                            GL.Vertex3(0 + x, 0 + Main.main.PrintAreaDepth, 0);
+                            GL.Vertex3(0 + x, 0 + MainWindow.main.PrintAreaDepth, 0);
               
-                        if (x >= Main.main.PrintAreaWidth) break;
+                        if (x >= MainWindow.main.PrintAreaWidth) break;
                     }
                     for (i = 0; i < 200; i++)
                     {
                         y = (float)i * dy;
-                        if (y > Main.main.PrintAreaDepth)
-                            y = Main.main.PrintAreaDepth;
+                        if (y > MainWindow.main.PrintAreaDepth)
+                            y = MainWindow.main.PrintAreaDepth;
          
                             GL.Vertex3(0, 0 + y, 0);
-                            GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + y, 0);
+                            GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + y, 0);
               
-                        if (y >= Main.main.PrintAreaDepth)
+                        if (y >= MainWindow.main.PrintAreaDepth)
                             break;
                     }
                 }
@@ -435,7 +435,7 @@ namespace View3D.view
             float dy1 = 0;
             float dy2 = dy1 + 0;
 
-            if (Main.main.threeDSettings.showPrintbed.IsChecked == true)
+            if (MainWindow.main.threeDSettings.showPrintbed.IsChecked == true)
             {
                 GL.Disable(EnableCap.CullFace);
                 GL.Enable(EnableCap.Blend);	// Turn Blending On
@@ -444,7 +444,7 @@ namespace View3D.view
                 //GL.Disable(EnableCap.Lighting);
 
                 // Draw bottom
-                Color col = Main.main.threeDSettings.PrinterBaseBackgroundColor();
+                Color col = MainWindow.main.threeDSettings.PrinterBaseBackgroundColor();
                 float[] transblack = new float[] { 0, 0, 0, 0 };
                 GL.Material(MaterialFace.FrontAndBack, MaterialParameter.AmbientAndDiffuse, new OpenTK.Graphics.Color4(col.R, col.G, col.B, 130));
                 GL.Material(MaterialFace.FrontAndBack, MaterialParameter.Specular, transblack);
@@ -460,9 +460,9 @@ namespace View3D.view
                     GL.Normal3(0, 0, 1);
 
                     GL.Vertex3(0, 0, 0);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0, 0);
-                    GL.Vertex3(0 + Main.main.PrintAreaWidth, 0 + Main.main.PrintAreaDepth, 0);
-                    GL.Vertex3(0 + 0, 0 + Main.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0, 0);
+                    GL.Vertex3(0 + MainWindow.main.PrintAreaWidth, 0 + MainWindow.main.PrintAreaDepth, 0);
+                    GL.Vertex3(0 + 0, 0 + MainWindow.main.PrintAreaDepth, 0);
 
                     GL.End();
                 }
@@ -484,7 +484,7 @@ namespace View3D.view
                 fpsTimer.Start();
                 gl.MakeCurrent();
                 GL.Enable(EnableCap.Multisample);
-                GL.ClearColor(Main.main.threeDSettings.BackgroundTopBackgroundColor());
+                GL.ClearColor(MainWindow.main.threeDSettings.BackgroundTopBackgroundColor());
                 GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit | ClearBufferMask.StencilBufferBit);
                 
                 // Draw gradient background
@@ -496,10 +496,10 @@ namespace View3D.view
                 GL.Disable(EnableCap.Lighting);
 
                 GL.Begin(PrimitiveType.Quads);
-                GL.Color4(convertColor(Main.main.threeDSettings.BackgroundBottomBackgroundColor())); // Silver -> CornflowerBlue
+                GL.Color4(convertColor(MainWindow.main.threeDSettings.BackgroundBottomBackgroundColor())); // Silver -> CornflowerBlue
                 GL.Vertex2(-1.0, -1.0);
                 GL.Vertex2(1.0, -1.0);
-                GL.Color4(convertColor(Main.main.threeDSettings.BackgroundTopBackgroundColor()));    // White -> WhiteSmoke   
+                GL.Color4(convertColor(MainWindow.main.threeDSettings.BackgroundTopBackgroundColor()));    // White -> WhiteSmoke   
                 GL.Vertex2(1.0, 1.0);
                 GL.Vertex2(-1.0, 1.0);
                 GL.End();
@@ -520,7 +520,7 @@ namespace View3D.view
                 GL.LineWidth(2f);
                 GL.Hint(HintTarget.LineSmoothHint, HintMode.Nicest);
                 //GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-                Color col = Main.main.threeDSettings.PrinterBaseBackgroundColor();
+                Color col = MainWindow.main.threeDSettings.PrinterBaseBackgroundColor();
                 //GL.Translate(-0-ps.PrintAreaWidth * 0.5f,-0 -ps.PrintAreaDepth * 0.5f, -0.5f * ps.PrintAreaHeight);
                 GL.GetFloat(GetPName.ModelviewMatrix, out modelView);
                 GL.Material(
@@ -546,7 +546,7 @@ namespace View3D.view
                         stlComp.RemoveLastModel();
                         UpdateChanges();
                     }
-                    Main.main.threedview.ui.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
+                    MainWindow.main.threedview.ui.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
                     MessageBox.Show("Error(" + (short)View3D.Protocol.ErrorCode.LOAD_FILE_FAIL + "): " + Trans.T("M_LOAD_FILE_FAIL"));	// Please downsize the model
                     GC.Collect();
                 }
@@ -596,14 +596,14 @@ namespace View3D.view
                     {
                         float val = 0;
                         float.TryParse(sv, NumberStyles.Float, GCode.format, out val);
-                        Main.main.threeDSettings.openGLVersion = val;
+                        MainWindow.main.threeDSettings.openGLVersion = val;
                     }
                     catch
                     {
-                        Main.main.threeDSettings.openGLVersion = 1.1f;
+                        MainWindow.main.threeDSettings.openGLVersion = 1.1f;
                     }
 
-                    Main.main.threeDSettings.useVBOs = GL.GetString(StringName.Extensions).Contains("GL_ARB_vertex_buffer_object");
+                    MainWindow.main.threeDSettings.useVBOs = GL.GetString(StringName.Extensions).Contains("GL_ARB_vertex_buffer_object");
                 
                 }
                 catch { }
@@ -902,7 +902,7 @@ namespace View3D.view
         private void SetCameraDefaults()
         {
             cam.viewCenter = new Vector3(0, 0, 0);
-            cam.defaultDistance = 1.6f * (float)Math.Sqrt(Main.main.PrintAreaDepth * Main.main.PrintAreaDepth + Main.main.PrintAreaWidth * Main.main.PrintAreaWidth + Main.main.PrintAreaHeight * Main.main.PrintAreaHeight);
+            cam.defaultDistance = 1.6f * (float)Math.Sqrt(MainWindow.main.PrintAreaDepth * MainWindow.main.PrintAreaDepth + MainWindow.main.PrintAreaWidth * MainWindow.main.PrintAreaWidth + MainWindow.main.PrintAreaHeight * MainWindow.main.PrintAreaHeight);
             cam.minDistance = 0.001 * cam.defaultDistance;
         }
 
@@ -1082,7 +1082,7 @@ namespace View3D.view
 
         private void removeObjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Main.main.threedview.ui.remove_toggleButton_Click(null, null);
+            MainWindow.main.threedview.ui.remove_toggleButton_Click(null, null);
         }
 
 

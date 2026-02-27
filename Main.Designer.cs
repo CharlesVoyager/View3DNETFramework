@@ -28,25 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.splitLog = new System.Windows.Forms.SplitContainer();
-            ((System.ComponentModel.ISupportInitialize)(this.splitLog)).BeginInit();
-            this.splitLog.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // splitLog
+            // panel1
             // 
-            this.splitLog.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitLog.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitLog.Location = new System.Drawing.Point(0, 0);
-            this.splitLog.Margin = new System.Windows.Forms.Padding(4);
-            this.splitLog.Name = "splitLog";
-            this.splitLog.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.splitLog.Panel2Collapsed = true;
-            this.splitLog.Size = new System.Drawing.Size(1105, 765);
-            this.splitLog.SplitterDistance = 359;
-            this.splitLog.SplitterWidth = 5;
-            this.splitLog.TabIndex = 4;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1105, 765);
+            this.panel1.TabIndex = 0;
             // 
             // Main
             // 
@@ -55,7 +46,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1105, 765);
-            this.Controls.Add(this.splitLog);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(796, 737);
             this.Name = "Main";
@@ -65,13 +56,12 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Move += new System.EventHandler(this.Main_Move);
-            ((System.ComponentModel.ISupportInitialize)(this.splitLog)).EndInit();
-            this.splitLog.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
         #endregion
-        private System.Windows.Forms.SplitContainer splitLog;
+
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

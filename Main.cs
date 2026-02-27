@@ -79,7 +79,6 @@ namespace View3D
             if (WindowState == FormWindowState.Maximized)
                 Application.DoEvents();
 
-            splitLog.Panel2Collapsed = true;
 
             // Translator
             trans = new Trans(Application.StartupPath + Path.DirectorySeparatorChar + "Resources");
@@ -96,7 +95,7 @@ namespace View3D
             // ThreeDControl
             threedview = new ThreeDControl();
             threedview.Dock = DockStyle.Fill;
-            splitLog.Panel1.Controls.Add(threedview);
+            panel1.Controls.Add(threedview);
 
             threedview.SetComp(objectPlacement);            // STLComposer object
             threedview.SetView(objectPlacement.cont);

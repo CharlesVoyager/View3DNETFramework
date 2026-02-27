@@ -30,8 +30,8 @@ namespace View3D
         public float dpiX, dpiY;
 
         #region Print Area settings
-        public float PrintAreaWidth = 128;  // x-axis direction
-        public float PrintAreaDepth = 128;  // y-axis direction
+        public float PrintAreaWidth = 256;  // x-axis direction
+        public float PrintAreaDepth = 256;  // y-axis direction
         public float PrintAreaHeight = 200; // z-axis direction
         double epsilon = 1e-4; // 0.0001
 

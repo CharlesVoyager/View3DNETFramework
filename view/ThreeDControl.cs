@@ -682,10 +682,9 @@ namespace View3D.view
             return nearestModel;
         }
 
-        float dpiX, dpiY;
-
         public void gl_Resize(object sender, EventArgs e)
         {
+            float dpiX, dpiY;
             Graphics graphics = this.CreateGraphics();
             dpiX = graphics.DpiX;
             dpiY = graphics.DpiY;

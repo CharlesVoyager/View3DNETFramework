@@ -83,15 +83,15 @@ namespace View3D.view
             if (MainWindow.main.threedview == null) return;
 
             // BusyWindow start
-            MainWindow.main.ui.BusyWindow.labelBusyMessage.Text = Trans.T("L_MODELING");
-            MainWindow.main.ui.BusyWindow.killed = false;
-            MainWindow.main.ui.BusyWindow.Visibility = System.Windows.Visibility.Visible;
-            MainWindow.main.ui.BusyWindow.buttonCancel.Visibility = System.Windows.Visibility.Visible;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.IsIndeterminate = false;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.Maximum = 100;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.Value = 0; 
-            MainWindow.main.ui.BusyWindow.AbortTask += OnUIAbort;
-            MainWindow.main.ui.BusyWindow.StartTimer();
+            MainWindow.main.BusyWindow.labelBusyMessage.Text = Trans.T("L_MODELING");
+            MainWindow.main.BusyWindow.killed = false;
+            MainWindow.main.BusyWindow.Visibility = System.Windows.Visibility.Visible;
+            MainWindow.main.BusyWindow.buttonCancel.Visibility = System.Windows.Visibility.Visible;
+            MainWindow.main.BusyWindow.busyProgressbar.IsIndeterminate = false;
+            MainWindow.main.BusyWindow.busyProgressbar.Maximum = 100;
+            MainWindow.main.BusyWindow.busyProgressbar.Value = 0; 
+            MainWindow.main.BusyWindow.AbortTask += OnUIAbort;
+            MainWindow.main.BusyWindow.StartTimer();
         }
 
         private void EnableBusyWindowNoCancleButton()
@@ -100,60 +100,60 @@ namespace View3D.view
             if (MainWindow.main.threedview == null) return;
 
             // BusyWindow start
-            MainWindow.main.ui.BusyWindow.labelBusyMessage.Text = Trans.T("L_MODELING");
-            MainWindow.main.ui.BusyWindow.killed = false;
-            MainWindow.main.ui.BusyWindow.Visibility = System.Windows.Visibility.Visible;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.IsIndeterminate = false;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.Maximum = 100;
-            MainWindow.main.ui.BusyWindow.busyProgressbar.Value = 0; 
-            MainWindow.main.ui.BusyWindow.AbortTask += OnUIAbort;
-            MainWindow.main.ui.BusyWindow.StartTimer();
+            MainWindow.main.BusyWindow.labelBusyMessage.Text = Trans.T("L_MODELING");
+            MainWindow.main.BusyWindow.killed = false;
+            MainWindow.main.BusyWindow.Visibility = System.Windows.Visibility.Visible;
+            MainWindow.main.BusyWindow.busyProgressbar.IsIndeterminate = false;
+            MainWindow.main.BusyWindow.busyProgressbar.Maximum = 100;
+            MainWindow.main.BusyWindow.busyProgressbar.Value = 0; 
+            MainWindow.main.BusyWindow.AbortTask += OnUIAbort;
+            MainWindow.main.BusyWindow.StartTimer();
         }
 
         private void DisableBusyWindow()
         {
             if (MainWindow.main == null) return;
             if (MainWindow.main.threedview == null) return;
-            MainWindow.main.ui.BusyWindow.AbortTask -= OnUIAbort;
-            MainWindow.main.ui.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
+            MainWindow.main.BusyWindow.AbortTask -= OnUIAbort;
+            MainWindow.main.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
         }
 
         public void OnProcessUpdate(int rate)
         {
-            if (MainWindow.main.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible)
+            if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible)
             {
-                MainWindow.main.ui.BusyWindow.busyProgressbar.Value = rate; 
+                MainWindow.main.BusyWindow.busyProgressbar.Value = rate; 
             }
         }
 
         public void OnProcessUpdate3wsLoadStageLoadStl(int rate)
         {
-            if (MainWindow.main.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible)
+            if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible)
             {
-                MainWindow.main.ui.BusyWindow.busyProgressbar.Value = rate / 2; 
+                MainWindow.main.BusyWindow.busyProgressbar.Value = rate / 2; 
             }
         }
 
         public void OnProcessUpdateSaveStageMerge(double value)
         {
-            if (MainWindow.main.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
-                MainWindow.main.ui.BusyWindow.increment != 0.0)
+            if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
+                MainWindow.main.BusyWindow.increment != 0.0)
             {
-                if (MainWindow.main.ui.BusyWindow.busyProgressbar.Value < MainWindow.main.ui.BusyWindow.firstStagePercent)
+                if (MainWindow.main.BusyWindow.busyProgressbar.Value < MainWindow.main.BusyWindow.firstStagePercent)
                 {
-                    MainWindow.main.ui.BusyWindow.busyProgressbar.Value = ((value + mergedCount * 100) / mergeCountTotal) * MainWindow.main.ui.BusyWindow.firstStagePercent / 100;
+                    MainWindow.main.BusyWindow.busyProgressbar.Value = ((value + mergedCount * 100) / mergeCountTotal) * MainWindow.main.BusyWindow.firstStagePercent / 100;
                 }
             }
         }
 
         public void OnProcessUpdateSaveStage2nd(int rate)
         {
-            if (MainWindow.main.ui.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
-                MainWindow.main.ui.BusyWindow.increment != 0.0)
+            if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible &&
+                MainWindow.main.BusyWindow.increment != 0.0)
             {
-                MainWindow.main.ui.BusyWindow.busyProgressbar.Value =
-                        (rate) * (100.0 - MainWindow.main.ui.BusyWindow.firstStagePercent)
-                        + MainWindow.main.ui.BusyWindow.firstStagePercent;
+                MainWindow.main.BusyWindow.busyProgressbar.Value =
+                        (rate) * (100.0 - MainWindow.main.BusyWindow.firstStagePercent)
+                        + MainWindow.main.BusyWindow.firstStagePercent;
             }
         }
 

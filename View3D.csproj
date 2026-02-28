@@ -139,9 +139,6 @@
     <Compile Include="view\wpf\ThreeDSettings.xaml.cs">
       <DependentUpon>ThreeDSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI.xaml.cs">
-      <DependentUpon>UI.xaml</DependentUpon>
-    </Compile>
     <Compile Include="view\wpf\UI_move.xaml.cs">
       <DependentUpon>UI_move.xaml</DependentUpon>
     </Compile>
@@ -234,10 +231,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="view\wpf\ThreeDSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="view\wpf\UI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

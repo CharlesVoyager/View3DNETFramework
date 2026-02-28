@@ -107,7 +107,7 @@ namespace View3D.view
 
         public void SetObjectSelected(bool sel)
         {
-            MainWindow.main.ui.setbuttonVisable(stlComp.listObjects.SelectedItems.Count == 1 && sel);
+            MainWindow.main.setbuttonVisable(stlComp.listObjects.SelectedItems.Count == 1 && sel);
             view.objectsSelected = sel;
         }
 
@@ -132,10 +132,10 @@ namespace View3D.view
             // Marshal to WPF thread to set ui's owner
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
-                WindowInteropHelper helper = new WindowInteropHelper(MainWindow.main.ui);
+                WindowInteropHelper helper = new WindowInteropHelper(MainWindow.main);
                 helper.Owner = gameWindowHandle;
 
-                MainWindow.main.ui.Show();
+                MainWindow.main.Show();
             });
 
 
@@ -180,10 +180,10 @@ namespace View3D.view
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
                 // Update WPF overlay position or anything else that depends on window position
-                if (MainWindow.main.ui != null)
+                if (MainWindow.main != null)
                 {
-                    MainWindow.main.ui.Left = newX;
-                    MainWindow.main.ui.Top = newY;
+                    MainWindow.main.Left = newX;
+                    MainWindow.main.Top = newY;
                 }
             });
         }
@@ -200,10 +200,10 @@ namespace View3D.view
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
                 // Update WPF overlay position or anything else that depends on window position
-                if (MainWindow.main.ui != null)
+                if (MainWindow.main!= null)
                 {
-                    MainWindow.main.ui.Width = newWidth;
-                    MainWindow.main.ui.Height = newHeight;
+                    MainWindow.main.Width = newWidth;
+                    MainWindow.main.Height = newHeight;
                 }
             });
 
@@ -247,9 +247,9 @@ namespace View3D.view
             base.OnMouseDown(e);
 
 #if false
-            MainWindow.main.ui.view_toggleButton.IsChecked   = false;
-            MainWindow.main.ui.move_toggleButton.IsChecked   = false;
-            MainWindow.main.ui.resize_toggleButton.IsChecked = false;
+            MainWindow.main.view_toggleButton.IsChecked   = false;
+            MainWindow.main.move_toggleButton.IsChecked   = false;
+            MainWindow.main.resize_toggleButton.IsChecked = false;
 #endif
 
             keyX = e.X; keyY = e.Y;
@@ -309,7 +309,12 @@ namespace View3D.view
                 if (sel != null && view.eventObjectMoved != null)
                     view.eventObjectSelected(sel);
                 else if (keyX == e.X && keyY == e.Y)
-                    stlComp.listObjects.SelectedItems.Clear();
+                {
+                    MainWindow.main.Dispatcher.InvokeAsync(() =>
+                    {
+                        stlComp.listObjects.SelectedItems.Clear();
+                    });
+                }
             }
 
             if (e.Button == MouseButton.Right)
@@ -404,16 +409,16 @@ namespace View3D.view
         }
 
         // Context-menu action handlers (called by the WPF UI ContextMenu)
-        public void ContextMenu_LandObject()   => MainWindow.main.ui.UI_move.button_land_Click(null, null);
+        public void ContextMenu_LandObject()   => MainWindow.main.UI_move.button_land_Click(null, null);
 
         public void ContextMenu_ResetObject()
         {
-            MainWindow.main.ui.UI_resize_advance.button_Reset_Click(null, null);
-            MainWindow.main.ui.UI_rotate.button_rotate_reset_Click(null, null);
-            MainWindow.main.ui.UI_move.button_move_reset_Click(null, null);
+            MainWindow.main.UI_resize_advance.button_Reset_Click(null, null);
+            MainWindow.main.UI_rotate.button_rotate_reset_Click(null, null);
+            MainWindow.main.UI_move.button_move_reset_Click(null, null);
         }
 
-        public void ContextMenu_RemoveObject() => MainWindow.main.ui.remove_toggleButton_Click(null, null);
+        public void ContextMenu_RemoveObject() => MainWindow.main.remove_toggleButton_Click(null, null);
 
         public void ContextMenu_MmToInch()
         {
@@ -487,7 +492,7 @@ namespace View3D.view
                         stlComp.RemoveLastModel();
                         UpdateChanges();
                     }
-                    MainWindow.main.ui.BusyWindow.Visibility = Visibility.Hidden;
+                    MainWindow.main.BusyWindow.Visibility = Visibility.Hidden;
                     System.Windows.MessageBox.Show(
                         "Error(" + (short)View3D.Protocol.ErrorCode.LOAD_FILE_FAIL + "): " +
                         Trans.T("M_LOAD_FILE_FAIL"));

@@ -68,8 +68,6 @@ namespace View3D.view.wpf
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-
-            MainWindow.main.DoCommand(stl);
         }
 
         private void StackPanelY_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -93,14 +91,12 @@ namespace View3D.view.wpf
                 //stl.LandToZ(oriZmin);
                 //MainWindow.main.objectPlacement.updateSTLState(stl);
             }
-
         }
 
         private void StackPanelY_MouseUp(object sender, MouseButtonEventArgs e)
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            MainWindow.main.DoCommand(stl);
         }
 
         private void StackPanelZ_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -128,7 +124,6 @@ namespace View3D.view.wpf
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            MainWindow.main.DoCommand(stl);
         }
 
         public void button_rotate_reset_Click(object sender, RoutedEventArgs e)
@@ -266,12 +261,10 @@ namespace View3D.view.wpf
             if (e.Key == Key.Up)
             {
                 sliderZ.Value++;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Down)
             {
                 sliderZ.Value--;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Enter)
             {
@@ -285,12 +278,10 @@ namespace View3D.view.wpf
             if (e.Key == Key.Up)
             {
                 sliderY.Value++;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Down)
             {
                 sliderY.Value--;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Enter)
             {
@@ -304,12 +295,10 @@ namespace View3D.view.wpf
             if (e.Key == Key.Up)
             {
                 sliderX.Value++;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Down)
             {
                 sliderX.Value--;
-                MainWindow.main.DoCommand(stl);
             }
             else if (e.Key == Key.Enter)
             {

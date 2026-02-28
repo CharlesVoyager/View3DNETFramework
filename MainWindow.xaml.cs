@@ -203,18 +203,7 @@ namespace View3D
             Height = height / dpiY * 96;
         }
 
-        public void DoCommand(PrintModel stl)
-        {
-            try
-            {
-                float[] pos = new float[9];
-                pos[0] = stl.Position.x; pos[1] = stl.Position.y; pos[2] = stl.Position.z;
-                pos[3] = stl.Rotation.x; pos[4] = stl.Rotation.y; pos[5] = stl.Rotation.z;
-                pos[6] = stl.Scale.x; pos[7] = stl.Scale.y; pos[8] = stl.Scale.z;
-            }
-            catch { }
-        }
-
+        //---------------------------------------------------------------
         public bool killed = false;
         public string olddata;
         public DateTime newDate;

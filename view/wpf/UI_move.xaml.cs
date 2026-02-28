@@ -222,7 +222,6 @@ namespace View3D.view.wpf
                     {
                         moveX_textbox.Text = slider_moveX.Value.ToString();
                     }
-                    MainWindow.main.DoCommand(stl);
                 }
                 catch { }
             }
@@ -245,7 +244,6 @@ namespace View3D.view.wpf
                     {
                         moveY_textbox.Text = slider_moveY.Value.ToString();
                     }
-                    MainWindow.main.DoCommand(stl);
                 }
                 catch { }
             }
@@ -269,7 +267,6 @@ namespace View3D.view.wpf
                     {
                         moveZ_textbox.Text = slider_moveZ.Value.ToString();
                     }
-                    MainWindow.main.DoCommand(stl);
                 }
                 catch { }
             }
@@ -283,21 +280,18 @@ namespace View3D.view.wpf
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            MainWindow.main.DoCommand(stl);
         }
 
         private void slider_moveY_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            MainWindow.main.DoCommand(stl);
         }
 
         private void slider_moveZ_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
-            MainWindow.main.DoCommand(stl);
         }
 
         private void slider_moveX_KeyUp(object sender, KeyEventArgs e)
@@ -306,7 +300,6 @@ namespace View3D.view.wpf
             {
                 PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
                 if (stl == null) return;
-                MainWindow.main.DoCommand(stl);
             }
         }
 
@@ -316,7 +309,6 @@ namespace View3D.view.wpf
             {
                 PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
                 if (stl == null) return;
-                MainWindow.main.DoCommand(stl);
             }
         }
 
@@ -326,7 +318,6 @@ namespace View3D.view.wpf
             {
                 PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
                 if (stl == null) return;
-                MainWindow.main.DoCommand(stl);
             }
         }
 

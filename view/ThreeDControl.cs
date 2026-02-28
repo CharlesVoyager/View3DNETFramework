@@ -193,13 +193,11 @@ namespace View3D.view
             base.OnResize(e);
             if (!loaded) return;
 
-
             int newWidth = this.Width;
             int newHeight = this.Height;
 
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
-                // Update WPF overlay position or anything else that depends on window position
                 if (MainWindow.main!= null)
                 {
                     MainWindow.main.Width = newWidth;

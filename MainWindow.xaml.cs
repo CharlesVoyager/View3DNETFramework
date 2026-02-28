@@ -4,15 +4,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using View3D.model;
-using View3D.model.geom;
 using View3D.view;
-using View3D.view.utils;
 
 namespace View3D
 {
@@ -213,7 +212,7 @@ namespace View3D
         public float layerNow;
         public int layerTotal;
         private bool sliceToolEnabled = false;
-
+        private ContextMenu _contextMenu;
         public void UI()
         {
             VisualStateManager.GoToState(UI_view, "State2", true);
@@ -232,7 +231,47 @@ namespace View3D
 
             translate();
             languageChanged += translate;
+
+            // Retrieve the context menu from resources
+            _contextMenu = (ContextMenu)this.Resources["ViewerContextMenu"];
+
+            // Wire up click handlers
+            ((MenuItem)_contextMenu.Items[0]).Click += (s, e) => OnLandObject();
+            ((MenuItem)_contextMenu.Items[1]).Click += (s, e) => OnResetObject();
+            ((MenuItem)_contextMenu.Items[2]).Click += (s, e) => OnRemoveObject();
+            // index 3 is Separator
+            ((MenuItem)_contextMenu.Items[4]).Click += (s, e) => OnMmToInch();
+            ((MenuItem)_contextMenu.Items[5]).Click += (s, e) => OnInchToMm();
+            // index 6 is Separator
+            ((MenuItem)_contextMenu.Items[7]).Click += (s, e) => OnClone();
         }
+
+        /// <summary>
+        /// Called from ThreeDControl (GL thread) via Dispatcher.InvokeAsync.
+        /// hasModel controls which items are visible.
+        /// </summary>
+        public void ShowContextMenu(bool hasModel)
+        {
+            // Must be called on the WPF thread
+            _contextMenu.Items.Cast<FrameworkElement>()
+                .Where(item => item is MenuItem)
+                .ToList()
+                .ForEach(item => item.Visibility =
+                    hasModel ? Visibility.Visible : Visibility.Collapsed);
+
+            _contextMenu.IsOpen = true;
+        }
+
+        // Expose a property so ThreeDControl can check items exist
+        public ContextMenu ContextMenuItems => _contextMenu;
+
+        // Actions — forward to ThreeDControl
+        private void OnLandObject() => threedview.ContextMenu_LandObject();
+        private void OnResetObject() => threedview.ContextMenu_ResetObject();
+        private void OnRemoveObject() => threedview.ContextMenu_RemoveObject();
+        private void OnMmToInch() => threedview.ContextMenu_MmToInch();
+        private void OnInchToMm() => threedview.ContextMenu_InchToMm();
+        private void OnClone() => threedview.ContextMenu_Clone();
 
         private void translate()
         {

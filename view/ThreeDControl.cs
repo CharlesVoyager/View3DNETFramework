@@ -403,13 +403,16 @@ namespace View3D.view
         /// </summary>
         private void ShowContextMenu()
         {
-            //if (ui?.ContextMenuItems == null) return;
+            if (MainWindow.main?.ContextMenuItems == null) return;
 
-            //PrintModel model = stlComp.SingleSelectedModel;
-            //bool hasModel = model != null;
+            PrintModel model = stlComp.SingleSelectedModel;
+            bool hasModel = model != null;
 
-            // Delegate to the WPF UI to open its ContextMenu
-            ///ui.ShowContextMenu(hasModel);
+            // Must marshal to WPF thread
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            {
+                MainWindow.main.ShowContextMenu(hasModel);
+            });
         }
 
         // Context-menu action handlers (called by the WPF UI ContextMenu)

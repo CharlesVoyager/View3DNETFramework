@@ -412,7 +412,7 @@ namespace View3D
         public void move_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_move, "State2", true);
-            MainWindow.main.Focus();
+            Focus();
         }
 
         private void import_button_Click(object sender, RoutedEventArgs e)
@@ -440,17 +440,17 @@ namespace View3D
 
                 string fileLow = filePath.ToLower();
                 if (fileLow.EndsWith(".stl"))
-                    MainWindow.main.objectPlacement.openAndAddObject(filePath);
+                    objectPlacement.openAndAddObject(filePath);
 
-                if (MainWindow.main.objectPlacement.listObjects.Items.Count > 0)
+                if (objectPlacement.listObjects.Items.Count > 0)
                 {
-                    MainWindow.main.threedview.viewSilhouette = false;
-                    MainWindow.main.threedview.clipDownward = true;
-                    MainWindow.main.threedview.setclipLayerHeight = (double)0.1;
+                    threedview.viewSilhouette = false;
+                    threedview.clipDownward = true;
+                    threedview.setclipLayerHeight = (double)0.1;
                 }
 
-                MainWindow.main.Focus();
-                MainWindow.main.threedview.UpdateChanges();
+                Focus();
+                threedview.UpdateChanges();
             }
         }
 
@@ -551,13 +551,13 @@ namespace View3D
         private void rotate_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_rotate, "State2", true);
-            MainWindow.main.Focus();
+            Focus();
         }
 
         private void resize_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_resize_advance, "State2", true);
-            MainWindow.main.Focus();
+            Focus();
         }
 
         private bool confirmSupportEditModeBreak()
@@ -577,7 +577,7 @@ namespace View3D
         private void info_toggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_object_information, "State2", true);
-            MainWindow.main.Focus();
+            Focus();
         }
 
         public void remove_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -594,11 +594,11 @@ namespace View3D
             UI_move.slider_moveY.Maximum = 1000;
 
             OutofBound.Visibility = System.Windows.Visibility.Hidden;
-            MainWindow.main.threedview.clipviewEnabled = false;
-            MainWindow.main.threedview.button_remove_Click(null, null);
-            if (MainWindow.main.objectPlacement.listObjects.Items.Count > 0)
-                MainWindow.main.objectPlacement.updateSTLState(MainWindow.main.objectPlacement.SingleSelectedModel);
-            MainWindow.main.Focus();
+            threedview.clipviewEnabled = false;
+            threedview.button_remove_Click(null, null);
+            if (objectPlacement.listObjects.Items.Count > 0)
+                objectPlacement.updateSTLState(MainWindow.main.objectPlacement.SingleSelectedModel);
+            Focus();
         }
 
         private void zoomin_toggleButton_Click(object sender, RoutedEventArgs e)
@@ -609,8 +609,8 @@ namespace View3D
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
 
-            MainWindow.main.threedview.button_zoomIn_Click(null, null);
-            MainWindow.main.Focus();
+            threedview.button_zoomIn_Click(null, null);
+            Focus();
         }
 
         private void zoomout_toggleButton_Click(object sender, RoutedEventArgs e)

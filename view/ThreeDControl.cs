@@ -305,7 +305,12 @@ namespace View3D.view
                     moveStart  = moveLast = new Geom3DVector(pickPoint);
                 }
                 if (sel != null && view.eventObjectMoved != null)
-                    view.eventObjectSelected(sel);
+                {
+                    MainWindow.main.Dispatcher.InvokeAsync(() =>
+                    {
+                        view.eventObjectSelected(sel);
+                    });
+                }
                 else if (keyX == e.X && keyY == e.Y)
                 {
                     MainWindow.main.Dispatcher.InvokeAsync(() =>
@@ -325,8 +330,11 @@ namespace View3D.view
                 }
                 if (sel != null && view.eventObjectMoved != null)
                 {
-                    view.eventObjectSelected(sel);
-                    ShowContextMenu();
+                    MainWindow.main.Dispatcher.InvokeAsync(() =>
+                    {
+                        view.eventObjectSelected(sel);
+                        ShowContextMenu();
+                    });
                 }
                 else if (keyX == e.X && keyY == e.Y)
                     ShowContextMenu();

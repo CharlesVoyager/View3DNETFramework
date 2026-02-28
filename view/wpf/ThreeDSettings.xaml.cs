@@ -318,33 +318,201 @@ namespace View3D.view
 
         // ── Light direction helpers ───────────────────────────────────────────────
 
-        private static Vector4 ToDir(TextBox x, TextBox y, TextBox z)
+        private static float[] ToDir(TextBox x, TextBox y, TextBox z)
         {
             float.TryParse(x.Text, NumberStyles.Float, GCode.format, out float xf);
             float.TryParse(y.Text, NumberStyles.Float, GCode.format, out float yf);
             float.TryParse(z.Text, NumberStyles.Float, GCode.format, out float zf);
-            return new Vector4(xf, yf, zf, 0f);
+            return new float[] { xf, yf, zf, 0f };
         }
 
         // ── Public API (identical signatures to the original) ────────────────────
 
-        public Vector4 Dir1() => ToDir(xdir1, ydir1, zdir1);
-        public Vector4 Dir2() => ToDir(xdir2, ydir2, zdir2);
-        public Vector4 Dir3() => ToDir(xdir3, ydir3, zdir3);
-        public Vector4 Dir4() => ToDir(xdir4, ydir4, zdir4);
+        public bool EnableLight1() 
+        {
+            bool output = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = (enableLight1.IsChecked == true);
+            });
+            return output;
+        }
+        public bool EnableLight2()
+        {
+            bool output = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = (enableLight2.IsChecked == true);
+            });
+            return output;
+        }
 
-        public float[] Diffuse1()  => ToGLColor(diffuse1);
-        public float[] Ambient1()  => ToGLColor(ambient1);
-        public float[] Specular1() => ToGLColor(specular1);
-        public float[] Diffuse2()  => ToGLColor(diffuse2);
-        public float[] Ambient2()  => ToGLColor(ambient2);
-        public float[] Specular2() => ToGLColor(specular2);
-        public float[] Diffuse3()  => ToGLColor(diffuse3);
-        public float[] Ambient3()  => ToGLColor(ambient3);
-        public float[] Specular3() => ToGLColor(specular3);
-        public float[] Diffuse4()  => ToGLColor(diffuse4);
-        public float[] Ambient4()  => ToGLColor(ambient4);
-        public float[] Specular4() => ToGLColor(specular4);
+        public bool EnableLight3()
+        {
+            bool output = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = (enableLight3.IsChecked == true);
+            });
+            return output;
+        }
+
+        public bool EnableLight4()
+        {
+            bool output = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = (enableLight4.IsChecked == true);
+            });
+            return output;
+        }
+
+        public float[] Dir1()// => ToDir(xdir1, ydir1, zdir1);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToDir(xdir1, ydir1, zdir1);
+            });
+            return output;
+        }
+        public float[] Dir2()// => ToDir(xdir2, ydir2, zdir2);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToDir(xdir2, ydir2, zdir2);
+            });
+            return output;
+        }
+        public float[] Dir3()// => ToDir(xdir3, ydir3, zdir3);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToDir(xdir3, ydir3, zdir3);
+            });
+            return output;
+        }
+
+        public float[] Dir4()// => ToDir(xdir4, ydir4, zdir4);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToDir(xdir4, xdir4, xdir4);
+            });
+            return output;
+        }
+
+        public float[] Diffuse1()//  => ToGLColor(diffuse1);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(diffuse1);
+            });
+            return output;
+        }
+        public float[] Ambient1()//  => ToGLColor(ambient1);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(ambient1);
+            });
+            return output;
+        }
+        public float[] Specular1()// => ToGLColor(specular1);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(specular1);
+            });
+            return output;
+        }
+        public float[] Diffuse2()//  => ToGLColor(diffuse2);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(diffuse2);
+            });
+            return output;
+        }
+        public float[] Ambient2()//  => ToGLColor(ambient2);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(ambient2);
+            });
+            return output;
+        }
+        public float[] Specular2()// => ToGLColor(specular2);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(specular2);
+            });
+            return output;
+        }
+        public float[] Diffuse3()//  => ToGLColor(diffuse3);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(diffuse3);
+            });
+            return output;
+        }
+        public float[] Ambient3()//  => ToGLColor(ambient3);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(ambient3);
+            });
+            return output;
+        }
+        public float[] Specular3()// => ToGLColor(specular3);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(specular3);
+            });
+            return output;
+        }
+        public float[] Diffuse4()//  => ToGLColor(diffuse4);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(diffuse4);
+            });
+            return output;
+        }
+        public float[] Ambient4()//  => ToGLColor(ambient4);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(ambient4);
+            });
+            return output;
+        }
+        public float[] Specular4()// => ToGLColor(specular4);
+        {
+            float[] output = null;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                output = ToGLColor(specular4);
+            });
+            return output;
+        }
 
 
         public System.Drawing.Color InsideFacesBackgroundColor()

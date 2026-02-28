@@ -488,19 +488,20 @@ namespace View3D.view
             GL.Enable(EnableCap.Light0);
 
             var s = MainWindow.main.threeDSettings;
-            //SetLight(LightName.Light1, s.enableLight1, s.Ambient1(), s.Diffuse1(), s.Specular1(), s.Dir1(), false);
-            //SetLight(LightName.Light2, s.enableLight2, s.Ambient2(), s.Diffuse2(), s.Specular2(), s.Dir2(), true);
-            //SetLight(LightName.Light3, s.enableLight3, s.Ambient3(), s.Diffuse3(), s.Specular3(), s.Dir3(), true);
-            //SetLight(LightName.Light4, s.enableLight4, s.Ambient4(), s.Diffuse4(), s.Specular4(), s.Dir4(), true);
-            //GL.Enable(EnableCap.Lighting);
+
+            SetLight(LightName.Light1, s.EnableLight1(), s.Ambient1(), s.Diffuse1(), s.Specular1(), s.Dir1(), false);
+            SetLight(LightName.Light2, s.EnableLight2(), s.Ambient2(), s.Diffuse2(), s.Specular2(), s.Dir2(), true);
+            SetLight(LightName.Light3, s.EnableLight3(), s.Ambient3(), s.Diffuse3(), s.Specular3(), s.Dir3(), true);
+            SetLight(LightName.Light4, s.EnableLight4(), s.Ambient4(), s.Diffuse4(), s.Specular4(), s.Dir4(), true);
+            GL.Enable(EnableCap.Lighting);
         }
 
         private void SetLight(LightName name,
-                              System.Windows.Controls.CheckBox check,
+                              bool enable,
                               float[] amb, float[] diff, float[] spec, float[] pos,
                               bool setExponent)
         {
-            if (check.IsChecked == true)
+            if (enable)
             {
                 GL.Light(name, LightParameter.Ambient,  amb);
                 GL.Light(name, LightParameter.Diffuse,  diff);

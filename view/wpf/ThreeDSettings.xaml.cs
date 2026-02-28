@@ -367,7 +367,7 @@ namespace View3D.view
             return output;
         }
 
-        public float[] Dir1()// => ToDir(xdir1, ydir1, zdir1);
+        public float[] Dir1()
         {
             float[] output = null;
             Application.Current.Dispatcher.Invoke(() =>
@@ -376,7 +376,8 @@ namespace View3D.view
             });
             return output;
         }
-        public float[] Dir2()// => ToDir(xdir2, ydir2, zdir2);
+
+        public float[] Dir2()
         {
             float[] output = null;
             Application.Current.Dispatcher.Invoke(() =>
@@ -385,7 +386,8 @@ namespace View3D.view
             });
             return output;
         }
-        public float[] Dir3()// => ToDir(xdir3, ydir3, zdir3);
+
+        public float[] Dir3()
         {
             float[] output = null;
             Application.Current.Dispatcher.Invoke(() =>
@@ -395,7 +397,7 @@ namespace View3D.view
             return output;
         }
 
-        public float[] Dir4()// => ToDir(xdir4, ydir4, zdir4);
+        public float[] Dir4()
         {
             float[] output = null;
             Application.Current.Dispatcher.Invoke(() =>

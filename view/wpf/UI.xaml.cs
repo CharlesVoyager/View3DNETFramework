@@ -51,15 +51,6 @@ namespace View3D.view.wpf
             MainWindow.main.languageChanged += translate;
         }
 
-        public void Resize(int width, int height)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                Width = width;
-                Height = height;
-            });
-        }
-
         private void translate()
         {
             view_toggleButton.ToolTip = Trans.T("B_VIEW");

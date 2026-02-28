@@ -12,8 +12,9 @@ using System.Windows;
 using System.Windows.Interop;
 using View3D.model;
 using View3D.model.geom;
-using View3D.view.utils;
 using View3D.ModelObjectTool;
+using View3D.view.utils;
+using View3D.view.wpf;
 
 // NOTE: ThreeDControl_Designer.cs is no longer needed and should be removed from the project.
 // The ContextMenu is now implemented via a WPF ContextMenu defined in the UI layer (ui.ContextMenu),
@@ -124,6 +125,20 @@ namespace View3D.view
         {
             base.OnLoad(e);
 
+            // WindowInfo.Handle is the native HWND of the GameWindow.
+            // Must be done here — handle does not exist before OnLoad.
+            IntPtr gameWindowHandle = this.WindowInfo.Handle;
+
+            // Marshal to WPF thread to set ui's owner
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            {
+                WindowInteropHelper helper = new WindowInteropHelper(MainWindow.main.ui);
+                helper.Owner = gameWindowHandle;
+
+                MainWindow.main.ui.Show();
+            });
+
+
             // Detect OpenGL version & capabilities (runs once)
             try
             {
@@ -154,16 +169,62 @@ namespace View3D.view
             SetupViewport();
         }
 
+        protected override void OnMove(EventArgs e)
+        {
+            base.OnMove(e);
+
+            // GameWindow.X and GameWindow.Y are the new position
+            int newX = this.X;
+            int newY = this.Y;
+
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            {
+                // Update WPF overlay position or anything else that depends on window position
+                if (MainWindow.main.ui != null)
+                {
+                    MainWindow.main.ui.Left = newX;
+                    MainWindow.main.ui.Top = newY;
+                }
+            });
+        }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             if (!loaded) return;
 
-            // Keep WPF UI overlay sized to match
-            MainWindow.main.ui.Resize(Width, Height);
+
+            int newWidth = this.Width;
+            int newHeight = this.Height;
+
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            {
+                // Update WPF overlay position or anything else that depends on window position
+                if (MainWindow.main.ui != null)
+                {
+                    MainWindow.main.ui.Width = newWidth;
+                    MainWindow.main.ui.Height = newHeight;
+                }
+            });
 
             SetupViewport();
             Invalidate();
+        }
+
+        // ThreeDControl.cs
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            // Clean up GL resources here — still on the GL thread
+            // e.g. delete VBOs, textures, etc.
+
+            // Notify WPF thread if needed
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            {
+                // e.g. shut down the WPF app when the GL window closes
+                System.Windows.Application.Current.Shutdown();
+            });
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)

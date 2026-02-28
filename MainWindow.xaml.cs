@@ -88,7 +88,6 @@ namespace View3D
 
             // ui
             ui = new View3D.view.wpf.UI();
-            ui.Show();
 
             // Launch the GameWindow on its own thread so it doesn't block WPF
             var glThread = new Thread(() =>

@@ -182,7 +182,7 @@ namespace View3D.view
             int newX = this.X;
             int newY = this.Y;
 
-            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            MainWindow.main.Dispatcher.Invoke(() =>
             {
                 if (MainWindow.main != null)
                     MainWindow.main.LocationChanged(newX, newY);
@@ -197,7 +197,7 @@ namespace View3D.view
             int newWidth = this.Width;
             int newHeight = this.Height;
 
-            MainWindow.main.Dispatcher.InvokeAsync(() =>
+            MainWindow.main.Dispatcher.Invoke(() =>
             {
                 if (MainWindow.main!= null)
                     MainWindow.main.SizeChanged(newWidth, newHeight);

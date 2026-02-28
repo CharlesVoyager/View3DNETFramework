@@ -30,7 +30,7 @@ namespace View3D
 
         public Trans trans = null;
 
-        public float dpiX, dpiY;
+        public double dpiX, dpiY;
 
         #region Print Area settings
         public float PrintAreaWidth = 256;  // x-axis direction
@@ -70,10 +70,8 @@ namespace View3D
                 var source = PresentationSource.FromVisual(this);
                 if (source?.CompositionTarget != null)
                 {
-                    dpiX = (float)(96.0 * source.CompositionTarget.TransformToDevice.M11);
-                    dpiY = (float)(96.0 * source.CompositionTarget.TransformToDevice.M22);
-
-                    MainWindow_LocationChanged(null, null);
+                    dpiX = 96.0 * source.CompositionTarget.TransformToDevice.M11;
+                    dpiY = 96.0 * source.CompositionTarget.TransformToDevice.M22;
                 }
             };
 
@@ -193,14 +191,16 @@ namespace View3D
             catch { }
         }
 
-        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        public void LocationChanged(double x, double y)
         {
-            ///if (threedview?.gl == null) return;
+            Left = x / dpiX * 96;
+            Top = y / dpiY * 96;
+        }
 
-            // Convert WinForms screen point to WPF logical units
-            //var screenPoint = threedview.gl.PointToScreen(System.Drawing.Point.Empty);
-            //threedview.ui.Left = (double)screenPoint.X / dpiX * 96;
-            //threedview.ui.Top  = (double)screenPoint.Y / dpiY * 96;
+        public void SizeChanged(double width, double height)
+        {
+            Width = width / dpiX * 96;
+            Height = height / dpiY * 96;
         }
 
         public void DoCommand(PrintModel stl)

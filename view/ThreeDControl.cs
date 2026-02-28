@@ -136,8 +136,13 @@ namespace View3D.view
                 helper.Owner = gameWindowHandle;
 
                 MainWindow.main.Show();
-            });
 
+                // Position
+                MainWindow.main.LocationChanged(X, Y);
+
+                // Size
+                MainWindow.main.SizeChanged(Width, Height);
+            });
 
             // Detect OpenGL version & capabilities (runs once)
             try
@@ -179,12 +184,8 @@ namespace View3D.view
 
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
-                // Update WPF overlay position or anything else that depends on window position
                 if (MainWindow.main != null)
-                {
-                    MainWindow.main.Left = newX;
-                    MainWindow.main.Top = newY;
-                }
+                    MainWindow.main.LocationChanged(newX, newY);
             });
         }
 
@@ -199,10 +200,7 @@ namespace View3D.view
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
                 if (MainWindow.main!= null)
-                {
-                    MainWindow.main.Width = newWidth;
-                    MainWindow.main.Height = newHeight;
-                }
+                    MainWindow.main.SizeChanged(newWidth, newHeight);
             });
 
             SetupViewport();

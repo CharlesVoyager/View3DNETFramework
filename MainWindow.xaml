@@ -13,7 +13,6 @@
         Loaded="MainWindow_Loaded"
         Closing="MainWindow_Closing"
         KeyDown="MainWindow_KeyDown"
-        LocationChanged="MainWindow_LocationChanged"
         DragEnter="MainWindow_DragEnter"
         Drop="MainWindow_Drop">
 

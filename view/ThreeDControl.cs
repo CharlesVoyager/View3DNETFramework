@@ -138,10 +138,10 @@ namespace View3D.view
                 MainWindow.main.Show();
 
                 // Position
-                MainWindow.main.LocationChanged(X, Y);
+                MainWindow.main.UpdateLocation(X, Y);
 
                 // Size
-                MainWindow.main.SizeChanged(Width, Height);
+                MainWindow.main.UpdateSize(Width, Height);
             });
 
             // Detect OpenGL version & capabilities (runs once)
@@ -185,7 +185,7 @@ namespace View3D.view
             MainWindow.main.Dispatcher.Invoke(() =>
             {
                 if (MainWindow.main != null)
-                    MainWindow.main.LocationChanged(newX, newY);
+                    MainWindow.main.UpdateLocation(newX, newY);
             });
         }
 
@@ -200,7 +200,7 @@ namespace View3D.view
             MainWindow.main.Dispatcher.Invoke(() =>
             {
                 if (MainWindow.main!= null)
-                    MainWindow.main.SizeChanged(newWidth, newHeight);
+                    MainWindow.main.UpdateSize(newWidth, newHeight);
             });
 
             SetupViewport();

@@ -191,13 +191,13 @@ namespace View3D
             catch { }
         }
 
-        public void LocationChanged(double x, double y)
+        public void UpdateLocation(double x, double y)
         {
             Left = x / dpiX * 96;
             Top = y / dpiY * 96;
         }
 
-        public void SizeChanged(double width, double height)
+        public void UpdateSize(double width, double height)
         {
             Width = width / dpiX * 96;
             Height = height / dpiY * 96;

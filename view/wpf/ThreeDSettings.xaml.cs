@@ -511,5 +511,15 @@ namespace View3D.view
                     return System.Drawing.Color.White;
             }
         }
+
+        public bool IsPrintbed()
+        {
+            bool result = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                result = showPrintbed.IsChecked == true;
+            });
+            return result;
+        }
     }
 }

@@ -80,7 +80,7 @@ namespace View3D.view
                    "OpenGL 3D Viewer",
                    GameWindowFlags.Default,
                    DisplayDevice.Default,
-                   2, 0,                               // OpenGL 2.0 minimum
+                   2, 0,                             // OpenGL 2.0 minimum
                    GraphicsContextFlags.Default)
         {
             VSync = VSyncMode.Off;
@@ -160,10 +160,7 @@ namespace View3D.view
             if (!loaded) return;
 
             // Keep WPF UI overlay sized to match
-#if false
-            MainWindow.main.ui.Width  = Width;
-            MainWindow.main.ui.Height = Height;
-#endif
+            MainWindow.main.ui.Resize(Width, Height);
 
             SetupViewport();
             Invalidate();
@@ -622,7 +619,7 @@ namespace View3D.view
             GL.Vertex3(-pad,                               main.PrintAreaDepth + pad,          -pad);
             GL.End();
 
-      ///      if (main.threeDSettings.showPrintbed.IsChecked != true) return;
+            if (main.threeDSettings.IsPrintbed() != true) return;
 
             GL.LineWidth(1f);
             Color col = main.threeDSettings.PrinterFrameBackgroundColor();
@@ -663,7 +660,7 @@ namespace View3D.view
 
         private void DrawPrintbedBase()
         {
-     ///       if (MainWindow.main.threeDSettings.showPrintbed.IsChecked != true) return;
+            if (MainWindow.main.threeDSettings.IsPrintbed() != true) return;
 
             var main = MainWindow.main;
             GL.Disable(EnableCap.CullFace);

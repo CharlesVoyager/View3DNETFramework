@@ -258,7 +258,7 @@ namespace View3D.view
             {
                 loops--;
                 angle = 15.0 * Math.PI / 180;
-                double ratio = (double)control.gl.Width / (double)control.gl.Height;
+                double ratio = 1;// (double)control.gl.Width / (double)control.gl.Height;
                 Vector3 camPos = CameraPosition;
                 Matrix4 lookAt = Matrix4.LookAt(camPos.X, camPos.Y, camPos.Z, viewCenter.X, viewCenter.Y, viewCenter.Z, 0, 0, 1.0f);
                 Matrix4 persp;

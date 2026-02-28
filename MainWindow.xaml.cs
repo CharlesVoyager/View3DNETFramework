@@ -24,6 +24,7 @@ namespace View3D
         public ThreeDSettings threeDSettings = null;
         public ThreeDControl threedview = null;
         public View3D.view.wpf.STLComposer objectPlacement = null;
+        public View3D.view.wpf.UI ui = null;        // WPF overlay UI window
 
         public Trans trans = null;
 
@@ -46,6 +47,10 @@ namespace View3D
             return true;
         }
         #endregion
+
+        // Signals that ThreeDControl is fully constructed and ready
+        private readonly System.Threading.ManualResetEventSlim _glReady
+            = new System.Threading.ManualResetEventSlim(false);
 
         public MainWindow()
         {
@@ -81,13 +86,30 @@ namespace View3D
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(objectPlacement);
             objectPlacement.Hide();
 
-            // ThreeDControl (WinForms control hosted via WindowsFormsHost)
-            threedview = new ThreeDControl();
-            threedview.Dock = System.Windows.Forms.DockStyle.Fill;
-            ThreeDHost.Child = threedview;
+            // ui
+            ui = new View3D.view.wpf.UI();
+            ui.Show();
 
-            threedview.SetComp(objectPlacement);
-            threedview.SetView(objectPlacement.cont);
+            // Launch the GameWindow on its own thread so it doesn't block WPF
+            var glThread = new Thread(() =>
+            {
+                // Everything related to ThreeDControl happens here
+                threedview = new ThreeDControl();
+                threedview.SetComp(objectPlacement);
+                threedview.SetView(objectPlacement.cont);
+
+                // Signal WPF thread that threedview is ready
+                _glReady.Set();
+
+                // Blocks this thread for the lifetime of the GL window
+                threedview.Run(60.0);
+            })
+            {
+                IsBackground = true,    // killed automatically when the app exits
+                Name = "OpenGL-Thread"
+            };
+            glThread.SetApartmentState(ApartmentState.STA);
+            glThread.Start();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -174,12 +196,12 @@ namespace View3D
 
         private void MainWindow_LocationChanged(object sender, EventArgs e)
         {
-            if (threedview?.gl == null) return;
+            ///if (threedview?.gl == null) return;
 
             // Convert WinForms screen point to WPF logical units
-            var screenPoint = threedview.gl.PointToScreen(System.Drawing.Point.Empty);
-            threedview.ui.Left = (double)screenPoint.X / dpiX * 96;
-            threedview.ui.Top  = (double)screenPoint.Y / dpiY * 96;
+            //var screenPoint = threedview.gl.PointToScreen(System.Drawing.Point.Empty);
+            //threedview.ui.Left = (double)screenPoint.X / dpiX * 96;
+            //threedview.ui.Top  = (double)screenPoint.Y / dpiY * 96;
         }
 
         public void DoCommand(PrintModel stl)

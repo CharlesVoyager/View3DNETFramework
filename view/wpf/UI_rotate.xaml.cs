@@ -137,8 +137,8 @@ namespace View3D.view.wpf
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             stl.reset = true;
-            //Rio---20200319---fix a bug causing support not cleared(facet to base->auto gen->rotate reset) 
-            MainWindow.main.threedview.ui.UI_move.button_land_Click(null, null);
+            MainWindow.main.ui.UI_move.button_land_Click(null, null);
+
             // ADDED BY: J. SAHAGUN 03-29-2019 | Port from Facet to Base function
             if (sliderX.Value == 0 && sliderY.Value == 0 && sliderZ.Value == 0)
             {

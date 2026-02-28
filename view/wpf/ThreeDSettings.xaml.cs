@@ -347,28 +347,119 @@ namespace View3D.view
         public float[] Specular4() => ToGLColor(specular4);
 
 
-        public System.Drawing.Color InsideFacesBackgroundColor() => ToDrawingColor(insideFaces.Background);
-        public System.Drawing.Color ErrorModelBackgroundColor() => ToDrawingColor(errorModel.Background);
+        public System.Drawing.Color InsideFacesBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(insideFaces.Background);
+            });
+            return color;
+        }
 
-        public System.Drawing.Color ErrorModelEdgeBackgroundColor() => ToDrawingColor(errorModelEdge.Background);
+        public System.Drawing.Color ErrorModelBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(errorModel.Background);
+            });
+            return color;
+        }
 
-        public System.Drawing.Color OutsidePrintbedBackgroundColor() => ToDrawingColor(outsidePrintbed.Background);
+        public System.Drawing.Color ErrorModelEdgeBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(errorModelEdge.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color OutsidePrintbedBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(outsidePrintbed.Background);
+            });
+            return color;
+        }
 
-        public System.Drawing.Color EdgesLoopBackgroundColor() => ToDrawingColor(edges.Background);
+        public System.Drawing.Color EdgesLoopBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(edges.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color CutFacesBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(cutFaces.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color EdgesBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(edges.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color SelectionBoxBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(selectionBox.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color PrinterFrameBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(printerFrame.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color PrinterBaseBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(printerBase.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color BackgroundTopBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(backgroundTop.Background);
+            });
+            return color;
+        }
+        public System.Drawing.Color BackgroundBottomBackgroundColor()
+        {
+            System.Drawing.Color color = System.Drawing.Color.Empty;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                color = ToDrawingColor(outsidePrintbed.Background);
+            });
+            return color;
+        }
 
-        public System.Drawing.Color CutFacesBackgroundColor() => ToDrawingColor(cutFaces.Background);
 
-        public System.Drawing.Color EdgesBackgroundColor() => ToDrawingColor(edges.Background);
-
-        public System.Drawing.Color SelectionBoxBackgroundColor() => ToDrawingColor(selectionBox.Background);
-
-        public System.Drawing.Color PrinterFrameBackgroundColor() => ToDrawingColor(printerFrame.Background);
-
-        public System.Drawing.Color PrinterBaseBackgroundColor() => ToDrawingColor(printerBase.Background);
-
-        public System.Drawing.Color BackgroundTopBackgroundColor() => ToDrawingColor(backgroundTop.Background);
-
-        public System.Drawing.Color BackgroundBottomBackgroundColor() => ToDrawingColor(backgroundBottom.Background);
         /// <summary>
         /// Converts a WPF SolidColorBrush to a WinForms System.Drawing.Color.
         /// Returns Color.Empty or throws if the brush is not a SolidColorBrush.

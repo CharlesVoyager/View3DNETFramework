@@ -211,8 +211,8 @@ namespace View3D.view.wpf
             if (gIsShow == true)
             {
                 stl.LandToZ(stl.zMin);
-                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Value = stl.Position.z;
-                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
+                MainWindow.main.ui.UI_move.slider_moveZ.Value = stl.Position.z;
+                MainWindow.main.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
                 MainWindow.main.objectPlacement.updateSTLState(stl);
                 stl.modifiedM = false;
                 return;
@@ -290,7 +290,7 @@ namespace View3D.view.wpf
                     IsScale = true;
                 }
                     stl.LandToZ(stl.zMin);
-                MainWindow.main.threedview.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
+                MainWindow.main.ui.UI_move.slider_moveZ.Minimum = stl.Position.z - stl.BoundingBoxWOSupport.zMin;
                 MainWindow.main.objectPlacement.updateSTLState(stl);
             }
             catch { }

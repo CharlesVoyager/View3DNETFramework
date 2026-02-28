@@ -115,12 +115,7 @@
     <Compile Include="ModelLib\Utils\RamTools.cs" />
     <Compile Include="view\ModelInOut.cs" />
     <Compile Include="view\ThreedCamera.cs" />
-    <Compile Include="view\ThreeDControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="view\ThreeDControl.designer.cs">
-      <DependentUpon>ThreeDControl.cs</DependentUpon>
-    </Compile>
+    <Compile Include="view\ThreeDControl.cs" />
     <Compile Include="view\utils\RayCasting.cs" />
     <Compile Include="view\utils\RegMemory.cs" />
     <Compile Include="view\utils\RHOpenGL.cs">
@@ -193,9 +188,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\ThreeDControl.resx">
-      <DependentUpon>ThreeDControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />

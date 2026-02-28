@@ -152,8 +152,14 @@ namespace View3D.view.wpf
         {
             get
             {
+#if false
                 if (listObjects.SelectedItems.Count != 1) return null;
                 return ((ListViewItemModel)listObjects.SelectedItems[0]).Model;
+#else
+                if (models.Count == 0) return null;
+                return models[0];
+
+#endif
             }
         }
 
@@ -260,6 +266,9 @@ namespace View3D.view.wpf
         // =====================================================================
         public void openAndAddObject(string file)
         {
+            if (MainWindow.main == null) return;
+            if (MainWindow.main.threedview == null) return;
+
             listObjects.SelectedItems.Clear();
             modelDatas.Add(new ModelData(file));
             models.Add(new PrintModel(modelDrawer, modelDatas[modelDatas.Count - 1].originalModel));
@@ -275,7 +284,7 @@ namespace View3D.view.wpf
             {
                 models[models.Count - 1].Clear();
                 models.RemoveAt(models.Count - 1);
-                MainWindow.main.threedview.ui.BusyWindow.Visibility = Visibility.Hidden;
+                MainWindow.main.ui.BusyWindow.Visibility = Visibility.Hidden;
                 GC.Collect();
                 MessageBox.Show("Error(" + (short)Protocol.ErrorCode.LOAD_FILE_FAIL + "): " + Trans.T("M_LOAD_FILE_FAIL"));
                 return;
@@ -286,7 +295,7 @@ namespace View3D.view.wpf
                                 MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (MainWindow.main.threedview.ui.BusyWindow.killed)
+            if (MainWindow.main.ui.BusyWindow.killed)
             {
                 models[models.Count - 1].Clear();
                 models.RemoveAt(models.Count - 1);
@@ -333,8 +342,8 @@ namespace View3D.view.wpf
                     models[last].BoundingBox.Size.x,
                     models[last].BoundingBox.Size.y,
                     models[last].BoundingBox.Size.z);
-                if (MainWindow.main.threedview.ui.Visibility == Visibility.Visible)
-                    dlg.Owner = MainWindow.main.threedview.ui;
+                if (MainWindow.main.ui.Visibility == Visibility.Visible)
+                    dlg.Owner = MainWindow.main.ui;
                 dlg.ShowDialog();
                 if      (dlg.gIsScale) DoInchOrScale(models[last], false);
                 else if (dlg.gIsInch)  DoInchScale(models[last]);
@@ -375,7 +384,7 @@ namespace View3D.view.wpf
                         else if (tMax == tZBound)
                         { models[last].Scale.z = models[last].Scale.x = models[last].Scale.y = (float)(Convert.ToDouble(MainWindow.main.PrintAreaHeight) / models[last].BoundingBox.Size.z); }
 
-                        MainWindow.main.threedview.ui.UI_move.button_land_Click(null, null);
+                        MainWindow.main.ui.UI_move.button_land_Click(null, null);
                         Autoposition();
                     }
                     catch { }
@@ -451,7 +460,7 @@ namespace View3D.view.wpf
                 }
             }
 
-            MainWindow.main.threedview.ui.OutofBound.Visibility = allPointsInside ? Visibility.Collapsed : Visibility.Visible;
+            MainWindow.main.ui.OutofBound.Visibility = allPointsInside ? Visibility.Collapsed : Visibility.Visible;
 
             foreach (var pm in testList)
             {
@@ -486,7 +495,7 @@ namespace View3D.view.wpf
                     showButton = showButton & !stl.outside;
             }
             if (!showButton)
-                MainWindow.main.threedview.ui.OutofBound.Visibility = Visibility.Visible;
+                MainWindow.main.ui.OutofBound.Visibility = Visibility.Visible;
             foreach (var pm in testList)
                 if (pm.oldOutside != pm.outside) { dataChanged = true; pm.ForceViewRegeneration(); }
             if (dataChanged) RefreshAllRows();
@@ -517,8 +526,8 @@ namespace View3D.view.wpf
                     models[models.Count - 1].BoundingBox.Size.x,
                     models[models.Count - 1].BoundingBox.Size.y,
                     models[models.Count - 1].BoundingBox.Size.z);
-                if (MainWindow.main.threedview.ui.Visibility == Visibility.Visible)
-                    dlg.Owner = MainWindow.main.threedview.ui;
+                if (MainWindow.main.ui.Visibility == Visibility.Visible)
+                    dlg.Owner = MainWindow.main.ui;
                 dlg.ShowDialog();
                 if      (dlg.gIsScale) DoInchOrScale(model, false);
                 else if (dlg.gIsInch)  DoInchScale(model);
@@ -560,7 +569,7 @@ namespace View3D.view.wpf
             foreach (var stl in ListObjects(true).ToList())
                 RemoveModel(stl);
             if (MainWindow.main.threedview.view.models.Count == 0)
-                MainWindow.main.threedview.ui.OutofBound.Visibility = Visibility.Collapsed;
+                MainWindow.main.ui.OutofBound.Visibility = Visibility.Collapsed;
             MainWindow.main.threedview.UpdateChanges();
         }
 
@@ -710,7 +719,7 @@ namespace View3D.view.wpf
                 textTransX.Text = stl.Position.x.ToString(GCode.format);
                 textTransY.Text = stl.Position.y.ToString(GCode.format);
                 textTransZ.Text = stl.Position.z.ToString(GCode.format);
-                MainWindow.main.threedview.ui.UI_object_information.Analyse(stl);
+                MainWindow.main.ui.UI_object_information.Analyse(stl);
             }
             MainWindow.main.threedview.UpdateChanges();
         }
@@ -802,7 +811,7 @@ namespace View3D.view.wpf
             }
             else if (e.Key == Key.Delete)
             {
-                MainWindow.main.threedview.ui.remove_toggleButton_Click(null, null);
+                MainWindow.main.ui.remove_toggleButton_Click(null, null);
                 e.Handled = true;
             }
         }
@@ -997,7 +1006,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui = MainWindow.main.threedview.ui.UI_resize_advance;
+                var ui = MainWindow.main.ui.UI_resize_advance;
                 ui.button_mmtoinch.IsEnabled = false;
                 ui.button_inchtomm.IsEnabled = true;
                 ui.chk_Uniform.IsChecked     = true;
@@ -1028,7 +1037,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.bboxnow = bbox.Size.x / Convert.ToDouble(textScaleX.Text);
                 ui.bboynow = bbox.Size.y / Convert.ToDouble(textScaleY.Text);
@@ -1052,7 +1061,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.chk_Uniform.IsChecked = true;
                 ui.bboxnow = bbox.Size.x / Convert.ToDouble(textScaleX.Text);
@@ -1114,7 +1123,7 @@ namespace View3D.view.wpf
         {
             try
             {
-                var ui   = MainWindow.main.threedview.ui.UI_resize_advance;
+                var ui   = MainWindow.main.ui.UI_resize_advance;
                 var bbox = stl.BoundingBoxWOSupport;
                 ui.chk_Uniform.IsChecked = true;
                 double tempX = bbox.Size.x / 25.4, tempY = bbox.Size.y / 25.4, tempZ = bbox.Size.z / 25.4;

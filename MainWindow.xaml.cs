@@ -95,6 +95,11 @@ namespace View3D
                 threedview.SetComp(objectPlacement);
                 threedview.SetView(objectPlacement.cont);
 
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    ProcessCommandLine();
+                });
+
                 // Signal WPF thread that threedview is ready
                 _glReady.Set();
 
@@ -109,12 +114,8 @@ namespace View3D
             glThread.Start();
         }
 
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void ProcessCommandLine()
         {
-            // Don't set Windows startup location to center screen in XAML to avoid issues with DPI scaling on multi-monitor setups.
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            // Process command line arguments
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length < 1) return;
 
@@ -124,7 +125,6 @@ namespace View3D
                 if (File.Exists(file))
                     LoadGCodeOrSTL(file);
             }
-            // <>
         }
 
         private void MainWindow_DragEnter(object sender, DragEventArgs e)

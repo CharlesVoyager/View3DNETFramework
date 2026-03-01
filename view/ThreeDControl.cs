@@ -481,7 +481,7 @@ namespace View3D.view
         }
 
         // Context-menu action handlers (called by the WPF UI ContextMenu)
-        public void ContextMenu_LandObject()   => MainWindow.main.UI_move.button_land_Click(null, null);
+        public void ContextMenu_LandObject() => MainWindow.main.UI_move.button_land_Click(null, null);
 
         public void ContextMenu_ResetObject()
         {

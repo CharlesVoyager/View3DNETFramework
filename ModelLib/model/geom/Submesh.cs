@@ -3,6 +3,7 @@ using OpenTK.Graphics.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 
 namespace View3D.model.geom
 {
@@ -190,11 +191,27 @@ namespace View3D.model.geom
 
         private void ClearGL()
         {
+#if false   
+            // If RemoveModel is triggered from the WPF UI thread (e.g. a button click), 
+            // it reaches GL.DeleteBuffers on the wrong thread, corrupting the GL context.
             if (glBuffer != null)
             {
                 GL.DeleteBuffers(glBuffer.Length, glBuffer);
                 glBuffer = null;
             }
+#else
+            // Capture local copies for the closure — never capture 'this'
+            // if the object may be GC'd before the action runs
+            if (glBuffer != null)
+            {
+                int[] buffersToDelete = (int[])glBuffer.Clone();
+                glBuffer = null;
+                MainWindow.main.threedview.ScheduleGLDelete(() =>
+                {
+                    GL.DeleteBuffers(buffersToDelete.Length, buffersToDelete);
+                });
+            }
+#endif
         }
 
         public void UpdateColors(bool override_color, int color)
@@ -331,6 +348,5 @@ namespace View3D.model.geom
         {
             this.drawer = newDrawer;
         }
-
     }
 }

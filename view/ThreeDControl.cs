@@ -223,9 +223,25 @@ namespace View3D.view
             });
         }
 
+        // Thread-safe queue for GL objects that need to be deleted on the GL thread
+        private readonly System.Collections.Concurrent.ConcurrentQueue<Action> _glDeleteQueue
+            = new System.Collections.Concurrent.ConcurrentQueue<Action>();
+
+        /// <summary>
+        /// Schedules GL resource deletion to run safely on the GL thread.
+        /// Call this from ANY thread instead of calling GL.Delete* directly.
+        /// </summary>
+        public void ScheduleGLDelete(Action deleteAction)
+            => _glDeleteQueue.Enqueue(deleteAction);
+
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
+
+            // Drain all pending GL deletions first — safe because we are on the GL thread
+            while (_glDeleteQueue.TryDequeue(out Action deleteAction))
+                deleteAction();
+
             if (!_isDirty) return;
             _isDirty = false;
             gl_Paint();

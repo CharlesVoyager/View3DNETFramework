@@ -47,8 +47,6 @@ namespace View3D.view
 
         public void LoadWOCatch(string file, ModelData model)
         {
-            EnableBusyWindow();
-
             string lname = model.FileName.ToLower();
 
             IMeshInOut fileMesh;
@@ -66,8 +64,6 @@ namespace View3D.view
             AbortTask += fileMesh.TaskAbort;
             fileMesh.LoadWOCatch(model.FileName, model.originalModel, updateRateFunc);
             AbortTask -= fileMesh.TaskAbort;
-
-            DisableBusyWindow();
 
             FileInfo info = new FileInfo(file);
             model.name = info.Name;

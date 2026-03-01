@@ -462,7 +462,6 @@ namespace View3D
                 if (fileLow.EndsWith(".stl"))
                     objectPlacement.openAndAddObject(filePath);
 
-
                 Focus();
                 threedview.UpdateChanges();
             }

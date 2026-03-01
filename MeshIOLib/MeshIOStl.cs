@@ -368,15 +368,11 @@ namespace View3D.MeshInOut
                 {
                     for (int i = 0; i < nTri; i++)
                     {
-						//--- MODEL_SLA	// milton
                         if (i > 0 && i % 4000 == 0)
                         {
-                            ////MainWindow.main.threedview.ui.BusyWindow.busyProgressbar.Value = ((double)i / nTri) * 100.0;
-                            ////Application.DoEvents();
-                            ////if (model.IsActionStopped()) return;
                             if (updateRate != null)
                                 updateRate((int)(((double)i / nTri) * 100.0));
-                            ////if (MainWindow.main.threedview.ui.BusyWindow.killed) return;
+
                             if (Command == COMMAND.Abort)
                             {
                                 Command = COMMAND.None;
@@ -388,14 +384,7 @@ namespace View3D.MeshInOut
                             {
                                 throw new System.OutOfMemoryException();
                             }
-                            //////ulong totalRam = new Microsoft.VisualBasic.Devices.ComputerInfo().TotalPhysicalMemory;
-                            ////ulong availRam = new Microsoft.VisualBasic.Devices.ComputerInfo().AvailablePhysicalMemory / 1024 / 1024;
-                            ////if (availRam < Main.SWMemoryRemainMin || MainWindow.main.getCurMemoryUsed() >= (Main.Is64BitOperatingSystem()? Main.SWMemoryUsedLimit_64bit : Main.SWMemoryUsedLimit_32bit))
-                            ////{
-                            ////    throw new System.OutOfMemoryException();
-                            ////}
                         }
-                        //---
 
                         RHVector3 normal = new RHVector3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle());
                         RHVector3 p1 = new RHVector3(r.ReadSingle(), r.ReadSingle(), r.ReadSingle());
@@ -428,7 +417,6 @@ namespace View3D.MeshInOut
 
             if (Status == STATUS.Busy)
                 Status = STATUS.Done;
-
         }
 
         protected void importSTL(string filename, TopoModel model, Action<int> updateRate)

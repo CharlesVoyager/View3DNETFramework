@@ -14,7 +14,6 @@ using View3D.model;
 using View3D.model.geom;
 using View3D.ModelObjectTool;
 using View3D.view.utils;
-using View3D.view.wpf;
 
 // NOTE: ThreeDControl_Designer.cs is no longer needed and should be removed from the project.
 // The ContextMenu is now implemented via a WPF ContextMenu defined in the UI layer (ui.ContextMenu),
@@ -51,7 +50,7 @@ namespace View3D.view
         int keyY = -1;
 
         public ThreeDView view = null;
-        public View3D.view.wpf.STLComposer stlComp = null;
+        public STLComposer stlComp = null;
 
         // Clip / silhouette
         public double setclipLayerHeight = 0.1;
@@ -97,7 +96,7 @@ namespace View3D.view
         }
 
         // ── Public wiring ─────────────────────────────────────────────────────
-        public void SetComp(View3D.view.wpf.STLComposer comp)  => stlComp = comp;
+        public void SetComp(STLComposer comp)  => stlComp = comp;
         public void SetView(ThreeDView v) { view = v; UpdateChanges(); }
 
         private volatile bool _isDirty = true;

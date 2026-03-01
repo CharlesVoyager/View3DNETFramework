@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Interaction logic for CircularProgressBar.xaml

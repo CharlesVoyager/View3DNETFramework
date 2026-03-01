@@ -121,40 +121,40 @@
     <Compile Include="view\utils\RHOpenGL.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\wpf\BusyWindow.xaml.cs">
+    <Compile Include="view\BusyWindow.xaml.cs">
       <DependentUpon>BusyWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\CircularProgressBar.xaml.cs">
+    <Compile Include="view\CircularProgressBar.xaml.cs">
       <DependentUpon>CircularProgressBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\ObjectResizeDialog.xaml.cs">
+    <Compile Include="view\ObjectResizeDialog.xaml.cs">
       <DependentUpon>ObjectResizeDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\OutofBound.xaml.cs">
+    <Compile Include="view\OutofBound.xaml.cs">
       <DependentUpon>OutofBound.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\STLComposer.xaml.cs">
+    <Compile Include="view\STLComposer.xaml.cs">
       <DependentUpon>STLComposer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\ThreeDSettings.xaml.cs">
+    <Compile Include="view\ThreeDSettings.xaml.cs">
       <DependentUpon>ThreeDSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_move.xaml.cs">
+    <Compile Include="view\UI_move.xaml.cs">
       <DependentUpon>UI_move.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_object_information.xaml.cs">
+    <Compile Include="view\UI_object_information.xaml.cs">
       <DependentUpon>UI_object_information.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_resize.xaml.cs">
+    <Compile Include="view\UI_resize.xaml.cs">
       <DependentUpon>UI_resize.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_resize_advance.xaml.cs">
+    <Compile Include="view\UI_resize_advance.xaml.cs">
       <DependentUpon>UI_resize_advance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_rotate.xaml.cs">
+    <Compile Include="view\UI_rotate.xaml.cs">
       <DependentUpon>UI_rotate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\wpf\UI_view.xaml.cs">
+    <Compile Include="view\UI_view.xaml.cs">
       <DependentUpon>UI_view.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -210,51 +210,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\wpf\BusyWindow.xaml">
+    <Page Include="view\BusyWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\CircularProgressBar.xaml">
+    <Page Include="view\CircularProgressBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\ObjectResizeDialog.xaml">
+    <Page Include="view\ObjectResizeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\OutofBound.xaml">
+    <Page Include="view\OutofBound.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\STLComposer.xaml">
+    <Page Include="view\STLComposer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\ThreeDSettings.xaml">
+    <Page Include="view\ThreeDSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\UI_move.xaml">
+    <Page Include="view\UI_move.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\UI_object_information.xaml">
+    <Page Include="view\UI_object_information.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\wpf\UI_resize.xaml">
+    <Page Include="view\UI_resize.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\UI_resize_advance.xaml">
+    <Page Include="view\UI_resize_advance.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\UI_rotate.xaml">
+    <Page Include="view\UI_rotate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\wpf\UI_view.xaml">
+    <Page Include="view\UI_view.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

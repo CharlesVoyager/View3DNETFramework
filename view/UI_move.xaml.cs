@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using View3D.model;
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Interaction logic for UI_move.xaml

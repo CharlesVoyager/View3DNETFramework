@@ -4,7 +4,7 @@ using System.Windows.Controls;
 using View3D.model;
 using View3D.model.geom;
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Interaction logic for UI_object_information.xaml

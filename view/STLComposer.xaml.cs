@@ -30,7 +30,7 @@ using View3D.model;
 //  • MessageBox (WF)      → System.Windows.MessageBox
 // ──────────────────────────────────────────────────────────────────────────────
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Wrapper that gives the WPF ListView an observable item to bind against.

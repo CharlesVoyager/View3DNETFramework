@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +25,7 @@ namespace View3D
 
         public ThreeDSettings threeDSettings = null;
         public ThreeDControl threedview = null;
-        public View3D.view.wpf.STLComposer objectPlacement = null;
+        public STLComposer objectPlacement = null;
 
         public Trans trans = null;
 
@@ -80,7 +79,7 @@ namespace View3D
             threeDSettings.Hide();
 
             // STLComposer
-            objectPlacement = new View3D.view.wpf.STLComposer();
+            objectPlacement = new STLComposer();
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(objectPlacement);
             objectPlacement.Hide();
 

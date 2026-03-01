@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using View3D.model;
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Interaction logic for UserControl1.xaml

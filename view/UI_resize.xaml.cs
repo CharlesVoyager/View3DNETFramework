@@ -6,7 +6,7 @@ using System.Windows.Input;
 using View3D.model;
 using View3D.view;
 
-namespace View3D.view.wpf
+namespace View3D.view
 {
     /// <summary>
     /// Interaction logic for UI_resize.xaml

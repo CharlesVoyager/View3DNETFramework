@@ -51,7 +51,6 @@ namespace View3D.view
         public ThreeDView view = null;
         public STLComposer stlComp = null;
 
-
         // Geometry helpers (pick ray)
         public Geom3DLine pickLine = null;
         public Geom3DVector pickPoint = new Geom3DVector(0, 0, 0);
@@ -545,15 +544,7 @@ namespace View3D.view
                 try { DrawModels(); }
                 catch (OutOfMemoryException)
                 {
-                    if (view.models.Count > 0)
-                    {
-                        stlComp.RemoveLastModel();
-                        UpdateChanges();
-                    }
-                    MainWindow.main.BusyWindow.Visibility = Visibility.Hidden;
-                    System.Windows.MessageBox.Show(
-                        "Error(" + (short)View3D.Protocol.ErrorCode.LOAD_FILE_FAIL + "): " +
-                        Trans.T("M_LOAD_FILE_FAIL"));
+                    Console.WriteLine("Error: (" + (short)View3D.Protocol.ErrorCode.LOAD_FILE_FAIL + "): " + Trans.T("M_LOAD_FILE_FAIL"));
                     GC.Collect();
                 }
 

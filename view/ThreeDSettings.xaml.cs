@@ -38,7 +38,6 @@ namespace View3D.view
             InitializeComponent();
             comboDrawMethod.SelectedIndex = 0; // Autodetect best
             RegistryToForm();
-            translate();
             MainWindow.main.languageChanged += translate;
         }
 

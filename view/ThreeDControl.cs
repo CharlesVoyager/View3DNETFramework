@@ -84,7 +84,6 @@ namespace View3D.view
             cam.OrientIsometric();
 
             // Language hook
-            translate();
             MainWindow.main.languageChanged += translate;
         }
 

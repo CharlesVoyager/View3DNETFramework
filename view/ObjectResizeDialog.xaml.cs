@@ -27,7 +27,6 @@ namespace View3D.view
                 gy = py;
                 gz = pz;
 
-                translate();
                 MainWindow.main.languageChanged += translate;
             }
             catch { }

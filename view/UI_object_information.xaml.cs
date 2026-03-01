@@ -17,7 +17,6 @@ namespace View3D.view
 
             try
             {
-                translate();
                 if (MainWindow.main != null)
                     MainWindow.main.languageChanged += translate;
             }

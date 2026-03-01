@@ -86,7 +86,11 @@ namespace View3D
             // STLComposer
             objectPlacement = new STLComposer();
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(objectPlacement);
+#if DEBUG
+            objectPlacement.Show();
+#else
             objectPlacement.Hide();
+#endif
 
             InitializeComponent();
             UI();
@@ -116,6 +120,9 @@ namespace View3D
             };
             glThread.SetApartmentState(ApartmentState.STA);
             glThread.Start();
+
+            if (languageChanged != null)
+                languageChanged();
         }
 
         private void ProcessCommandLine()
@@ -226,7 +233,6 @@ namespace View3D
             move_toggleButton.FontSize = 12;
             import_button.FontSize = 12;
 
-            translate();
             languageChanged += translate;
 
             // Retrieve the context menu from resources

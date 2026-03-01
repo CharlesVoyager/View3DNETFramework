@@ -16,7 +16,6 @@ namespace View3D.view
             InitializeComponent();
             try
             {
-                translate();
                 if (MainWindow.main != null)
                     MainWindow.main.languageChanged += translate;
             }
@@ -25,12 +24,11 @@ namespace View3D.view
 
         private void translate()
         {
+            button_move_reset.ToolTip = Trans.T("B_RESET");
+            button_land.ToolTip = Trans.T("B_LAND");
 
-                button_move_reset.ToolTip = Trans.T("B_RESET");
-                button_land.ToolTip = Trans.T("B_LAND");
-
-                button_move_reset.Content = Trans.T("B_RESET");
-                button_land.Content = Trans.T("B_LAND");
+            button_move_reset.Content = Trans.T("B_RESET");
+            button_land.Content = Trans.T("B_LAND");
         }
 
         protected override void OnPreviewTextInput( TextCompositionEventArgs e)

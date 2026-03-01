@@ -298,6 +298,7 @@ namespace View3D
                 rotate_toggleButton.Visibility = Visibility.Visible;
                 resize_toggleButton.Visibility = Visibility.Visible;
                 info_toggleButton.Visibility = Visibility.Visible;
+                remove_toggleButton.Visibility = Visibility.Visible;
             }
             else
             {
@@ -305,12 +306,13 @@ namespace View3D
                 rotate_toggleButton.Visibility = Visibility.Hidden;
                 resize_toggleButton.Visibility = Visibility.Hidden;
                 info_toggleButton.Visibility = Visibility.Hidden;
-            }
-
-            if (objectPlacement.listObjects.SelectedItems.Count == 0)
                 remove_toggleButton.Visibility = Visibility.Hidden;
-            else
-                remove_toggleButton.Visibility = Visibility.Visible;
+
+                VisualStateManager.GoToState(UI_move, "State2", true);
+                VisualStateManager.GoToState(UI_rotate, "State2", true);
+                VisualStateManager.GoToState(UI_resize_advance, "State2", true);
+                VisualStateManager.GoToState(UI_object_information, "State2", true);
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -436,10 +438,6 @@ namespace View3D
 
         private void import_button_Click(object sender, RoutedEventArgs e)
         {
-            if (false == confirmSupportEditModeBreak())
-            {
-                return;
-            }
             view_toggleButton.IsChecked = false;
             move_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;
@@ -577,11 +575,6 @@ namespace View3D
         {
             VisualStateManager.GoToState(UI_resize_advance, "State2", true);
             Focus();
-        }
-
-        private bool confirmSupportEditModeBreak()
-        {
-            return true;
         }
 
         private void info_toggleButton_Checked(object sender, RoutedEventArgs e)

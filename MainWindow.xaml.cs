@@ -204,7 +204,7 @@ namespace View3D
         public void UpdateSize(double width, double height)
         {
             Width = width / dpiX * 96;
-            Height = height / dpiY * 96;
+            Height = height / dpiY * 96 + 28;
         }
 
         //── UI (WPF) ────────────────────────────────────────────────

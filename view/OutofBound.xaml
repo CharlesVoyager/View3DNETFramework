@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="404" d:DesignWidth="672" Background="Transparent" Visibility="Hidden">
+             d:DesignHeight="742" d:DesignWidth="780" Background="Transparent" Visibility="Hidden">
     <Grid Name="grid1" MinWidth="289" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10" />

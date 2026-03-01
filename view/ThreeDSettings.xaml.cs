@@ -1,5 +1,4 @@
 using Microsoft.Win32;
-using OpenTK;
 using System;
 using System.ComponentModel;
 using System.Globalization;
@@ -9,7 +8,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using View3D.model;
 using View3D.model.geom;
-using View3D.view.utils;
 
 // ColorDialog interop: add <UseWindowsForms>true</UseWindowsForms> to your .csproj.
 using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
@@ -624,7 +622,7 @@ namespace View3D.view
             System.Drawing.Color color = System.Drawing.Color.Empty;
             Application.Current.Dispatcher.Invoke(() =>
             {
-                color = ToDrawingColor(outsidePrintbed.Background);
+                color = ToDrawingColor(backgroundBottom.Background);
             });
             return color;
         }

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -202,16 +203,7 @@ namespace View3D
             Height = height / dpiY * 96;
         }
 
-        //---------------------------------------------------------------
-        public bool killed = false;
-        public string olddata;
-        public DateTime newDate;
-        public Dictionary<string, string> dict;
-        public static string temp_buffer = "";
-        public string SN = "";
-        public float layerNow;
-        public int layerTotal;
-        private bool sliceToolEnabled = false;
+        //── UI (WPF) ────────────────────────────────────────────────
         private ContextMenu _contextMenu;
         public void UI()
         {

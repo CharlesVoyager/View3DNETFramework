@@ -76,7 +76,11 @@ namespace View3D
 
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
+#if DEBUG
+            threeDSettings.Show();
+#else
             threeDSettings.Hide();
+#endif
 
             // STLComposer
             objectPlacement = new STLComposer();

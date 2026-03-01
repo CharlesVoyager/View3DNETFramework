@@ -462,7 +462,6 @@ namespace View3D.view
             if (view == null || !loaded) return;
             try
             {
-                DetectDrawingMethod();
                 fpsTimer.Reset();
                 fpsTimer.Start();
 
@@ -603,24 +602,6 @@ namespace View3D.view
         }
 
         // ── Draw helpers ──────────────────────────────────────────────────────
-        private void DetectDrawingMethod()
-        {
-            var s = MainWindow.main.threeDSettings;
-
-            s.drawMethod = 2; // Default to VBOs if available
-            return;
-
-            int om = s.drawMethod;
-            switch (s.comboDrawMethod.SelectedIndex)
-            {
-                case 0: s.drawMethod = (s.useVBOs && s.openGLVersion >= 1.499f) ? 2
-                                      : (s.openGLVersion >= 1.099f)             ? 1 : 0; break;
-                case 1: s.drawMethod = 2; break;
-                case 2: s.drawMethod = 1; break;
-                case 3: s.drawMethod = 0; break;
-            }
-        }
-
         private void DrawModels(bool showBbox = true)
         {
             GL.Enable(EnableCap.PolygonSmooth);

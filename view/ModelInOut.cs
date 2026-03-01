@@ -19,8 +19,6 @@ namespace View3D.view
         }
         public void Load(string file, ModelData model)
         {
-            EnableBusyWindowNoCancleButton();
-
             string lname = model.FileName.ToLower();
             if (lname.EndsWith(".stl"))
             {
@@ -38,9 +36,6 @@ namespace View3D.view
 
                 AbortTask -= fileMesh.TaskAbort;
             }
-
-            DisableBusyWindow();
-
             FileInfo info = new FileInfo(file);
             model.name = info.Name;
         }
@@ -68,13 +63,9 @@ namespace View3D.view
             FileInfo info = new FileInfo(file);
             model.name = info.Name;
         }
-        public void Save(string filename, TopoModel model, Setting outSetting)
-        { 
-        }
+        public void Save(string filename, TopoModel model, Setting outSetting) { }
 
         #region EvenHandler
-      
-
         private void EnableBusyWindowNoCancleButton()
         {
             if (MainWindow.main == null) return;
@@ -91,28 +82,20 @@ namespace View3D.view
             MainWindow.main.BusyWindow.StartTimer();
         }
 
-        private void DisableBusyWindow()
-        {
-            if (MainWindow.main == null) return;
-            if (MainWindow.main.threedview == null) return;
-            MainWindow.main.BusyWindow.AbortTask -= OnUIAbort;
-            MainWindow.main.BusyWindow.Visibility = System.Windows.Visibility.Hidden;
-        }
-
         public void OnProcessUpdate(int rate)
         {
-            if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible)
+
+            MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
-                MainWindow.main.BusyWindow.busyProgressbar.Value = rate; 
-            }
+                if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible)
+                    MainWindow.main.BusyWindow.busyProgressbar.Value = rate;
+            });
         }
 
         public void OnProcessUpdate3wsLoadStageLoadStl(int rate)
         {
             if (MainWindow.main.BusyWindow.Visibility == System.Windows.Visibility.Visible)
-            {
                 MainWindow.main.BusyWindow.busyProgressbar.Value = rate / 2; 
-            }
         }
 
         public void OnProcessUpdateSaveStageMerge(double value)

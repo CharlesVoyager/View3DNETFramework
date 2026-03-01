@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -263,7 +264,7 @@ namespace View3D.view
         // =====================================================================
         //  openAndAddObject  (identical logic, WinForms dialogs replaced)
         // =====================================================================
-        public void openAndAddObject(string file)
+        public async void openAndAddObject(string file)
         {
             if (MainWindow.main == null) return;
             if (MainWindow.main.threedview == null) return;
@@ -276,7 +277,14 @@ namespace View3D.view
 
             try
             {
-                modelIO.LoadWOCatch(file, modelDatas[modelDatas.Count - 1]);
+                MainWindow.main.BusyWindow.EnableBusyWindow();
+                // Offload heavy work to background thread — UI thread is free immediately
+                await Task.Run(() =>
+                {
+                    modelIO.LoadWOCatch(file, modelDatas[modelDatas.Count - 1]);
+                });
+
+                MainWindow.main.BusyWindow.DisableBusyWindow();
                 models[models.Count - 1].name = modelDatas[modelDatas.Count - 1].name;
             }
             catch (OutOfMemoryException)

@@ -110,7 +110,7 @@ namespace View3D.view
             StartTimer();
         }
 
-        private void DisableBusyWindow()
+        public void DisableBusyWindow()
         {
             Visibility = Visibility.Hidden;
         }

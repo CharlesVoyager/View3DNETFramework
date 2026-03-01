@@ -405,8 +405,8 @@ namespace View3D.view
             if (e.Delta != 0)
             {
                 cam.PreparePanZoomRot();
-                cam.Zoom(1f - e.Delta / 6000f);
-                zoom *= 1f - e.Delta / 2000f;
+                cam.Zoom(1f - e.Delta / 60f);
+                zoom *= 1f - e.Delta / 20f;
                 if (zoom < 0.002f) zoom = 0.002f;
                 if (zoom > 5.9f)   zoom = 5.9f;
                 Invalidate();
@@ -948,14 +948,14 @@ namespace View3D.view
         public void isometricView(){ SetCameraDefaults(); cam.OrientIsometric(); Invalidate(); }
 
         // ── Zoom button handlers (called from UI overlay) ─────────────────────
-        public void button_zoomIn_Click(object sender, EventArgs e)
+        public void button_zoomIn_Click(object sender, EventArgs e)     // Zoom In: + 
         {
             cam.PreparePanZoomRot(); cam.Zoom(0.9);
             zoom = Math.Max(0.002f, Math.Min(5.9f, zoom));
             Invalidate();
         }
 
-        public void button_zoomOut_Click(object sender, EventArgs e)
+        public void button_zoomOut_Click(object sender, EventArgs e)    // Zoom Out: -
         {
             cam.PreparePanZoomRot(); cam.Zoom(1.1);
             zoom = Math.Max(0.002f, Math.Min(5.9f, zoom));

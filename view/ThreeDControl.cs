@@ -41,7 +41,6 @@ namespace View3D.view
         readonly Stopwatch sw = new Stopwatch();
         readonly Stopwatch fpsTimer = new Stopwatch();
         int mode = 0;
-        int slowCounter = 0;
         public float zoom = 1.0f;
         public Matrix4 lookAt, persp, modelView;
         public float nearDist, farDist, aspectRatio, nearHeight, midHeight;
@@ -564,18 +563,9 @@ namespace View3D.view
                 }
 
                 SwapBuffers();
-                fpsTimer.Stop();
 
+                fpsTimer.Stop();
                 double fps = 1.0 / fpsTimer.Elapsed.TotalSeconds;
-                if (fps < 30)
-                {
-                    if (++slowCounter >= 10)
-                    {
-                        slowCounter = 0;
-                        foreach (ThreeDModel m in view.models) m.ReduceQuality();
-                    }
-                }
-                else if (slowCounter > 0) slowCounter--;
             }
             catch { }
         }

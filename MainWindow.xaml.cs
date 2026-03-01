@@ -315,11 +315,6 @@ namespace View3D
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Close();
-        }
-
         private void view_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
             VisualStateManager.GoToState(UI_view, "State1", true);
@@ -644,7 +639,6 @@ namespace View3D
 
         public static ManualResetEvent allDone = new ManualResetEvent(false);
     }
-
 
     public static class MouseDownHelper
     {

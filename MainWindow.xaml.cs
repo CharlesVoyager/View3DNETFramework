@@ -173,6 +173,7 @@ namespace View3D
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Visibility = System.Windows.Visibility.Hidden;
             ///  RegMemory.StoreWindowPos("mainWindow", this, true, true);
             Environment.Exit(Environment.ExitCode);
         }

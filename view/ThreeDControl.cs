@@ -214,6 +214,21 @@ namespace View3D.view
             SetupViewport();
         }
 
+        // Set focus to the GameWindow
+        // NOTE: Not ensure if the code is needed. Just keep it here for now, in case we need to set focus to the GameWindow.
+        [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")] private static extern IntPtr SetFocus(IntPtr hWnd);
+        [DllImport("user32.dll")] private static extern bool BringWindowToTop(IntPtr hWnd);
+
+        public void FocusGameWindow()
+        {
+            IntPtr hwnd = this.WindowInfo.Handle;
+            SetForegroundWindow(hwnd);
+            SetFocus(hwnd);
+        }
+        // <>
+
+
         protected override void OnMove(EventArgs e)
         {
             base.OnMove(e);

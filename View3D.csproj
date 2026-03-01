@@ -118,9 +118,6 @@
     <Compile Include="view\ThreeDControl.cs" />
     <Compile Include="view\utils\RayCasting.cs" />
     <Compile Include="view\utils\RegMemory.cs" />
-    <Compile Include="view\utils\RHOpenGL.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="view\BusyWindow.xaml.cs">
       <DependentUpon>BusyWindow.xaml</DependentUpon>
     </Compile>

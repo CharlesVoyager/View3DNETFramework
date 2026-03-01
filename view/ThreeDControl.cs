@@ -306,12 +306,6 @@ namespace View3D.view
         {
             base.OnMouseDown(e);
 
-#if false
-            MainWindow.main.view_toggleButton.IsChecked   = false;
-            MainWindow.main.move_toggleButton.IsChecked   = false;
-            MainWindow.main.resize_toggleButton.IsChecked = false;
-#endif
-
             keyX = e.X; keyY = e.Y;
             cam.PreparePanZoomRot();
             lastX = xDown = e.X;

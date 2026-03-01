@@ -299,6 +299,13 @@ namespace View3D
                 resize_toggleButton.Visibility = Visibility.Visible;
                 info_toggleButton.Visibility = Visibility.Visible;
                 remove_toggleButton.Visibility = Visibility.Visible;
+
+                view_toggleButton.IsChecked = false;
+                move_toggleButton.IsChecked = false;
+                rotate_toggleButton.IsChecked = false;
+                resize_toggleButton.IsChecked = false;
+                info_toggleButton.IsChecked = false;
+                remove_toggleButton.IsChecked = false;
             }
             else
             {

@@ -97,5 +97,22 @@ namespace View3D.view
             if (AbortTask != null)
                 AbortTask(this, new EventArgs());
         }
+
+        public void EnableBusyWindow()
+        {
+            labelBusyMessage.Text = Trans.T("L_MODELING");
+            killed = false;
+            Visibility = Visibility.Visible;
+            buttonCancel.Visibility = Visibility.Visible;
+            busyProgressbar.IsIndeterminate = false;
+            busyProgressbar.Maximum = 100;
+            busyProgressbar.Value = 0;
+            StartTimer();
+        }
+
+        private void DisableBusyWindow()
+        {
+            Visibility = Visibility.Hidden;
+        }
     }
 }

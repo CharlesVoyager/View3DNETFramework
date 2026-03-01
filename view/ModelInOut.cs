@@ -73,22 +73,7 @@ namespace View3D.view
         }
 
         #region EvenHandler
-        private void EnableBusyWindow()
-        {
-            if (MainWindow.main == null) return;
-            if (MainWindow.main.threedview == null) return;
-
-            // BusyWindow start
-            MainWindow.main.BusyWindow.labelBusyMessage.Text = Trans.T("L_MODELING");
-            MainWindow.main.BusyWindow.killed = false;
-            MainWindow.main.BusyWindow.Visibility = System.Windows.Visibility.Visible;
-            MainWindow.main.BusyWindow.buttonCancel.Visibility = System.Windows.Visibility.Visible;
-            MainWindow.main.BusyWindow.busyProgressbar.IsIndeterminate = false;
-            MainWindow.main.BusyWindow.busyProgressbar.Maximum = 100;
-            MainWindow.main.BusyWindow.busyProgressbar.Value = 0; 
-            MainWindow.main.BusyWindow.AbortTask += OnUIAbort;
-            MainWindow.main.BusyWindow.StartTimer();
-        }
+      
 
         private void EnableBusyWindowNoCancleButton()
         {

@@ -336,10 +336,6 @@ namespace View3D
 
         public void move_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            //Fix the bug for scenarios where move reset has been invoked in between support generation
-            if (!move_toggleButton.IsEnabled)
-                return;
-
             VisualStateManager.GoToState(UI_move, "State1", true);
             view_toggleButton.IsChecked = false;
             rotate_toggleButton.IsChecked = false;

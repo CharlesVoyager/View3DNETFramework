@@ -158,7 +158,6 @@ namespace View3D.view
 #else
                 if (models.Count == 0) return null;
                 return models[0];
-
 #endif
             }
         }

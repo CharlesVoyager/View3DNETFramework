@@ -51,11 +51,6 @@ namespace View3D.view
         public ThreeDView view = null;
         public STLComposer stlComp = null;
 
-        // Clip / silhouette
-        public double setclipLayerHeight = 0.1;
-        public bool clipDownward;
-        public bool clipviewEnabled;
-        public bool viewSilhouette;
 
         // Geometry helpers (pick ray)
         public Geom3DLine pickLine = null;

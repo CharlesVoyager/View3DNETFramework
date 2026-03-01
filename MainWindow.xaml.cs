@@ -77,7 +77,8 @@ namespace View3D
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
 #if DEBUG
-            threeDSettings.Show();
+            //threeDSettings.Show();
+            threeDSettings.Hide();
 #else
             threeDSettings.Hide();
 #endif
@@ -461,12 +462,6 @@ namespace View3D
                 if (fileLow.EndsWith(".stl"))
                     objectPlacement.openAndAddObject(filePath);
 
-                if (objectPlacement.listObjects.Items.Count > 0)
-                {
-                    threedview.viewSilhouette = false;
-                    threedview.clipDownward = true;
-                    threedview.setclipLayerHeight = (double)0.1;
-                }
 
                 Focus();
                 threedview.UpdateChanges();
@@ -608,7 +603,6 @@ namespace View3D
             UI_move.slider_moveY.Maximum = 1000;
 
             OutofBound.Visibility = System.Windows.Visibility.Hidden;
-            threedview.clipviewEnabled = false;
             threedview.button_remove_Click(null, null);
             if (objectPlacement.listObjects.Items.Count > 0)
                 objectPlacement.updateSTLState(objectPlacement.SingleSelectedModel);

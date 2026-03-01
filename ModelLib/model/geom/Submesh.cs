@@ -107,13 +107,6 @@ namespace View3D.model.geom
         public bool selected = false;
         public int extruder = 0;
 
-        //Modified by RCGREY for STL Slice Previewer tool
-        public bool clipEnable = false;
-        public ClipType clipMode = ClipType.Top;
-        public double[] clipPlaneEq = { 0, 0, -1.0, 0.0 };
-        public double[] clipPlaneEqbtm = { 0, 0, 1.0, 0.0 };
-        public float zLayerHeight = 0;
-
         public float[] glVertices = null;
         public int[] glColors = null;
         public int[] glEdges = null;

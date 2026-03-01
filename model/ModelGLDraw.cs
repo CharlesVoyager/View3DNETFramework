@@ -221,41 +221,5 @@ namespace View3D.model
             return false;
         }
         #endregion
-
-        #region Cut Edge
-        //Added by RCGREY for STL Slice Previewer 
-        private void BeginCutEdgeConfig(Submesh mesh)
-        {
-            double[] planeEqDown = mesh.clipPlaneEq;
-            double[] planeEqUP = { mesh.clipPlaneEq[0], mesh.clipPlaneEq[1], -mesh.clipPlaneEq[2], mesh.clipPlaneEq[3] };
-            //double[] planeEqUP = { 0, 0, 1.0, cut_height + 0.5 };
-            AttribMask flag = 0;
-            flag = flag | AttribMask.EnableBit;
-            flag = flag | AttribMask.PolygonBit;
-            flag = flag | AttribMask.CurrentBit;
-            flag = flag | AttribMask.DepthBufferBit;
-            flag = flag | AttribMask.TransformBit;
-            GL.PushAttrib(flag);
-
-            GL.Enable(EnableCap.ClipPlane0);
-            GL.Enable(EnableCap.ClipPlane1);
-            GL.ClipPlane(ClipPlaneName.ClipPlane0, planeEqDown);
-            GL.ClipPlane(ClipPlaneName.ClipPlane1, planeEqUP);
-
-
-            GL.Disable(EnableCap.Lighting);
-            GL.Disable(EnableCap.DepthTest);
-            GL.Disable(EnableCap.CullFace);
-            GL.PolygonMode(MaterialFace.FrontAndBack, PolygonMode.Line);
-        }
-
-        private void EndCutEdgeConfig()
-        {
-            GL.Disable(EnableCap.ClipPlane0);
-            GL.Disable(EnableCap.ClipPlane1);
-            GL.PopAttrib();
-        }
-
-        #endregion
     }
 }

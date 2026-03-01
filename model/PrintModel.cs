@@ -712,12 +712,6 @@ namespace View3D.model
                 }
             }
 
-            submesh.clipEnable = clipEnable;
-            submesh.clipMode = clipMode;
-
-            if (clipEnable)
-                SliceModel();
-
             Vector3 translateVec;
             if (drawer != null)
                 translateVec = drawer.GetTranslateVector();
@@ -855,30 +849,6 @@ namespace View3D.model
                 // not copy data, may be modified by reference
                 return bbox;
             }
-        }
-
-        public void GetCubeCenterpoint(float nspan)//newsup
-        {
-        }
-
-        public void UpdateInfoforConnectPlateform(float nspan)//newsup
-        {
-        }
-
-        private void SetExtraCubeInfo()
-        {
-        }
-
-        private void ExtraBboxforGenSupport(double ExtraSpace)
-        {
-            bbox.MinPoint.x = BoundingBoxWOSupport.xMin - ExtraSpace;
-            bbox.MaxPoint.x = BoundingBoxWOSupport.xMax + ExtraSpace;
-            bbox.MinPoint.y = BoundingBoxWOSupport.yMin - ExtraSpace;
-            bbox.MaxPoint.y = BoundingBoxWOSupport.yMax + ExtraSpace;
-        }
-
-        public override void SliceModel()
-        {
         }
     }
 }

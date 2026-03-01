@@ -153,7 +153,5 @@ namespace View3D.model
         {
             return new Vector3(0, 0, 0);
         }
-
-        abstract public void SliceModel();
     }
 }

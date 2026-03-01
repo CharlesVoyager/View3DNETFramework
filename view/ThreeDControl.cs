@@ -4,10 +4,10 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Input;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using View3D.model;
@@ -119,10 +119,59 @@ namespace View3D.view
             // Apply them to the WPF ContextMenu items exposed by ui if needed.
         }
 
+        private const int MinWidth = 800;
+        private const int MinHeight = 600;
+        private const int WM_GETMINMAXINFO = 0x0024;
+        private const int GWLP_WNDPROC = -4;
+
+        private delegate IntPtr WndProcDelegate(
+            IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        // Keep a reference — prevents the delegate from being GC'd
+        private WndProcDelegate _wndProcDelegate;
+        private IntPtr _originalWndProc;
+
+        [DllImport("user32.dll")] static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr newProc);
+        [DllImport("user32.dll")] static extern IntPtr CallWindowProc(IntPtr lpPrevWndFunc, IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct POINT { public int x, y; }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct MINMAXINFO
+        {
+            public POINT ptReserved, ptMaxSize, ptMaxPosition,
+                         ptMinTrackSize, ptMaxTrackSize;
+        }
+
+        private IntPtr CustomWndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam)
+        {
+            if (msg == WM_GETMINMAXINFO)
+            {
+                MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(
+                    lParam, typeof(MINMAXINFO));
+
+                mmi.ptMinTrackSize.x = MinWidth;
+                mmi.ptMinTrackSize.y = MinHeight;
+
+                Marshal.StructureToPtr(mmi, lParam, false);
+                return IntPtr.Zero;
+            }
+
+            return CallWindowProc(_originalWndProc, hWnd, msg, wParam, lParam);
+        }
+
+
         // ── GameWindow overrides ──────────────────────────────────────────────
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            // Subclass the native window to intercept Win32 messages
+            _wndProcDelegate = CustomWndProc;
+            IntPtr hwnd = this.WindowInfo.Handle;
+            _originalWndProc = SetWindowLongPtr(
+                hwnd, GWLP_WNDPROC,
+                Marshal.GetFunctionPointerForDelegate(_wndProcDelegate));
 
             // WindowInfo.Handle is the native HWND of the GameWindow.
             // Must be done here — handle does not exist before OnLoad.

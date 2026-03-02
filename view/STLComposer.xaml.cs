@@ -547,7 +547,6 @@ namespace View3D.view
         private void RemoveModel(PrintModel model)
         {
             cont.models.Remove(model);
-            resetTotalTime(model.serNum);
 
             var row = RowForModel(model);
             if (row != null) listObjects.Items.Remove(row);
@@ -582,8 +581,6 @@ namespace View3D.view
 
         public void buttonRemoveSTL_Click(object sender, EventArgs e)
             => RemoveAllSelectedModels();
-
-        private static void resetTotalTime(int serNum) { /* stub */ }
 
         private bool IsValidPrintModel(PrintModel model)
             => model.name != "Unknown" &&

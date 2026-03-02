@@ -467,14 +467,14 @@ namespace View3D.view
         /// </summary>
         private void ShowContextMenu()
         {
-            if (MainWindow.main?.ContextMenuItems == null) return;
-
-            PrintModel model = stlComp.SingleSelectedModel;
-            bool hasModel = model != null;
-
             // Must marshal to WPF thread
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
+                if (MainWindow.main?.ContextMenuItems == null) return;
+
+                PrintModel model = stlComp.SingleSelectedModel;
+                bool hasModel = model != null;
+
                 MainWindow.main.ShowContextMenu(hasModel);
             });
         }

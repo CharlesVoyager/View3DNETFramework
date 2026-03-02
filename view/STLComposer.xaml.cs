@@ -152,13 +152,8 @@ namespace View3D.view
         {
             get
             {
-#if false
                 if (listObjects.SelectedItems.Count != 1) return null;
                 return ((ListViewItemModel)listObjects.SelectedItems[0]).Model;
-#else
-                if (models.Count == 0) return null;
-                return models[0];
-#endif
             }
         }
 

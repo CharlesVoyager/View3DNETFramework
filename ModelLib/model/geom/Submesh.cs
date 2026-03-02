@@ -127,7 +127,6 @@ namespace View3D.model.geom
             ClearGL();
         }
 
-        //int ConvertColorIndex(int idx)
         int ConvertColorIndex(int idx, Color frontBackColor)
         {
             if (drawer != null)

@@ -91,7 +91,6 @@
     <Compile Include="ModelLib\model\geom\RHVector3.cs" />
     <Compile Include="ModelLib\model\geom\Submesh.cs" />
     <Compile Include="ModelLib\model\geom\TopoEdge.cs" />
-    <Compile Include="ModelLib\model\geom\TopoLine.cs" />
     <Compile Include="ModelLib\model\geom\TopoModel.cs" />
     <Compile Include="ModelLib\model\geom\TopoPlane.cs" />
     <Compile Include="ModelLib\model\geom\TopoTriangle.cs" />

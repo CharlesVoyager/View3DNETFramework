@@ -18,8 +18,6 @@ namespace View3D.model
         public TopoModel repairedModel = null;
         public int activeModel = 0;
         public string name = "Unknown";
-        public string filename = "";
-        public long lastModified = 0;
         public bool outside = false, oldOutside = false;
         public bool modifiedM = false;
         public bool modifiedR = false;
@@ -45,8 +43,6 @@ namespace View3D.model
         public RHVector3[] vtxPosWorldCor;
         public RHVector3[] triNormalWorldCor;
         private bool dirtySpaceInfo = true; // flag for need to update space structure information
-        public bool clipEnable = false; // clip plane enable
-        public Submesh.ClipType clipMode = Submesh.ClipType.Top;
         public float storedLayerValue = 999f;
         public float storedMaxLayer = 0;
         public float storedMinLayer = 0;
@@ -241,7 +237,6 @@ namespace View3D.model
             PrintModel stl = new PrintModel(this.drawer);
             //stl.filename = filename;
             stl.name = name;
-            stl.lastModified = lastModified;
             stl.Position.x = Position.x;
             stl.Position.y = Position.y + 5 + yMax - yMin;
             stl.Position.z = Position.z;
@@ -263,26 +258,11 @@ namespace View3D.model
             return stl;
         }
 
-        public bool changedOnDisk()
-        {
-            if (filename == null || filename.Length == 0) return false;
-            DateTime lastModiefied2 = File.GetLastWriteTime(filename);
-            return lastModified != lastModiefied2.Ticks;
-        }
-
-        public void resetModifiedDate()
-        {
-            if (filename == null || filename.Length == 0) return;
-            DateTime lastModified2 = File.GetLastWriteTime(filename);
-            lastModified = lastModified2.Ticks;
-        }
-
         public virtual object cloneWithModel()//(int idx)
         {
             PrintModel stl = new PrintModel(this.drawer, this.originalModel);
             //stl.filename = filename;
             stl.name = name;// + " (" + idx + ")";
-            stl.lastModified = 0;
             stl.Position.x = Position.x;
             stl.Position.y = Position.y;
             stl.Position.z = Position.z;
@@ -312,7 +292,6 @@ namespace View3D.model
         {
             activeModel = 0;
             name = null;
-            lastModified = 0;
             outside = false;
             oldOutside = false;
             if (null != submesh)
@@ -659,7 +638,6 @@ namespace View3D.model
                 cutFaceEnabled = false;
                 showEdges = false;
                 cutFaceUpdated = false;
-                clipEnable = false;
             }
             if (cutFaceEnabled)
             {

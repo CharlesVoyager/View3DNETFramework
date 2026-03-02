@@ -708,6 +708,18 @@ namespace View3D.view
 
             if (stl != null)
             {
+                textRotX.TextChanged -= textRotX_TextChanged;
+                textRotY.TextChanged -= textRotY_TextChanged;
+                textRotZ.TextChanged -= textRotZ_TextChanged;
+
+                textScaleX.TextChanged -= textScaleX_TextChanged;
+                textScaleY.TextChanged -= textScaleY_TextChanged;
+                textScaleZ.TextChanged -= textScaleZ_TextChanged;
+
+                textTransX.TextChanged -= textTransX_TextChanged;
+                textTransY.TextChanged -= textTransY_TextChanged;
+                textTransZ.TextChanged -= textTransZ_TextChanged;
+
                 textRotX.Text = stl.Rotation.x.ToString(GCode.format);
                 textRotY.Text = stl.Rotation.y.ToString(GCode.format);
                 textRotZ.Text = stl.Rotation.z.ToString(GCode.format);
@@ -718,6 +730,19 @@ namespace View3D.view
                 textTransX.Text = stl.Position.x.ToString(GCode.format);
                 textTransY.Text = stl.Position.y.ToString(GCode.format);
                 textTransZ.Text = stl.Position.z.ToString(GCode.format);
+
+                textRotX.TextChanged += textRotX_TextChanged;
+                textRotY.TextChanged += textRotY_TextChanged;
+                textRotZ.TextChanged += textRotZ_TextChanged;
+
+                textScaleX.TextChanged += textScaleX_TextChanged;
+                textScaleY.TextChanged += textScaleY_TextChanged;
+                textScaleZ.TextChanged += textScaleZ_TextChanged;
+
+                textTransX.TextChanged += textTransX_TextChanged;
+                textTransY.TextChanged += textTransY_TextChanged;
+                textTransZ.TextChanged += textTransZ_TextChanged;
+
                 MainWindow.main.UI_object_information.Analyse(stl);
             }
             MainWindow.main.threedview.UpdateChanges();

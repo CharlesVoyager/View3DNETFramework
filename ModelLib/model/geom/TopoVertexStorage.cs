@@ -10,7 +10,7 @@ namespace View3D.model.geom
         TopoVertexStorage left = null, right = null;
         TopoVertexStorageLeaf leaf = null;
         public List<TopoVertex> v = new List<TopoVertex>();
-        Hashtable hash = new Hashtable();
+        Dictionary<Int64, int> hash = new Dictionary<Int64, int>();
 
         int splitDimension = -1;
         private int count = 0;
@@ -45,10 +45,10 @@ namespace View3D.model.geom
             Add(vertex, 0);
         }
 
-        public void Add(TopoVertex vertex,int level)
+        public void Add(TopoVertex vertex, int level)
         {        
             Int64 temp = Convert.ToInt64(Math.Floor(vertex.pos.x * 100000)) * 5915587277 + Convert.ToInt64(Math.Floor(vertex.pos.y * 100000)) * 1500450271 + Convert.ToInt64(Math.Floor(vertex.pos.z * 100000)) * 3267000013;
-            if (hash[temp] == null)
+            if (hash.ContainsKey(temp) == false)
             {
                 hash.Add(temp, count);
                 v.Add(vertex);
@@ -59,7 +59,8 @@ namespace View3D.model.geom
         public TopoVertex SearchPoint(RHVector3 vertex)
         {
             Int64 temp = Convert.ToInt64(Math.Floor(vertex.x * 100000)) * 5915587277 + Convert.ToInt64(Math.Floor(vertex.y * 100000)) * 1500450271 + Convert.ToInt64(Math.Floor(vertex.z * 100000)) * 3267000013;
-            if (hash[temp] != null)return v[Convert.ToInt32(hash[temp])];
+            if (hash.ContainsKey(temp)) 
+                return v[Convert.ToInt32(hash[temp])];
             else return null;
         }
 

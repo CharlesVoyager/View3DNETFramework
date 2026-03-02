@@ -422,6 +422,7 @@ namespace View3D.view
             models.Add(newModel);
 
             listObjects.Items.Add(BuildRow(newModel));
+            listObjects.SelectedItems.Clear();
             SetObjectSelected(newModel, true);
             cont.models.AddLast(newModel);
             updateSTLState(newModel);

@@ -5,11 +5,7 @@ namespace View3D.model.geom
 {
     public class RHVector3
     {
-#if PRECISION_SINGLE
-        public float x = 0, y = 0, z = 0;
-#else
         public double x = 0, y = 0, z = 0;
-#endif
 
         public RHVector3(double _x, double _y, double _z)
         {

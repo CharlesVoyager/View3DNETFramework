@@ -402,7 +402,6 @@ namespace View3D.view
                 else if (keyX == e.X && keyY == e.Y)
                     ShowContextMenu();
             }
-
             speedX = speedY = 0;
             Invalidate();
         }

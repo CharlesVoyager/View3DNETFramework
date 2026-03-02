@@ -206,11 +206,7 @@ namespace View3D.model
                 v.pos.x -= originalModel.boundingBox.Center.x;
                 v.pos.y -= originalModel.boundingBox.Center.y;
                 //v.pos.z -= originalModel.boundingBox.Center.z;
-#if PRECISION_SINGLE
-                v.pos.z -= (float)originalModel.boundingBox.zMin;
-#else
                 v.pos.z -= originalModel.boundingBox.zMin;
-#endif
             }
         }
 

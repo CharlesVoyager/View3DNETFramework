@@ -17,31 +17,19 @@ namespace View3D.view
         public double gx = 0.0;
         public double gy = 0.0;
         public double gz = 0.0;
+
         public static double scaleInchx = 0, scaleInchy = 0, scaleInchz = 0,scaleMMx = 0, scaleMMy = 0, scaleMMz = 0;
+
         public ObjectResizeDialog(double px,double py, double pz)
         {
             InitializeComponent();
-            try
-            {
-                gx = px;
-                gy = py;
-                gz = pz;
 
-                MainWindow.main.languageChanged += translate;
-            }
-            catch { }
-        }
+            MainWindow.main.languageChanged += translate;
+  
+            gx = px;
+            gy = py;
+            gz = pz;
 
-        private void translate()
-        {
-            txtTitle.Text = Trans.T("W_OBJ_TOO_SMALL");
-            txtContent.Text = Trans.T("M_OBJ_SCALE_YES_NO");
-            txtOriginalSize.Text = Trans.T("M_OBJ_ORI_SIZE");
-            txtInchScale.Text = Trans.T("M_INCH_SIZE");
-            txtAutoScale.Text = Trans.T("M_AUTO_SCALE_SIZE");
-            Button_No.Content = Trans.T("B_NO");
-            Button_Yes.Content = Trans.T("B_AUTO_SCALE");
-            Button_Inch.Content = Trans.T("B_IMPORT_INCH");
             string tx = gx.ToString("0.000");
             string ty = gy.ToString("0.000");
             string tz = gz.ToString("0.000");
@@ -93,6 +81,18 @@ namespace View3D.view
             scaleMMx = scalex; scaleMMy = scaley; scaleMMz = scalez;
         }
 
+        private void translate()
+        {
+            txtTitle.Text = Trans.T("W_OBJ_TOO_SMALL");
+            txtContent.Text = Trans.T("M_OBJ_SCALE_YES_NO");
+            txtOriginalSize.Text = Trans.T("M_OBJ_ORI_SIZE");
+            txtInchScale.Text = Trans.T("M_INCH_SIZE");
+            txtAutoScale.Text = Trans.T("M_AUTO_SCALE_SIZE");
+            Button_No.Content = Trans.T("B_NO");
+            Button_Yes.Content = Trans.T("B_AUTO_SCALE");
+            Button_Inch.Content = Trans.T("B_IMPORT_INCH");
+        }
+
         private void Button_No_Click(object sender, RoutedEventArgs e)
         {
             gIsNo = true;
@@ -110,7 +110,5 @@ namespace View3D.view
             gIsScale = true;
             this.Close();
         }
-
-
     }
 }

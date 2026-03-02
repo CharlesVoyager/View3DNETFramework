@@ -472,10 +472,9 @@ namespace View3D.view
             {
                 if (MainWindow.main?.ContextMenuItems == null) return;
 
-                PrintModel model = stlComp.SingleSelectedModel;
-                bool hasModel = model != null;
+                bool isModelSelected = (stlComp.SingleSelectedModel != null);
 
-                MainWindow.main.ShowContextMenu(hasModel);
+                MainWindow.main.ShowContextMenu(isModelSelected);
             });
         }
 

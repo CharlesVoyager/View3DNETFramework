@@ -253,14 +253,16 @@ namespace View3D
         /// Called from ThreeDControl (GL thread) via Dispatcher.InvokeAsync.
         /// hasModel controls which items are visible.
         /// </summary>
-        public void ShowContextMenu(bool hasModel)
+        public void ShowContextMenu(bool isModelSelected)
         {
+            if (isModelSelected == false) return;
+
             // Must be called on the WPF thread
             _contextMenu.Items.Cast<FrameworkElement>()
                 .Where(item => item is MenuItem)
                 .ToList()
                 .ForEach(item => item.Visibility =
-                    hasModel ? Visibility.Visible : Visibility.Collapsed);
+                    isModelSelected ? Visibility.Visible : Visibility.Collapsed);
 
             _contextMenu.IsOpen = true;
         }

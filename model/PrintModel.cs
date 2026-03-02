@@ -39,11 +39,6 @@ namespace View3D.model
         public int mid = 0; // model id
         public int serNum = 0;
 
-        //add by derek,for all object land
-        public int addintogroup = 0;
-
-        public bool GenConeDone = false;
-        public bool isLifted;
         public IDraw Drawer { get { return drawer; } }
         protected IDraw drawer;
 

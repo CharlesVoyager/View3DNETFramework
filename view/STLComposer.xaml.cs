@@ -702,13 +702,8 @@ namespace View3D.view
         // =====================================================================
         private void listObjects_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listSTLObjects_SelectedIndexChanged(sender, e);
-        }
-
-        public void listSTLObjects_SelectedIndexChanged(object sender, EventArgs e)
-        {
             updateEnabled();
-            var list    = ListObjects(false);
+            var list = ListObjects(false);
             var sellist = ListObjects(true);
             PrintModel stl = sellist.Count == 1 ? sellist.First.Value : null;
             foreach (var s in list)
@@ -716,9 +711,9 @@ namespace View3D.view
 
             if (stl != null)
             {
-                textRotX.Text   = stl.Rotation.x.ToString(GCode.format);
-                textRotY.Text   = stl.Rotation.y.ToString(GCode.format);
-                textRotZ.Text   = stl.Rotation.z.ToString(GCode.format);
+                textRotX.Text = stl.Rotation.x.ToString(GCode.format);
+                textRotY.Text = stl.Rotation.y.ToString(GCode.format);
+                textRotZ.Text = stl.Rotation.z.ToString(GCode.format);
                 LockAspectRatio = stl.Scale.x == stl.Scale.y && stl.Scale.x == stl.Scale.z;
                 textScaleX.Text = stl.Scale.x.ToString(GCode.format);
                 textScaleY.Text = stl.Scale.y.ToString(GCode.format);

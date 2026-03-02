@@ -438,6 +438,12 @@ namespace View3D.view
         // =====================================================================
         public void updateSTLState(PrintModel stl2)
         {
+            if (stl2 == null)
+            {
+                Console.WriteLine("Error: stl2 is NULL in updateSTLState()!");
+                return;
+            }
+
             bool dataChanged = false;
             stl2.UpdateBoundingBox();
 

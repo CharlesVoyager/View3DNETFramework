@@ -11,14 +11,15 @@ namespace View3D.view
     /// </summary>
     public partial class ObjectResizeDialog : Window
     {
-        public bool gIsNo=false;
+        public bool gIsNo =false;
         public bool gIsInch = false;
         public bool gIsScale = false;
-        public double gx = 0.0;
-        public double gy = 0.0;
-        public double gz = 0.0;
 
         public static double scaleInchx = 0, scaleInchy = 0, scaleInchz = 0,scaleMMx = 0, scaleMMy = 0, scaleMMz = 0;
+
+        double gx = 0.0;
+        double gy = 0.0;
+        double gz = 0.0;
 
         public ObjectResizeDialog(double px,double py, double pz)
         {

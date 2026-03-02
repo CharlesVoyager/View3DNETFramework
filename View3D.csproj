@@ -90,7 +90,6 @@
     <Compile Include="ModelLib\model\geom\RHBoundingBox.cs" />
     <Compile Include="ModelLib\model\geom\RHVector3.cs" />
     <Compile Include="ModelLib\model\geom\Submesh.cs" />
-    <Compile Include="ModelLib\model\geom\TestTopoTriangle.cs" />
     <Compile Include="ModelLib\model\geom\TopoEdge.cs" />
     <Compile Include="ModelLib\model\geom\TopoLine.cs" />
     <Compile Include="ModelLib\model\geom\TopoModel.cs" />

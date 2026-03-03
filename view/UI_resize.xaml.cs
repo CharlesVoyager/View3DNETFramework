@@ -167,20 +167,6 @@ namespace View3D.view
             catch { }
         }
 
-        private void button_mmtoinch_Checked(object sender, RoutedEventArgs e)
-        {
-            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
-            if (model == null) return;
-            MainWindow.main.objectPlacement.DoInchOrScale(model, true);
-        }
-
-        private void button_inchtomm_Checked(object sender, RoutedEventArgs e)
-        {
-            PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;
-            if (model == null) return;
-            MainWindow.main.objectPlacement.DoInchtomm(model);
-        }
-
         private void button_mmtoinch_Click(object sender, RoutedEventArgs e)
         {
             PrintModel model = MainWindow.main.objectPlacement.SingleSelectedModel;

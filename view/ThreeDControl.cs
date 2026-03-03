@@ -441,7 +441,8 @@ namespace View3D.view
 
         private void ThreeDControl_KeyDown(KeyboardKeyEventArgs e)
         {
-            // Console.WriteLine("ThreeDControl_KeyDown() In");
+            if (e.Key == Key.Delete)
+                button_remove_Click(null, null);    
         }
 
         private void ThreeDControl_KeyPress(KeyPressEventArgs e)
@@ -955,10 +956,14 @@ namespace View3D.view
 
         public void button_remove_Click(object sender, EventArgs e)
         {
-            if (view.editor) stlComp.buttonRemoveSTL_Click(null, null);
+            MainWindow.main.Dispatcher.Invoke(() =>
+            {
+                stlComp.buttonRemoveSTL_Click(null, null);
+                stlComp.updateOutside();
+            });
+
             foreach (ThreeDModel m in view.models) m.Clear();
             Invalidate();
-            stlComp.updateOutside();
         }
 
         // ── Utility ───────────────────────────────────────────────────────────

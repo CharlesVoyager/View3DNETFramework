@@ -10,7 +10,6 @@ namespace View3D.view
     {
         public onObjectMoved eventObjectMoved;
         public onObjectSelected eventObjectSelected;
-        public bool editor = false;
         public bool autoupdateable = false;
         public bool objectsSelected = false;
         public LinkedList<ThreeDModel> models;
@@ -18,11 +17,6 @@ namespace View3D.view
         public ThreeDView()
         {
             models = new LinkedList<ThreeDModel>();
-        }
-
-        public void SetEditor(bool ed)
-        {
-            editor = ed;
         }
     }
 }

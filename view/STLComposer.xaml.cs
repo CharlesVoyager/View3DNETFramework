@@ -67,7 +67,6 @@ namespace View3D.view
             try
             {
                 cont = new ThreeDView();
-                cont.SetEditor(true);
                 cont.objectsSelected       = false;
                 cont.eventObjectMoved     += objectMoved;
                 cont.eventObjectSelected  += objectSelected;

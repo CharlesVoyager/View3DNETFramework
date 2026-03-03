@@ -32,6 +32,9 @@
             <MenuItem x:Name="menuInchToMm"     Header="Scale Down (inch→mm)"/>
             <Separator/>
             <MenuItem x:Name="menuClone"        Header="Clone"/>
+            <Separator/>
+            <MenuItem x:Name="menuSTLComposerWindow"     Header="STLComposer Window"/>
+            <MenuItem x:Name="menuThreeDSettingsWindow"  Header="ThreeDSettings Window"/>
         </ContextMenu>
     </Window.Resources>
     <Grid>

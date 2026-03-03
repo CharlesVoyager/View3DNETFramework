@@ -76,21 +76,12 @@ namespace View3D
 
             // ThreeDSettings
             threeDSettings = new ThreeDSettings();
-#if DEBUG
-            //threeDSettings.Show();
             threeDSettings.Hide();
-#else
-            threeDSettings.Hide();
-#endif
 
             // STLComposer
             objectPlacement = new STLComposer();
             System.Windows.Forms.Integration.ElementHost.EnableModelessKeyboardInterop(objectPlacement);
-#if DEBUG
-            objectPlacement.Show();
-#else
             objectPlacement.Hide();
-#endif
 
             InitializeComponent();
             UI();
@@ -245,6 +236,9 @@ namespace View3D
             ((MenuItem)_contextMenu.Items[5]).Click += (s, e) => OnInchToMm();
             // index 6 is Separator
             ((MenuItem)_contextMenu.Items[7]).Click += (s, e) => OnClone();
+            // index 8 is Separator
+            ((MenuItem)_contextMenu.Items[9]).Click += (s, e) => objectPlacement.Show();
+            ((MenuItem)_contextMenu.Items[10]).Click += (s, e) => threeDSettings.Show();
         }
 
         /// <summary>

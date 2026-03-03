@@ -441,23 +441,16 @@ namespace View3D.view
 
         private void ThreeDControl_KeyDown(KeyboardKeyEventArgs e)
         {
-            // Extend with key handling as needed.
+            // Console.WriteLine("ThreeDControl_KeyDown() In");
         }
 
         private void ThreeDControl_KeyPress(KeyPressEventArgs e)
         {
             if (e.KeyChar == '-')
-            {
-                zoom *= 1.05f;
-                if (zoom > 10) zoom = 10;
-                Invalidate();
-            }
+                button_zoomOut_Click(null, null);
+
             if (e.KeyChar == '+')
-            {
-                zoom *= 0.95f;
-                if (zoom < 0.01f) zoom = 0.01f;
-                Invalidate();
-            }
+                button_zoomIn_Click(null, null);
         }
 
         // ── Context menu (WPF) ────────────────────────────────────────────────

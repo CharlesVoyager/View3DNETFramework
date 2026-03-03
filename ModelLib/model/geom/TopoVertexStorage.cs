@@ -6,7 +6,6 @@ namespace View3D.model.geom
 {
     public class TopoVertexStorage
     {
-        public const int maxVerticesPerNode = 50;
         TopoVertexStorage left = null, right = null;
         TopoVertexStorageLeaf leaf = null;
         public List<TopoVertex> v = new List<TopoVertex>();

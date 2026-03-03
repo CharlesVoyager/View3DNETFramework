@@ -269,6 +269,7 @@ namespace View3D.view
             MainWindow.main.Dispatcher.InvokeAsync(() =>
             {
                 // e.g. shut down the WPF app when the GL window closes
+                MainWindow.main.Visibility = Visibility.Hidden;
                 System.Windows.Application.Current.Shutdown();
             });
         }

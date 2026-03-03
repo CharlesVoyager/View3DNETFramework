@@ -15,10 +15,6 @@ using View3D.model.geom;
 using View3D.ModelObjectTool;
 using View3D.view.utils;
 
-// NOTE: ThreeDControl_Designer.cs is no longer needed and should be removed from the project.
-// The ContextMenu is now implemented via a WPF ContextMenu defined in the UI layer (ui.ContextMenu),
-// or you can add a System.Windows.Controls.ContextMenu to the WPF UI.xaml that hosts this window.
-
 namespace View3D.view
 {
     /// <summary>
@@ -38,7 +34,6 @@ namespace View3D.view
         float xPos, yPos;
         float speedX, speedY;
         float lastX, lastY;
-        readonly Stopwatch sw = new Stopwatch();
         readonly Stopwatch fpsTimer = new Stopwatch();
         int mode = 0;
         public float zoom = 1.0f;
@@ -845,9 +840,6 @@ namespace View3D.view
         {
             if (!loaded || (speedX == 0 && speedY == 0)) return;
 
-            sw.Stop();
-            double ms = sw.Elapsed.TotalMilliseconds;
-            sw.Reset(); sw.Start();
 
             var kb = OpenTK.Input.Keyboard.GetState();
             var mb = OpenTK.Input.Mouse.GetState();

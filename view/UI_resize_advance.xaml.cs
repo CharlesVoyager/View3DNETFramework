@@ -38,10 +38,10 @@ namespace View3D.view
 
         private void txtX_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (MainWindow.main == null) return; // At design time MainWindow.main is null. Add null guards to prevent NullReferenceException.
             if (gIsShow == true)
-            {
                 return;
-            }
+
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
@@ -120,10 +120,10 @@ namespace View3D.view
 
         private void txtY_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (MainWindow.main == null) return; // At design time MainWindow.main is null. Add null guards to prevent NullReferenceException.
             if (gIsShow == true)
-            {
                 return;
-            }
+
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
@@ -178,7 +178,7 @@ namespace View3D.view
                     {
                         updateSliderValue(Enums.Axis.Z);
                     }
-                    //Fix_resize_issue_160803
+
                     if (scaleKeyDown != "x")
                     {
                         dimX = stl.BoundingBoxWOSupport.Size.x;
@@ -203,6 +203,8 @@ namespace View3D.view
 
         private void txtZ_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (MainWindow.main == null) return; // At design time MainWindow.main is null. Add null guards to prevent NullReferenceException.
+
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
          
             if (stl == null) return;
@@ -297,6 +299,7 @@ namespace View3D.view
 
         public void chk_Uniform_Checked(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.main == null) return; // At design time MainWindow.main is null. Add null guards to prevent NullReferenceException.
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             try
@@ -345,6 +348,7 @@ namespace View3D.view
 
         private void slider_resize_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
+            if (MainWindow.main == null) return;
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             stl.modifiedS = true;
@@ -357,6 +361,7 @@ namespace View3D.view
 
         private void slider_resize_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (MainWindow.main == null) return;
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
@@ -393,6 +398,7 @@ namespace View3D.view
 
         public void checkMin()
         {
+            if (MainWindow.main == null) return;
             double txMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaWidth) / dimX;
             double tyMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaDepth) / dimY;
             double tzMaxScalableValue = Convert.ToDouble(MainWindow.main.PrintAreaHeight) / dimZ;
@@ -440,6 +446,7 @@ namespace View3D.view
 
         public void button_Reset_Click(object sender, RoutedEventArgs e)
         {
+            if (MainWindow.main == null) return;
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
             model.geom.RHBoundingBox bbox = stl.BoundingBoxWOSupport;

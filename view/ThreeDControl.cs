@@ -952,7 +952,7 @@ namespace View3D.view
             MainWindow.main.Dispatcher.Invoke(() =>
             {
                 stlComp.buttonRemoveSTL_Click(null, null);
-                stlComp.updateOutside();
+                stlComp.updateSTLState(null);
             });
 
             foreach (ThreeDModel m in view.models) m.Clear();

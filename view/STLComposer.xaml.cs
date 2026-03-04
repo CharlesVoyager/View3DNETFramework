@@ -437,15 +437,10 @@ namespace View3D.view
         // =====================================================================
         public void updateSTLState(PrintModel stl2)
         {
-            if (stl2 == null)
-            {
-                Console.WriteLine("Error: stl2 is NULL in updateSTLState()!");
-                return;
-            }
+            if (stl2 != null)
+                stl2.UpdateBoundingBox();
 
             bool dataChanged = false;
-            stl2.UpdateBoundingBox();
-
             var testList  = ListObjects(false);
             foreach (var pm in testList) { pm.oldOutside = pm.outside; pm.outside = false; }
 
@@ -480,32 +475,6 @@ namespace View3D.view
 
             if (dataChanged)
                 RefreshAllRows();
-        }
-
-        public void updateOutside()
-        {
-            bool dataChanged = false;
-            var testList = ListObjects(false);
-            foreach (var pm in testList) { pm.oldOutside = pm.outside; pm.outside = false; }
-            bool showButton = true;
-            foreach (var stl in testList)
-            {
-                float xMin = stl.xMin, xMax = stl.xMax;
-                if (!MainWindow.main.PointInside(xMin, stl.yMin, stl.zMin) ||
-                    !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMin) ||
-                    !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMin) ||
-                    !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMin) ||
-                    !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMax) ||
-                    !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMax) ||
-                    !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMax) ||
-                    !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMax))
-                    showButton = showButton & !stl.outside;
-            }
-            if (!showButton)
-                MainWindow.main.OutofBound.Visibility = Visibility.Visible;
-            foreach (var pm in testList)
-                if (pm.oldOutside != pm.outside) { dataChanged = true; pm.ForceViewRegeneration(); }
-            if (dataChanged) RefreshAllRows();
         }
 
         private void RefreshAllRows()

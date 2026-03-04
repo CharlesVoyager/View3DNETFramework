@@ -83,7 +83,6 @@ namespace View3D.view
             slider_moveY.Value = stl.Position.iniy;
             slider_moveZ.Value = stl.Position.iniz;
 
-            //Fix bug 180,
             slider_moveX.Value = Math.Round(slider_moveX.Value);
             slider_moveY.Value = Math.Round(slider_moveY.Value);
             if (slider_moveZ.Value != Convert.ToDouble(moveZ_textbox.Text) + slider_moveZ.Minimum)
@@ -98,16 +97,12 @@ namespace View3D.view
             MainWindow.main.objectPlacement.landModel(stl);
             MainWindow.main.objectPlacement.updateSTLState(stl);
             MainWindow.main.threedview.UpdateChanges();
-            //Modified by RCGREY for STL Slice Previewer
-            //MainWindow.main.threedview.setMinMaxClippingLayer();
-
 
             stl.modifiedM = false;
         }
 
         public void button_land_Click(object sender, RoutedEventArgs e)
         {
-            
             PrintModel stl = MainWindow.main.objectPlacement.SingleSelectedModel;
             if (stl == null) return;
 
@@ -119,14 +114,11 @@ namespace View3D.view
             slider_moveZ.Value = stl.Position.z;
             moveX_textbox.Text = slider_moveX.Value.ToString();
             moveY_textbox.Text = slider_moveY.Value.ToString();
-            //Fix bug 180
+
             moveZ_textbox.Text = (Math.Round(slider_moveZ.Value - slider_moveZ.Minimum, 1)).ToString();
 
             MainWindow.main.objectPlacement.updateSTLState(stl);
             MainWindow.main.threedview.UpdateChanges();
-            //Modified by RCGREY for STL Slice Previewer
-            //MainWindow.main.threedview.setMinMaxClippingLayer();
-
         }
 
         private void slider_moveX_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

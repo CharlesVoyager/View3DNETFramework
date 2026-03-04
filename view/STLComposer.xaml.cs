@@ -447,15 +447,14 @@ namespace View3D.view
             bool allPointsInside = true;
             foreach (var stl in testList)
             {
-                float xMin = stl.xMin, xMax = stl.xMax;
-                if (    !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMin) ||
-                        !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMin) ||
-                        !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMin) ||
-                        !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMin) ||
-                        !MainWindow.main.PointInside(xMin, stl.yMin, stl.zMax) ||
-                        !MainWindow.main.PointInside(xMax, stl.yMin, stl.zMax) ||
-                        !MainWindow.main.PointInside(xMin, stl.yMax, stl.zMax) ||
-                        !MainWindow.main.PointInside(xMax, stl.yMax, stl.zMax))
+                if (    !MainWindow.main.PointInside(stl.xMin, stl.yMin, stl.zMin) ||
+                        !MainWindow.main.PointInside(stl.xMax, stl.yMin, stl.zMin) ||
+                        !MainWindow.main.PointInside(stl.xMin, stl.yMax, stl.zMin) ||
+                        !MainWindow.main.PointInside(stl.xMax, stl.yMax, stl.zMin) ||
+                        !MainWindow.main.PointInside(stl.xMin, stl.yMin, stl.zMax) ||
+                        !MainWindow.main.PointInside(stl.xMax, stl.yMin, stl.zMax) ||
+                        !MainWindow.main.PointInside(stl.xMin, stl.yMax, stl.zMax) ||
+                        !MainWindow.main.PointInside(stl.xMax, stl.yMax, stl.zMax))
                 {
                     stl.outside = true;
                     allPointsInside = false;

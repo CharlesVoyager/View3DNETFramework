@@ -145,7 +145,6 @@ namespace View3D.model
 
         public virtual void Clear() { }
         abstract public void Paint();
-        abstract public void Paint2();
         public virtual Vector3 getCenter()
         {
             return new Vector3(0, 0, 0);

@@ -466,38 +466,6 @@ namespace View3D.model
             invTrans.Invert();
         }
 
-        /// <summary>
-        /// Update space partition information which is used be collision detect
-        /// </summary>
-        public void UpdateSpacePartition()
-        {
-            //if (!dirtySpaceInfo && this.cubeSpace != null)
-            //    return;
-
-            calVtxWorldCoordinate();
-            OriginalBboxMax = new RHVector3(bbox.maxPoint);
-            OriginalBboxMin = new RHVector3(bbox.minPoint);
-
-            {
-                double spanX = (bbox.xMax - bbox.xMin);
-                double spanY = (bbox.yMax - bbox.yMin);
-                double spanZ = (bbox.zMax - bbox.zMin);
-                double spanSmall = 0;
-                if (spanX < spanY)
-                    spanSmall = spanX;
-                else
-                    spanSmall = spanY;
-                if (spanZ < spanSmall)
-                    spanSmall = spanZ;
-                int span = (int)(spanSmall / 10);
-                if (span < 1) span = 1;
-
-                float LargeSpan = (float)(2); //change spanint nspan = 1; 
-                float SmallSpan = (float)(1);
-                dirtySpaceInfo = false;
-            }
-        }
-
         public unsafe void CalcBoundingBox()
         {
             ConvexVector();

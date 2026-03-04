@@ -239,6 +239,9 @@ namespace View3D
             // index 8 is Separator
             ((MenuItem)_contextMenu.Items[9]).Click += (s, e) => objectPlacement.Show();
             ((MenuItem)_contextMenu.Items[10]).Click += (s, e) => threeDSettings.Show();
+
+            // About
+            gridAbout.Visibility = Visibility.Hidden;
         }
 
         /// <summary>
@@ -488,6 +491,8 @@ namespace View3D
             rotate_toggleButton.IsChecked = false;
             resize_toggleButton.IsChecked = false;
             info_toggleButton.IsChecked = false;
+
+            gridAbout.Visibility = Visibility.Visible;
         }
 
         private void rotate_toggleButton_Checked(object sender, RoutedEventArgs e)
@@ -636,6 +641,11 @@ namespace View3D
         private void remove_toggleButton_Checked(object sender, RoutedEventArgs e)
         {
             remove_toggleButton.IsChecked = false;
+        }
+
+        private void button_closeAbout_Click(object sender, RoutedEventArgs e)
+        {
+            gridAbout.Visibility = Visibility.Hidden;
         }
 
         public static ManualResetEvent allDone = new ManualResetEvent(false);

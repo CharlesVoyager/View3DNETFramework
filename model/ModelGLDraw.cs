@@ -21,7 +21,7 @@ namespace View3D.model
             GL.Enable(EnableCap.Normalize);
             GL.LineWidth(1f);
             GL.DepthFunc(DepthFunction.Less);
-            if (method == 2)
+            if (method == 2)    // VBOs (fastest)
             {
                 if (mesh.glBuffer == null)
                 {
@@ -74,7 +74,7 @@ namespace View3D.model
                 GL.DisableClientState(ArrayCap.ColorArray);
                 GL.Disable(EnableCap.ColorMaterial);
             }
-            else if (method == 1)
+            else if (method == 1)   // Vertex Arrays (faster than immediate mode)
             {
                 GL.EnableClientState(ArrayCap.VertexArray);
                 GL.VertexPointer(3, VertexPointerType.Float, 0, mesh.glVertices);
@@ -103,7 +103,7 @@ namespace View3D.model
                 GL.DisableClientState(ArrayCap.NormalArray);
 
             }
-            else if (method == 0)
+            else if (method == 0)   // Immediate mode (slowest)
             {
                 int n;
                 GL.ColorMaterial(MaterialFace.Front, ColorMaterialParameter.AmbientAndDiffuse);

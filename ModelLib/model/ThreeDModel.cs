@@ -6,8 +6,9 @@ namespace View3D.model
     public class Coord3D
     {
         public float x = 0, y = 0, z = 0;
-        //Edward Add new value
-        public float inix = 0, iniy = 0, iniz = 0;
+
+        public float inix = 0, iniy = 0, iniz = 0;  // remember initial position for reset
+
         public Coord3D() { }
         public Coord3D(float _x, float _y, float _z)
         {

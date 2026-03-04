@@ -9,10 +9,6 @@ using System.Windows.Media;
 using View3D.model;
 using View3D.model.geom;
 
-// ColorDialog interop: add <UseWindowsForms>true</UseWindowsForms> to your .csproj.
-using WinFormsColorDialog = System.Windows.Forms.ColorDialog;
-using WinFormsDialogResult = System.Windows.Forms.DialogResult;
-
 namespace View3D.view
 {
     public partial class ThreeDSettings : Window, INotifyPropertyChanged
@@ -234,16 +230,37 @@ namespace View3D.view
 
         private void PickColor(Border border)
         {
-            var dlg = new WinFormsColorDialog();
+            // Get current color from the border's background
+            Color initialColor = Colors.White;
             if (border.Background is SolidColorBrush scb)
             {
-                var c = scb.Color;
-                dlg.Color = System.Drawing.Color.FromArgb(c.A, c.R, c.G, c.B);
+                initialColor = scb.Color;
             }
-            if (dlg.ShowDialog() == WinFormsDialogResult.OK)
+
+            // Create and configure the color dialog window
+            var colorDialog = new System.Windows.Forms.ColorDialog();
+            colorDialog.Color = System.Drawing.Color.FromArgb(
+                initialColor.A,
+                initialColor.R,
+                initialColor.G,
+                initialColor.B
+            );
+            colorDialog.FullOpen = true; // Show the full dialog with custom colors
+
+            // Get the parent window handle for proper modal behavior
+            var parentWindow = Window.GetWindow(border);
+            var helper = new System.Windows.Interop.WindowInteropHelper(parentWindow);
+
+            // Show the dialog with WPF window as owner
+            var owner = new System.Windows.Forms.NativeWindow();
+            owner.AssignHandle(helper.Handle);
+
+            if (colorDialog.ShowDialog(owner) == System.Windows.Forms.DialogResult.OK)
             {
-                var dc = dlg.Color;
-                border.Background = new SolidColorBrush(Color.FromArgb(dc.A, dc.R, dc.G, dc.B));
+                var dc = colorDialog.Color;
+                border.Background = new SolidColorBrush(
+                    Color.FromArgb(dc.A, dc.R, dc.G, dc.B)
+                );
                 MainWindow.main.Update3D();
             }
         }

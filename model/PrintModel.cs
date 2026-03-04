@@ -660,20 +660,6 @@ namespace View3D.model
             ForceRefresh = false;
         }
 
-        //Added by RCGREY for STL Slice Previewer
-        #region STL Slice Previewer
-
-        private void UpdateClippingPlaneEq(Vector4 refPlane, float w, ref double[] glCutPlane)
-        {
-            refPlane = Vector4.Transform(refPlane, curPos); // transform matrix, not need to inverse    
-            glCutPlane[0] = refPlane.X;
-            glCutPlane[1] = refPlane.Y;
-            glCutPlane[2] = refPlane.Z;
-            glCutPlane[3] = w;
-        }
-
-        #endregion
-
         public override void Paint2()
         {
 

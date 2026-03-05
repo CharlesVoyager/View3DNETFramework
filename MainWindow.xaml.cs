@@ -171,7 +171,6 @@ namespace View3D
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ///  RegMemory.StoreWindowPos("mainWindow", this, true, true);
         }
 
         public void Update3D()

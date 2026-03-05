@@ -429,12 +429,6 @@ namespace View3D.view
             ThreeDControl_KeyPress(e);
         }
 
-        // Public so MainWindow can forward WPF KeyDown events into here
-        public void ThreeDControl_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
-        {
-            // Extend with key handling as needed.
-        }
-
         private void ThreeDControl_KeyDown(KeyboardKeyEventArgs e)
         {
             if (e.Key == Key.Delete)
@@ -960,7 +954,7 @@ namespace View3D.view
         }
 
         // ── Utility ───────────────────────────────────────────────────────────
-        public OpenTK.Graphics.Color4 convertColor(Color col) =>
+        private OpenTK.Graphics.Color4 convertColor(Color col) =>
             new Color4(col.R, col.G, col.B, col.A);
     }
 }

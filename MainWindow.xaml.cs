@@ -183,10 +183,8 @@ namespace View3D
         {
             try
             {
-                // Convert WPF KeyEventArgs to WinForms KeyEventArgs for ThreeDControl
-                var winFormsKey = (System.Windows.Forms.Keys)KeyInterop.VirtualKeyFromKey(e.Key);
-                var winFormsArgs = new System.Windows.Forms.KeyEventArgs(winFormsKey);
-                threedview.ThreeDControl_KeyDown(sender, winFormsArgs);
+                if (e.Key == Key.Delete)
+                    threedview.button_remove_Click(null, null);
             }
             catch { }
         }
